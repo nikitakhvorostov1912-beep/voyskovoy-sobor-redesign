@@ -1,0 +1,957 @@
+<html lang="ru"><head>
+<style data-omelette-injected="">html,body{background:transparent}</style><script data-omelette-injected="">(()=>{var j=["https://claude.ai","https://preview.claude.ai","https://eap-omelette.claude.ai"];var x=true;var S=30000;var f=3000;document.addEventListener("DOMContentLoaded",()=>{const H=window.Babel;const G="om-src-id";if(H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[G])){H.registerPlugin(G,({types:Y})=>({visitor:{JSXOpeningElement(U,Q){const J=U.node;if(J.name&&J.name.type==="JSXMemberExpression")return;for(let V=0;V<J.attributes.length;V++){const L=J.attributes[V];if(L.type==="JSXAttribute"&&L.name&&L.name.name==="data-om-id")return}const W=Q.file&&Q.file.opts&&Q.file.opts.filename||"?";const Z=J.loc&&J.loc.start;const z=`jsx:${W}:${J.start??0}:${Z?Z.line:0}:${Z?Z.column+1:0}`;J.attributes.push(Y.jsxAttribute(Y.jsxIdentifier("data-om-id"),Y.stringLiteral(z)))}}}))}const k="om-text-extract";let A=false;if(x&&H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[k])){const Y=window.React;if(Y&&Y.useSyncExternalStore&&Y.createElement){A=true;const U={};const Q=new Set;let J=0;window.__omTextO=U;window.__omTextSet=(z)=>{for(const V in z){const L=z[V];if(L==null)delete U[V];else U[V]=L}J++;Q.forEach((V)=>V())};const W=(z)=>{Q.add(z);return()=>Q.delete(z)};const Z=()=>J;window.__OmT=function z(V){Y.useSyncExternalStore(W,Z,Z);return Y.createElement("span",{"data-om-text":V.i,className:"__om-t"},V.i in U?U[V.i]:V.children)};H.registerPlugin(k,({types:z})=>{const V={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const L={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const _=($,C)=>z.logicalExpression("??",z.memberExpression(z.logicalExpression("||",z.memberExpression(z.identifier("window"),z.identifier("__omTextO")),z.objectExpression([])),z.stringLiteral($),true),C);const E=($)=>$.file&&$.file.opts&&$.file.opts.filename||"?";const B=($)=>$.file&&$.file.code||"";const b=($,C)=>{const X=(F)=>F&&F.start!=null&&F.end!=null&&(F.type==="StringLiteral"||F.type==="TemplateLiteral"&&F.expressions.length===0)?[F.start,F.end]:null;const N=X(C);if(N)return N;if(C&&C.type==="Identifier"){const F=$.scope.getBinding(C.name);if(F&&F.constant&&F.path.node.type==="VariableDeclarator"){return X(F.path.node.init)}}return null};const m=($,C,X)=>{const N=$.node;let F=false;const w=(K,q)=>{F=true;return z.jsxElement(z.jsxOpeningElement(z.jsxIdentifier("__OmT"),[z.jsxAttribute(z.jsxIdentifier("i"),z.stringLiteral(K))],false),z.jsxClosingElement(z.jsxIdentifier("__OmT")),[q],false)};const D=N.children.map((K)=>{if(K.type==="JSXText"){if(K.start==null||K.end==null)return K;const q=X.slice(K.start,K.end);const M=q.length-q.trimStart().length;const R=q.length-q.trimEnd().length;if(M+R>=q.length)return K;return w(`txt:${C}:${K.start+M}:${K.end-R}`,K)}if(K.type==="JSXExpressionContainer"){const q=b($,K.expression);if(q)return w(`str:${C}:${q[0]}:${q[1]}`,K)}return K});if(F)N.children=D};return{visitor:{JSXOpeningElement($,C){const X=$.node;const N=E(C);const F={};for(let w=0;w<X.attributes.length;w++){const D=X.attributes[w];if(D.type!=="JSXAttribute"||!D.name)continue;const K=D.name.name;if(!L[K])continue;if(!D.value||D.value.type!=="StringLiteral")continue;if(D.value.start==null||D.value.end==null)continue;const q=`txt:${N}:${D.value.start}:${D.value.end}`;F[K]=q;D.value=z.jsxExpressionContainer(_(q,z.stringLiteral(D.value.value)))}if(Object.keys(F).length){X.attributes.push(z.jsxAttribute(z.jsxIdentifier("data-om-text-attrs"),z.stringLiteral(JSON.stringify(F))))}},JSXElement($,C){const X=$.node.openingElement;const N=X&&X.name&&X.name.name;if(N==="__OmT")return;if(typeof N==="string"&&V[N])return;m($,E(C),B(C))},JSXFragment($,C){m($,E(C),B(C))}}}})}}const u=A?["transform-react-jsx-source",G,k]:["transform-react-jsx-source",G];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((Y,U)=>{const Q=Y.getAttribute("data-plugins")||"";const J=u.filter((W)=>Q.indexOf(W)<0);if(J.length){Y.setAttribute("data-plugins",Q?`${Q},${J.join(",")}`:J.join(","))}if(!Y.hasAttribute("data-filename")){Y.setAttribute("data-filename",Y.getAttribute("src")||`inline-${U}`)}})});var y=window.parent;if(y&&y!==window){const H=(Q,J)=>{try{y.postMessage({__omelette_log:true,type:Q,data:J},"*")}catch{}};["log","warn","error"].forEach((Q)=>{const J=console[Q];console[Q]=(...W)=>{const Z=W.map((z)=>{try{return typeof z==="object"?JSON.stringify(z):String(z)}catch{try{return String(z)}catch{return"[unstringifiable]"}}}).join(" ");H(Q,Z);J.apply(console,W)}});window.addEventListener("error",(Q)=>{const J=Q.target;if(J&&J!==window&&J.tagName){const W=J.src||J.href||"";H("resource_error",`${J.tagName} failed to load: ${W}`)}else{H("error",`${Q.message||"Unknown error"} at ${Q.filename||"?"}:${Q.lineno||0}:${Q.colno||0}`)}},true);window.addEventListener("unhandledrejection",(Q)=>{const J=Q.reason;const W=J instanceof Error?`${J.message} ${J.stack}`:String(J);H("error",`Unhandled rejection: ${W}`)});const G=()=>{try{y.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(document.readyState==="complete")G();else window.addEventListener("load",G);if(window.ResizeObserver)new ResizeObserver(G).observe(document.documentElement);const k={};let A=0;window.claude={complete(Q){return new Promise((J,W)=>{if(!j.length){W(new Error("claude.complete: no parent origin"));return}const Z=`c${++A}`;const z=()=>setTimeout(()=>{delete k[Z];W(new Error(`claude.complete: no data for ${S/1000}s`))},S);const V=z();k[Z]={resolve:J,reject:W,text:"",t:V,arm:z};try{for(const L of j){y.postMessage({__om_api:true,id:Z,body:Q},L)}}catch(L){clearTimeout(V);delete k[Z];W(L)}})}};const u={};let Y=0;window.omelette={writeFile:(Q,J)=>new Promise((W,Z)=>{if(!j.length){W();return}const z=`f${++Y}`;const V=setTimeout(()=>{delete u[z];W()},f);u[z]={resolve:W,reject:Z,t:V};try{for(const L of j){y.postMessage({__om_file:true,id:z,op:"write",path:Q,content:J},L)}}catch{clearTimeout(V);delete u[z];W()}})};const U=(Q)=>{try{return JSON.stringify(Q)}catch{return JSON.stringify(String(Q))}};window.addEventListener("message",(Q)=>{if(j.indexOf(Q.origin)<0)return;if(Q.source!==y)return;const J=Q.data;if(!J)return;if(J.__om_file_r){const z=u[J.id];if(!z)return;clearTimeout(z.t);delete u[J.id];if(J.ok)z.resolve();else z.reject(new Error(J.error||"write failed"));return}if(J.__om_api_r){const z=k[J.id];if(!z)return;if(J.error!=null){clearTimeout(z.t);delete k[J.id];z.reject(new Error(J.error));return}if(J.chunk!=null){clearTimeout(z.t);z.t=z.arm();z.text+=J.chunk;return}if(J.done){clearTimeout(z.t);delete k[J.id];z.resolve(J.text!=null?J.text:z.text);return}return}if(!J.__om_eval)return;const W=J;const Z=(z)=>{Q.source.postMessage({...z,__om_eval_r:1,id:W.id},Q.origin)};try{const z=(0,eval)(W.code);if(z&&typeof z.then==="function"){z.then((V)=>Z({ok:1,v:U(V)}),(V)=>Z({ok:0,e:String(V)}))}else{Z({ok:1,v:U(z)})}}catch(z){Z({ok:0,e:String(z)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>История собора — Войсковой Собор Александра Невского</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&amp;family=PT+Sans:wght@400;700&amp;display=swap">
+<style>
+  :root{
+    --parchment:#f5f0e8;
+    --parchment-2:#ede5d6;
+    --parchment-3:#e3d8c2;
+    --ink:#1a1f2e;
+    --ink-soft:#3a4358;
+    --gold:#c9a961;
+    --gold-deep:#a98a45;
+    --gold-soft:#e0c98a;
+    --bordo:#8b2635;
+    --bordo-deep:#6b1d29;
+    --rule:rgba(26,31,46,.18);
+    --rule-soft:rgba(26,31,46,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);}
+  body{
+    font-family:'Spectral', Georgia, serif;
+    font-weight:400;font-size:18px;line-height:1.8;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--gold);color:var(--ink);}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:
+      radial-gradient(rgba(26,31,46,.025) 1px, transparent 1px),
+      radial-gradient(rgba(201,169,97,.03) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode:multiply;
+  }
+
+  /* progress */
+  .progress-track{
+    position:fixed;left:0;right:0;top:60px;height:2px;background:transparent;z-index:60;
+  }
+  .progress-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold),var(--gold-soft));
+    box-shadow:0 0 8px rgba(201,169,97,.5);
+    transition:width .12s linear;
+  }
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);color:var(--parchment);
+    height:60px;border-bottom:1px solid rgba(201,169,97,.25);
+  }
+  .hwrap{
+    max-width:1280px;margin:0 auto;height:100%;
+    padding:0 32px;display:flex;align-items:center;gap:36px;
+  }
+  .sigil{display:flex;align-items:center;gap:12px;color:var(--parchment);text-decoration:none;}
+  .sigil-mark{
+    width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;
+    display:grid;place-items:center;color:var(--gold);
+  }
+  .sigil-name{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;font-size:17px;letter-spacing:.04em;line-height:1;
+  }
+  .sigil-sub{
+    font-family:'PT Sans', sans-serif;
+    font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);
+    margin-top:3px;
+  }
+  nav.primary{display:flex;gap:32px;margin-left:8px;flex:1;}
+  nav.primary a{
+    font-family:'PT Sans', sans-serif;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--parchment);text-decoration:none;opacity:.78;
+    padding:6px 0;position:relative;transition:opacity .2s;
+  }
+  nav.primary a:hover{opacity:1;}
+  nav.primary a.active{color:var(--gold);opacity:1;}
+  nav.primary a.active::before{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--gold);
+  }
+  .breadcrumb-trail{
+    font-family:'PT Sans', sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-soft);opacity:.7;margin-left:4px;
+  }
+  .breadcrumb-trail .arr{color:var(--gold);margin:0 8px;}
+  .donate{
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+    color:var(--ink);background:var(--gold);
+    padding:9px 18px;border:1px solid var(--gold);
+    text-decoration:none;transition:background .2s;
+  }
+  .donate:hover{background:var(--gold-soft);}
+
+  /* cover */
+  .cover{
+    position:relative;height:60vh;min-height:520px;
+    overflow:hidden;
+    background:#15121a;
+  }
+  .cover-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 50% 35%, #2a2030 0%, #1a1525 45%, #0e0b14 100%);
+    transform:scale(1);
+    animation:kenburns 18s ease-out forwards;
+  }
+  /* engraved cathedral silhouette as decorative SVG behind title */
+  .cover-svg{
+    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;
+    opacity:.18;pointer-events:none;
+  }
+  .cover-svg svg{width:min(880px, 86%);height:auto;}
+  @keyframes kenburns{from{transform:scale(1)} to{transform:scale(1.06)}}
+  .cover-vignette{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at center, rgba(0,0,0,.0) 30%, rgba(0,0,0,.55) 78%, rgba(0,0,0,.85) 100%),
+      linear-gradient(180deg, rgba(201,169,97,.10) 0%, transparent 30%, rgba(0,0,0,.55) 100%);
+  }
+  .cover-grain{
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg, rgba(255,240,200,.02) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;pointer-events:none;
+  }
+  .cover-inner{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;color:var(--parchment);padding:0 32px;
+  }
+  .kicker{
+    font-family:'PT Sans', sans-serif;
+    font-size:12px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:28px;
+  }
+  h1.cover-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(44px, 7vw, 92px);
+    line-height:1.05;letter-spacing:-.005em;
+    margin:0 0 22px;color:#f5ecd5;
+    text-shadow:0 2px 30px rgba(0,0,0,.5);
+  }
+  .cover-sub{
+    font-family:'Spectral', serif;font-style:italic;font-weight:300;
+    font-size:clamp(18px, 1.6vw, 22px);
+    color:rgba(245,236,213,.88);
+    max-width:680px;margin:0 auto;letter-spacing:.01em;
+  }
+  .cover-meta{
+    position:absolute;left:0;right:0;bottom:28px;
+    display:flex;justify-content:center;gap:0;
+    color:var(--gold);
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  }
+  .cover-meta span{padding:0 18px;border-right:1px solid rgba(201,169,97,.4);}
+  .cover-meta span:last-child{border-right:none;}
+
+  /* article */
+  .article-shell{position:relative;background:var(--parchment);padding:96px 0 80px;}
+  .article-shell::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:90px;
+    background:linear-gradient(180deg, rgba(26,31,46,.06), transparent);pointer-events:none;
+  }
+  .article-grid{
+    max-width:780px;margin:0 auto;padding:0 32px;
+  }
+  .article-grid p{margin:0 0 1.5em;text-wrap:pretty;hyphens:auto;}
+  .article-grid p.lead{font-size:21px;line-height:1.75;}
+  .article-grid h2{
+    font-family:'Cormorant Garamond', serif;font-weight:700;
+    font-size:36px;line-height:1.15;letter-spacing:-.005em;
+    margin:0 0 .35em;color:var(--ink);
+  }
+  .h2-line{width:60px;height:1.5px;background:var(--gold);margin-bottom:1.4em;}
+  .h2-eyebrow{
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:14px;display:flex;align-items:baseline;gap:14px;
+  }
+  .h2-eyebrow .num{
+    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-size:14px;letter-spacing:0;text-transform:none;color:var(--bordo);
+  }
+  .dropcap::first-letter{
+    font-family:'Cormorant Garamond', serif;font-weight:700;color:var(--gold-deep);
+    font-size:6em;line-height:.85;float:left;
+    padding:.06em .12em 0 0;margin-top:.05em;
+    text-shadow:0 2px 0 rgba(201,169,97,.18);
+  }
+  .smallcaps{font-variant:all-small-caps;letter-spacing:.08em;font-weight:500;}
+
+  /* pull-quote */
+  .pullquote{
+    max-width:880px;margin:48px -50px 56px;
+    text-align:center;position:relative;
+  }
+  @media (max-width:900px){.pullquote{margin:36px 0;}}
+  .pullquote .qmarks{
+    font-family:'Cormorant Garamond', serif;color:var(--gold);
+    font-size:54px;line-height:1;margin-bottom:8px;letter-spacing:.1em;
+  }
+  .pullquote blockquote{
+    margin:0;font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-size:28px;line-height:1.45;color:var(--ink);letter-spacing:.005em;
+  }
+  .pullquote cite{
+    display:block;margin-top:22px;
+    font-family:'PT Sans', sans-serif;font-style:normal;
+    font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--bordo);
+  }
+  .pullquote cite::before{
+    content:"";display:inline-block;width:28px;height:1px;background:var(--gold);
+    vertical-align:middle;margin-right:14px;
+  }
+
+  /* memorial */
+  .memorial{
+    max-width:880px;margin:40px -50px;
+    padding:32px 36px 36px;
+    background:linear-gradient(180deg, rgba(139,38,53,.05), rgba(139,38,53,.02));
+    border-left:3px solid var(--bordo);
+    border-top:1px solid rgba(139,38,53,.15);
+    border-bottom:1px solid rgba(139,38,53,.15);
+    position:relative;
+  }
+  @media (max-width:900px){.memorial{margin:32px 0;padding:24px 22px;}}
+  .memorial::before{
+    content:"†";position:absolute;top:18px;right:24px;
+    font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--bordo);opacity:.55;
+  }
+  .memorial-eyebrow{
+    font-family:'PT Sans',sans-serif;
+    font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--bordo);margin-bottom:6px;
+  }
+  .memorial h3{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:24px;line-height:1.2;margin:0 0 16px;color:var(--bordo-deep);max-width:560px;
+  }
+  .memorial ul{margin:0;padding:0;list-style:none;columns:2;column-gap:42px;}
+  @media (max-width:700px){.memorial ul{columns:1;}}
+  .memorial li{
+    font-family:'Spectral',serif;font-size:15px;line-height:1.7;
+    break-inside:avoid;padding:4px 0;
+    border-bottom:1px dotted rgba(139,38,53,.2);
+    display:flex;justify-content:space-between;gap:12px;
+  }
+  .memorial li .yr{
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.16em;
+    color:var(--bordo);align-self:center;white-space:nowrap;
+  }
+  .memorial-foot{
+    margin-top:18px;font-family:'Spectral',serif;font-style:italic;font-size:13.5px;color:var(--ink-soft);
+  }
+
+  /* divider — single SVG cross+vine */
+  .divider{
+    display:flex;justify-content:center;align-items:center;
+    margin:64px 0;color:var(--gold);
+  }
+
+  /* CTA */
+  .schedule-cta{margin:36px 0 12px;display:flex;justify-content:center;}
+  .schedule-cta a{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;
+    color:var(--ink);background:var(--gold);
+    padding:16px 34px;text-decoration:none;
+    border:1px solid var(--gold-deep);transition:background .2s;
+  }
+  .schedule-cta a:hover{background:var(--gold-soft);}
+  .schedule-cta a::after{content:" →";color:var(--ink);}
+
+  /* timeline */
+  .timeline-section{
+    background:var(--ink);color:var(--parchment);
+    padding:110px 32px 130px;position:relative;overflow:hidden;
+  }
+  .timeline-section::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at top, rgba(201,169,97,.06), transparent 60%);pointer-events:none;
+  }
+  .ts-head{text-align:center;max-width:760px;margin:0 auto 80px;position:relative;}
+  .ts-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:64px;line-height:1.05;margin:0 0 14px;color:#f5ecd5;
+  }
+  .ts-head p{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:18px;color:rgba(245,236,213,.7);margin:0;
+  }
+  .ts-wrap{max-width:1080px;margin:0 auto;position:relative;}
+  .ts-axis{
+    position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(180deg, transparent, var(--gold) 6%, var(--gold) 94%, transparent);
+    transform:translateX(-.5px);
+  }
+  .ts-event{
+    display:grid;grid-template-columns:1fr 64px 1fr;align-items:start;
+    margin-bottom:64px;position:relative;
+  }
+  .ts-event:last-child{margin-bottom:0;}
+  .ts-event .ts-card{grid-column:1;text-align:right;padding-right:18px;}
+  .ts-event:nth-child(even) .ts-card{grid-column:3;text-align:left;padding-right:0;padding-left:18px;}
+  .ts-node{
+    grid-column:2;width:48px;height:48px;border-radius:50%;
+    border:1px solid var(--gold);background:var(--ink);
+    display:grid;place-items:center;color:var(--gold);
+    margin:6px auto 0;position:relative;z-index:2;
+    box-shadow:0 0 0 6px var(--ink), 0 0 28px rgba(201,169,97,.18);
+  }
+  .ts-node.epoch-loss{color:var(--bordo);border-color:var(--bordo);}
+  .ts-node.epoch-revival{background:var(--gold);color:var(--ink);}
+  .ts-year{
+    font-family:'Spectral',serif;font-weight:700;
+    font-size:36px;line-height:1;letter-spacing:.01em;color:var(--gold);
+    margin-bottom:8px;display:block;
+  }
+  .ts-title{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:20px;line-height:1.35;color:#f5ecd5;margin:0 0 6px;
+  }
+  .ts-desc{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:14.5px;line-height:1.6;color:rgba(245,236,213,.65);margin:0;
+  }
+  .ts-event.is-loss .ts-year{color:#d76b78;}
+  .ts-event.is-jubilee .ts-year{color:var(--gold-soft);}
+
+  /* sources */
+  .sources-section{background:var(--parchment);padding:120px 32px 100px;position:relative;}
+  .sources-section::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule-soft);}
+  .sources-wrap{max-width:920px;margin:0 auto;}
+  .sources-section h2{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:48px;line-height:1.05;margin:18px 0 12px;color:var(--ink);
+  }
+  .sources-section .sub{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:17px;line-height:1.6;color:var(--ink-soft);
+    max-width:560px;margin:0 0 50px;
+  }
+  ol.sources{margin:0;padding:0;list-style:none;counter-reset:src;}
+  ol.sources li{
+    counter-increment:src;
+    display:grid;grid-template-columns:48px 1fr;gap:24px;
+    padding:22px 0;border-bottom:1px dashed var(--gold);align-items:baseline;
+  }
+  ol.sources li::before{
+    content:counter(src,decimal-leading-zero);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+    font-size:24px;color:var(--gold-deep);
+  }
+  .src-title{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:20px;line-height:1.3;color:var(--ink);margin:0 0 4px;
+  }
+  .src-meta{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0;
+  }
+  .src-meta .archive-tag{
+    font-family:'PT Sans',sans-serif;font-style:normal;
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--bordo);margin-left:8px;
+  }
+
+  /* related */
+  .related-section{
+    background:var(--parchment-3);padding:100px 32px;
+    border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);
+  }
+  .related-wrap{max-width:1180px;margin:0 auto;}
+  .related-head{text-align:center;margin-bottom:56px;}
+  .related-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:44px;margin:14px 0 0;color:var(--ink);
+  }
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .rcard{
+    background:var(--parchment);border:1px solid var(--rule);
+    text-decoration:none;color:inherit;display:flex;flex-direction:column;
+    transition:transform .25s, box-shadow .25s;
+    padding:34px 30px 32px;
+  }
+  .rcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,31,46,.12);}
+  .rcard-eyebrow{
+    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .rcard-eyebrow::before{
+    content:"";width:24px;height:1px;background:var(--gold);
+  }
+  .rcard h3{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:26px;line-height:1.25;margin:0 0 12px;color:var(--ink);
+  }
+  .rcard p{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0 0 22px;flex:1;
+  }
+  .rcard .read-more{
+    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--bordo);font-weight:700;
+  }
+  .rcard .read-more::after{content:" →";color:var(--gold-deep);}
+
+  /* footer */
+  footer.site{background:var(--ink);color:rgba(245,236,213,.72);padding:80px 32px 40px;}
+  .fwrap{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:64px;
+  }
+  .f-brand .sigil{margin-bottom:18px;}
+  .f-brand p{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:15px;line-height:1.7;max-width:340px;margin:0 0 18px;
+  }
+  .f-col h4{
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 22px;font-weight:700;
+  }
+  .f-col ul{list-style:none;margin:0;padding:0;}
+  .f-col li{margin-bottom:12px;}
+  .f-col a{
+    font-family:'Spectral',serif;font-size:15px;color:rgba(245,236,213,.78);
+    text-decoration:none;transition:color .2s;
+  }
+  .f-col a:hover{color:var(--gold);}
+  .f-bottom{
+    max-width:1280px;margin:60px auto 0;padding-top:26px;
+    border-top:1px solid rgba(201,169,97,.18);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(245,236,213,.45);
+  }
+
+  /* float CTA */
+  .float-cta{
+    display:none;position:fixed;right:18px;bottom:18px;z-index:55;
+    background:var(--gold);color:var(--ink);padding:14px 18px;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    text-decoration:none;box-shadow:0 10px 28px rgba(0,0,0,.3);border-radius:2px;
+  }
+
+  /* fade-in */
+  .fade-in{opacity:0;transform:translateY(14px);transition:opacity .9s ease, transform .9s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  .ts-event{opacity:0;transform:translateX(-30px);transition:opacity .8s, transform .8s;}
+  .ts-event:nth-child(even){transform:translateX(30px);}
+  .ts-event.visible{opacity:1;transform:translateX(0);}
+
+  /* mobile */
+  @media (max-width:980px){
+    nav.primary{display:none;}
+    .breadcrumb-trail{display:none;}
+    .hwrap{padding:0 18px;gap:16px;justify-content:space-between;}
+    .donate{padding:8px 14px;font-size:10px;letter-spacing:.22em;}
+    .cover{height:50vh;min-height:380px;}
+    h1.cover-title{font-size:42px;}
+    .cover-sub{font-size:16px;padding:0 12px;}
+    .cover-meta{flex-wrap:wrap;justify-content:center;font-size:10px;letter-spacing:.2em;}
+    .cover-meta span{padding:4px 10px;border-right:none;}
+    .article-shell{padding:56px 0 40px;}
+    .article-grid{padding:0 22px;}
+    .article-grid h2{font-size:28px;}
+    .timeline-section{padding:70px 20px 80px;}
+    .ts-head h2{font-size:42px;}
+    .ts-axis{left:24px;}
+    .ts-event{grid-template-columns:48px 1fr;align-items:start;margin-bottom:42px;}
+    .ts-event .ts-card,
+    .ts-event:nth-child(even) .ts-card{
+      grid-column:2;text-align:left;padding:0 0 0 18px;
+    }
+    .ts-node{grid-column:1;margin:6px 0 0;width:40px;height:40px;}
+    .ts-event{transform:translateX(-12px);}
+    .ts-event:nth-child(even){transform:translateX(-12px);}
+    .sources-section{padding:70px 20px;}
+    .sources-section h2{font-size:34px;}
+    ol.sources li{grid-template-columns:36px 1fr;gap:14px;}
+    .related-section{padding:60px 20px;}
+    .related-grid{grid-template-columns:1fr;}
+    .related-head h2{font-size:32px;}
+    .fwrap{grid-template-columns:1fr;gap:40px;}
+    .float-cta{display:inline-block;}
+  }
+</style>
+</head>
+<body data-screen-label="История собора">
+
+<header class="site">
+  <div class="hwrap">
+    <a href="#" class="sigil" aria-label="Войсковой собор">
+      <span class="sigil-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2 L12 22 M5 6 L19 6 M3 11 L21 11 M7 17 L17 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"></path>
+        </svg>
+      </span>
+      <span>
+        <div class="sigil-name">Войсковой Собор</div>
+        <div class="sigil-sub">Александра Невского · 1853</div>
+      </span>
+    </a>
+    <nav class="primary" aria-label="Основная навигация">
+      <a href="#">Собор</a>
+      <a href="#">Богослужения</a>
+      <a href="#">Святыни</a>
+      <a href="#" class="active">Жизнь прихода</a>
+      <a href="#">Контакты</a>
+    </nav>
+    <span class="breadcrumb-trail">Жизнь прихода <span class="arr">→</span> Летопись</span>
+    <a href="#" class="donate">Пожертвовать</a>
+  </div>
+</header>
+
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
+
+<!-- COVER -->
+<section class="cover" aria-label="Обложка">
+  <div class="cover-bg"></div>
+  <div class="cover-svg" aria-hidden="true">
+    <!-- Engraved silhouette of a five-domed cathedral with bell tower; placeholder until photo asset is provided -->
+    <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg">
+      <title>Силуэт собора</title>
+      <defs>
+        <linearGradient id="goldFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e0c98a" stop-opacity=".9"></stop>
+          <stop offset="100%" stop-color="#a98a45" stop-opacity=".4"></stop>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#goldFade)" stroke-width="1.4" stroke-linecap="square">
+        <!-- main body -->
+        <path d="M260 300 L260 200 L300 200 L300 160 L580 160 L580 200 L620 200 L620 300 Z"></path>
+        <!-- arches lower -->
+        <path d="M310 300 L310 240 Q330 220 350 240 L350 300"></path>
+        <path d="M360 300 L360 240 Q380 220 400 240 L400 300"></path>
+        <path d="M480 300 L480 240 Q500 220 520 240 L520 300"></path>
+        <path d="M530 300 L530 240 Q550 220 570 240 L570 300"></path>
+        <!-- center main dome with cross -->
+        <path d="M380 160 L380 100 Q380 60 440 50 Q500 60 500 100 L500 160"></path>
+        <path d="M440 50 L440 28 M430 36 L450 36 M433 22 L447 22"></path>
+        <!-- four side domes -->
+        <path d="M310 160 L310 130 Q310 105 340 100 Q370 105 370 130 L370 160"></path>
+        <path d="M340 100 L340 86 M333 92 L347 92"></path>
+        <path d="M510 160 L510 130 Q510 105 540 100 Q570 105 570 130 L570 160"></path>
+        <path d="M540 100 L540 86 M533 92 L547 92"></path>
+        <!-- bell tower right -->
+        <path d="M650 300 L650 130 L720 130 L720 300 Z"></path>
+        <path d="M650 130 L685 80 L720 130"></path>
+        <path d="M685 80 L685 56 M676 64 L694 64 M680 50 L690 50"></path>
+        <path d="M670 220 L700 220 M670 250 L700 250"></path>
+        <!-- left chapel -->
+        <path d="M180 300 L180 210 L240 210 L240 300 Z"></path>
+        <path d="M180 210 L210 175 L240 210"></path>
+        <path d="M210 175 L210 158 M204 165 L216 165"></path>
+        <!-- ground line -->
+        <path d="M40 302 L840 302" stroke-width="1"></path>
+        <!-- hatching ground -->
+        <path d="M40 308 L120 308 M150 308 L260 308 M620 308 L740 308 M780 308 L840 308" stroke-width=".7" opacity=".7"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="cover-vignette"></div>
+  <div class="cover-grain"></div>
+  <div class="cover-inner">
+    <div class="kicker">Летопись прихода</div>
+    <h1 class="cover-title">История Войскового Собора</h1>
+    <div class="cover-sub">От первого камня в 1853 году до возрождения в&nbsp;2006-м — путь главного храма Кубанского казачества длиною в&nbsp;174 года.</div>
+  </div>
+  <div class="cover-meta">
+    <span>12 минут чтения</span>
+    <span>Опубликовано в летописи храма</span>
+    <span>Автор: иерей А. Кравченко</span>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<main class="article-shell">
+  <div class="article-grid">
+
+    <p class="lead dropcap fade-in">
+      В <span class="smallcaps">истории русской церковной архитектуры</span> Войсковой собор святого благоверного князя Александра Невского занимает особое место — как духовный центр Кубанского казачьего войска и&nbsp;как храм, прошедший через все испытания XX&nbsp;века: от&nbsp;имперского расцвета через богоборческое разрушение к&nbsp;медленному, кропотливому возрождению на&nbsp;рубеже тысячелетий.
+    </p>
+    <p class="fade-in">
+      Эта летопись составлена по&nbsp;материалам епархиального архива, документов Государственного архива Краснодарского края и&nbsp;воспоминаний прихожан. Многие из&nbsp;приведённых здесь свидетельств публикуются впервые в&nbsp;общедоступном формате — мы благодарим архивный отдел Кубанской митрополии за&nbsp;предоставленные источники.
+    </p>
+
+    <div class="divider" aria-hidden="true">
+      <svg width="120" height="44" viewBox="0 0 120 44" fill="none">
+        <path d="M0 22 H44" stroke="currentColor" stroke-width="1"></path>
+        <path d="M76 22 H120" stroke="currentColor" stroke-width="1"></path>
+        <path d="M60 6 V38 M50 14 H70 M52 22 H68 M54 30 H66" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"></path>
+        <path d="M44 22 C 48 16, 52 16, 56 22" stroke="currentColor" stroke-width=".8" fill="none"></path>
+        <path d="M64 22 C 68 28, 72 28, 76 22" stroke="currentColor" stroke-width=".8" fill="none"></path>
+        <circle cx="46" cy="20" r="1.2" fill="currentColor"></circle>
+        <circle cx="50" cy="18" r="1.2" fill="currentColor"></circle>
+        <circle cx="54" cy="20" r="1.2" fill="currentColor"></circle>
+        <circle cx="66" cy="24" r="1.2" fill="currentColor"></circle>
+        <circle cx="70" cy="26" r="1.2" fill="currentColor"></circle>
+        <circle cx="74" cy="24" r="1.2" fill="currentColor"></circle>
+      </svg>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава первая <span class="num">i. 1842 — 1853</span></div>
+      <h2>Идея храма для Кубанского войска</h2>
+      <div class="h2-line"></div>
+      <p>К&nbsp;началу 1840-х&nbsp;годов Черноморское казачье войско, охранявшее южные рубежи империи, не&nbsp;имело собственного войскового собора. Походные церкви, разбросанные по&nbsp;станицам, не&nbsp;могли заменить главного духовного центра — храма, в&nbsp;котором венчались бы знамёна, провожались на&nbsp;службу новобранцы и&nbsp;поминались павшие в&nbsp;кавказских кампаниях.</p>
+      <p>Мысль о&nbsp;строительстве войскового собора впервые была озвучена наказным атаманом генерал-майором Г.&nbsp;А.&nbsp;Рашпилем в&nbsp;рапорте на&nbsp;имя Военного министра в&nbsp;1842&nbsp;году. К&nbsp;нему присоединились старшины войска и&nbsp;духовенство Кавказской епархии. Дело продвигалось медленно — войско собирало пожертвования по&nbsp;копейке, и&nbsp;только к&nbsp;1851&nbsp;году необходимая сумма была изыскана из&nbsp;трёх источников: казённого пособия, доходов войсковой казны и&nbsp;частных приношений.</p>
+    </div>
+
+    <div class="pullquote fade-in">
+      <div class="qmarks">«&nbsp;&nbsp;»</div>
+      <blockquote>Сей храм да&nbsp;будет не&nbsp;токмо домом молитвы, но&nbsp;и&nbsp;знамением верности казачества Престолу и&nbsp;Отечеству, а&nbsp;паче того — Господу нашему Иисусу Христу.</blockquote>
+      <cite>Митрополит Иннокентий (Борисов), напутственное слово, 1851&nbsp;г.</cite>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава вторая <span class="num">ii. 1853</span></div>
+      <h2>Закладка первого камня</h2>
+      <div class="h2-line"></div>
+      <p><span class="smallcaps">29 апреля 1853 года</span>, в&nbsp;день памяти девяти мучеников Кизических, при&nbsp;стечении всего войскового правления, духовенства Ставропольской епархии и&nbsp;множества прихожан был торжественно заложен первый камень. Чин закладки совершил епископ Кавказский и&nbsp;Черноморский Иеремия (Соловьёв).</p>
+      <p>Проект собора принадлежал войсковому архитектору Ивану&nbsp;Денисовичу Чернику — выпускнику Императорской Академии художеств, ученику К.&nbsp;А.&nbsp;Тона. Зодчий выполнил храм в&nbsp;«русско-византийском стиле»: пятиглавый четверик с&nbsp;шатровой колокольней, в&nbsp;духе московского ампира с&nbsp;элементами древнерусских церквей XV–XVI&nbsp;веков. Центральная глава возвышалась на&nbsp;42&nbsp;метра — собор задумывался как самое высокое здание Екатеринодара.</p>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава третья <span class="num">iii. 1872</span></div>
+      <h2>Освящение собора</h2>
+      <div class="h2-line"></div>
+      <p>Строительство, начавшееся при&nbsp;Николае&nbsp;I, продолжалось почти двадцать лет — Крымская война, неурожаи и&nbsp;внутренние реформы империи неоднократно прерывали работы. К&nbsp;началу 1872&nbsp;года собор был полностью завершён: главы покрыты медным золочением, освящён иконостас работы петербургских мастеров, расписаны стены — артелью художника М.&nbsp;Н.&nbsp;Гилярова.</p>
+      <p><span class="smallcaps">8 ноября 1872 года</span>, в&nbsp;день Архистратига Михаила, состоялось великое освящение храма. Чин совершил архиепископ Кавказский и&nbsp;Екатеринодарский Герман&nbsp;(Осецкий). На&nbsp;торжествах присутствовал наследник цесаревич Александр Александрович (будущий император Александр&nbsp;III), специально прибывший из&nbsp;Петербурга. Войсковой хор пел литургию по&nbsp;древним напевам Юго-Западной Руси.</p>
+    </div>
+
+    <div class="pullquote fade-in">
+      <div class="qmarks">«&nbsp;&nbsp;»</div>
+      <blockquote>И&nbsp;воссиял храм яко солнце над Кубанью; и&nbsp;звон его был слышен за&nbsp;двадцать вёрст в&nbsp;окрестных станицах. Народ плакал от&nbsp;радости.</blockquote>
+      <cite>«Кавказские епархиальные ведомости», № 23 за 1872&nbsp;г.</cite>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава четвёртая <span class="num">iv. 1872 — 1932</span></div>
+      <h2>Век служения</h2>
+      <div class="h2-line"></div>
+      <p>Шестьдесят лет, отпущенные собору в&nbsp;имперский и&nbsp;ранне-советский периоды, стали временем расцвета. Войсковой собор был не&nbsp;только местом богослужений: при&nbsp;нём действовали церковно-приходская школа на&nbsp;120&nbsp;учеников, библиотека духовной литературы, попечительство о&nbsp;вдовах казаков и&nbsp;общество трезвости святого князя Александра Невского.</p>
+      <p>Особую роль в&nbsp;жизни прихода сыграл протоиерей <strong>Иоанн&nbsp;Александрович Карташевский</strong>&nbsp;(1864–1928), настоятель собора в&nbsp;1898–1922&nbsp;годах. Богослов, выпускник Киевской духовной академии, он&nbsp;собрал вокруг себя кружок казачьих интеллигентов, ввёл регулярное проповедничество, основал журнал «Кубанский благовестник». В&nbsp;1898&nbsp;году к&nbsp;собору были пристроены два&nbsp;приставных предела — святых равноапостольных Кирилла и&nbsp;Мефодия.</p>
+      <p>Среди известных прихожан-жертвователей собора — атаман М.&nbsp;П.&nbsp;Бабыч, городской голова Екатеринодара В.&nbsp;С.&nbsp;Климов, купеческие династии Тарасовых и&nbsp;Дицманов. Их&nbsp;именные вкладные надписи сохранились на&nbsp;утвари, переданной впоследствии в&nbsp;Историко-археологический музей.</p>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow" style="color:var(--bordo);">Глава пятая <span class="num" style="color:var(--bordo);">v. 1932</span></div>
+      <h2 style="color:var(--bordo-deep);">Время гонений: разрушение собора</h2>
+      <div class="h2-line" style="background:var(--bordo);"></div>
+      <p>Решение о&nbsp;сносе Войскового собора было принято Президиумом Краснодарского горсовета 14&nbsp;марта 1932&nbsp;года. В&nbsp;официальной формулировке — «в&nbsp;связи с&nbsp;реконструкцией центра города и&nbsp;невозможностью использования здания в&nbsp;хозяйственных целях». Подлинной же причиной была программа «безбожной пятилетки», предписывавшая уничтожение крупных храмов в&nbsp;центрах краевых столиц.</p>
+      <p>Демонтаж занял почти год. Сначала были сняты колокола — самый большой, весом 532&nbsp;пуда, отправили на&nbsp;завод имени Седина и&nbsp;переплавили на&nbsp;тракторные детали. Затем разобрали иконостас; иконы, по&nbsp;свидетельству очевидцев, частично передали в&nbsp;краеведческий музей, частично сожгли на&nbsp;площади. Наконец, в&nbsp;августе 1932&nbsp;года, динамитом был обрушен главный купол.</p>
+    </div>
+
+    <div class="pullquote fade-in">
+      <div class="qmarks">«&nbsp;&nbsp;»</div>
+      <blockquote>Я&nbsp;стояла на&nbsp;Красной и&nbsp;слышала, как падал колокол. Звон его был последний — но&nbsp;тот звон я&nbsp;помню до&nbsp;сих пор, восемьдесят лет.</blockquote>
+      <cite>Анна Васильевна Перепёлкина (1922–2014), запись 2009&nbsp;г.</cite>
+    </div>
+
+    <div class="memorial fade-in">
+      <div class="memorial-eyebrow">Помянник усопших</div>
+      <h3>Клирики Войскового собора, расстрелянные и&nbsp;умученные в&nbsp;годы безбожия</h3>
+      <ul>
+        <li><span>прот.&nbsp;Иоанн Карташевский</span><span class="yr">† 1928</span></li>
+        <li><span>прот.&nbsp;Митрофан Воскресенский</span><span class="yr">† 1930</span></li>
+        <li><span>прот.&nbsp;Никандр Беляев</span><span class="yr">† 1932</span></li>
+        <li><span>иерей Александр Поспелов</span><span class="yr">† 1933</span></li>
+        <li><span>иерей Сергий Карташевский</span><span class="yr">† 1937</span></li>
+        <li><span>иерей Петр Сосновский</span><span class="yr">† 1937</span></li>
+        <li><span>диакон Феодор Вышегородский</span><span class="yr">† 1937</span></li>
+        <li><span>псаломщик Михаил Линников</span><span class="yr">† 1938</span></li>
+      </ul>
+      <div class="memorial-foot">Имена внесены в&nbsp;синодик собора. Поминовение совершается в&nbsp;Дни новомучеников Российских и&nbsp;ежегодно 14&nbsp;марта — в&nbsp;день решения о&nbsp;сносе храма.</div>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава шестая <span class="num">vi. 1991 — 2006</span></div>
+      <h2>Возрождение храма</h2>
+      <div class="h2-line"></div>
+      <p>В&nbsp;1991&nbsp;году, после возвращения Кубанскому казачеству статуса юридически оформленного войска, возникла идея восстановить главный войсковой собор. Историческое место — нынешний сквер имени Жукова — было занято; решением митрополита Екатеринодарского и&nbsp;Кубанского Исидора&nbsp;(Кириченко) и&nbsp;администрации края для нового собора была отведена площадь у&nbsp;пересечения улиц Красной и&nbsp;Постовой, в&nbsp;двух кварталах от&nbsp;первоначального места.</p>
+      <p>Закладка краеугольного камня состоялась 28&nbsp;мая 2003&nbsp;года, в&nbsp;день памяти святого благоверного князя Александра Невского. Чин совершил митрополит Исидор в&nbsp;сослужении духовенства епархии и&nbsp;при&nbsp;участии атамана Кубанского казачьего войска. Строительство велось три года&nbsp;— на&nbsp;средства войска, краевой администрации и&nbsp;частных жертвователей.</p>
+      <p><span class="smallcaps">28 мая 2006 года</span> великое освящение возрождённого собора совершил Святейший Патриарх Московский и&nbsp;всея Руси Алексий&nbsp;II в&nbsp;сослужении митрополита Исидора, представителей Священного Синода и&nbsp;казачьего духовенства семи епархий. На&nbsp;богослужении присутствовало более десяти тысяч человек.</p>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава седьмая <span class="num">vii. 2006 — наст. время</span></div>
+      <h2>Сегодня</h2>
+      <div class="h2-line"></div>
+      <p>За&nbsp;двадцать лет, прошедших с&nbsp;освящения, Войсковой собор стал не&nbsp;только главным храмом Кубанского казачьего войска, но&nbsp;и&nbsp;духовным центром Краснодара. При&nbsp;соборе действуют воскресная школа на&nbsp;200&nbsp;учеников, молодёжный клуб «Александровцы», общество милосердия имени великомученицы Елисаветы, школа церковного пения и&nbsp;иконописная мастерская.</p>
+      <p>Социальное служение прихода включает окормление двух детских домов и&nbsp;Краснодарского хосписа, регулярные сборы помощи многодетным семьям, ежемесячные обеды для бездомных. Хор собора — лауреат международных конкурсов церковного пения; запись литургии 2018&nbsp;года вошла в&nbsp;программу Дней русской культуры в&nbsp;Сербии.</p>
+      <p>В&nbsp;2026&nbsp;году собор отмечает 20-летие возрождения и&nbsp;174 года со&nbsp;дня закладки исторического храма. К&nbsp;юбилейным торжествам готовится издание полного летописного сборника прихода — книги, частью предисловия к&nbsp;которой служит и&nbsp;этот очерк.</p>
+    </div>
+
+    <div class="schedule-cta fade-in">
+      <a href="#">Расписание богослужений</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- TIMELINE -->
+<section class="timeline-section" data-screen-label="Ключевые даты">
+  <div class="ts-head fade-in">
+    <div class="kicker">Хронология</div>
+    <h2>Ключевые даты</h2>
+    <p>Сто семьдесят четыре года в&nbsp;десяти событиях — от&nbsp;первого прошения атамана Рашпиля до&nbsp;юбилейных торжеств 2026&nbsp;года.</p>
+  </div>
+
+  <div class="ts-wrap">
+    <div class="ts-axis" aria-hidden="true"></div>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1842</span>
+        <h3 class="ts-title">Первое прошение о&nbsp;строительстве собора</h3>
+        <p class="ts-desc">Наказной атаман Г.&nbsp;А.&nbsp;Рашпиль направляет рапорт Военному министру.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4 V20 M4 12 H20" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1853</span>
+        <h3 class="ts-title">Закладка первого камня</h3>
+        <p class="ts-desc">29&nbsp;апреля. Чин совершён епископом Иеремией. Архитектор — И.&nbsp;Д.&nbsp;Черник.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="9" width="14" height="11" stroke="currentColor" stroke-width="1.5"></rect><path d="M3 9 L12 3 L21 9" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1872</span>
+        <h3 class="ts-title">Великое освящение</h3>
+        <p class="ts-desc">8&nbsp;ноября в&nbsp;присутствии цесаревича Александра Александровича.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 V21 M7 8 H17 M8 13 H16 M9 18 H15" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1898</span>
+        <h3 class="ts-title">Расширение храма</h3>
+        <p class="ts-desc">Пристройка двух&nbsp;приделов — святых равноапостольных Кирилла и&nbsp;Мефодия.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12 H20 M9 7 V17 M15 7 V17" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1917</span>
+        <h3 class="ts-title">Революционные потрясения</h3>
+        <p class="ts-desc">Конец имперского периода. Конфискация церковных ценностей.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 5 L19 19 M19 5 L5 19" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event is-loss">
+      <div class="ts-card">
+        <span class="ts-year">1932</span>
+        <h3 class="ts-title">Снос собора</h3>
+        <p class="ts-desc">Решение Краснодарского горсовета. Демонтаж в&nbsp;течение года.</p>
+      </div>
+      <div class="ts-node epoch-loss"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19 L19 19 M7 19 L7 11 M17 19 L17 11 M5 11 L19 11 L12 5 Z" stroke="currentColor" stroke-width="1.5" fill="none"></path><path d="M3 21 L21 21" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1991</span>
+        <h3 class="ts-title">Возрождение Кубанского войска</h3>
+        <p class="ts-desc">Возникает идея восстановить войсковой собор на&nbsp;новом месте.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4 V20 M5 12 C 8 9, 16 9, 19 12" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">2003</span>
+        <h3 class="ts-title">Закладка нового собора</h3>
+        <p class="ts-desc">28&nbsp;мая. Митрополит Исидор закладывает краеугольный камень.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="9" width="14" height="11" stroke="currentColor" stroke-width="1.5"></rect><path d="M3 9 L12 3 L21 9" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">2006</span>
+        <h3 class="ts-title">Освящение Святейшим Патриархом</h3>
+        <p class="ts-desc">Алексий&nbsp;II совершает великое освящение возрождённого собора.</p>
+      </div>
+      <div class="ts-node epoch-revival"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 V21 M7 8 H17 M8 13 H16 M9 18 H15" stroke="currentColor" stroke-width="1.6"></path></svg></div>
+    </article>
+
+    <article class="ts-event is-jubilee">
+      <div class="ts-card">
+        <span class="ts-year">2026</span>
+        <h3 class="ts-title">Юбилей возрождения</h3>
+        <p class="ts-desc">20&nbsp;лет со&nbsp;дня великого освящения. Издание летописного сборника.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"></circle><path d="M12 8 V12 L15 14" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="sources-section" data-screen-label="Источники">
+  <div class="sources-wrap fade-in">
+    <div class="kicker">Apparatus criticus</div>
+    <h2>Источники и литература</h2>
+    <p class="sub">Перечень опубликованных и&nbsp;архивных материалов, использованных при&nbsp;составлении настоящей летописи. Цитаты приводятся по&nbsp;первым изданиям с&nbsp;сохранением орфографии.</p>
+
+    <ol class="sources">
+      <li><div>
+        <h3 class="src-title">Кавказские епархиальные ведомости</h3>
+        <p class="src-meta">Официальный орган Ставропольской и&nbsp;Кавказской епархии. Ставрополь, 1872–1917. <span class="archive-tag">№№ 18–24 за 1872 г.</span></p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Архивы ГА Краснодарского края</h3>
+        <p class="src-meta">Фонд Р-411 «Кубанская епархия», описи 1–3; фонд 470 «Войсковое правление Черноморского казачьего войска». <span class="archive-tag">ГАКК, Краснодар</span></p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Розенберг М.&nbsp;А. Кубанское казачество и&nbsp;его храмы</h3>
+        <p class="src-meta">Историко-архитектурный очерк. — Краснодар: Изд-во Кубанского ун-та, 2008. — 384&nbsp;с.</p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Черник И.&nbsp;Д. Альбом проектов церквей и&nbsp;часовен</h3>
+        <p class="src-meta">Литографическое издание. — СПб.: Типография Императорской Академии художеств, 1869.</p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Памятная книжка Кубанской области</h3>
+        <p class="src-meta">Издания за 1873, 1898, 1907 гг. Очерки общественной и&nbsp;церковной жизни Екатеринодара.</p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">«Кубанский благовестник», журнал прихода</h3>
+        <p class="src-meta">Под&nbsp;ред. прот.&nbsp;И.&nbsp;А.&nbsp;Карташевского. — Екатеринодар, 1908–1918. <span class="archive-tag">Подшивка ГПИБ России</span></p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Перепёлкина А.&nbsp;В. Воспоминания о&nbsp;старом Екатеринодаре</h3>
+        <p class="src-meta">Машинопись с&nbsp;правками. Запись и&nbsp;комментарии прот.&nbsp;Г.&nbsp;Зайцева, 2009. <span class="archive-tag">Архив прихода</span></p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related-section">
+  <div class="related-wrap">
+    <div class="related-head fade-in">
+      <div class="kicker">Читайте также</div>
+      <h2>Соседние материалы</h2>
+    </div>
+    <div class="related-grid">
+      <a class="rcard fade-in" href="#">
+        <div class="rcard-eyebrow">Жития</div>
+        <h3>Житие святого Александра Невского</h3>
+        <p>Небесный покровитель собора — князь, воин, монах. Очерк его&nbsp;жизни и&nbsp;значения для русской истории.</p>
+        <span class="read-more">Читать</span>
+      </a>
+      <a class="rcard fade-in" href="#">
+        <div class="rcard-eyebrow">Музыка</div>
+        <h3>Хор Войскового собора</h3>
+        <p>История клиросного и&nbsp;концертного хора, его&nbsp;регенты, репертуар, лауреатские записи и&nbsp;архивные пластинки.</p>
+        <span class="read-more">Читать</span>
+      </a>
+      <a class="rcard fade-in" href="#">
+        <div class="rcard-eyebrow">Прихожанам</div>
+        <h3>Духовенство собора</h3>
+        <p>Настоятель, штатные клирики, диаконат и&nbsp;алтарничество — лица и&nbsp;послушания современного клира.</p>
+        <span class="read-more">Читать</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="fwrap">
+    <div class="f-brand">
+      <a href="#" class="sigil">
+        <span class="sigil-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 L12 22 M5 6 L19 6 M3 11 L21 11 M7 17 L17 17" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"></path></svg>
+        </span>
+        <span>
+          <div class="sigil-name">Войсковой Собор</div>
+          <div class="sigil-sub">Александра Невского · 1853</div>
+        </span>
+      </a>
+      <p>Главный храм Кубанского казачьего войска. Освящён в&nbsp;1872&nbsp;году, разрушен в&nbsp;1932-м, возрождён и&nbsp;освящён вновь Святейшим Патриархом Алексием&nbsp;II в&nbsp;2006&nbsp;году.</p>
+      <p style="font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-style:normal;">г.&nbsp;Краснодар, ул.&nbsp;Постовая, 26</p>
+    </div>
+    <div class="f-col">
+      <h4>Жизнь прихода</h4>
+      <ul>
+        <li><a href="#">Расписание богослужений</a></li>
+        <li><a href="#">Воскресная школа</a></li>
+        <li><a href="#">Хор собора</a></li>
+        <li><a href="#">Социальное служение</a></li>
+        <li><a href="#">Молодёжный клуб</a></li>
+        <li><a href="#">Летопись и&nbsp;архив</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="#">+7 (861) 268-32-32</a></li>
+        <li><a href="#">info@vskazsobor.ru</a></li>
+        <li><a href="#">Канцелярия собора</a></li>
+        <li><a href="#">Записки и&nbsp;требы</a></li>
+        <li><a href="#">Помочь храму</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div>© 1853 — 2026 · Войсковой собор Александра Невского</div>
+    <div>Кубанская митрополия Русской Православной Церкви</div>
+  </div>
+</footer>
+
+<a href="#" class="float-cta">Расписание</a>
+
+<script>
+  const progressFill = document.getElementById('progressFill');
+  function updateProgress(){
+    const article = document.querySelector('.article-shell');
+    if (!article) return;
+    const rect = article.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    const passed = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+    const pct = total > 0 ? (passed / total) * 100 : 0;
+    progressFill.style.width = pct + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in, .ts-event').forEach(el => io.observe(el));
+</script>
+
+
+</body></html>

@@ -1,0 +1,15 @@
+# OS
+Thumbs.db
+.DS_Store
+*.tmp
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Build
+node_modules/
+
+# Sensitive — НЕ публиковать database.sql (1.4 MB) с возможным PII
+theme/church-kadence-child-dev/database.sql

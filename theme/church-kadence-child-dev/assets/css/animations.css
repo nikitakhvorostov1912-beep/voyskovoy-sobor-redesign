@@ -1,0 +1,97 @@
+/*
+ * Animations CSS — keyframes для одноразовых hero-анимаций
+ * Используются с задержками delay-1, delay-2, etc.
+ */
+
+@keyframes cc-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cc-slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cc-slide-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cc-slide-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cc-slide-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cc-scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cc-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+
+@keyframes cc-gold-shine {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes cc-ken-burns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
+/* Применяются один раз при load */
+.cc-anim-fade   { animation: cc-fade-in 1200ms cubic-bezier(0.16,1,0.3,1) both; }
+.cc-anim-up     { animation: cc-slide-up 1000ms cubic-bezier(0.16,1,0.3,1) both; }
+.cc-anim-down   { animation: cc-slide-down 1000ms cubic-bezier(0.16,1,0.3,1) both; }
+.cc-anim-left   { animation: cc-slide-left 1000ms cubic-bezier(0.16,1,0.3,1) both; }
+.cc-anim-right  { animation: cc-slide-right 1000ms cubic-bezier(0.16,1,0.3,1) both; }
+.cc-anim-scale  { animation: cc-scale-in 800ms cubic-bezier(0.16,1,0.3,1) both; }
+.cc-anim-pulse  { animation: cc-pulse 2.4s ease-in-out 1; }
+.cc-anim-burns  { animation: cc-ken-burns 8s linear forwards; }
+
+/* Stagger delays */
+.cc-delay-1 { animation-delay: 200ms; }
+.cc-delay-2 { animation-delay: 400ms; }
+.cc-delay-3 { animation-delay: 600ms; }
+.cc-delay-4 { animation-delay: 800ms; }
+.cc-delay-5 { animation-delay: 1000ms; }
+.cc-delay-6 { animation-delay: 1200ms; }
+
+/* Gold shine */
+.cc-gold-shine {
+  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-pale) 50%, var(--color-gold) 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cc-gold-shine 3s linear infinite;
+}
+
+/* Reading progress bar */
+.cc-progress {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--color-gold);
+  z-index: 1000;
+  transition: width 100ms linear;
+  width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-anim-fade, .cc-anim-up, .cc-anim-down, .cc-anim-left, .cc-anim-right,
+  .cc-anim-scale, .cc-anim-pulse, .cc-anim-burns, .cc-gold-shine {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: var(--color-gold) !important;
+    -webkit-text-fill-color: var(--color-gold) !important;
+  }
+}
