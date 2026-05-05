@@ -1,1415 +1,495 @@
-<html lang="ru"><head>
-<style data-omelette-injected="">html,body{background:transparent}</style><script data-omelette-injected="">(()=>{var j=["https://claude.ai","https://preview.claude.ai","https://eap-omelette.claude.ai"];var x=true;var S=30000;var f=3000;document.addEventListener("DOMContentLoaded",()=>{const H=window.Babel;const G="om-src-id";if(H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[G])){H.registerPlugin(G,({types:Y})=>({visitor:{JSXOpeningElement(U,Q){const J=U.node;if(J.name&&J.name.type==="JSXMemberExpression")return;for(let V=0;V<J.attributes.length;V++){const L=J.attributes[V];if(L.type==="JSXAttribute"&&L.name&&L.name.name==="data-om-id")return}const W=Q.file&&Q.file.opts&&Q.file.opts.filename||"?";const Z=J.loc&&J.loc.start;const z=`jsx:${W}:${J.start??0}:${Z?Z.line:0}:${Z?Z.column+1:0}`;J.attributes.push(Y.jsxAttribute(Y.jsxIdentifier("data-om-id"),Y.stringLiteral(z)))}}}))}const k="om-text-extract";let A=false;if(x&&H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[k])){const Y=window.React;if(Y&&Y.useSyncExternalStore&&Y.createElement){A=true;const U={};const Q=new Set;let J=0;window.__omTextO=U;window.__omTextSet=(z)=>{for(const V in z){const L=z[V];if(L==null)delete U[V];else U[V]=L}J++;Q.forEach((V)=>V())};const W=(z)=>{Q.add(z);return()=>Q.delete(z)};const Z=()=>J;window.__OmT=function z(V){Y.useSyncExternalStore(W,Z,Z);return Y.createElement("span",{"data-om-text":V.i,className:"__om-t"},V.i in U?U[V.i]:V.children)};H.registerPlugin(k,({types:z})=>{const V={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const L={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const _=($,C)=>z.logicalExpression("??",z.memberExpression(z.logicalExpression("||",z.memberExpression(z.identifier("window"),z.identifier("__omTextO")),z.objectExpression([])),z.stringLiteral($),true),C);const E=($)=>$.file&&$.file.opts&&$.file.opts.filename||"?";const B=($)=>$.file&&$.file.code||"";const b=($,C)=>{const X=(F)=>F&&F.start!=null&&F.end!=null&&(F.type==="StringLiteral"||F.type==="TemplateLiteral"&&F.expressions.length===0)?[F.start,F.end]:null;const N=X(C);if(N)return N;if(C&&C.type==="Identifier"){const F=$.scope.getBinding(C.name);if(F&&F.constant&&F.path.node.type==="VariableDeclarator"){return X(F.path.node.init)}}return null};const m=($,C,X)=>{const N=$.node;let F=false;const w=(K,q)=>{F=true;return z.jsxElement(z.jsxOpeningElement(z.jsxIdentifier("__OmT"),[z.jsxAttribute(z.jsxIdentifier("i"),z.stringLiteral(K))],false),z.jsxClosingElement(z.jsxIdentifier("__OmT")),[q],false)};const D=N.children.map((K)=>{if(K.type==="JSXText"){if(K.start==null||K.end==null)return K;const q=X.slice(K.start,K.end);const M=q.length-q.trimStart().length;const R=q.length-q.trimEnd().length;if(M+R>=q.length)return K;return w(`txt:${C}:${K.start+M}:${K.end-R}`,K)}if(K.type==="JSXExpressionContainer"){const q=b($,K.expression);if(q)return w(`str:${C}:${q[0]}:${q[1]}`,K)}return K});if(F)N.children=D};return{visitor:{JSXOpeningElement($,C){const X=$.node;const N=E(C);const F={};for(let w=0;w<X.attributes.length;w++){const D=X.attributes[w];if(D.type!=="JSXAttribute"||!D.name)continue;const K=D.name.name;if(!L[K])continue;if(!D.value||D.value.type!=="StringLiteral")continue;if(D.value.start==null||D.value.end==null)continue;const q=`txt:${N}:${D.value.start}:${D.value.end}`;F[K]=q;D.value=z.jsxExpressionContainer(_(q,z.stringLiteral(D.value.value)))}if(Object.keys(F).length){X.attributes.push(z.jsxAttribute(z.jsxIdentifier("data-om-text-attrs"),z.stringLiteral(JSON.stringify(F))))}},JSXElement($,C){const X=$.node.openingElement;const N=X&&X.name&&X.name.name;if(N==="__OmT")return;if(typeof N==="string"&&V[N])return;m($,E(C),B(C))},JSXFragment($,C){m($,E(C),B(C))}}}})}}const u=A?["transform-react-jsx-source",G,k]:["transform-react-jsx-source",G];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((Y,U)=>{const Q=Y.getAttribute("data-plugins")||"";const J=u.filter((W)=>Q.indexOf(W)<0);if(J.length){Y.setAttribute("data-plugins",Q?`${Q},${J.join(",")}`:J.join(","))}if(!Y.hasAttribute("data-filename")){Y.setAttribute("data-filename",Y.getAttribute("src")||`inline-${U}`)}})});var y=window.parent;if(y&&y!==window){const H=(Q,J)=>{try{y.postMessage({__omelette_log:true,type:Q,data:J},"*")}catch{}};["log","warn","error"].forEach((Q)=>{const J=console[Q];console[Q]=(...W)=>{const Z=W.map((z)=>{try{return typeof z==="object"?JSON.stringify(z):String(z)}catch{try{return String(z)}catch{return"[unstringifiable]"}}}).join(" ");H(Q,Z);J.apply(console,W)}});window.addEventListener("error",(Q)=>{const J=Q.target;if(J&&J!==window&&J.tagName){const W=J.src||J.href||"";H("resource_error",`${J.tagName} failed to load: ${W}`)}else{H("error",`${Q.message||"Unknown error"} at ${Q.filename||"?"}:${Q.lineno||0}:${Q.colno||0}`)}},true);window.addEventListener("unhandledrejection",(Q)=>{const J=Q.reason;const W=J instanceof Error?`${J.message} ${J.stack}`:String(J);H("error",`Unhandled rejection: ${W}`)});const G=()=>{try{y.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(document.readyState==="complete")G();else window.addEventListener("load",G);if(window.ResizeObserver)new ResizeObserver(G).observe(document.documentElement);const k={};let A=0;window.claude={complete(Q){return new Promise((J,W)=>{if(!j.length){W(new Error("claude.complete: no parent origin"));return}const Z=`c${++A}`;const z=()=>setTimeout(()=>{delete k[Z];W(new Error(`claude.complete: no data for ${S/1000}s`))},S);const V=z();k[Z]={resolve:J,reject:W,text:"",t:V,arm:z};try{for(const L of j){y.postMessage({__om_api:true,id:Z,body:Q},L)}}catch(L){clearTimeout(V);delete k[Z];W(L)}})}};const u={};let Y=0;window.omelette={writeFile:(Q,J)=>new Promise((W,Z)=>{if(!j.length){W();return}const z=`f${++Y}`;const V=setTimeout(()=>{delete u[z];W()},f);u[z]={resolve:W,reject:Z,t:V};try{for(const L of j){y.postMessage({__om_file:true,id:z,op:"write",path:Q,content:J},L)}}catch{clearTimeout(V);delete u[z];W()}})};const U=(Q)=>{try{return JSON.stringify(Q)}catch{return JSON.stringify(String(Q))}};window.addEventListener("message",(Q)=>{if(j.indexOf(Q.origin)<0)return;if(Q.source!==y)return;const J=Q.data;if(!J)return;if(J.__om_file_r){const z=u[J.id];if(!z)return;clearTimeout(z.t);delete u[J.id];if(J.ok)z.resolve();else z.reject(new Error(J.error||"write failed"));return}if(J.__om_api_r){const z=k[J.id];if(!z)return;if(J.error!=null){clearTimeout(z.t);delete k[J.id];z.reject(new Error(J.error));return}if(J.chunk!=null){clearTimeout(z.t);z.t=z.arm();z.text+=J.chunk;return}if(J.done){clearTimeout(z.t);delete k[J.id];z.resolve(J.text!=null?J.text:z.text);return}return}if(!J.__om_eval)return;const W=J;const Z=(z)=>{Q.source.postMessage({...z,__om_eval_r:1,id:W.id},Q.origin)};try{const z=(0,eval)(W.code);if(z&&typeof z.then==="function"){z.then((V)=>Z({ok:1,v:U(V)}),(V)=>Z({ok:0,e:String(V)}))}else{Z({ok:1,v:U(z)})}}catch(z){Z({ok:0,e:String(z)})}})}})();
-</script>
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Пожертвование — Войсковой Собор святого благоверного князя Александра Невского</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пожертвование — Войсковой собор Александра Невского</title>
+<meta name="description" content="Поддержать роспись и уставную деятельность Войскового собора. Реквизиты Банка ВТБ, СБП, перевод по карте.">
+<meta name="theme-color" content="#1a1f2e">
+<link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/icons/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="canonical" href="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/donate.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Пожертвование — Войсковой собор Александра Невского">
+<meta property="og:description" content="Поддержать роспись и уставную деятельность собора.">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/donate.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&amp;family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=PT+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Spectral:ital,wght@0,400;0,500;0,600&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
 <style>
-  :root{
-    --parchment:#f5f0e8;
-    --parchment-2:#ede6d9;
-    --parchment-3:#e2d9c5;
-    --ink:#1a1f2e;
-    --ink-2:#2a3142;
-    --gold:#c9a961;
-    --gold-deep:#a8893f;
-    --gold-soft:#e0c98a;
-    --burgundy:#8b2635;
-    --burgundy-deep:#6f1d29;
-    --muted:#5b5345;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);}
-  body{
-    font-family:'Spectral', Georgia, serif;
-    font-weight:400;
-    font-size:17px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-  ::selection{background:var(--gold);color:var(--ink);}
+.cc-page-header--blood {
+  background: linear-gradient(135deg, var(--color-blood) 0%, var(--color-blood-deep) 100%);
+}
 
-  /* Subtle parchment grain */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
-    background-image:
-      radial-gradient(rgba(26,31,46,0.025) 1px, transparent 1px),
-      radial-gradient(rgba(201,169,97,0.03) 1px, transparent 1px);
-    background-size:3px 3px, 7px 7px;
-    background-position:0 0, 1px 2px;
-    mix-blend-mode:multiply;
-  }
+.cc-purposes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+.cc-purpose {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--color-paper);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+}
+.cc-purpose:hover { border-color: var(--color-gold); }
+.cc-purpose input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--color-blood);
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+}
+.cc-purpose__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: var(--space-1);
+}
+.cc-purpose__desc { font-size: var(--text-sm); color: var(--color-text-muted); }
+.cc-purpose:has(input:checked) {
+  border-color: var(--color-blood);
+  background: rgba(139, 38, 53, 0.04);
+}
 
-  .ui{font-family:'PT Sans', system-ui, sans-serif;}
-  .display{font-family:'Cormorant Garamond', 'Spectral', serif;}
-  .ruslan{font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:.02em;}
-  .tabular{font-feature-settings:"tnum" 1, "lnum" 1;}
+.cc-donate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-6), 4vw, var(--space-12));
+  align-items: start;
+}
+@media (max-width: 900px) { .cc-donate-grid { grid-template-columns: 1fr; } }
 
-  /* ============ STICKY HEADER ============ */
-  .topbar{
-    position:sticky;top:0;z-index:50;
-    background:linear-gradient(180deg, #1a1f2e 0%, #161b29 100%);
-    color:#e8dfca;
-    border-bottom:1px solid rgba(201,169,97,0.25);
-  }
-  .topbar-inner{
-    max-width:1320px;margin:0 auto;
-    padding:14px 32px;
-    display:flex;align-items:center;gap:32px;
-  }
-  .sigil{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;}
-  .sigil-mark{
-    width:44px;height:44px;flex-shrink:0;
-    border:1px solid var(--gold);
-    display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(ellipse at center, rgba(201,169,97,0.15), transparent 70%);
-  }
-  .sigil-text{font-family:'Cormorant Garamond', serif; line-height:1;}
-  .sigil-text .l1{font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:500;}
-  .sigil-text .l2{font-size:18px;letter-spacing:0.04em;margin-top:4px;color:#f0e6cc;font-weight:500;}
-  .nav{display:flex;gap:30px;margin-left:auto;}
-  .nav a{
-    font-family:'PT Sans', sans-serif;
-    font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;
-    color:#c8bfa8;text-decoration:none;
-    padding:8px 0;position:relative;
-    transition:color .25s;
-  }
-  .nav a:hover{color:#f0e6cc;}
-  .nav a.active{color:var(--gold);}
-  .nav a.active::after{
-    content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;
-    background:var(--gold);
-  }
-  .topbar .donate-cta{
-    background:#5a1820;
-    color:#d8c89c;
-    border:1px solid rgba(201,169,97,0.35);
-    padding:11px 22px;
-    font-family:'PT Sans', sans-serif;
-    font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;
-    cursor:not-allowed;opacity:0.55;
-    pointer-events:none;
-  }
+.cc-donate-card {
+  padding: var(--space-8);
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.cc-donate-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-5);
+}
 
-  /* ============ NARROW BURGUNDY HEADER ============ */
-  .ribbon{
-    position:relative;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.32)),
-      linear-gradient(135deg, #8b2635 0%, #6f1d29 60%, #5a1620 100%);
-    color:#f5e9c8;
-    padding:64px 32px 48px;
-    text-align:center;
-    overflow:hidden;
-  }
-  .ribbon::before{
-    content:"";position:absolute;inset:0;
-    background:
-      radial-gradient(ellipse at 20% 10%, rgba(201,169,97,0.12), transparent 40%),
-      radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.3), transparent 50%);
-    pointer-events:none;
-  }
-  .ribbon-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;}
-  .ribbon h1{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;
-    font-size:clamp(38px, 5.2vw, 64px);
-    line-height:1.05;
-    margin:0 0 22px;
-    color:#fbf4dd;
-    letter-spacing:0.01em;
-  }
-  .ribbon-quote{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-weight:400;
-    font-size:clamp(18px, 2vw, 22px);
-    color:var(--gold-soft);
-    letter-spacing:0.02em;
-  }
-  .ribbon-quote .cite{
-    display:block;margin-top:10px;
-    font-style:normal;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;
-    color:rgba(224,201,138,0.7);
-    font-family:'PT Sans', sans-serif;font-weight:400;
-  }
-  .ribbon-rule{
-    margin:36px auto 0;width:140px;height:1px;
-    background:linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
+/* Реквизиты */
+.cc-requisites { display: grid; gap: var(--space-3); font-family: var(--font-ui); font-size: var(--text-sm); }
+.cc-requisites__row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+.cc-requisites__row:last-child { border-bottom: none; }
+.cc-requisites__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+.cc-requisites__value {
+  font-weight: 600;
+  color: var(--color-ink);
+  word-break: break-word;
+}
+.cc-requisites__copy {
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-blood);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  white-space: nowrap;
+}
+.cc-requisites__copy:hover { background: var(--color-paper-dark); border-color: var(--color-gold); }
+.cc-requisites__copy[disabled] { color: var(--color-success); border-color: var(--color-success); cursor: default; }
 
-  /* ============ HERO SECTION ============ */
-  .hero{
-    max-width:1320px;margin:0 auto;
-    padding:80px 32px 60px;
-    display:grid;grid-template-columns:minmax(0, 40fr) minmax(0, 60fr);
-    gap:64px;align-items:start;
-  }
-  .story{
-    opacity:0;transform:translateX(-20px);
-    animation:fadeInLeft 0.9s ease-out 0.1s forwards;
-  }
-  @keyframes fadeInLeft{to{opacity:1;transform:translateX(0);}}
-  .story-photo{
-    position:relative;
-    width:100%;aspect-ratio: 1/1;
-    background:#1a1f2e;
-    margin-bottom:36px;
-    overflow:hidden;
-    border:1px solid var(--gold);
-    box-shadow:0 30px 60px -30px rgba(26,31,46,0.5);
-  }
-  .story-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-  .story-photo svg{width:100%;height:100%;display:block;}
-  .photo-placeholder{
-    position:absolute;inset:0;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:
-      linear-gradient(180deg, #1f2638 0%, #141826 100%);
-    color:#c9a961;text-align:center;padding:40px;
-    font-family:'Cormorant Garamond', serif;
-  }
-  .photo-placeholder .ph-frame{
-    border:1px solid rgba(201,169,97,0.4);
-    padding:30px 40px;
-  }
-  .photo-placeholder .ph-eyebrow{
-    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:0.28em;
-    text-transform:uppercase;color:#a8893f;font-weight:700;margin-bottom:12px;
-  }
-  .photo-placeholder .ph-title{font-size:24px;font-weight:500;line-height:1.2;color:#e0c98a;}
-  .photo-placeholder .ph-note{font-size:13px;color:#a89f87;margin-top:14px;font-style:italic;}
-  .photo-caption{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;font-size:14px;
-    color:var(--muted);
-    margin-top:-22px;margin-bottom:32px;
-    padding-left:14px;
-    border-left:1px solid var(--gold);
-    line-height:1.5;
-  }
-  .story h2{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;font-size:36px;line-height:1.1;
-    margin:0 0 24px;color:var(--ink);
-    letter-spacing:0.005em;
-  }
-  .story p{
-    font-size:16.5px;line-height:1.75;color:#3a3729;
-    margin:0 0 18px;
-  }
-  .story p:first-of-type::first-letter{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:78px;
-    float:left;
-    line-height:0.85;
-    margin:8px 10px 0 0;
-    color:var(--gold-deep);
-    text-shadow:0 1px 0 rgba(255,255,255,0.4);
-  }
-  .goals{
-    margin-top:32px;padding-top:28px;
-    border-top:1px solid rgba(201,169,97,0.3);
-    list-style:none;padding-left:0;
-  }
-  .goals li{
-    font-size:15.5px;line-height:1.5;
-    color:#3a3729;
-    padding:9px 0 9px 30px;
-    position:relative;
-    border-bottom:1px dotted rgba(201,169,97,0.2);
-  }
-  .goals li:last-child{border-bottom:none;}
-  .goals li::before{
-    content:"";position:absolute;left:0;top:14px;
-    width:14px;height:8px;
-    border-left:2px solid var(--gold-deep);
-    border-bottom:2px solid var(--gold-deep);
-    transform:rotate(-45deg);
-  }
+@media (max-width: 600px) {
+  .cc-requisites__row { grid-template-columns: 1fr; gap: 4px; }
+  .cc-requisites__copy { justify-self: start; margin-top: var(--space-1); }
+}
 
-  /* ============ DONATION FORM ============ */
-  .form-wrap{
-    opacity:0;transform:translateY(24px);
-    animation:fadeInUp 0.9s ease-out 0.3s forwards;
-  }
-  @keyframes fadeInUp{to{opacity:1;transform:translateY(0);}}
-  .form-card{
-    background:linear-gradient(180deg, #faf6ee 0%, var(--parchment) 100%);
-    border:2px solid var(--gold);
-    box-shadow:
-      0 1px 0 rgba(255,255,255,0.6) inset,
-      0 30px 70px -30px rgba(26,31,46,0.35),
-      0 0 0 8px rgba(201,169,97,0.06);
-    padding:40px 44px;
-    position:relative;
-  }
-  .form-card::before{
-    content:"";position:absolute;inset:6px;
-    border:1px solid rgba(201,169,97,0.35);
-    pointer-events:none;
-  }
-  .form-section{margin-bottom:34px;position:relative;}
-  .form-section:last-of-type{margin-bottom:0;}
-  .form-label{
-    font-family:'PT Sans', sans-serif;
-    font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;
-    color:var(--gold-deep);font-weight:700;
-    display:flex;align-items:center;gap:14px;
-    margin-bottom:18px;
-  }
-  .form-label::after{
-    content:"";flex:1;height:1px;background:rgba(201,169,97,0.35);
-  }
-  .form-label .num{
-    width:24px;height:24px;border:1px solid var(--gold);
-    display:inline-flex;align-items:center;justify-content:center;
-    font-family:'Cormorant Garamond', serif;font-style:italic;
-    font-size:14px;color:var(--gold-deep);font-weight:500;letter-spacing:0;
-  }
+/* QR-код */
+.cc-qr-block {
+  text-align: center;
+  padding: var(--space-6);
+  background: var(--color-paper-dark);
+  border-radius: var(--radius);
+}
+.cc-qr-block svg { margin: 0 auto; max-width: 100%; }
+.cc-qr-block__caption {
+  margin-top: var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
 
-  .quick-amounts{
-    display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;
-    margin-bottom:16px;
-  }
-  .qa-btn{
-    background:transparent;
-    border:1.5px solid var(--gold);
-    padding:18px 8px;
-    font-family:'Spectral', serif;font-weight:700;
-    font-size:22px;color:var(--ink);
-    cursor:pointer;
-    transition:transform .2s ease, background .2s, color .2s, box-shadow .25s;
-    position:relative;overflow:hidden;
-  }
-  .qa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px rgba(201,169,97,0.6);}
-  .qa-btn.active{
-    background:linear-gradient(180deg, #d4b471 0%, var(--gold) 100%);
-    color:var(--ink);
-    border-color:var(--gold-deep);
-    box-shadow:0 6px 18px -8px rgba(168,137,63,0.55), inset 0 1px 0 rgba(255,255,255,0.3);
-  }
-  .ripple{
-    position:absolute;border-radius:50%;transform:scale(0);
-    animation:rippleAnim .6s linear;
-    background:rgba(201,169,97,0.5);pointer-events:none;
-  }
-  @keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
-  .other-amount{
-    display:flex;align-items:center;gap:0;
-    border:1px solid rgba(201,169,97,0.5);
-    background:rgba(255,255,255,0.5);
-  }
-  .other-amount label{
-    font-family:'PT Sans', sans-serif;font-size:12px;
-    letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);
-    padding:0 18px;border-right:1px solid rgba(201,169,97,0.4);
-    height:54px;display:flex;align-items:center;
-    background:rgba(201,169,97,0.07);
-  }
-  .other-amount input{
-    flex:1;border:0;background:transparent;
-    height:54px;padding:0 18px;
-    font-family:'Spectral', serif;font-weight:600;font-size:20px;color:var(--ink);
-    font-feature-settings:"tnum" 1;
-    outline:none;
-  }
-  .other-amount input::placeholder{color:#a59a7e;font-weight:400;}
-  .other-amount:focus-within{border-color:var(--gold-deep);background:#fffbf0;}
+.cc-amount-input {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  text-align: center;
+  padding: var(--space-3);
+  width: 100%;
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  color: var(--color-blood);
+  background: var(--color-paper);
+}
+.cc-amount-input:focus {
+  outline: none;
+  border-color: var(--color-blood);
+}
 
-  /* Radio list */
-  .radio-list{display:flex;flex-direction:column;}
-  .radio-row{
-    display:flex;align-items:flex-start;gap:14px;
-    padding:14px 4px;
-    border-bottom:1px solid rgba(201,169,97,0.22);
-    cursor:pointer;
-    transition:background .2s;
-  }
-  .radio-row:last-child{border-bottom:none;}
-  .radio-row:hover{background:rgba(201,169,97,0.05);}
-  .radio-row input{position:absolute;opacity:0;pointer-events:none;}
-  .radio-mark{
-    flex-shrink:0;width:20px;height:20px;border-radius:50%;
-    border:1.5px solid var(--gold-deep);
-    margin-top:3px;
-    display:flex;align-items:center;justify-content:center;
-    transition:border-color .2s;
-  }
-  .radio-mark::after{
-    content:"";width:10px;height:10px;border-radius:50%;
-    background:var(--burgundy);
-    transform:scale(0);transition:transform .2s;
-  }
-  .radio-row.checked .radio-mark::after{transform:scale(1);}
-  .radio-row.checked{background:rgba(201,169,97,0.07);}
-  .radio-text{flex:1;font-size:16px;color:var(--ink);line-height:1.4;}
-  .radio-text .sub{display:block;font-size:13px;color:var(--muted);font-style:italic;margin-top:2px;}
-
-  /* Inputs */
-  .input-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .input{
-    position:relative;
-  }
-  .input.full{grid-column:1/-1;}
-  .input input{
-    width:100%;
-    border:1px solid rgba(201,169,97,0.5);
-    background:rgba(255,255,255,0.5);
-    padding:14px 16px;
-    font-family:'Spectral', serif;font-size:16px;color:var(--ink);
-    height:50px;outline:none;
-    transition:border-color .2s, background .2s;
-  }
-  .input input::placeholder{color:#a59a7e;}
-  .input input:focus{border-color:var(--gold-deep);background:#fffbf0;}
-  .input .hint{
-    font-size:12px;color:var(--muted);margin-top:6px;font-style:italic;
-    font-family:'Cormorant Garamond', serif;font-weight:500;
-  }
-
-  /* Custom checkbox */
-  .check-row{
-    display:flex;align-items:flex-start;gap:12px;
-    padding:10px 0;cursor:pointer;
-    font-size:15px;color:var(--ink);
-  }
-  .check-row input{position:absolute;opacity:0;pointer-events:none;}
-  .check-mark{
-    flex-shrink:0;width:20px;height:20px;
-    border:1.5px solid var(--gold-deep);
-    margin-top:1px;background:rgba(255,255,255,0.5);
-    display:flex;align-items:center;justify-content:center;
-    transition:background .2s;
-  }
-  .check-mark svg{width:13px;height:13px;opacity:0;transition:opacity .2s;}
-  .check-row.checked .check-mark{background:var(--gold);}
-  .check-row.checked .check-mark svg{opacity:1;}
-  .check-row .label{flex:1;line-height:1.45;}
-  .check-row .label a{color:var(--burgundy);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
-  .check-row.required .label::after{content:" *";color:var(--burgundy);}
-
-  /* Tabs */
-  .tabs{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-    border:1px solid rgba(201,169,97,0.5);
-    margin-bottom:18px;
-  }
-  .tab{
-    background:transparent;border:0;
-    padding:15px 8px;
-    font-family:'PT Sans', sans-serif;
-    font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;
-    color:var(--muted);cursor:pointer;
-    border-right:1px solid rgba(201,169,97,0.3);
-    transition:background .2s, color .2s;
-  }
-  .tab:last-child{border-right:none;}
-  .tab.active{background:var(--ink);color:var(--gold-soft);}
-  .tab:hover:not(.active){background:rgba(201,169,97,0.08);color:var(--ink);}
-  .tab-panel{display:none;padding:18px 4px 0;}
-  .tab-panel.active{display:block;}
-  .pay-logos{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-  .pay-logo{
-    height:32px;padding:0 14px;
-    border:1px solid rgba(201,169,97,0.4);
-    background:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'PT Sans', sans-serif;font-weight:700;font-size:13px;letter-spacing:0.05em;
-    color:#1a1f2e;
-  }
-  .pay-logo.visa{color:#1A1F71;font-style:italic;}
-  .pay-logo.mc{color:#EB001B;}
-  .pay-logo.mc span{color:#F79E1B;margin-left:-3px;}
-  .pay-logo.mir{color:#0F754E;}
-  .pay-meta{font-size:13px;color:var(--muted);margin-top:14px;font-style:italic;font-family:'Cormorant Garamond', serif;font-weight:500;}
-  .qr-row{display:flex;gap:24px;align-items:center;}
-  .qr-box{
-    width:140px;height:140px;flex-shrink:0;
-    background:#fff;border:1px solid rgba(201,169,97,0.5);
-    padding:12px;
-  }
-  .qr-box svg{width:100%;height:100%;display:block;}
-  .qr-text{flex:1;}
-  .qr-text strong{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:18px;color:var(--ink);display:block;margin-bottom:6px;}
-  .qr-text p{font-size:14px;color:var(--muted);margin:0;line-height:1.5;}
-  .ym{display:flex;align-items:center;gap:14px;padding:8px 0;}
-  .ym-mark{width:46px;height:46px;border-radius:50%;background:#8B3FFC;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'PT Sans';font-weight:700;font-size:18px;}
-  .ym strong{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:18px;display:block;}
-  .ym span{font-size:14px;color:var(--muted);}
-
-  /* Submit button */
-  .submit-btn{
-    width:100%;
-    background:linear-gradient(180deg, #9c2c3d 0%, var(--burgundy) 60%, var(--burgundy-deep) 100%);
-    color:#f5e9c8;
-    border:1px solid var(--burgundy-deep);
-    height:64px;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:24px;letter-spacing:0.04em;
-    cursor:pointer;
-    margin-top:14px;
-    position:relative;
-    box-shadow:
-      0 1px 0 rgba(255,255,255,0.15) inset,
-      0 -2px 0 rgba(0,0,0,0.15) inset,
-      0 14px 30px -15px rgba(139,38,53,0.55);
-    transition:transform .15s, box-shadow .25s;
-  }
-  .submit-btn:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 -2px 0 rgba(0,0,0,0.15) inset,0 18px 36px -15px rgba(139,38,53,0.7);}
-  .submit-btn .amount{font-family:'Spectral', serif;font-weight:700;font-feature-settings:"tnum" 1;}
-  @keyframes attentionPulse{
-    0%, 100%{box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 -2px 0 rgba(0,0,0,0.15) inset,0 14px 30px -15px rgba(139,38,53,0.55), 0 0 0 0 rgba(201,169,97,0);}
-    50%{box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 -2px 0 rgba(0,0,0,0.15) inset,0 14px 30px -15px rgba(139,38,53,0.55), 0 0 0 14px rgba(201,169,97,0.2);}
-  }
-  .submit-btn.pulse-once{animation:attentionPulse 1.6s ease-in-out 1;}
-  .submit-meta{
-    font-size:12.5px;color:var(--muted);text-align:center;margin-top:14px;font-style:italic;
-    font-family:'Cormorant Garamond', serif;font-weight:500;
-    display:flex;align-items:center;justify-content:center;gap:8px;
-  }
-  .submit-meta svg{flex-shrink:0;}
-
-  /* ============ CREDENTIALS / REQUISITES ============ */
-  .section{max-width:1320px;margin:0 auto;padding:50px 32px;}
-  .creds-card{
-    background:linear-gradient(180deg, #faf6ee 0%, var(--parchment) 100%);
-    border-top:1px solid var(--gold);
-    border-bottom:1px solid var(--gold);
-    padding:48px 56px;
-    position:relative;
-    box-shadow:0 1px 0 rgba(255,255,255,0.6) inset;
-  }
-  .creds-card::before, .creds-card::after{
-    content:"";position:absolute;left:0;right:0;height:1px;
-    background:rgba(201,169,97,0.3);
-  }
-  .creds-card::before{top:5px;}
-  .creds-card::after{bottom:5px;}
-  .creds-head{
-    display:flex;align-items:flex-end;justify-content:space-between;
-    margin-bottom:32px;gap:24px;flex-wrap:wrap;
-  }
-  .creds-head h3{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;font-size:34px;margin:0;line-height:1;
-    letter-spacing:0.005em;
-  }
-  .creds-head h3 .sub{
-    display:block;
-    font-family:'PT Sans', sans-serif;
-    font-size:11px;letter-spacing:0.28em;text-transform:uppercase;
-    color:var(--gold-deep);margin-bottom:8px;font-weight:700;
-  }
-  .creds-actions{display:flex;gap:12px;flex-wrap:wrap;}
-  .btn-outline{
-    background:transparent;border:1.5px solid var(--gold);
-    color:var(--gold-deep);
-    padding:12px 22px;font-family:'PT Sans',sans-serif;
-    font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;
-    cursor:pointer;
-    display:inline-flex;align-items:center;gap:10px;
-    transition:background .2s, color .2s;
-  }
-  .btn-outline:hover{background:var(--gold);color:var(--ink);}
-  .btn-outline svg{width:14px;height:14px;}
-
-  .creds-table{
-    display:grid;grid-template-columns:240px 1fr;
-    border-top:1px solid rgba(201,169,97,0.4);
-  }
-  .creds-table .row{display:contents;}
-  .creds-table .k, .creds-table .v{
-    padding:16px 20px;
-    border-bottom:1px solid rgba(201,169,97,0.25);
-    font-size:15px;
-  }
-  .creds-table .k{
-    font-family:'PT Sans', sans-serif;
-    font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;
-    color:var(--muted);font-weight:700;
-    white-space:nowrap;
-  }
-  .creds-table .v{
-    font-family:'Spectral', serif;color:var(--ink);
-    font-feature-settings:"tnum" 1;
-  }
-  .creds-table .v strong{font-weight:600;}
-
-  /* ============ ALLOCATION INFOGRAPHIC ============ */
-  .alloc-section{
-    background:linear-gradient(180deg, var(--parchment) 0%, var(--parchment-2) 100%);
-    border-top:1px solid rgba(201,169,97,0.3);
-    border-bottom:1px solid rgba(201,169,97,0.3);
-    padding:80px 32px;
-    margin-top:30px;
-  }
-  .alloc-inner{max-width:1320px;margin:0 auto;}
-  .alloc-head{text-align:center;margin-bottom:54px;}
-  .alloc-head .eyebrow{
-    font-family:'PT Sans', sans-serif;
-    font-size:11.5px;letter-spacing:0.32em;text-transform:uppercase;
-    color:var(--gold-deep);font-weight:700;
-    margin-bottom:14px;
-    display:flex;align-items:center;justify-content:center;gap:18px;
-  }
-  .alloc-head .eyebrow::before, .alloc-head .eyebrow::after{
-    content:"";width:50px;height:1px;background:var(--gold);
-  }
-  .alloc-head h2{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;font-size:46px;line-height:1.05;margin:0 0 16px;
-  }
-  .alloc-head p{
-    font-family:'Cormorant Garamond', serif;font-style:italic;
-    font-size:19px;color:var(--muted);max-width:620px;margin:0 auto;
-  }
-  .alloc-list{
-    max-width:880px;margin:0 auto;
-    display:flex;flex-direction:column;
-    border-top:1px solid rgba(201,169,97,0.4);
-  }
-  .alloc-row{
-    padding:28px 0 22px;
-    border-bottom:1px solid rgba(201,169,97,0.4);
-    display:grid;grid-template-columns:90px 1fr;gap:32px;align-items:center;
-  }
-  .alloc-row .label{
-    display:flex;flex-direction:column;
-  }
-  .alloc-row h4{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;font-size:24px;margin:0 0 4px;line-height:1.15;color:var(--ink);
-  }
-  .alloc-row p{
-    font-size:14.5px;color:var(--muted);margin:10px 0 0;line-height:1.5;
-    max-width:560px;
-  }
-  .alloc-pct{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;font-size:48px;line-height:1;color:var(--ink);
-    text-align:right;
-    font-feature-settings:"lnum" 1, "tnum" 1;
-    letter-spacing:-0.01em;
-  }
-  .alloc-pct .sym{font-size:24px;color:var(--gold-deep);font-style:italic;font-weight:400;margin-left:2px;}
-  .alloc-bar{
-    height:6px;background:rgba(201,169,97,0.18);margin-top:14px;
-    overflow:hidden;
-  }
-  .alloc-bar-fill{
-    height:100%;width:0%;
-    background:linear-gradient(90deg, var(--gold-deep), var(--gold));
-    transition:width 1.4s cubic-bezier(.2,.8,.2,1);
-  }
-  .alloc-list.in-view .alloc-bar-fill{width:var(--w);}
-
-  /* ============ THANK YOU SECTION ============ */
-  .thanks{
-    max-width:1080px;margin:0 auto;padding:90px 32px 60px;
-    text-align:center;
-  }
-  .thanks-quote{
-    font-family:'Cormorant Garamond', serif;font-style:italic;
-    font-size:30px;line-height:1.3;color:var(--ink);
-    max-width:760px;margin:0 auto 22px;
-    position:relative;
-  }
-  .thanks-quote::before, .thanks-quote::after{
-    font-family:'Cormorant Garamond', serif;font-style:normal;
-    color:var(--gold);font-size:60px;line-height:0;position:relative;top:18px;
-  }
-  .thanks-quote::before{content:"« ";}
-  .thanks-quote::after{content:" »";}
-  .thanks-cite{
-    font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.28em;
-    text-transform:uppercase;color:var(--gold-deep);font-weight:700;
-    margin-bottom:50px;
-  }
-  .thanks-list-head{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;font-size:24px;margin:0 0 22px;
-  }
-  .thanks-names{
-    font-family:'Cormorant Garamond', serif;
-    font-size:20px;line-height:2.1;color:var(--ink);
-    max-width:780px;margin:0 auto;
-    column-count:1;
-    word-spacing:0.4em;
-  }
-  .thanks-names .sep{color:rgba(201,169,97,0.5);margin:0 10px;font-weight:300;font-style:italic;}
-  .thanks-names em{color:var(--muted);font-style:italic;font-size:17px;}
-  .thanks-cta{margin-top:40px;}
-
-  .btn-gold{
-    display:inline-flex;align-items:center;gap:10px;
-    background:linear-gradient(180deg, #d4b471 0%, var(--gold) 100%);
-    color:var(--ink);
-    border:1px solid var(--gold-deep);
-    padding:16px 30px;
-    font-family:'PT Sans', sans-serif;font-size:12px;letter-spacing:0.24em;
-    text-transform:uppercase;font-weight:700;
-    cursor:pointer;
-    box-shadow:0 1px 0 rgba(255,255,255,0.4) inset, 0 8px 22px -10px rgba(168,137,63,0.5);
-    transition:transform .2s;
-  }
-  .btn-gold:hover{transform:translateY(-2px);}
-
-  /* ============ RECURRING TIERS ============ */
-  .tiers-section{padding:30px 32px 80px;max-width:1320px;margin:0 auto;}
-  .tiers-card{
-    border:1.5px solid var(--burgundy);
-    background:#fbf6ec;
-    padding:56px 56px 48px;
-    position:relative;
-  }
-
-  .tiers-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:36px;flex-wrap:wrap;}
-  .tiers-head .eyebrow{
-    font-family:'PT Sans', sans-serif;font-size:11px;letter-spacing:0.28em;
-    text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-bottom:10px;
-  }
-  .tiers-head h2{
-    font-family:'Cormorant Garamond', serif;font-weight:500;
-    font-size:42px;margin:0 0 12px;line-height:1.05;
-  }
-  .tiers-head p{
-    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:400;
-    font-size:18px;color:var(--muted);max-width:560px;margin:0;line-height:1.5;
-  }
-  .tiers-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-    border:1px solid rgba(201,169,97,0.4);
-  }
-  .tier{
-    background:#fdf9f0;
-    padding:36px 30px 30px;
-    border-right:1px solid rgba(201,169,97,0.4);
-    position:relative;
-    text-align:left;
-  }
-  .tier:last-child{border-right:none;}
-  .tier .tier-eyebrow{
-    font-family:'PT Sans', sans-serif;font-size:10.5px;letter-spacing:0.28em;
-    text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:12px;
-  }
-  .tier h3{
-    font-family:'Cormorant Garamond', serif;font-weight:500;
-    font-size:30px;margin:0 0 18px;letter-spacing:0.005em;
-  }
-  .tier .price{
-    font-family:'Spectral', serif;font-weight:700;font-size:36px;
-    color:var(--ink);margin-bottom:4px;
-    font-feature-settings:"tnum" 1;
-  }
-  .tier .price .per{font-size:15px;color:var(--muted);font-weight:400;font-style:italic;font-family:'Cormorant Garamond';}
-  .tier .desc{
-    font-size:15px;line-height:1.6;color:#3a3729;
-    margin:18px 0 24px;padding-top:18px;border-top:1px solid rgba(201,169,97,0.4);
-    min-height:130px;
-  }
-  .tier .btn-outline{width:100%;justify-content:center;}
-  .tier.featured{
-    background:linear-gradient(180deg, #fdf9f0 0%, #f5ead0 100%);
-  }
-
-  /* ============ FAQ ============ */
-  .faq-section{
-    background:#ede5d2;
-    border-top:1px solid rgba(201,169,97,0.3);
-    padding:80px 32px;
-  }
-  .faq-inner{max-width:880px;margin:0 auto;}
-  .faq-head{text-align:center;margin-bottom:42px;}
-  .faq-head .eyebrow{
-    font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.28em;
-    text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:12px;
-  }
-  .faq-head h2{
-    font-family:'Cormorant Garamond', serif;font-weight:500;
-    font-size:42px;margin:0;line-height:1.05;
-  }
-  .faq-item{
-    border-bottom:1px solid rgba(26,31,46,0.15);
-  }
-  .faq-item:first-child{border-top:1px solid rgba(26,31,46,0.15);}
-  .faq-q{
-    width:100%;background:none;border:0;text-align:left;
-    padding:24px 50px 24px 4px;cursor:pointer;
-    font-family:'Cormorant Garamond', serif;font-weight:500;
-    font-size:22px;color:var(--ink);
-    display:flex;justify-content:space-between;align-items:center;gap:20px;
-    position:relative;
-    transition:color .2s;
-  }
-  .faq-q:hover{color:var(--burgundy);}
-  .faq-icon{
-    flex-shrink:0;width:20px;height:20px;
-    position:relative;color:var(--gold-deep);
-    transition:color .2s;
-  }
-  .faq-icon::before, .faq-icon::after{
-    content:"";position:absolute;background:currentColor;
-    transition:transform .3s;
-  }
-  .faq-icon::before{width:14px;height:1.5px;top:50%;left:3px;transform:translateY(-50%);}
-  .faq-icon::after{width:1.5px;height:14px;left:50%;top:3px;transform:translateX(-50%);}
-  .faq-item.open .faq-icon::after{transform:translateX(-50%) scaleY(0);}
-  .faq-a{
-    max-height:0;overflow:hidden;
-    transition:max-height .35s ease;
-  }
-  .faq-a-inner{padding:0 4px 24px;font-size:16px;line-height:1.7;color:#3a3729;}
-  .faq-item.open .faq-a{max-height:300px;}
-
-  /* ============ FOOTER ============ */
-  footer{
-    background:linear-gradient(180deg, #161b29 0%, #0f1320 100%);
-    color:#a89f87;
-    padding:70px 32px 30px;
-    border-top:1px solid rgba(201,169,97,0.2);
-  }
-  .foot-inner{
-    max-width:1320px;margin:0 auto;
-    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:60px;
-  }
-  .foot-col h5{
-    font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.28em;
-    text-transform:uppercase;color:var(--gold);font-weight:700;
-    margin:0 0 18px;
-  }
-  .foot-col p, .foot-col a{
-    font-size:14.5px;color:#a89f87;text-decoration:none;
-    line-height:1.7;display:block;
-  }
-  .foot-col a:hover{color:var(--gold-soft);}
-  .foot-mark{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
-  .foot-mark .sigil-mark{width:50px;height:50px;}
-  .foot-mark .name{
-    font-family:'Cormorant Garamond', serif;font-size:20px;color:#f0e6cc;line-height:1.2;
-    font-weight:500;
-  }
-  .foot-mark .name .sub{display:block;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-top:6px;font-family:'PT Sans';font-weight:400;}
-  .foot-bottom{
-    max-width:1320px;margin:50px auto 0;padding-top:24px;
-    border-top:1px solid rgba(201,169,97,0.15);
-    font-size:12.5px;color:#6e6754;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-    font-family:'PT Sans',sans-serif;
-  }
-
-  /* ============ MOBILE STICKY DONATE BAR ============ */
-  .mobile-bar{
-    display:none;
-    position:fixed;bottom:0;left:0;right:0;z-index:60;
-    background:linear-gradient(180deg, #9c2c3d 0%, var(--burgundy-deep) 100%);
-    padding:14px 16px;
-    box-shadow:0 -10px 30px -10px rgba(0,0,0,0.3);
-    border-top:1px solid var(--gold);
-  }
-  .mobile-bar button{
-    width:100%;background:transparent;color:#f5e9c8;border:0;
-    font-family:'Cormorant Garamond', serif;font-weight:600;font-size:20px;
-    padding:14px;cursor:pointer;letter-spacing:0.02em;
-  }
-  .mobile-bar .amount{font-family:'Spectral';font-weight:700;}
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 1024px){
-    .hero{grid-template-columns:1fr;gap:50px;padding:50px 24px;}
-    .form-wrap{order:-1;}
-    .form-card{padding:32px 28px;}
-    .tiers-grid{grid-template-columns:1fr;}
-    .tier{border-right:none;border-bottom:1px solid rgba(201,169,97,0.4);}
-    .tier:last-child{border-bottom:none;}
-    .foot-inner{grid-template-columns:1fr 1fr;gap:40px;}
-    .foot-col:first-child{grid-column:1/-1;}
-    .nav{display:none;}
-    .creds-card{padding:32px 22px;}
-    .creds-table{grid-template-columns:1fr;}
-    .creds-table .k{padding:10px 14px 4px;background:transparent;}
-    .creds-table .v{padding:0 14px 12px;border-bottom:1px solid rgba(201,169,97,0.25);}
-  }
-  @media (max-width: 640px){
-    .topbar-inner{padding:12px 18px;gap:10px;}
-    .topbar .donate-cta{padding:9px 14px;font-size:10.5px;letter-spacing:0.18em;}
-    .sigil-text .l2{font-size:14px;}
-    .sigil-text .l1{font-size:9px;}
-    .sigil-mark{width:36px;height:36px;}
-    .ribbon{padding:46px 22px 36px;}
-    .hero{padding:40px 18px;}
-    .quick-amounts{grid-template-columns:repeat(2, 1fr);}
-    .input-grid{grid-template-columns:1fr;}
-    .alloc-row{grid-template-columns:64px 1fr;gap:18px;}
-    .alloc-pct{font-size:36px;}
-    .alloc-pct .sym{font-size:18px;}
-    .alloc-section{padding:60px 18px;}
-    .creds-card{padding:28px 18px;}
-    .tiers-card{padding:36px 22px;}
-    .thanks{padding:60px 22px 40px;}
-    .thanks-quote{font-size:24px;}
-    .faq-section{padding:60px 22px;}
-    .faq-q{font-size:18px;padding:20px 50px 20px 4px;}
-    .mobile-bar{display:block;}
-    body{padding-bottom:80px;}
-    .foot-inner{grid-template-columns:1fr;}
-    .creds-head h3{font-size:26px;}
-    .alloc-head h2, .tiers-head h2, .faq-head h2{font-size:32px;}
-  }
+.cc-payment-methods { display: grid; gap: var(--space-3); margin-top: var(--space-6); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  "agent": {
+    "@type": "Organization",
+    "name": "Войсковой собор святого благоверного князя Александра Невского",
+    "taxID": "2309091590",
+    "vatID": "1052335002521"
+  },
+  "url": "https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/donate.html"
+}
+</script>
 </head>
 <body>
+<a class="cc-skip-link" href="#main">Перейти к содержанию</a>
 
-<!-- ====== STICKY HEADER ====== -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a href="#" class="sigil">
-      <div class="sigil-mark">
-        <!-- Cross sigil -->
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <path d="M13 2 L13 24 M5 8 L21 8 M7 14 L19 14 M9 19 L17 19" stroke="#c9a961" stroke-width="1.3" stroke-linecap="square"></path>
-          <path d="M13 19 L13 24" stroke="#c9a961" stroke-width="1.3"></path>
-        </svg>
-      </div>
-      <div class="sigil-text">
-        <div class="l1">Anno Domini 1872</div>
-        <div class="l2">Войсковой Собор</div>
-      </div>
+<header class="cc-header" data-cc-header>
+  <div class="cc-container cc-header__inner">
+    <a class="cc-brand" href="index.html" aria-label="На главную страницу">
+      <svg class="cc-brand__sigil" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" style="color: var(--color-gold)"><g stroke-width="1.6"><line x1="32" y1="8" x2="32" y2="56"/><line x1="22" y1="20" x2="42" y2="20"/><line x1="20" y1="14" x2="44" y2="14"/><line x1="22" y1="44" x2="42" y2="40"/></g></g></svg>
+      <span><span class="cc-brand__name">Войсковой собор</span><span class="cc-brand__tagline">Александра Невского</span></span>
     </a>
-    <nav class="nav">
-      <a href="#">О соборе</a>
-      <a href="#">Расписание</a>
-      <a href="#">Святыни</a>
-      <a href="#">Воскресная школа</a>
-      <a href="#" class="active">Пожертвование</a>
-      <a href="#">Контакты</a>
+    <button class="cc-nav-toggle" data-cc-nav-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav"><span class="cc-nav-toggle__bar"></span></button>
+    <nav class="cc-nav" id="primary-nav" data-cc-nav aria-label="Основное меню">
+      <ul class="cc-nav__list">
+        <li><a class="cc-nav__link" href="schedule.html">Расписание</a></li>
+        <li><a class="cc-nav__link" href="prayer-requests.html">Заказ треб</a></li>
+        <li><a class="cc-nav__link" href="about.html">О соборе</a></li>
+        <li><a class="cc-nav__link" href="history.html">Летопись</a></li>
+        <li><a class="cc-nav__link" href="clergy.html">Духовенство</a></li>
+        <li><a class="cc-nav__link" href="parish-life.html">Жизнь прихода</a></li>
+        <li><a class="cc-nav__link" href="news.html">Новости</a></li>
+        <li><a class="cc-nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
     </nav>
-    <button class="donate-cta">Пожертвовать</button>
+    <div class="cc-header__cta"><a class="cc-btn cc-btn--blood cc-btn--small" href="donate.html" aria-current="page">Пожертвовать</a></div>
   </div>
 </header>
 
-<!-- ====== RIBBON ====== -->
-<section class="ribbon">
-  <div class="ribbon-inner">
-    <h1>Помогите храму</h1>
-    <div class="ribbon-quote">
-      «Доброхотного дателя любит Бог»
-      <span class="cite">— 2 Кор. 9 : 7</span>
-    </div>
-    <div class="ribbon-rule"></div>
+<main id="main">
+
+<section class="cc-page-header cc-page-header--blood">
+  <div class="cc-container cc-page-header__inner">
+    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>Помощь храму</span></p>
+    <h1>Пожертвование</h1>
+    <blockquote class="cc-quote" style="margin-top: var(--space-8);">
+      Доброхотно дающего любит Бог
+      <cite>— 2-е послание к Коринфянам 9:7</cite>
+    </blockquote>
   </div>
 </section>
 
-<!-- ====== HERO: STORY + FORM ====== -->
-<section class="hero">
-
-  <!-- LEFT: STORY -->
-  <div class="story">
-    <div class="story-photo">
-      <!-- Place real cathedral photo here: replace this placeholder with <img src="..." alt="..." /> -->
-      <div class="photo-placeholder">
-        <div class="ph-frame">
-          <div class="ph-eyebrow">Фотография</div>
-          <div class="ph-title">Войсковой Собор<br>святого благоверного князя<br>Александра Невского</div>
-          <div class="ph-note">прикрепите фото — будет вставлено сюда</div>
-        </div>
-      </div>
-    </div>
-    <div class="photo-caption">Войсковой Собор святого благоверного князя Александра Невского, освящён в 1872 году.</div>
-
-    <h2>Слово к жертвователю</h2>
-    <p>Cвято-Александро-Невский Войсковой Собор — место молитвы и духовный центр православных Краснодара с 1872 года. Сегодня собор живёт благодаря пожертвованиям прихожан и благотворителей.</p>
-    <p>Каждое ваше приношение помогает служению храма: содержание клира, восстановление росписи, программа социального служения, воскресная школа, помощь нуждающимся.</p>
-    <p>Любая лепта — копейка ли, тысяча ли — принимается с благодарностью и обращается в молитву о вашем здравии и о упокоении ваших сродников.</p>
-
-    <ul class="goals">
-      <li>Восстановление росписи купола и парусов</li>
-      <li>Содержание воскресной школы «Русский щит»</li>
-      <li>Помощь многодетным семьям прихода</li>
-      <li>Реставрация икон XIX века</li>
-    </ul>
+<section class="cc-section">
+  <div class="cc-container cc-container--narrow" style="text-align: center;" data-cc-reveal>
+    <p style="font-size: var(--text-md); line-height: var(--leading-relaxed);">
+      Войсковой собор живёт и развивается благодаря пожертвованиям прихожан и неравнодушных людей. Все средства идут на роспись храма, его содержание, социальные и духовно-просветительские проекты прихода.
+    </p>
   </div>
+</section>
 
-  <!-- RIGHT: FORM -->
-  <div class="form-wrap">
-    <div class="form-card">
+<section class="cc-section cc-section--paper-dark cc-section--tight">
+  <div class="cc-container">
+    <div style="text-align: center; margin-bottom: var(--space-8);">
+      <p class="cc-kicker cc-eyebrow">Целевое назначение</p>
+      <h2>На что пойдут средства</h2>
+    </div>
 
-      <!-- Section A: amount -->
-      <div class="form-section">
-        <div class="form-label"><span class="num">I</span> Размер пожертвования</div>
-        <div class="quick-amounts" id="qa">
-          <button type="button" class="qa-btn" data-amount="100">100 ₽</button>
-          <button type="button" class="qa-btn active" data-amount="500">500 ₽</button>
-          <button type="button" class="qa-btn" data-amount="1000">1 000 ₽</button>
-          <button type="button" class="qa-btn" data-amount="3000">3 000 ₽</button>
-        </div>
-        <div class="other-amount">
-          <label for="customAmount">Другая сумма, ₽</label>
-          <input id="customAmount" type="text" inputmode="numeric" autocomplete="off" placeholder="напр. 2 500">
-        </div>
-      </div>
-
-      <!-- Section B: purpose -->
-      <div class="form-section">
-        <div class="form-label"><span class="num">II</span> Как будет назначено</div>
-        <div class="radio-list" id="purposeList">
-          <label class="radio-row checked">
-            <input type="radio" name="purpose" value="general" checked="">
-            <span class="radio-mark"></span>
-            <span class="radio-text">На общие нужды храма<span class="sub">по благословению настоятеля распределяется на текущие потребности</span></span>
-          </label>
-          <label class="radio-row">
-            <input type="radio" name="purpose" value="dome">
-            <span class="radio-mark"></span>
-            <span class="radio-text">Восстановление росписи купола</span>
-          </label>
-          <label class="radio-row">
-            <input type="radio" name="purpose" value="school">
-            <span class="radio-mark"></span>
-            <span class="radio-text">Содержание воскресной школы «Русский щит»</span>
-          </label>
-          <label class="radio-row">
-            <input type="radio" name="purpose" value="aid">
-            <span class="radio-mark"></span>
-            <span class="radio-text">Помощь нуждающимся</span>
-          </label>
-          <label class="radio-row">
-            <input type="radio" name="purpose" value="memorial">
-            <span class="radio-mark"></span>
-            <span class="radio-text">Помянник усопших воинов</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Section C: contact -->
-      <div class="form-section">
-        <div class="form-label"><span class="num">III</span> Ваши данные</div>
-        <div class="input-grid">
-          <div class="input full">
-            <input type="text" placeholder="Имя — для поминовения">
-            <div class="hint">опционально, в крещении</div>
+    <form data-cc-purpose-form>
+      <div class="cc-purposes" data-cc-reveal>
+        <label class="cc-purpose">
+          <input type="radio" name="purpose" value="rospis" checked>
+          <div>
+            <div class="cc-purpose__title">Роспись собора</div>
+            <p class="cc-purpose__desc">Иконописные работы, фрески, стенопись — продолжается с момента освящения собора.</p>
           </div>
-          <div class="input">
-            <input type="email" placeholder="Электронная почта">
-          </div>
-          <div class="input">
-            <input type="tel" placeholder="Телефон">
-          </div>
-        </div>
-        <label class="check-row" style="margin-top:14px;">
-          <input type="checkbox">
-          <span class="check-mark"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5 L5 9.5 L11 3.5" stroke="#1a1f2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-          <span class="label">Жертвовать каждый месяц этой суммой <em style="color:var(--muted);font-style:italic;font-family:'Cormorant Garamond';">— стать постоянным благотворителем храма</em></span>
         </label>
-        <label class="check-row checked required">
-          <input type="checkbox" checked="">
-          <span class="check-mark"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5 L5 9.5 L11 3.5" stroke="#1a1f2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-          <span class="label">Я согласен с <a href="#">положением о персональных данных</a></span>
+
+        <label class="cc-purpose">
+          <input type="radio" name="purpose" value="ustav">
+          <div>
+            <div class="cc-purpose__title">Уставная деятельность</div>
+            <p class="cc-purpose__desc">Содержание собора: коммунальные платежи, утварь, богослужебные книги, свечи, церковное вино.</p>
+          </div>
+        </label>
+
+        <label class="cc-purpose">
+          <input type="radio" name="purpose" value="social">
+          <div>
+            <div class="cc-purpose__title">Социальные проекты</div>
+            <p class="cc-purpose__desc">Помощь нуждающимся, больным, многодетным; работа сестричества и волонтёров прихода.</p>
+          </div>
+        </label>
+
+        <label class="cc-purpose">
+          <input type="radio" name="purpose" value="school">
+          <div>
+            <div class="cc-purpose__title">Воскресная школа</div>
+            <p class="cc-purpose__desc">Школа «Русский щит»: занятия для детей и взрослых, материалы, пособия, поездки.</p>
+          </div>
         </label>
       </div>
+    </form>
+  </div>
+</section>
 
-      <!-- Section D: payment -->
-      <div class="form-section">
-        <div class="form-label"><span class="num">IV</span> Способ оплаты</div>
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-tab="card">Картой</button>
-          <button class="tab" data-tab="sbp">СБП</button>
-          <button class="tab" data-tab="ym">ЮMoney</button>
-        </div>
+<section class="cc-section">
+  <div class="cc-container">
+    <div class="cc-donate-grid">
 
-        <div class="tab-panel active" data-panel="card">
-          <div class="pay-logos">
-            <div class="pay-logo visa">VISA</div>
-            <div class="pay-logo mc">MasterCard</div>
-            <div class="pay-logo mir">МИР</div>
-          </div>
-          <div class="pay-meta">Перевод через защищённый шлюз Сбербанк / Тинькофф. Комиссия не взимается.</div>
-        </div>
+      <!-- Левая часть — выбор суммы и быстрые способы -->
+      <div class="cc-donate-card" data-cc-reveal>
+        <h3>Сделать пожертвование</h3>
 
-        <div class="tab-panel" data-panel="sbp">
-          <div class="qr-row">
-            <div class="qr-box">
-              <!-- stylized QR -->
-              <svg viewBox="0 0 100 100">
-                <rect width="100" height="100" fill="#fff"></rect>
-                <g fill="#1a1f2e">
-                  <!-- finder squares -->
-                  <rect x="6" y="6" width="22" height="22"></rect><rect x="10" y="10" width="14" height="14" fill="#fff"></rect><rect x="14" y="14" width="6" height="6"></rect>
-                  <rect x="72" y="6" width="22" height="22"></rect><rect x="76" y="10" width="14" height="14" fill="#fff"></rect><rect x="80" y="14" width="6" height="6"></rect>
-                  <rect x="6" y="72" width="22" height="22"></rect><rect x="10" y="76" width="14" height="14" fill="#fff"></rect><rect x="14" y="80" width="6" height="6"></rect>
-                  <!-- random data -->
-                  <rect x="34" y="8" width="4" height="4"></rect><rect x="42" y="8" width="4" height="4"></rect><rect x="50" y="8" width="4" height="4"></rect><rect x="58" y="8" width="4" height="4"></rect><rect x="66" y="8" width="4" height="4"></rect>
-                  <rect x="34" y="16" width="4" height="4"></rect><rect x="46" y="16" width="4" height="4"></rect><rect x="54" y="16" width="4" height="4"></rect><rect x="62" y="16" width="4" height="4"></rect>
-                  <rect x="38" y="24" width="4" height="4"></rect><rect x="50" y="24" width="4" height="4"></rect><rect x="58" y="24" width="4" height="4"></rect>
-                  <rect x="8" y="34" width="4" height="4"></rect><rect x="20" y="34" width="4" height="4"></rect><rect x="32" y="34" width="4" height="4"></rect><rect x="40" y="34" width="4" height="4"></rect><rect x="48" y="34" width="4" height="4"></rect><rect x="56" y="34" width="4" height="4"></rect><rect x="68" y="34" width="4" height="4"></rect><rect x="80" y="34" width="4" height="4"></rect><rect x="88" y="34" width="4" height="4"></rect>
-                  <rect x="14" y="42" width="4" height="4"></rect><rect x="26" y="42" width="4" height="4"></rect><rect x="38" y="42" width="4" height="4"></rect><rect x="50" y="42" width="4" height="4"></rect><rect x="62" y="42" width="4" height="4"></rect><rect x="74" y="42" width="4" height="4"></rect><rect x="86" y="42" width="4" height="4"></rect>
-                  <rect x="8" y="50" width="4" height="4"></rect><rect x="20" y="50" width="4" height="4"></rect><rect x="32" y="50" width="4" height="4"></rect><rect x="44" y="50" width="4" height="4"></rect><rect x="56" y="50" width="4" height="4"></rect><rect x="68" y="50" width="4" height="4"></rect><rect x="80" y="50" width="4" height="4"></rect><rect x="92" y="50" width="4" height="4"></rect>
-                  <rect x="14" y="58" width="4" height="4"></rect><rect x="26" y="58" width="4" height="4"></rect><rect x="38" y="58" width="4" height="4"></rect><rect x="50" y="58" width="4" height="4"></rect><rect x="62" y="58" width="4" height="4"></rect><rect x="74" y="58" width="4" height="4"></rect><rect x="86" y="58" width="4" height="4"></rect>
-                  <rect x="8" y="66" width="4" height="4"></rect><rect x="20" y="66" width="4" height="4"></rect><rect x="32" y="66" width="4" height="4"></rect><rect x="44" y="66" width="4" height="4"></rect><rect x="56" y="66" width="4" height="4"></rect><rect x="68" y="66" width="4" height="4"></rect><rect x="80" y="66" width="4" height="4"></rect><rect x="92" y="66" width="4" height="4"></rect>
-                  <rect x="34" y="76" width="4" height="4"></rect><rect x="46" y="76" width="4" height="4"></rect><rect x="58" y="76" width="4" height="4"></rect><rect x="70" y="76" width="4" height="4"></rect><rect x="82" y="76" width="4" height="4"></rect>
-                  <rect x="38" y="84" width="4" height="4"></rect><rect x="50" y="84" width="4" height="4"></rect><rect x="62" y="84" width="4" height="4"></rect><rect x="74" y="84" width="4" height="4"></rect><rect x="86" y="84" width="4" height="4"></rect>
-                  <rect x="34" y="92" width="4" height="4"></rect><rect x="46" y="92" width="4" height="4"></rect><rect x="58" y="92" width="4" height="4"></rect><rect x="70" y="92" width="4" height="4"></rect><rect x="82" y="92" width="4" height="4"></rect>
-                </g>
-                <!-- center logo -->
-                <rect x="40" y="40" width="20" height="20" fill="#fff"></rect>
-                <text x="50" y="55" text-anchor="middle" font-family="PT Sans" font-size="9" font-weight="700" fill="#8b2635">СБП</text>
-              </svg>
-            </div>
-            <div class="qr-text">
-              <strong>Система быстрых платежей</strong>
-              <p>Откройте приложение вашего банка, отсканируйте код или нажмите на него с телефона. Перевод поступит на счёт собора в течение нескольких секунд.</p>
-            </div>
+        <div class="cc-field">
+          <label class="cc-label">Быстрый выбор суммы</label>
+          <div class="cc-amount-grid" data-cc-amount-group>
+            <button type="button" class="cc-amount-chip" data-amount="100">100 ₽</button>
+            <button type="button" class="cc-amount-chip" data-amount="300">300 ₽</button>
+            <button type="button" class="cc-amount-chip" data-amount="500" aria-pressed="true">500 ₽</button>
+            <button type="button" class="cc-amount-chip" data-amount="1000">1000 ₽</button>
+            <button type="button" class="cc-amount-chip" data-amount="3000">3000 ₽</button>
+            <button type="button" class="cc-amount-chip" data-amount="5000">5000 ₽</button>
           </div>
         </div>
 
-        <div class="tab-panel" data-panel="ym">
-          <div class="ym">
-            <div class="ym-mark">Ю</div>
-            <div>
-              <strong>ЮMoney — кошелёк 410 011 ••• ••• 234</strong>
-              <span>Перевод с любого кошелька, банковской карты или электронной почты.</span>
-            </div>
+        <div class="cc-field">
+          <label class="cc-label" for="amount-custom">Своя сумма (₽)</label>
+          <input class="cc-amount-input" id="amount-custom" data-cc-amount-input type="number" min="10" step="10" value="500" inputmode="numeric">
+        </div>
+
+        <div class="cc-payment-methods">
+          <a class="cc-btn cc-btn--blood cc-btn--large cc-btn--full" href="#bank-details">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Банковские реквизиты
+          </a>
+          <a class="cc-btn cc-btn--outline cc-btn--full" href="#sbp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            СБП — по QR-коду
+          </a>
+        </div>
+
+        <div class="cc-notice" style="margin-top: var(--space-5);">
+          <strong>Хотите оформить ежемесячное пожертвование?</strong> Это можно сделать в мобильном приложении вашего банка: настройте регулярный перевод по реквизитам ниже.
+        </div>
+      </div>
+
+      <!-- Правая часть — QR-код для СБП -->
+      <div data-cc-reveal>
+        <div class="cc-donate-card" id="sbp">
+          <h3>Через СБП по QR-коду</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-5);">
+            Откройте мобильное приложение вашего банка, выберите оплату по QR-коду и наведите камеру.
+          </p>
+
+          <div class="cc-qr-block">
+            <!-- Stylised "QR" — здесь должен быть реальный QR прихода. На макете — placeholder с гербом-логотипом. -->
+            <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="QR-код для пожертвования">
+              <rect width="220" height="220" fill="#fff"/>
+              <!-- Уголки QR -->
+              <g fill="#1a1f2e">
+                <rect x="20" y="20" width="50" height="50"/>
+                <rect x="30" y="30" width="30" height="30" fill="#fff"/>
+                <rect x="35" y="35" width="20" height="20" fill="#1a1f2e"/>
+                <rect x="150" y="20" width="50" height="50"/>
+                <rect x="160" y="30" width="30" height="30" fill="#fff"/>
+                <rect x="165" y="35" width="20" height="20" fill="#1a1f2e"/>
+                <rect x="20" y="150" width="50" height="50"/>
+                <rect x="30" y="160" width="30" height="30" fill="#fff"/>
+                <rect x="35" y="165" width="20" height="20" fill="#1a1f2e"/>
+              </g>
+              <!-- Псевдо-данные (паттерн) -->
+              <g fill="#1a1f2e">
+                <rect x="80" y="20" width="8" height="8"/><rect x="100" y="20" width="8" height="8"/><rect x="120" y="20" width="8" height="8"/>
+                <rect x="80" y="40" width="8" height="8"/><rect x="110" y="40" width="8" height="8"/>
+                <rect x="80" y="60" width="8" height="8"/><rect x="100" y="60" width="8" height="8"/><rect x="120" y="60" width="8" height="8"/>
+                <rect x="80" y="80" width="8" height="8"/><rect x="100" y="80" width="8" height="8"/><rect x="140" y="80" width="8" height="8"/><rect x="160" y="80" width="8" height="8"/>
+                <rect x="20" y="80" width="8" height="8"/><rect x="40" y="80" width="8" height="8"/>
+                <rect x="20" y="100" width="8" height="8"/><rect x="60" y="100" width="8" height="8"/><rect x="100" y="100" width="8" height="8"/><rect x="140" y="100" width="8" height="8"/><rect x="180" y="100" width="8" height="8"/><rect x="200" y="100" width="8" height="8"/>
+                <rect x="40" y="120" width="8" height="8"/><rect x="80" y="120" width="8" height="8"/><rect x="120" y="120" width="8" height="8"/><rect x="160" y="120" width="8" height="8"/>
+                <rect x="80" y="140" width="8" height="8"/><rect x="120" y="140" width="8" height="8"/><rect x="180" y="140" width="8" height="8"/>
+                <rect x="80" y="160" width="8" height="8"/><rect x="100" y="160" width="8" height="8"/><rect x="140" y="160" width="8" height="8"/><rect x="180" y="160" width="8" height="8"/>
+                <rect x="80" y="180" width="8" height="8"/><rect x="120" y="180" width="8" height="8"/><rect x="160" y="180" width="8" height="8"/><rect x="200" y="180" width="8" height="8"/>
+                <rect x="100" y="200" width="8" height="8"/><rect x="140" y="200" width="8" height="8"/><rect x="180" y="200" width="8" height="8"/>
+                <rect x="160" y="40" width="8" height="8"/><rect x="180" y="40" width="8" height="8"/>
+                <rect x="200" y="60" width="8" height="8"/>
+                <rect x="200" y="120" width="8" height="8"/><rect x="200" y="140" width="8" height="8"/>
+                <rect x="20" y="120" width="8" height="8"/><rect x="20" y="180" width="8" height="8"/><rect x="40" y="180" width="8" height="8"/><rect x="60" y="200" width="8" height="8"/>
+              </g>
+              <!-- Логотип в центре -->
+              <rect x="92" y="92" width="36" height="36" fill="#fff" stroke="#c9a961" stroke-width="2" rx="4"/>
+              <g fill="none" stroke="#c9a961" stroke-width="1.4" stroke-linecap="round">
+                <line x1="110" y1="98" x2="110" y2="122"/>
+                <line x1="103" y1="106" x2="117" y2="106"/>
+                <line x1="105" y1="102" x2="115" y2="102"/>
+                <line x1="106" y1="116" x2="114" y2="116"/>
+              </g>
+            </svg>
+            <p class="cc-qr-block__caption">
+              QR-код будет активирован после подключения СБП.<br>
+              Пока — используйте банковские реквизиты ниже.
+            </p>
           </div>
-          <div class="pay-meta">При переводе укажите назначение, чтобы пожертвование было учтено правильно.</div>
-        </div>
-      </div>
-
-      <!-- Submit -->
-      <button class="submit-btn pulse-once" id="submitBtn">
-        Пожертвовать <span class="amount" id="btnAmount">500 ₽</span>
-      </button>
-      <div class="submit-meta">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 L12 3 V6.5 C12 9.8 9.8 12 7 13 C4.2 12 2 9.8 2 6.5 V3 L7 1 Z" stroke="#a8893f" stroke-width="1.2" fill="none"></path></svg>
-        Все платежи проходят через защищённый шлюз. Мы не храним данные карт.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== REQUISITES ====== -->
-<section class="section">
-  <div class="creds-card">
-    <div class="creds-head">
-      <h3><span class="sub">Документы</span>Реквизиты для прямого перевода</h3>
-      <div class="creds-actions">
-        <button class="btn-outline" id="copyBtn">
-          <svg viewBox="0 0 14 14" fill="none"><rect x="3" y="3" width="8" height="9" stroke="currentColor" stroke-width="1.2"></rect><rect x="5" y="1" width="8" height="9" stroke="currentColor" stroke-width="1.2" fill="#fbf6ec"></rect></svg>
-          <span id="copyLabel">Скопировать реквизиты</span>
-        </button>
-        <button class="btn-outline">
-          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1 V10 M3 6 L7 10 L11 6 M2 12 H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          Скачать счёт PDF
-        </button>
-      </div>
-    </div>
-    <div class="creds-table" id="credsTable">
-      <div class="row"><div class="k">Получатель</div><div class="v"><strong>МПРПО Войсковой Собор святого благоверного князя Александра Невского</strong></div></div>
-      <div class="row"><div class="k">ИНН</div><div class="v">2310045896</div></div>
-      <div class="row"><div class="k">КПП</div><div class="v">231001001</div></div>
-      <div class="row"><div class="k">Расчётный счёт</div><div class="v">40703 810 0 30000 001234</div></div>
-      <div class="row"><div class="k">Банк</div><div class="v">ПАО «Сбербанк России», г. Краснодар</div></div>
-      <div class="row"><div class="k">БИК</div><div class="v">040349602</div></div>
-      <div class="row"><div class="k">Корр. счёт</div><div class="v">30101 810 1 00000 000602</div></div>
-      <div class="row"><div class="k">Назначение</div><div class="v"><em>«Добровольное пожертвование на уставную деятельность. НДС не облагается»</em></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== ALLOCATION ====== -->
-<section class="alloc-section">
-  <div class="alloc-inner">
-    <div class="alloc-head">
-      <div class="eyebrow">Прозрачность</div>
-      <h2>Куда идут средства</h2>
-      <p>Распределение поступивших пожертвований за минувший приходской год, утверждённое приходским советом.</p>
-    </div>
-    <div class="alloc-list" id="allocGrid">
-      <div class="alloc-row" style="--w:60%;">
-        <div class="alloc-pct">60<span class="sym">%</span></div>
-        <div class="label">
-          <h4>Содержание клира и хора</h4>
-          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
-          <p>Содержание священства, диаконов, певчих и алтарников; богослужебная утварь, просфоры, ладан, свечи.</p>
-        </div>
-      </div>
-      <div class="alloc-row" style="--w:20%;">
-        <div class="alloc-pct">20<span class="sym">%</span></div>
-        <div class="label">
-          <h4>Социальное служение</h4>
-          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
-          <p>Помощь многодетным семьям, одиноким старикам, бездомным; продовольственные наборы и адресная поддержка.</p>
-        </div>
-      </div>
-      <div class="alloc-row" style="--w:15%;">
-        <div class="alloc-pct">15<span class="sym">%</span></div>
-        <div class="label">
-          <h4>Восстановление и ремонт</h4>
-          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
-          <p>Реставрация росписи и икон, поддержание здания, инженерных систем и территории прихода.</p>
-        </div>
-      </div>
-      <div class="alloc-row" style="--w:5%;">
-        <div class="alloc-pct">5<span class="sym">%</span></div>
-        <div class="label">
-          <h4>Административные расходы</h4>
-          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
-          <p>Бухгалтерия, банковские комиссии, обязательные отчисления, канцелярия и связь.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== THANKS ====== -->
-<section class="thanks">
-  <div class="thanks-quote">Творящий милостыню, как сам Господь, бывает услышан в день нужды</div>
-  <div class="thanks-cite">Свт. Иоанн Златоуст</div>
-
-  <h3 class="thanks-list-head">Благодетели в этом году</h3>
-  <p class="thanks-names">
-    Анна <span class="sep">/</span> Михаил <span class="sep">/</span> Иоанн <span class="sep">/</span> Сергий <span class="sep">/</span> Мария <span class="sep">/</span> Александр <span class="sep">/</span> Елена <span class="sep">/</span> Николай <span class="sep">/</span> Татиана <span class="sep">/</span> Димитрий <span class="sep">/</span> Ольга <span class="sep">/</span> Пётр <span class="sep">/</span> Ирина <span class="sep">/</span> Иаков <span class="sep">/</span> Параскева <span class="sep">/</span> Феодор <span class="sep">/</span> Любовь <span class="sep">/</span> Андрей <span class="sep">/</span> Ксения <span class="sep">/</span> <em>и анонимные жертвователи</em>
-  </p>
-  <div class="thanks-cta">
-    <button class="btn-gold">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 V13 M1 7 H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-      Подать имя для поминовения о здравии
-    </button>
-  </div>
-</section>
-
-<!-- ====== TIERS ====== -->
-<section class="tiers-section">
-  <div class="tiers-card">
-    <div class="tiers-head">
-      <div>
-        <div class="eyebrow">Программа</div>
-        <h2>Ангел-хранитель храма</h2>
-        <p>Прихожане, поддерживающие храм регулярно, поминаются именно на каждой Божественной Литургии в течение года.</p>
-      </div>
+<!-- ============================================================
+     Полные банковские реквизиты
+     ============================================================ -->
+<section class="cc-section cc-section--paper-dark" id="bank-details">
+  <div class="cc-container cc-container--narrow">
+    <div style="text-align: center; margin-bottom: var(--space-8);">
+      <p class="cc-kicker cc-eyebrow">Реквизиты для перевода</p>
+      <h2>Банковские реквизиты прихода</h2>
+      <p style="color: var(--color-text-muted); margin-top: var(--space-3); font-size: var(--text-sm);">
+        Любое поле можно скопировать одним нажатием
+      </p>
     </div>
-    <div class="tiers-grid">
 
-      <div class="tier">
-        <div class="tier-eyebrow">Ступень I</div>
-        <h3>Жертвователь</h3>
-        <div class="price">500 ₽<span class="per"> / месяц</span></div>
-        <p class="desc">Поминовение на проскомидии в течение года. Электронная иконка благословения от настоятеля по почте.</p>
-        <button class="btn-outline">Записаться</button>
-      </div>
-
-      <div class="tier featured">
-        <div class="tier-eyebrow">Ступень II</div>
-        <h3>Благодетель</h3>
-        <div class="price">1 500 ₽<span class="per"> / месяц</span></div>
-        <p class="desc">Поминовение на проскомидии и сугубой ектении. Именное приглашение на престольные праздники, освящённая просфора по большим праздникам.</p>
-        <button class="btn-outline">Записаться</button>
-      </div>
-
-      <div class="tier">
-        <div class="tier-eyebrow">Ступень III</div>
-        <h3>Ктитор</h3>
-        <div class="price">5 000 ₽<span class="per"> / месяц</span></div>
-        <p class="desc">Имя жертвователя вносится в синодик ктиторов прихода. Поминовение за каждой Литургией. Личная встреча с настоятелем по запросу.</p>
-        <button class="btn-outline">Записаться</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ====== FAQ ====== -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <div class="faq-head">
-      <div class="eyebrow">Частые вопросы</div>
-      <h2>О пожертвованиях</h2>
-    </div>
-    <div class="faq-list" id="faqList">
-      <div class="faq-item open">
-        <button class="faq-q">Можно ли получить квитанцию для налогового вычета?<span class="faq-icon"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Да. После пожертвования через сайт вы получите электронную квитанцию на указанную почту. Для налогового вычета по ст. 219 НК РФ мы можем выдать справку с реквизитами прихода — напишите на <a href="#" style="color:var(--burgundy);text-decoration:underline;">canc@sobor-krd.ru</a>, мы подготовим документы в течение трёх рабочих дней.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Как отменить ежемесячное пожертвование?<span class="faq-icon"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">В каждом письме о списании есть прямая ссылка для отмены подписки. Также вы можете написать нам или позвонить в канцелярию — отмена производится в тот же день, никакие комиссии и удержания не предусмотрены.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Куда обратиться, если перевод не дошёл?<span class="faq-icon"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Сообщите дату, сумму и последние четыре цифры карты на почту канцелярии или по телефону +7 (861) 262-50-04. Мы сверим выписку и поможем найти платёж — обычно вопрос решается за 1–2 дня.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Можно ли пожертвовать иконы, утварь или книги?<span class="faq-icon"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Будем благодарны за любое приношение. Просьба предварительно согласовать: некоторые предметы требуют чина освящения, некоторые — экспертизы. Свяжитесь с канцелярией, и мы договоримся об удобном времени.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== FOOTER ====== -->
-<footer>
-  <div class="foot-inner">
-    <div class="foot-col">
-      <div class="foot-mark">
-        <div class="sigil-mark">
-          <svg width="30" height="30" viewBox="0 0 26 26" fill="none">
-            <path d="M13 2 L13 24 M5 8 L21 8 M7 14 L19 14 M9 19 L17 19" stroke="#c9a961" stroke-width="1.3" stroke-linecap="square"></path>
-          </svg>
+    <div class="cc-donate-card" data-cc-reveal>
+      <dl class="cc-requisites">
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">Получатель</dt>
+          <dd class="cc-requisites__value" id="req-name">Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г. Краснодара</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-name">Копировать</button>
         </div>
-        <div class="name">Войсковой Собор<span class="sub">святого благоверного князя Александра Невского</span></div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">ИНН</dt>
+          <dd class="cc-requisites__value" id="req-inn">2309091590</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-inn">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">КПП</dt>
+          <dd class="cc-requisites__value" id="req-kpp">230901001</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-kpp">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">ОГРН</dt>
+          <dd class="cc-requisites__value" id="req-ogrn">1052335002521</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-ogrn">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">Расчётный счёт</dt>
+          <dd class="cc-requisites__value" id="req-rs">40703810100005000023</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-rs">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">Банк</dt>
+          <dd class="cc-requisites__value" id="req-bank">Филиал «Центральный» Банка ВТБ (ПАО) г. Москва</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-bank">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">БИК</dt>
+          <dd class="cc-requisites__value" id="req-bik">044525411</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-bik">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">Корсчёт</dt>
+          <dd class="cc-requisites__value" id="req-ks">30101810145250000411</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-ks">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">Юр. адрес</dt>
+          <dd class="cc-requisites__value" id="req-addr">350063, г. Краснодар, ул. Красная, д. 1</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-addr">Копировать</button>
+        </div>
+        <div class="cc-requisites__row">
+          <dt class="cc-requisites__label">Назначение</dt>
+          <dd class="cc-requisites__value" id="req-purpose">Добровольное пожертвование на уставную деятельность прихода. НДС не облагается.</dd>
+          <button class="cc-requisites__copy" data-cc-copy="req-purpose">Копировать</button>
+        </div>
+      </dl>
+
+      <div class="cc-notice cc-notice--success" style="margin-top: var(--space-6);">
+        <strong>Налоговый вычет.</strong> Пожертвования религиозным организациям дают право на социальный налоговый вычет 13% (НК РФ ст. 219). Для получения вычета сохраните банковскую квитанцию о переводе.
       </div>
-      <p>г. Краснодар, ул. Постовая, д. 26<br>+7 (861) 262 50 04 · canc@sobor-krd.ru</p>
-      <p style="margin-top:14px;font-style:italic;font-family:'Cormorant Garamond';font-size:16px;color:#c8bfa8;">«Дом мой домом молитвы наречётся»</p>
-    </div>
-    <div class="foot-col">
-      <h5>Приход</h5>
-      <a href="#">О соборе</a>
-      <a href="#">Расписание богослужений</a>
-      <a href="#">Святыни и иконы</a>
-      <a href="#">Воскресная школа</a>
-      <a href="#">Социальное служение</a>
-    </div>
-    <div class="foot-col">
-      <h5>Помощь храму</h5>
-      <a href="#">Пожертвовать</a>
-      <a href="#">Подать записку</a>
-      <a href="#">Заказать молебен</a>
-      <a href="#">Стать волонтёром</a>
-      <a href="#">Реквизиты для перевода</a>
     </div>
   </div>
-  <div class="foot-bottom">
-    <span>© 1872–2026 МПРПО Войсковой Собор Александра Невского. Краснодарская епархия Русской Православной Церкви.</span>
-    <span>Положение о персональных данных · Политика конфиденциальности</span>
+</section>
+
+<section class="cc-section cc-section--ink" style="text-align: center;">
+  <div class="cc-container cc-container--narrow">
+    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>Спасибо</span></p>
+    <h2 style="color: var(--color-paper);">Каждое пожертвование — это вклад в дело общей молитвы</h2>
+    <p style="color: var(--color-gold-pale); font-family: var(--font-display); font-size: var(--text-md); margin-top: var(--space-4); max-width: 50ch; margin-inline: auto;">
+      Все жертвователи поминаются на проскомидии в воскресной литургии. По вашему желанию имена могут быть включены в постоянное поминовение.
+    </p>
+    <div style="margin-top: var(--space-8); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center;">
+      <a class="cc-btn" href="prayer-requests.html">Заказать поминовение</a>
+      <a class="cc-btn cc-btn--outline" href="contacts.html" style="border-color: var(--color-gold-pale); color: var(--color-paper);">Связаться с приходом</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="cc-footer">
+  <div class="cc-container">
+    <div class="cc-footer__grid">
+      <div class="cc-footer__brand">
+        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true" style="color: var(--color-gold);"><g fill="none" stroke="currentColor" stroke-linecap="round"><g stroke-width="1.6"><line x1="32" y1="8" x2="32" y2="56"/><line x1="22" y1="20" x2="42" y2="20"/><line x1="20" y1="14" x2="44" y2="14"/><line x1="22" y1="44" x2="42" y2="40"/></g></g></svg>
+        <p class="cc-footer__brand-text">Войсковой собор<br>святого благоверного князя<br><em>Александра Невского</em></p>
+        <p class="cc-footer__quote">«Не в силе Бог, а в&nbsp;правде»</p>
+      </div>
+      <div class="cc-footer__col"><h3>Навигация</h3><ul><li><a href="schedule.html">Расписание богослужений</a></li><li><a href="prayer-requests.html">Заказ треб</a></li><li><a href="donate.html">Пожертвование</a></li><li><a href="about.html">О соборе</a></li><li><a href="history.html">Летопись</a></li><li><a href="clergy.html">Духовенство</a></li></ul></div>
+      <div class="cc-footer__col"><h3>Жизнь прихода</h3><ul><li><a href="parish-life.html">Хор собора</a></li><li><a href="parish-life.html">Воскресная школа</a></li><li><a href="parish-life.html">Сестричество</a></li><li><a href="parish-life.html">Молодёжь Невского</a></li><li><a href="icons.html">Святыни</a></li><li><a href="news.html">Новости</a></li></ul></div>
+      <div class="cc-footer__col">
+        <h3>Контакты</h3>
+        <div class="cc-footer__contact-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>350063, Краснодар,<br>ул. Постовая, 26</span></div>
+        <div class="cc-footer__contact-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><a href="tel:+78612620020">+7 (861) 262‑00‑20</a><br><a href="tel:+79183159413">+7 (918) 315‑94‑13</a></span></div>
+        <div class="cc-footer__contact-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a></div>
+        <div class="cc-footer__social">
+          <a href="https://vk.com/voyskovoysoborkrasnodar" target="_blank" rel="noopener" aria-label="ВКонтакте"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.78 16.5c.4 0 .54-.27.53-.62-.05-1.7.65-2.66 1.83-1.5 1.31 1.3 1.59 2.12 3.14 2.12h2.78c.78 0 1.04-.27.81-.91-.7-1.96-3.96-3.27-3.83-3.5.86-1.51 3.95-4.97 3.95-6.36 0-.36-.27-.5-.7-.5h-2.78c-.62 0-.83.16-1.05.53-.66 1.13-2.51 4.34-3.4 4.34-.4 0-.59-.42-.59-.92V5.7c0-.69-.05-.95-.7-.95H8.18c-.6 0-.86.27-.86.62 0 .69 1.03.7 1.03 2.62v3.16c0 .85-.06 1.05-.4 1.05-.95 0-3.16-3.84-4.36-7.85-.18-.6-.31-.65-1.04-.65H.7C.04 3.7 0 3.95 0 4.27c0 .57 1.04 4.97 4.13 9.55C6.31 16.83 9.16 16.5 10.96 16.5h1.82z"/></svg></a>
+          <a href="https://t.me/alexnewsobor" target="_blank" rel="noopener" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.55 8.16-1.86 8.78c-.14.62-.51.78-1.04.49l-2.87-2.12-1.39 1.34c-.15.15-.28.28-.58.28l.21-2.93 5.34-4.83c.23-.21-.05-.32-.36-.12L9.4 13.6l-2.84-.89c-.62-.19-.63-.62.13-.92l11.07-4.27c.51-.19.96.12.79.93z"/></svg></a>
+          <a href="mailto:nevskiy-sobor@mail.ru" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="cc-footer__bottom">
+      <div>© <span data-cc-year>2026</span> · Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г.&nbsp;Краснодара</div>
+      <div class="cc-footer__legal"><span>ИНН 2309091590</span><span>ОГРН 1052335002521</span></div>
+    </div>
   </div>
 </footer>
 
-<!-- ====== MOBILE STICKY DONATE BAR ====== -->
-<div class="mobile-bar">
-  <button id="mobileDonate">Пожертвовать <span class="amount">500 ₽</span></button>
-</div>
-
-<script>
-  // ====== AMOUNT ======
-  const qa = document.getElementById('qa');
-  const customAmount = document.getElementById('customAmount');
-  const btnAmount = document.getElementById('btnAmount');
-  const mobileAmount = document.querySelector('.mobile-bar .amount');
-  let currentAmount = 500;
-
-  function formatAmount(n){
-    return n.toLocaleString('ru-RU').replace(/,/g, '\u00A0') + ' ₽';
-  }
-  function setAmount(n){
-    currentAmount = n;
-    btnAmount.textContent = formatAmount(n);
-    if(mobileAmount) mobileAmount.textContent = formatAmount(n);
-  }
-
-  qa.addEventListener('click', e=>{
-    const b = e.target.closest('.qa-btn');
-    if(!b) return;
-    qa.querySelectorAll('.qa-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    customAmount.value = '';
-    setAmount(parseInt(b.dataset.amount, 10));
-    // ripple
-    const r = document.createElement('span');
-    r.className = 'ripple';
-    const rect = b.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    r.style.width = r.style.height = size + 'px';
-    r.style.left = (e.clientX - rect.left - size/2) + 'px';
-    r.style.top = (e.clientY - rect.top - size/2) + 'px';
-    b.appendChild(r);
-    setTimeout(()=>r.remove(), 600);
-  });
-
-  customAmount.addEventListener('input', e=>{
-    let v = e.target.value.replace(/[^\d]/g, '');
-    if(v){
-      e.target.value = parseInt(v,10).toLocaleString('ru-RU').replace(/,/g, '\u00A0');
-      qa.querySelectorAll('.qa-btn').forEach(x=>x.classList.remove('active'));
-      setAmount(parseInt(v, 10));
-    } else {
-      e.target.value = '';
-    }
-  });
-
-  // ====== RADIO LIST ======
-  document.querySelectorAll('#purposeList .radio-row').forEach(row=>{
-    row.addEventListener('click', ()=>{
-      document.querySelectorAll('#purposeList .radio-row').forEach(r=>r.classList.remove('checked'));
-      row.classList.add('checked');
-      row.querySelector('input').checked = true;
-    });
-  });
-
-  // ====== CHECKBOXES ======
-  document.querySelectorAll('.check-row').forEach(row=>{
-    row.addEventListener('click', e=>{
-      e.preventDefault();
-      const inp = row.querySelector('input');
-      inp.checked = !inp.checked;
-      row.classList.toggle('checked', inp.checked);
-    });
-  });
-
-  // ====== TABS ======
-  document.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click', ()=>{
-      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
-      t.classList.add('active');
-      document.querySelector('[data-panel="'+t.dataset.tab+'"]').classList.add('active');
-    });
-  });
-
-  // ====== FAQ ======
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click', ()=> q.parentElement.classList.toggle('open'));
-  });
-
-  // ====== ALLOCATION SCROLL ANIM ======
-  const allocGrid = document.getElementById('allocGrid');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        allocGrid.classList.add('in-view');
-        io.disconnect();
-      }
-    });
-  }, {threshold: 0.25});
-  io.observe(allocGrid);
-
-  // ====== COPY ======
-  document.getElementById('copyBtn').addEventListener('click', ()=>{
-    const rows = document.querySelectorAll('#credsTable .row');
-    let txt = '';
-    rows.forEach(r=>{
-      const k = r.querySelector('.k').textContent.trim();
-      const v = r.querySelector('.v').textContent.trim();
-      txt += k + ': ' + v + '\n';
-    });
-    navigator.clipboard?.writeText(txt);
-    const lbl = document.getElementById('copyLabel');
-    const orig = lbl.textContent;
-    lbl.textContent = 'Скопировано ✓';
-    setTimeout(()=> lbl.textContent = orig, 1800);
-  });
-
-  // ====== PULSE ======
-  setTimeout(()=>{
-    document.getElementById('submitBtn').classList.add('pulse-once');
-  }, 3000);
-</script>
-
-
-</body></html>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

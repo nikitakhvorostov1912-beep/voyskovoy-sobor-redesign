@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Летопись собора — Войсковой собор Александра Невского</title>
-<meta name="description" content="История Войскового собора Александра Невского в Краснодаре: закладка в 1853 году, освящение в 1872, разрушение в советский период, воссоздание и Великое освящение в 2006 году.">
+<title>О соборе — Войсковой собор Александра Невского</title>
+<meta name="description" content="Войсковой собор Александра Невского в Краснодаре: кафедральный храм Кубанского казачьего войска, архитектура, богослужебная жизнь, воскресная школа, хор, сестричество.">
 <meta name="theme-color" content="#1a1f2e">
 
 <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
 <link rel="apple-touch-icon" href="assets/images/icons/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="canonical" href="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/history.html">
+<link rel="canonical" href="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/about.html">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Летопись собора — Войсковой собор Александра Невского">
-<meta property="og:description" content="История собора с 1853 по 2006 год: закладка братьями Черниками, освящение, разрушение и возрождение.">
+<meta property="og:title" content="О соборе — Войсковой собор Александра Невского">
+<meta property="og:description" content="Кафедральный храм Кубанского казачьего войска. Архитектура, богослужебная и приходская жизнь.">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Войсковой собор Александра Невского">
-<meta property="og:url" content="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/history.html">
+<meta property="og:url" content="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/about.html">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,57 +31,72 @@
 <link rel="stylesheet" href="assets/css/layout.css">
 
 <style>
-.cc-timeline {
-  list-style: none;
-  max-width: 720px;
-  margin-inline: auto;
-  padding: 0;
+.cc-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-10);
 }
-.cc-timeline li {
-  position: relative;
-  padding-left: 100px;
-  padding-bottom: var(--space-8);
-  border-left: 2px solid var(--color-gold);
-  margin-left: 80px;
-}
-.cc-timeline li:last-child { padding-bottom: 0; }
-.cc-timeline li::before {
-  content: '';
-  position: absolute;
-  left: -7px; top: 4px;
-  width: 12px; height: 12px;
-  background: var(--color-blood);
-  border: 2px solid var(--color-gold);
-  border-radius: 50%;
-}
-.cc-timeline time {
-  position: absolute;
-  left: -180px;
-  top: 0;
-  width: 80px;
-  text-align: right;
+.cc-stat { text-align: center; }
+.cc-stat__value {
   font-family: var(--font-display);
+  font-size: var(--text-3xl);
   font-weight: 700;
-  font-size: var(--text-xl);
+  color: var(--color-blood);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+.cc-stat__label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.cc-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--duration) var(--ease);
+}
+.cc-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+.cc-feature-card__icon {
+  width: 48px; height: 48px;
+  color: var(--color-blood);
+  margin-bottom: var(--space-2);
+}
+.cc-feature-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+.cc-feature-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  flex: 1;
+}
+.cc-feature-card__arrow {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--color-blood);
 }
-.cc-timeline strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  margin-bottom: var(--space-2);
-  color: var(--color-text);
-}
-.cc-timeline p {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-  margin: 0;
-}
-@media (max-width: 720px) {
-  .cc-timeline li { padding-left: 24px; margin-left: 0; }
-  .cc-timeline time { position: static; display: block; width: auto; text-align: left; margin-bottom: var(--space-1); }
-}
+.cc-feature-card__arrow::after { content: ' →'; transition: transform var(--duration) var(--ease); display: inline-block; }
+.cc-feature-card:hover .cc-feature-card__arrow::after { transform: translateX(4px); }
 </style>
 
 <script type="application/ld+json">
@@ -89,7 +104,8 @@
   "@context": "https://schema.org",
   "@type": "Church",
   "name": "Войсковой собор святого благоверного князя Александра Невского",
-  "description": "Кафедральный собор Кубанского казачьего войска, заложенный в 1853 году и освящённый в 2006 году после воссоздания.",
+  "alternateName": "Собор Александра Невского",
+  "description": "Кафедральный собор Кубанского казачьего войска. Кафедра Екатеринодарской и Кубанской епархии Русской Православной Церкви.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "ул. Постовая, 26",
@@ -97,9 +113,13 @@
     "postalCode": "350063",
     "addressCountry": "RU"
   },
+  "geo": { "@type": "GeoCoordinates", "latitude": 45.0148, "longitude": 38.9712 },
+  "telephone": ["+7-861-262-00-20", "+7-918-315-94-13"],
+  "email": "nevskiy-sobor@mail.ru",
+  "openingHours": "Mo-Su 07:00-19:00",
+  "url": "https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/about.html",
   "foundingDate": "1853",
-  "religiousAffiliation": "Russian Orthodox Church",
-  "url": "https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/history.html"
+  "religiousAffiliation": "Russian Orthodox Church"
 }
 </script>
 </head>
@@ -134,8 +154,8 @@
       <ul class="cc-nav__list">
         <li><a class="cc-nav__link" href="schedule.html">Расписание</a></li>
         <li><a class="cc-nav__link" href="prayer-requests.html">Заказ треб</a></li>
-        <li><a class="cc-nav__link" href="about.html">О соборе</a></li>
-        <li><a class="cc-nav__link" href="history.html" aria-current="page">Летопись</a></li>
+        <li><a class="cc-nav__link" href="about.html" aria-current="page">О соборе</a></li>
+        <li><a class="cc-nav__link" href="history.html">Летопись</a></li>
         <li><a class="cc-nav__link" href="clergy.html">Духовенство</a></li>
         <li><a class="cc-nav__link" href="parish-life.html">Жизнь прихода</a></li>
         <li><a class="cc-nav__link" href="news.html">Новости</a></li>
@@ -153,86 +173,101 @@
 
 <section class="cc-page-header">
   <div class="cc-container cc-container--narrow">
-    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>1853 → 2006</span></p>
-    <h1>Летопись <em>собора</em></h1>
+    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>Кафедральный храм Кубани</span></p>
+    <h1>О <em>соборе</em></h1>
     <blockquote class="cc-quote">
-      «Где двое или трое собраны во имя Моё, там Я посреди них»
-      <cite>— Мф 18:20</cite>
+      «Дом Мой домом молитвы наречется»
+      <cite>— Мф 21:13</cite>
     </blockquote>
   </div>
 </section>
 
 <section class="cc-section">
   <div class="cc-container cc-container--narrow">
-    <p class="cc-drop-cap">1 апреля 1853 года Кубанский казачий атаман Яков Кухаренко произнёс слова: «Да благословит Господь Бог начатое строительство!» — и положил основание главному храму Кубанского казачьего войска. Авторы проекта — родные братья Иван и Елисей Черники, кубанские казаки, обучавшиеся в Санкт-Петербургской Императорской Академии художеств. Они принесли на родную Кубань академический язык русского зодчества и придали ему черты строгой воинской торжественности.</p>
+    <p class="cc-drop-cap">Войсковой собор святого благоверного князя Александра Невского — кафедра Кубанского казачьего войска и один из главных храмов Екатеринодарской и Кубанской епархии Русской Православной Церкви. Здесь совершаются войсковые молебны, освящаются казачьи знамёна и кресты, ежедневно возносится молитва о Кубани и её людях.</p>
 
-    <p>Возведение собора заняло девятнадцать лет. Освящение храма состоялось в 1872 году. Высота собора достигла сорока трёх метров; он стал главной вертикалью Екатеринодара и духовным сердцем Кубанского казачьего войска. Под его сводами совершались войсковые молебны, освящались знамёна и кресты, провожали и встречали казачьи полки.</p>
+    <p>Воссоздан собор по чертежам исторического храма братьев Ивана и Елисея Черников. Высота сооружения — сорок три метра. Пятиглавая композиция: центральный купол, увенчанный крестом, и четыре малых купола по сторонам света. Основное здание прорезано пятью оконными рядами в форме арки, что придаёт его облику строгую торжественность и одновременно — открытость свету.</p>
 
-    <p>Советский период оказался для храма временем испытания. В 1930-х годах собор был закрыт; впоследствии здание разрушено. На месте, где совершалась бескровная Жертва, надолго замерла молитвенная жизнь — но не пресеклась память.</p>
+    <p>Богослужебная жизнь собора непрерывна. Ежедневно совершается Божественная литургия в 8:00. По воскресеньям служат две литургии — раннюю в 7:00 и позднюю в 9:00. Накануне воскресных дней и великих праздников в 17:00 совершается всенощное бдение. В храме непрерывно читается Псалтирь и совершаются молебны, панихиды и водоосвящение.</p>
 
-    <p>В 2000 году был объявлен конкурс проектов на воссоздание собора. Победил проект кубанского архитектора Валерия Тихоновича Головерова, бережно следовавший историческим чертежам братьев Черников. 17 декабря 2003 года совершилась торжественная закладка восстанавливаемого храма. 15 июня 2005 года Святейший Патриарх Московский и всея Руси Алексий II освятил кресты и колокола собора.</p>
-
-    <p>28 мая 2006 года Великое освящение восстановленного собора совершил митрополит Смоленский и Калининградский Кирилл — ныне Святейший Патриарх Московский и всея Руси. С этого дня в храме непрерывно совершаются богослужения, и собор вновь стал кафедрой Кубанского казачьего войска и одним из главных храмов Екатеринодарской и Кубанской епархии.</p>
+    <p>Приход собора живёт деятельной молитвенной и просветительской жизнью. При храме работает воскресная школа «Русский щит», действует церковный хор, сестричество ухаживает за больными и нуждающимися, молодёжное движение собирает на огласительные и богословские беседы, идёт постоянная работа с Кубанским казачеством — духовная поддержка казачьих подразделений и казачьих семей.</p>
   </div>
 </section>
 
 <section class="cc-section cc-section--paper-dark">
   <div class="cc-container">
-    <div style="text-align: center; margin-bottom: var(--space-12);" data-cc-reveal>
-      <p class="cc-kicker cc-eyebrow">Хронология</p>
-      <h2>Ключевые даты</h2>
+    <div style="text-align: center; margin-bottom: var(--space-10);" data-cc-reveal>
+      <p class="cc-kicker cc-eyebrow">Жизнь храма</p>
+      <h2>Что у нас есть</h2>
     </div>
 
-    <ol class="cc-timeline" data-cc-reveal>
-      <li>
-        <time>1853</time>
-        <strong>Закладка храма</strong>
-        <p>1 апреля атаман Яков Кухаренко благословляет начало строительства. Авторы проекта — братья Иван и Елисей Черники.</p>
-      </li>
-      <li>
-        <time>1872</time>
-        <strong>Освящение</strong>
-        <p>Завершено 19-летнее строительство. Главный храм Кубанского казачьего войска. Высота — 43 метра.</p>
-      </li>
-      <li>
-        <time>1930-е</time>
-        <strong>Закрытие</strong>
-        <p>В советский период собор закрыт и впоследствии разрушен.</p>
-      </li>
-      <li>
-        <time>2000</time>
-        <strong>Конкурс на воссоздание</strong>
-        <p>Победил проект архитектора В. Т. Головерова.</p>
-      </li>
-      <li>
-        <time>2003</time>
-        <strong>Закладка воссоздаваемого</strong>
-        <p>17 декабря митрополит Исидор совершает закладку.</p>
-      </li>
-      <li>
-        <time>2005</time>
-        <strong>Освящение крестов и колоколов</strong>
-        <p>15 июня — Святейший Патриарх Алексий II.</p>
-      </li>
-      <li>
-        <time>2006</time>
-        <strong>Великое освящение</strong>
-        <p>28 мая — митрополит Кирилл (ныне Святейший Патриарх) совершает освящение восстановленного собора.</p>
-      </li>
-    </ol>
+    <div class="cc-grid cc-grid--auto" style="--cc-grid-min: 260px;">
+      <a class="cc-feature-card" href="icons.html" data-cc-reveal>
+        <svg class="cc-feature-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><line x1="12" y1="3" x2="12" y2="9"/><line x1="9" y1="6" x2="15" y2="6"/><circle cx="12" cy="14" r="3"/></svg>
+        <h3>Святыни собора</h3>
+        <p>Чтимые иконы, антиминс Великого освящения 2006 года, колокола и кресты, освящённые Святейшим Патриархом Алексием II.</p>
+        <span class="cc-feature-card__arrow">Подробнее</span>
+      </a>
+
+      <a class="cc-feature-card" href="parish-life.html" data-cc-reveal>
+        <svg class="cc-feature-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <h3>Хор собора</h3>
+        <p>Регент — протодиакон Максим Кадуров. Богослужебное пение по уставу. Большие и малые торжества — праздничным составом.</p>
+        <span class="cc-feature-card__arrow">Послушать</span>
+      </a>
+
+      <a class="cc-feature-card" href="parish-life.html" data-cc-reveal>
+        <svg class="cc-feature-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <h3>Воскресная школа «Русский щит»</h3>
+        <p>Закон Божий, церковное пение, история Отечества и казачества для детей и взрослых. Занятия — каждое воскресенье.</p>
+        <span class="cc-feature-card__arrow">Записаться</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cc-section">
+  <div class="cc-container">
+    <div style="text-align: center; margin-bottom: var(--space-10);" data-cc-reveal>
+      <p class="cc-kicker cc-eyebrow">Собор в цифрах</p>
+      <h2>Главные факты</h2>
+    </div>
+
+    <div class="cc-stats" data-cc-reveal>
+      <div class="cc-stat">
+        <div class="cc-stat__value">1853</div>
+        <div class="cc-stat__label">Заложен</div>
+      </div>
+      <div class="cc-stat">
+        <div class="cc-stat__value">2006</div>
+        <div class="cc-stat__label">Освящён</div>
+      </div>
+      <div class="cc-stat">
+        <div class="cc-stat__value">43&nbsp;м</div>
+        <div class="cc-stat__label">Высота</div>
+      </div>
+      <div class="cc-stat">
+        <div class="cc-stat__value">5</div>
+        <div class="cc-stat__label">Куполов</div>
+      </div>
+      <div class="cc-stat">
+        <div class="cc-stat__value">ККВ</div>
+        <div class="cc-stat__label">Кафедра войска</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="cc-section cc-section--ink" style="text-align: center;">
   <div class="cc-container cc-container--narrow">
-    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>Приходите помолиться</span></p>
-    <h2 style="color: var(--color-paper);">Увидеть собор и помолиться у его святынь</h2>
+    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>Адрес собора</span></p>
+    <h2 style="color: var(--color-paper);">Приезжайте на богослужение</h2>
     <p style="color: var(--color-gold-pale); font-family: var(--font-display); font-size: var(--text-md); margin-top: var(--space-4); max-width: 50ch; margin-inline: auto;">
-      История собора продолжается каждый день — в утренней литургии, во всенощном бдении, в молитве у икон Александра Невского и Казанской Божией Матери.
+      Краснодар, ул. Постовая, дом 26. Храм открыт ежедневно с&nbsp;7:00 до&nbsp;19:00. Утренняя литургия — в&nbsp;8:00, всенощное бдение по канунам праздников — в&nbsp;17:00.
     </p>
     <div style="margin-top: var(--space-8); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center;">
       <a class="cc-btn" href="schedule.html">Расписание богослужений</a>
-      <a class="cc-btn cc-btn--outline" href="contacts.html" style="border-color: var(--color-gold-pale); color: var(--color-paper);">Адрес и проезд</a>
+      <a class="cc-btn cc-btn--outline" href="contacts.html" style="border-color: var(--color-gold-pale); color: var(--color-paper);">Карта и проезд</a>
     </div>
   </div>
 </section>

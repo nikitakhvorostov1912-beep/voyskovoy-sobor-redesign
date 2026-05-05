@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заказ треб — Войсковой собор Александра Невского</title>
+<meta name="description" content="Заказать требу онлайн: записки о здравии и упокоении, молебны, сорокоусты, панихиды, годовое поминовение, крещение, венчание, освящение жилища.">
+<meta name="theme-color" content="#1a1f2e">
+<link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
+<link rel="apple-touch-icon" href="assets/images/icons/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="canonical" href="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/prayer-requests.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Заказ треб — Войсковой собор Александра Невского">
+<meta property="og:description" content="Записки, молебны, сорокоусты, панихиды.">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/prayer-requests.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Spectral:ital,wght@0,400;0,500;0,600&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<style>
+.cc-prayer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+.cc-prayer-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: all var(--duration) var(--ease);
+}
+.cc-prayer-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-sm);
+}
+.cc-prayer-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.cc-prayer-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+.cc-prayer-card__price {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-blood);
+}
+.cc-prayer-card__price small {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.cc-faq { display: grid; gap: var(--space-3); max-width: 720px; margin-inline: auto; }
+.cc-faq__item {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.cc-faq__item summary {
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-ink);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+.cc-faq__item summary::-webkit-details-marker { display: none; }
+.cc-faq__item summary::after {
+  content: '+';
+  color: var(--color-gold-deep);
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition: transform var(--duration) var(--ease);
+}
+.cc-faq__item[open] summary::after { transform: rotate(45deg); }
+.cc-faq__item__body {
+  padding: 0 var(--space-5) var(--space-5);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* Form modal — заполнение записки */
+.cc-form-narrow { max-width: 540px; }
+.cc-form-amount-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-paper-dark);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-5);
+}
+.cc-form-amount-display__label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+.cc-form-amount-display__value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-blood);
+}
+.cc-success-block {
+  text-align: center;
+  padding: var(--space-6);
+  background: rgba(74, 124, 89, 0.08);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius);
+}
+.cc-success-block svg { color: var(--color-success); margin: 0 auto var(--space-3); }
+.cc-success-block h3 { color: var(--color-success); margin-bottom: var(--space-2); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Заказ треб",
+  "provider": { "@type": "Church", "name": "Войсковой собор Александра Невского" },
+  "areaServed": "Краснодар",
+  "url": "https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/prayer-requests.html"
+}
+</script>
+</head>
+<body>
+<a class="cc-skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="cc-header" data-cc-header>
+  <div class="cc-container cc-header__inner">
+    <a class="cc-brand" href="index.html" aria-label="На главную страницу">
+      <svg class="cc-brand__sigil" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" style="color: var(--color-gold)"><g stroke-width="1.6"><line x1="32" y1="8" x2="32" y2="56"/><line x1="22" y1="20" x2="42" y2="20"/><line x1="20" y1="14" x2="44" y2="14"/><line x1="22" y1="44" x2="42" y2="40"/></g></g>
+      </svg>
+      <span><span class="cc-brand__name">Войсковой собор</span><span class="cc-brand__tagline">Александра Невского</span></span>
+    </a>
+    <button class="cc-nav-toggle" data-cc-nav-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav"><span class="cc-nav-toggle__bar"></span></button>
+    <nav class="cc-nav" id="primary-nav" data-cc-nav aria-label="Основное меню">
+      <ul class="cc-nav__list">
+        <li><a class="cc-nav__link" href="schedule.html">Расписание</a></li>
+        <li><a class="cc-nav__link" href="prayer-requests.html" aria-current="page">Заказ треб</a></li>
+        <li><a class="cc-nav__link" href="about.html">О соборе</a></li>
+        <li><a class="cc-nav__link" href="history.html">Летопись</a></li>
+        <li><a class="cc-nav__link" href="clergy.html">Духовенство</a></li>
+        <li><a class="cc-nav__link" href="parish-life.html">Жизнь прихода</a></li>
+        <li><a class="cc-nav__link" href="news.html">Новости</a></li>
+        <li><a class="cc-nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="cc-header__cta"><a class="cc-btn cc-btn--blood cc-btn--small" href="donate.html">Пожертвовать</a></div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="cc-page-header">
+  <div class="cc-container cc-page-header__inner">
+    <p class="cc-kicker cc-kicker--with-rules cc-kicker--gold cc-eyebrow"><span>Записки и поминовение</span></p>
+    <h1>Заказ <em>треб</em></h1>
+    <blockquote class="cc-quote" style="margin-top: var(--space-8);">
+      Помолитесь о близких — живых и усопших
+      <cite>— молитвенное поминовение</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="cc-section">
+  <div class="cc-container cc-container--narrow" style="text-align: center;" data-cc-reveal>
+    <p class="cc-drop-cap" style="text-align: left; font-size: var(--text-md);">Заказать требу можно на любого крещёного православного христианина. Имена записываются полным именем, данным в Святом Крещении, в родительном падеже (например: «Сергия», «Марии»). После заполнения формы заявка будет отправлена на адрес собора <strong>nevskiy-sobor@mail.ru</strong>; альтернативно её можно передать через Telegram-канал собора. Оплата — на месте в свечном киоске или по реквизитам пожертвований.</p>
+  </div>
+</section>
+
+<section class="cc-section cc-section--paper-dark cc-section--tight">
+  <div class="cc-container">
+    <div style="text-align: center; margin-bottom: var(--space-8);">
+      <p class="cc-kicker cc-eyebrow">Виды треб</p>
+      <h2>Выберите требу для заказа</h2>
+    </div>
+
+    <div class="cc-prayer-grid" data-cc-reveal>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Простая записка</div>
+        <p class="cc-prayer-card__desc">Поминовение «о здравии» или «о упокоении» на одной литургии. До 10 имён.</p>
+        <div class="cc-prayer-card__price">50 ₽<small>За одну записку</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Простая записка" data-cc-prayer-price="50 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Заказная записка</div>
+        <p class="cc-prayer-card__desc">Усиленное поминовение с поминанием каждого имени отдельно во время Проскомидии.</p>
+        <div class="cc-prayer-card__price">100 ₽<small>За одну записку</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Заказная записка" data-cc-prayer-price="100 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Молебен</div>
+        <p class="cc-prayer-card__desc">Молебное пение святому, благодарственное или просительное. Совершается после литургии.</p>
+        <div class="cc-prayer-card__price">100 ₽<small>До 10 имён</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Молебен" data-cc-prayer-price="100 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Панихида</div>
+        <p class="cc-prayer-card__desc">Заупокойное богослужение по усопшим. Совершается по субботам и в дни родительских поминовений.</p>
+        <div class="cc-prayer-card__price">50 ₽<small>До 10 имён</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Панихида" data-cc-prayer-price="50 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Сорокоуст о здравии</div>
+        <p class="cc-prayer-card__desc">Поминовение на 40 литургиях подряд. Особенно действенно в болезни, скорби, начинаниях.</p>
+        <div class="cc-prayer-card__price">160 ₽<small>На одно имя</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Сорокоуст о здравии" data-cc-prayer-price="160 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Сорокоуст о упокоении</div>
+        <p class="cc-prayer-card__desc">Поминовение усопшего на 40 литургиях подряд. Заказывается особенно в первые 40 дней.</p>
+        <div class="cc-prayer-card__price">160 ₽<small>На одно имя</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Сорокоуст о упокоении" data-cc-prayer-price="160 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Полугодовое поминовение</div>
+        <p class="cc-prayer-card__desc">Поминовение на каждой литургии в течение полугода (около 180 служб).</p>
+        <div class="cc-prayer-card__price">500 ₽<small>На одно имя</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Полугодовое поминовение" data-cc-prayer-price="500 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Годовое поминовение</div>
+        <p class="cc-prayer-card__desc">Ежедневное поминовение в течение года на каждой литургии собора.</p>
+        <div class="cc-prayer-card__price">1 000 ₽<small>На одно имя</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Годовое поминовение" data-cc-prayer-price="1 000 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Освящение жилища</div>
+        <p class="cc-prayer-card__desc">Освящение квартиры, дома, рабочего помещения. Священник приезжает по согласованию.</p>
+        <div class="cc-prayer-card__price">от 1 500 ₽<small>По договорённости</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Освящение жилища" data-cc-prayer-price="от 1 500 ₽">Заказать</button>
+      </div>
+
+      <div class="cc-prayer-card">
+        <div class="cc-prayer-card__name">Освящение автомобиля</div>
+        <p class="cc-prayer-card__desc">Освящение машины. Совершается в храме после литургии или по предварительной записи.</p>
+        <div class="cc-prayer-card__price">500 ₽<small>За один автомобиль</small></div>
+        <button class="cc-btn cc-btn--small cc-btn--full" data-cc-modal-open="prayer-form" data-cc-prayer-type="Освящение автомобиля" data-cc-prayer-price="500 ₽">Заказать</button>
+      </div>
+
+    </div>
+
+    <div class="cc-notice" style="max-width: 720px; margin-inline: auto; margin-top: var(--space-10);">
+      <strong>Крещение, венчание, отпевание</strong> совершаются по предварительной записи у настоятеля или в свечном киоске. Звоните: <a href="tel:+78612620020">+7 (861) 262-00-20</a> · <a href="tel:+79183159413">+7 (918) 315-94-13</a> (настоятель).
+    </div>
+  </div>
+</section>
+
+<section class="cc-section">
+  <div class="cc-container cc-container--narrow">
+    <div style="text-align: center; margin-bottom: var(--space-8);">
+      <p class="cc-kicker cc-eyebrow">Часто спрашивают</p>
+      <h2>Вопросы и ответы</h2>
+    </div>
+
+    <div class="cc-faq">
+      <details class="cc-faq__item">
+        <summary>Кого можно поминать в записке?</summary>
+        <div class="cc-faq__item__body">
+          В записке поминаются только крещёные православные христиане. Имена усопших, не отпетых православным чином, в записках не подаются. По таким можно домашне молиться или подать прошение об особом поминовении настоятелю.
+        </div>
+      </details>
+
+      <details class="cc-faq__item">
+        <summary>Как правильно написать имена?</summary>
+        <div class="cc-faq__item__body">
+          Имена пишутся полностью (не уменьшительно), в родительном падеже: «Сергия», «Марии», «Анны», «Иоанна». Не «Сергея», «Серёжи». Не указываются титулы и мирские звания, кроме особых: «болящего», «воина», «отрока», «младенца». Священство указывается: «прот.», «иер.», «архим.» и т.п.
+        </div>
+      </details>
+
+      <details class="cc-faq__item">
+        <summary>Что такое сорокоуст?</summary>
+        <div class="cc-faq__item__body">
+          Сорокоуст — поминовение на 40 Божественных литургиях подряд. Заказывается о здравии (особенно в болезни, скорбях, начинании дела) или о упокоении (особенно в первые 40 дней по преставлении, когда душа проходит мытарства).
+        </div>
+      </details>
+
+      <details class="cc-faq__item">
+        <summary>Когда можно заказать панихиду?</summary>
+        <div class="cc-faq__item__body">
+          Панихида совершается по усопшим в субботние дни (за исключением Великой Субботы), в дни родительских поминовений, в день памяти усопшего (3-й, 9-й, 40-й, годовщина), а также по особому прошению.
+        </div>
+      </details>
+
+      <details class="cc-faq__item">
+        <summary>Что делать после отправки заявки?</summary>
+        <div class="cc-faq__item__body">
+          После заполнения формы откроется ваш почтовый клиент с уже сформированным письмом. Просто отправьте его. Если почтовый клиент не настроен — воспользуйтесь кнопкой Telegram внизу или придите в свечной киоск собора с распечатанной запиской.
+        </div>
+      </details>
+
+      <details class="cc-faq__item">
+        <summary>Как оплатить?</summary>
+        <div class="cc-faq__item__body">
+          Оплата производится на месте в свечном киоске собора. Также можно сделать пожертвование онлайн на странице «<a href="donate.html">Пожертвование</a>» с указанием в назначении платежа: «За требу — [тип] — [имя]».
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     MODAL — форма заказа требы (3 шага в одной форме)
+     ============================================================ -->
+<div class="cc-modal" id="prayer-form" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="prayer-form-title">
+  <div class="cc-modal__inner cc-form-narrow">
+    <button class="cc-modal__close" data-cc-modal-close aria-label="Закрыть">×</button>
+    <p class="cc-kicker cc-eyebrow">Заявка на требу</p>
+    <h2 id="prayer-form-title" data-cc-prayer-title style="margin-bottom: var(--space-4);">—</h2>
+
+    <div class="cc-form-amount-display">
+      <span class="cc-form-amount-display__label">Стоимость</span>
+      <span class="cc-form-amount-display__value" data-cc-prayer-price>—</span>
+    </div>
+
+    <form data-cc-form="prayer" novalidate>
+      <input type="hidden" name="prayer_type" value="">
+
+      <div class="cc-field">
+        <label class="cc-label cc-label--required">О ком молимся</label>
+        <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+          <label class="cc-radio">
+            <input type="radio" name="order_type" value="о здравии" checked required>
+            <span>О здравии</span>
+          </label>
+          <label class="cc-radio">
+            <input type="radio" name="order_type" value="о упокоении">
+            <span>О упокоении</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cc-field">
+        <label class="cc-label cc-label--required" for="prayer-names">Имена (полностью, в родительном падеже)</label>
+        <p class="cc-help">Каждое имя — на новой строке. Только крещёные православные. До 10 имён в записке.</p>
+        <textarea class="cc-textarea" id="prayer-names" name="names" rows="6" required placeholder="Сергия&#10;Марии&#10;Иоанна младенца&#10;Анны болящей"></textarea>
+        <div class="cc-error-msg">Проверьте имена: одно имя на строку, в родительном падеже, кириллица, не более 4 слов в строке.</div>
+      </div>
+
+      <div class="cc-field cc-field--row">
+        <div>
+          <label class="cc-label cc-label--required" for="prayer-author">Ваше имя</label>
+          <input class="cc-input" id="prayer-author" name="author" type="text" required>
+          <div class="cc-error-msg">Введите имя</div>
+        </div>
+        <div>
+          <label class="cc-label" for="prayer-phone">Телефон</label>
+          <input class="cc-input" id="prayer-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__">
+        </div>
+      </div>
+
+      <div class="cc-field">
+        <label class="cc-label" for="prayer-note">Комментарий (необязательно)</label>
+        <textarea class="cc-textarea" id="prayer-note" name="note" rows="2" placeholder="Например: к воскресной литургии"></textarea>
+      </div>
+
+      <button class="cc-btn cc-btn--full cc-btn--large" type="submit">Отправить заявку</button>
+
+      <p class="cc-help" style="text-align: center; margin-top: var(--space-3);">
+        Откроется почтовый клиент с готовым письмом на nevskiy-sobor@mail.ru
+      </p>
+
+      <div class="cc-success-block" data-cc-form-success hidden style="margin-top: var(--space-6);">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 17 9"/></svg>
+        <h3>Заявка готова</h3>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
+          Если ваш почтовый клиент не открылся, отправьте заявку через Telegram
+        </p>
+        <p style="margin-top: var(--space-4);">
+          <a class="cc-btn cc-btn--small" data-cc-telegram-fallback href="https://t.me/alexnewsobor" target="_blank" rel="noopener">
+            Через Telegram
+          </a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="cc-footer">
+  <div class="cc-container">
+    <div class="cc-footer__grid">
+      <div class="cc-footer__brand">
+        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true" style="color: var(--color-gold);"><g fill="none" stroke="currentColor" stroke-linecap="round"><g stroke-width="1.6"><line x1="32" y1="8" x2="32" y2="56"/><line x1="22" y1="20" x2="42" y2="20"/><line x1="20" y1="14" x2="44" y2="14"/><line x1="22" y1="44" x2="42" y2="40"/></g></g></svg>
+        <p class="cc-footer__brand-text">Войсковой собор<br>святого благоверного князя<br><em>Александра Невского</em></p>
+        <p class="cc-footer__quote">«Не в силе Бог, а в&nbsp;правде»</p>
+      </div>
+      <div class="cc-footer__col"><h3>Навигация</h3><ul><li><a href="schedule.html">Расписание богослужений</a></li><li><a href="prayer-requests.html">Заказ треб</a></li><li><a href="donate.html">Пожертвование</a></li><li><a href="about.html">О соборе</a></li><li><a href="history.html">Летопись</a></li><li><a href="clergy.html">Духовенство</a></li></ul></div>
+      <div class="cc-footer__col"><h3>Жизнь прихода</h3><ul><li><a href="parish-life.html">Хор собора</a></li><li><a href="parish-life.html">Воскресная школа</a></li><li><a href="parish-life.html">Сестричество</a></li><li><a href="parish-life.html">Молодёжь Невского</a></li><li><a href="icons.html">Святыни</a></li><li><a href="news.html">Новости</a></li></ul></div>
+      <div class="cc-footer__col">
+        <h3>Контакты</h3>
+        <div class="cc-footer__contact-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>350063, Краснодар,<br>ул. Постовая, 26</span></div>
+        <div class="cc-footer__contact-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><a href="tel:+78612620020">+7 (861) 262‑00‑20</a><br><a href="tel:+79183159413">+7 (918) 315‑94‑13</a></span></div>
+        <div class="cc-footer__contact-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a></div>
+        <div class="cc-footer__social">
+          <a href="https://vk.com/voyskovoysoborkrasnodar" target="_blank" rel="noopener" aria-label="ВКонтакте"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.78 16.5c.4 0 .54-.27.53-.62-.05-1.7.65-2.66 1.83-1.5 1.31 1.3 1.59 2.12 3.14 2.12h2.78c.78 0 1.04-.27.81-.91-.7-1.96-3.96-3.27-3.83-3.5.86-1.51 3.95-4.97 3.95-6.36 0-.36-.27-.5-.7-.5h-2.78c-.62 0-.83.16-1.05.53-.66 1.13-2.51 4.34-3.4 4.34-.4 0-.59-.42-.59-.92V5.7c0-.69-.05-.95-.7-.95H8.18c-.6 0-.86.27-.86.62 0 .69 1.03.7 1.03 2.62v3.16c0 .85-.06 1.05-.4 1.05-.95 0-3.16-3.84-4.36-7.85-.18-.6-.31-.65-1.04-.65H.7C.04 3.7 0 3.95 0 4.27c0 .57 1.04 4.97 4.13 9.55C6.31 16.83 9.16 16.5 10.96 16.5h1.82z"/></svg></a>
+          <a href="https://t.me/alexnewsobor" target="_blank" rel="noopener" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.55 8.16-1.86 8.78c-.14.62-.51.78-1.04.49l-2.87-2.12-1.39 1.34c-.15.15-.28.28-.58.28l.21-2.93 5.34-4.83c.23-.21-.05-.32-.36-.12L9.4 13.6l-2.84-.89c-.62-.19-.63-.62.13-.92l11.07-4.27c.51-.19.96.12.79.93z"/></svg></a>
+          <a href="mailto:nevskiy-sobor@mail.ru" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="cc-footer__bottom">
+      <div>© <span data-cc-year>2026</span> · Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г.&nbsp;Краснодара</div>
+      <div class="cc-footer__legal"><span>ИНН 2309091590</span><span>ОГРН 1052335002521</span></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

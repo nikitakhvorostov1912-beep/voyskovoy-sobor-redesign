@@ -1,0 +1,13 @@
+{
+  "name": "Войсковой собор Александра Невского",
+  "short_name": "Собор Невского",
+  "description": "Сайт Войскового собора святого благоверного князя Александра Невского в Краснодаре",
+  "start_url": "/voyskovoy-sobor-redesign/",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#1a1f2e",
+  "lang": "ru",
+  "icons": [
+    { "src": "assets/images/icons/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" }
+  ]
+}
