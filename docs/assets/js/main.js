@@ -1,265 +1,264 @@
 /* ============================================================
-   Главный bootstrap. Инициирует подмодули по data-cc-* атрибутам.
+   Войсковой Собор Александра Невского — общий JS
+   Используется на всех страницах. Каждый блок инициализируется
+   только если его DOM-элементы найдены.
    ============================================================ */
 (function () {
   'use strict';
 
-  /* ---------- Sticky header shadow ---------- */
-  const header = document.querySelector('[data-cc-header]');
-  if (header) {
-    const update = () => {
-      header.dataset.scrolled = window.scrollY > 8 ? 'true' : 'false';
-    };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
+  // ─── 1. MOBILE NAV DRAWER ───────────────────────────────────
+  const trigger = document.querySelector('.menu-trigger');
+  const drawer = document.querySelector('.mobile-drawer');
+  if (trigger && drawer) {
+    const closeBtn = drawer.querySelector('.close');
+    const open = () => { drawer.classList.add('open'); document.body.style.overflow = 'hidden'; };
+    const close = () => { drawer.classList.remove('open'); document.body.style.overflow = ''; };
+    trigger.addEventListener('click', open);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
-  /* ---------- Mobile nav ---------- */
-  const toggle = document.querySelector('[data-cc-nav-toggle]');
-  const nav = document.querySelector('[data-cc-nav]');
-  if (toggle && nav) {
-    const close = () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      nav.dataset.open = 'false';
+  // ─── 2. COPY-TO-CLIPBOARD ──────────────────────────────────
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(ta);
+      }
+      btn.textContent = 'Скопировано ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+
+  // ─── 3. FAQ ACCORDION ──────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      if (!item) return;
+      item.classList.toggle('open');
+    });
+  });
+
+  // ─── 4. TABS (data-tab → data-tab-panel) ───────────────────
+  document.querySelectorAll('.tabs').forEach(group => {
+    const tabs = [...group.querySelectorAll('.tab')];
+    const panels = [...(group.parentElement || document).querySelectorAll('.tab-panel')];
+    tabs.forEach(t => {
+      t.addEventListener('click', () => {
+        const id = t.dataset.tab;
+        tabs.forEach(x => x.classList.toggle('active', x === t));
+        panels.forEach(p => p.classList.toggle('active', p.dataset.tabPanel === id));
+      });
+    });
+  });
+
+  // ─── 5. RADIO ROWS (visual sync) ───────────────────────────
+  document.querySelectorAll('.radio-row').forEach(row => {
+    const input = row.querySelector('input[type="radio"]');
+    if (!input) return;
+    row.addEventListener('click', () => {
+      const name = input.name;
+      document.querySelectorAll(`.radio-row input[name="${name}"]`).forEach(other => {
+        const r = other.closest('.radio-row');
+        if (r) r.classList.remove('checked');
+      });
+      input.checked = true;
+      row.classList.add('checked');
+    });
+    if (input.checked) row.classList.add('checked');
+  });
+
+  // ─── 6. CHECK ROWS (visual sync) ───────────────────────────
+  document.querySelectorAll('.check-row').forEach(row => {
+    const input = row.querySelector('input[type="checkbox"]');
+    if (!input) return;
+    row.addEventListener('click', e => {
+      if (e.target.tagName === 'A') return;
+      input.checked = !input.checked;
+      row.classList.toggle('checked', input.checked);
+    });
+    if (input.checked) row.classList.add('checked');
+  });
+
+  // ─── 7. QUICK-AMOUNT BUTTONS ───────────────────────────────
+  document.querySelectorAll('.qa-grid').forEach(grid => {
+    const buttons = [...grid.querySelectorAll('.qa-btn')];
+    const otherSelector = grid.dataset.otherInput || '#qa-other';
+    const otherInput = document.querySelector(otherSelector);
+    const submitAmount = document.querySelector('[data-submit-amount]');
+    const updateSubmit = (val) => { if (submitAmount) submitAmount.textContent = (val || '0') + ' ₽'; };
+    buttons.forEach(b => {
+      b.addEventListener('click', () => {
+        buttons.forEach(x => x.classList.toggle('active', x === b));
+        if (otherInput) otherInput.value = '';
+        updateSubmit(b.dataset.amount);
+      });
+    });
+    if (otherInput) {
+      otherInput.addEventListener('input', () => {
+        buttons.forEach(x => x.classList.remove('active'));
+        updateSubmit(otherInput.value);
+      });
+    }
+  });
+
+  // ─── 8. MODAL OPEN/CLOSE ───────────────────────────────────
+  const modalBackdrop = document.querySelector('.modal-backdrop');
+  if (modalBackdrop) {
+    const closeModal = () => {
+      modalBackdrop.classList.remove('open');
       document.body.style.overflow = '';
     };
-    const open = () => {
-      toggle.setAttribute('aria-expanded', 'true');
-      nav.dataset.open = 'true';
+    const openModal = (opts) => {
+      const o = opts || {};
+      modalBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
+      if (o.title) {
+        const t = modalBackdrop.querySelector('[data-modal-title]');
+        if (t) t.textContent = o.title;
+      }
+      if (o.price) {
+        const p = modalBackdrop.querySelector('[data-modal-price]');
+        if (p) p.textContent = o.price;
+      }
+      if (o.type) {
+        const ti = modalBackdrop.querySelector('input[name="type"]');
+        if (ti) ti.value = o.type;
+      }
     };
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      isOpen ? close() : open();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close();
-    });
-    nav.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') close();
+    modalBackdrop.querySelectorAll('.modal-close').forEach(c => c.addEventListener('click', closeModal));
+    modalBackdrop.addEventListener('click', e => { if (e.target === modalBackdrop) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.querySelectorAll('[data-open-modal]').forEach(opener => {
+      opener.addEventListener('click', () => {
+        openModal({
+          title: opener.dataset.title,
+          price: opener.dataset.price,
+          type: opener.dataset.type,
+        });
+      });
     });
   }
 
-  /* ---------- Сurrent year в footer ---------- */
-  const yearEl = document.querySelector('[data-cc-year]');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-  /* ---------- Copy-to-clipboard кнопки ---------- */
-  document.querySelectorAll('[data-cc-copy]').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      const target = btn.getAttribute('data-cc-copy');
-      const value = (document.getElementById(target)?.textContent || '').trim();
-      if (!value) return;
-      try {
-        await navigator.clipboard.writeText(value);
-        const old = btn.textContent;
-        btn.textContent = 'Скопировано ✓';
-        btn.disabled = true;
-        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1800);
-      } catch (e) {
-        // fallback: select range
-        const range = document.createRange();
-        range.selectNode(document.getElementById(target));
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-      }
-    });
-  });
-
-  /* ---------- Quick-amount chips (donate) ---------- */
-  document.querySelectorAll('[data-cc-amount-group]').forEach((group) => {
-    const chips = group.querySelectorAll('.cc-amount-chip');
-    const input = group.querySelector('[data-cc-amount-input]');
-    chips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
-        chip.setAttribute('aria-pressed', 'true');
-        if (input) input.value = chip.dataset.amount || '';
-      });
-    });
-    if (input) {
-      input.addEventListener('input', () => {
-        chips.forEach((c) => c.setAttribute('aria-pressed', c.dataset.amount === input.value ? 'true' : 'false'));
-      });
-    }
-  });
-
-  /* ---------- Modal: открыть/закрыть ---------- */
-  document.querySelectorAll('[data-cc-modal-open]').forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
+  // ─── 9. PRAYER REQUEST FORM (mailto + telegram) ────────────
+  const prayerForm = document.querySelector('#prayer-form');
+  if (prayerForm) {
+    prayerForm.addEventListener('submit', e => {
       e.preventDefault();
-      const id = trigger.getAttribute('data-cc-modal-open');
-      const modal = document.getElementById(id);
-      if (!modal) return;
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      // pre-fill для prayer-requests:
-      const type = trigger.getAttribute('data-cc-prayer-type');
-      const price = trigger.getAttribute('data-cc-prayer-price');
-      if (type) {
-        const titleEl = modal.querySelector('[data-cc-prayer-title]');
-        const typeInput = modal.querySelector('[name="prayer_type"]');
-        const priceEl = modal.querySelector('[data-cc-prayer-price]');
-        if (titleEl) titleEl.textContent = type;
-        if (typeInput) typeInput.value = type;
-        if (priceEl && price) priceEl.textContent = price;
-      }
-      const firstFocus = modal.querySelector('input, textarea, button:not([data-cc-modal-close])');
-      if (firstFocus) firstFocus.focus();
-    });
-  });
-  document.querySelectorAll('[data-cc-modal-close]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const modal = btn.closest('.cc-modal');
-      if (modal) {
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-    });
-  });
-  document.querySelectorAll('.cc-modal').forEach((modal) => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-    });
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.cc-modal[aria-hidden="false"]').forEach((m) => {
-        m.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      });
-    }
-  });
+      const fd = new FormData(prayerForm);
+      const type = fd.get('type') || 'требы';
+      const intention = fd.get('intention') || 'о здравии';
+      const names = (fd.get('names') || '').toString().trim();
+      const author = (fd.get('author') || '').toString().trim();
+      const phone = (fd.get('phone') || '').toString().trim();
+      const note = (fd.get('note') || '').toString().trim();
 
-  /* ---------- Form validation + submit (prayer-requests, contacts) ---------- */
-  document.querySelectorAll('[data-cc-form]').forEach((form) => {
-    const formType = form.getAttribute('data-cc-form'); // "prayer" | "contact"
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Очистить старые ошибки
-      form.querySelectorAll('.cc-field[data-error]').forEach((f) => delete f.dataset.error);
-
-      // Валидация
-      let valid = true;
-      form.querySelectorAll('[required]').forEach((field) => {
-        if (!field.value || field.value.trim() === '') {
-          field.closest('.cc-field')?.setAttribute('data-error', '');
-          valid = false;
-        }
-      });
-      // Проверка имён в записке (одно имя на строку, без титулов)
-      const namesField = form.querySelector('[name="names"]');
-      if (namesField && namesField.value) {
-        const lines = namesField.value.split('\n').map(s => s.trim()).filter(Boolean);
-        const ok = lines.every(line =>
-          /^[А-Яа-яЁё][А-Яа-яЁё\-\s]{1,40}$/.test(line) && line.split(/\s+/).length <= 4
-        );
-        if (!ok) {
-          namesField.closest('.cc-field')?.setAttribute('data-error', '');
-          valid = false;
-        }
-      }
-
-      if (!valid) {
-        const firstError = form.querySelector('.cc-field[data-error]');
-        firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
-
-      // Сборка письма
-      const data = new FormData(form);
-      let subject, body, telegramText;
-
-      if (formType === 'prayer') {
-        const type = data.get('prayer_type') || 'Записка';
-        const orderType = data.get('order_type') || 'о здравии';
-        const names = data.get('names') || '';
-        const author = data.get('author') || '';
-        const phone = data.get('phone') || '';
-        const note = data.get('note') || '';
-
-        subject = `Заказ требы — ${type} (${orderType})`;
-        body =
-`Тип требы: ${type}
-Род поминовения: ${orderType}
-
-Имена (полностью, в родительном падеже):
-${names}
-
-Заказчик: ${author}
-Телефон: ${phone}
-${note ? `\nКомментарий: ${note}` : ''}
-
-— заявка отправлена с сайта собора`;
-        telegramText = `🕯 Заказ требы\n\n${type} — ${orderType}\n\nИмена:\n${names}\n\nЗаказчик: ${author}\nТел: ${phone}${note ? `\n\nКомментарий: ${note}` : ''}`;
-      } else if (formType === 'contact') {
-        const name = data.get('name') || '';
-        const email = data.get('email') || '';
-        const phone = data.get('phone') || '';
-        const message = data.get('message') || '';
-
-        subject = `Сообщение с сайта собора — ${name}`;
-        body =
-`Имя: ${name}
-Email: ${email}
-Телефон: ${phone}
-
-Сообщение:
-${message}
-
-— форма обратной связи на сайте собора`;
-        telegramText = `📩 Обращение с сайта\n\nОт: ${name}\nEmail: ${email}\nТел: ${phone}\n\n${message}`;
-      } else {
-        return;
-      }
+      const subject = `Заказ требы: ${type} (${intention})`;
+      const body = [
+        `Тип требы: ${type}`,
+        `Поминовение: ${intention}`,
+        `Имена (родительный падеж):`,
+        names || '—',
+        '',
+        `От: ${author || '—'}`,
+        `Телефон: ${phone || '—'}`,
+        note ? `\nКомментарий:\n${note}` : '',
+      ].filter(Boolean).join('\n');
 
       const mailto = `mailto:nevskiy-sobor@mail.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      // Action: открываем mailto. Если у пользователя нет почтового клиента — кнопка Telegram fallback в форме.
       window.location.href = mailto;
+    });
 
-      // Показать success-блок
-      const success = form.querySelector('[data-cc-form-success]');
-      if (success) {
-        success.hidden = false;
-        // Сохранить telegram-ссылку в кнопке (если есть)
-        const tgBtn = success.querySelector('[data-cc-telegram-fallback]');
-        if (tgBtn) {
-          tgBtn.href = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/alexnewsobor')}&text=${encodeURIComponent(telegramText)}`;
+    const tgFallback = document.querySelector('#prayer-tg-fallback');
+    if (tgFallback) {
+      tgFallback.addEventListener('click', () => {
+        const fd = new FormData(prayerForm);
+        const type = fd.get('type') || 'требу';
+        const intention = fd.get('intention') || 'о здравии';
+        const names = (fd.get('names') || '').toString().trim();
+        const author = (fd.get('author') || '').toString().trim();
+        const text = [
+          `Здравствуйте! Хочу заказать ${type} (${intention}).`,
+          names ? `\nИмена:\n${names}` : '',
+          author ? `\n\nС уважением, ${author}` : '',
+        ].filter(Boolean).join('');
+        const url = `https://t.me/alexnewsobor?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener');
+      });
+    }
+  }
+
+  // ─── 10. CONTACT FORM (mailto fallback) ────────────────────
+  const contactForm = document.querySelector('#contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      const name = (fd.get('name') || '').toString().trim();
+      const email = (fd.get('email') || '').toString().trim();
+      const phone = (fd.get('phone') || '').toString().trim();
+      const subject = (fd.get('subject') || '').toString().trim();
+      const message = (fd.get('message') || '').toString().trim();
+
+      const mail = [
+        `От: ${name}`,
+        email ? `Email: ${email}` : '',
+        phone ? `Телефон: ${phone}` : '',
+        '',
+        message,
+      ].filter(Boolean).join('\n');
+
+      const mailto = `mailto:nevskiy-sobor@mail.ru?subject=${encodeURIComponent(subject || 'Сообщение с сайта')}&body=${encodeURIComponent(mail)}`;
+      window.location.href = mailto;
+    });
+  }
+
+  // ─── 11. INTERSECTION OBSERVER (fade-in, ts-event) ─────────
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('visible');
+          io.unobserve(en.target);
         }
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in, .ts-event').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.fade-in, .ts-event').forEach(el => el.classList.add('visible'));
+  }
+
+  // ─── 12. SMOOTH SCROLL TO ANCHORS ──────────────────────────
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', href);
     });
   });
 
-  /* ---------- Reading progress (history page) ---------- */
-  const progress = document.querySelector('[data-cc-progress]');
-  if (progress) {
-    const update = () => {
-      const h = document.documentElement;
-      const max = (h.scrollHeight - h.clientHeight) || 1;
-      const pct = (h.scrollTop / max) * 100;
-      progress.style.width = `${pct}%`;
-    };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-  }
+  // ─── 13. TODAY HIGHLIGHT (hours table) ─────────────────────
+  const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  const todayKey = days[new Date().getDay()];
+  document.querySelectorAll(`.hours-table tr[data-day="${todayKey}"]`).forEach(tr => tr.classList.add('today'));
 
-  /* ---------- Lazy fade-in on scroll (IntersectionObserver) ---------- */
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('cc-anim');
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-    document.querySelectorAll('[data-cc-reveal]').forEach((el) => io.observe(el));
-  }
 })();

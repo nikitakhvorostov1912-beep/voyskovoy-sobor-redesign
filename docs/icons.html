@@ -1,266 +1,194 @@
 <!DOCTYPE html>
-<html lang="ru"><head>
+<html lang="ru">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Святыни собора — Войсковой Собор святого благоверного князя Александра Невского</title>
-<meta name="description" content="Святыни Войскового собора Александра Невского в Краснодаре: икона святого благоверного князя, Казанская икона Богородицы — покровительницы Кубанского казачества, антиминс 2006 года, колокола.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Святыни — Войсковой собор Александра Невского</title>
+<meta name="description" content="Святыни Войскового собора Александра Невского: икона святого князя Александра Невского, Казанская икона Пресвятой Богородицы, антиминс, колокола, освящённые Патриархом Алексием II.">
 <link rel="canonical" href="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/icons.html">
 <meta name="theme-color" content="#1a1f2e">
 <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Святыни собора — Войсковой собор Александра Невского">
-<meta property="og:description" content="Главные святыни собора: иконы, антиминс, колокола, освящённые Святейшим Патриархом Алексием II.">
-<meta property="og:locale" content="ru_RU">
-<meta property="og:url" content="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/icons.html">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --parchment:#f5f0e8; --parchment-2:#ede6d9; --parchment-3:#e2d9c5;
-    --ink:#1a1f2e; --ink-2:#2a3142;
-    --gold:#c9a961; --gold-deep:#a8893f; --gold-soft:#e0c98a;
-    --burgundy:#8b2635; --burgundy-deep:#6f1d29;
-    --muted:#5b5345;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);}
-  body{font-family:'Spectral', Georgia, serif;font-weight:400;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-  ::selection{background:var(--gold);color:var(--ink);}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,31,46,0.025) 1px, transparent 1px),radial-gradient(rgba(201,169,97,0.03) 1px, transparent 1px);background-size:3px 3px, 7px 7px;background-position:0 0, 1px 2px;mix-blend-mode:multiply;}
-
-  .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, #1a1f2e 0%, #161b29 100%);color:#e8dfca;border-bottom:1px solid rgba(201,169,97,0.25);}
-  .topbar-inner{max-width:1320px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px;}
-  .sigil{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;}
-  .sigil-mark{width:44px;height:44px;flex-shrink:0;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center, rgba(201,169,97,0.15), transparent 70%);}
-  .sigil-text{font-family:'Cormorant Garamond', serif; line-height:1;}
-  .sigil-text .l1{font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:500;}
-  .sigil-text .l2{font-size:18px;letter-spacing:0.04em;margin-top:4px;color:#f0e6cc;font-weight:500;}
-  .nav{display:flex;gap:30px;margin-left:auto;flex-wrap:wrap;}
-  .nav a{font-family:'PT Sans', sans-serif;font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#c8bfa8;text-decoration:none;padding:8px 0;position:relative;transition:color .25s;}
-  .nav a:hover{color:#f0e6cc;}
-  .nav a.active{color:var(--gold);}
-  .nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--gold);}
-  .topbar .donate-cta{background:#5a1820;color:#d8c89c;border:1px solid rgba(201,169,97,0.35);padding:11px 22px;font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;cursor:pointer;text-decoration:none;}
-  .topbar .donate-cta:hover{background:#6f1d29;color:#f0e6cc;}
-
-  .ribbon{position:relative;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.32)),linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 60%, #1a2030 100%);color:#f5e9c8;padding:64px 32px 48px;text-align:center;overflow:hidden;}
-  .ribbon::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 10%, rgba(201,169,97,0.12), transparent 40%),radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.3), transparent 50%);pointer-events:none;}
-  .ribbon-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;}
-  .ribbon h1{font-family:'Cormorant Garamond', serif;font-weight:500;font-size:clamp(38px, 5.2vw, 64px);line-height:1.05;margin:0 0 22px;color:#fbf4dd;letter-spacing:0.01em;}
-  .ribbon-quote{font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:400;font-size:clamp(18px, 2vw, 22px);color:var(--gold-soft);letter-spacing:0.02em;}
-  .ribbon-quote .cite{display:block;margin-top:10px;font-style:normal;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(224,201,138,0.7);font-family:'PT Sans', sans-serif;font-weight:400;}
-  .ribbon-rule{margin:36px auto 0;width:140px;height:1px;background:linear-gradient(90deg, transparent, var(--gold), transparent);}
-
-  .container{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
-  section{position:relative;z-index:2;}
-  .section-pad{padding:80px 0;}
-
-  h2{font-family:'Cormorant Garamond', serif;font-weight:500;font-size:clamp(28px, 3.6vw, 42px);line-height:1.1;margin:0 0 22px;color:var(--ink);}
-  h3{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:clamp(22px, 2.4vw, 28px);line-height:1.15;margin:0 0 14px;color:var(--ink);}
-  p{margin:0 0 16px;line-height:1.72;color:#3a3729;}
-  .kicker{font-family:'PT Sans', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:14px;display:block;}
-
-  /* icons */
-  .icon-card{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:60px 32px;align-items:center;max-width:1200px;margin:0 auto;}
-  .icon-card.reversed .icon-media{order:2;}
-  .icon-media{aspect-ratio:3/4;background:linear-gradient(135deg, var(--parchment-2), var(--parchment-3));border:2px solid var(--gold);display:grid;place-items:center;padding:32px;font-family:'Cormorant Garamond';font-style:italic;color:var(--gold-deep);text-align:center;font-size:18px;line-height:1.4;position:relative;}
-  .icon-media::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,169,97,0.4);pointer-events:none;}
-  .icon-media-inner{position:relative;z-index:1;}
-  .icon-media-inner .icon-name{font-size:22px;color:var(--burgundy);margin-bottom:12px;font-weight:500;}
-  .icon-media-inner .icon-tag{font-family:'PT Sans';font-style:normal;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-top:24px;}
-  .icon-text h2{margin-top:0;}
-  .icon-text .feast-day{display:inline-block;font-family:'PT Sans';font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--burgundy);background:var(--parchment-2);padding:8px 16px;border:1px solid rgba(139,38,53,0.3);margin-top:18px;font-weight:700;}
-  @media (max-width:900px){.icon-card,.icon-card.reversed{grid-template-columns:1fr;gap:32px;padding:40px 24px;}.icon-card.reversed .icon-media{order:0;}}
-
-  /* relics */
-  .relics-section{background:var(--parchment-2);}
-  .relics-list{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .relic{background:var(--parchment);border:1px solid rgba(201,169,97,0.3);padding:32px;}
-  .relic h3{margin-top:0;color:var(--burgundy);font-size:22px;}
-  .relic .year{font-family:'PT Sans';font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:14px;display:block;}
-  .relic p{font-size:15px;line-height:1.6;color:var(--muted);margin:0;}
-  @media (max-width:900px){.relics-list{grid-template-columns:1fr;}}
-
-  /* CTA */
-  .cta-section{background:linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);color:#f5e9c8;text-align:center;padding:80px 32px;position:relative;overflow:hidden;}
-  .cta-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(201,169,97,0.12), transparent 70%);pointer-events:none;}
-  .cta-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
-  .cta-section h2{color:#fbf4dd;}
-  .cta-section p{color:#e8dfca;font-size:17px;margin-bottom:32px;}
-  .btn-gold{background:var(--gold);color:var(--ink);padding:16px 38px;font-family:'PT Sans';font-size:12.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;text-decoration:none;border:1px solid var(--gold);transition:background .25s;display:inline-block;margin:6px;}
-  .btn-gold:hover{background:var(--gold-soft);}
-  .btn-ghost{background:transparent;color:var(--gold-soft);padding:16px 38px;font-family:'PT Sans';font-size:12.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;text-decoration:none;border:1px solid var(--gold);display:inline-block;margin:6px;transition:background .25s;}
-  .btn-ghost:hover{background:rgba(201,169,97,0.12);color:#fbf4dd;}
-
-  footer{background:var(--ink);color:#c8bfa8;padding:56px 32px 24px;position:relative;z-index:2;}
-  .foot-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;}
-  .foot-mark{display:flex;gap:12px;align-items:center;margin-bottom:16px;}
-  .foot-mark .name{font-family:'Cormorant Garamond';font-size:18px;color:#f0e6cc;line-height:1.3;}
-  .foot-mark .name .sub{display:block;font-size:13px;color:#a89f8a;font-style:italic;}
-  footer p{font-size:14px;line-height:1.6;color:#a89f8a;}
-  footer h5{font-family:'PT Sans';font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin:0 0 16px;font-weight:700;}
-  footer a{display:block;color:#c8bfa8;text-decoration:none;font-size:14px;margin-bottom:8px;transition:color .2s;}
-  footer a:hover{color:#f0e6cc;}
-  .foot-bottom{max-width:1200px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(201,169,97,0.12);display:flex;justify-content:space-between;font-size:12px;color:#7a7363;flex-wrap:wrap;gap:16px;}
-  @media (max-width:900px){.foot-inner{grid-template-columns:1fr;gap:32px;}.nav{display:none;}.topbar-inner{padding:12px 20px;}}
-</style>
+<link rel="stylesheet" href="assets/css/design-system.css">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a href="index.html" class="sigil">
-      <div class="sigil-mark">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <path d="M13 2 L13 24 M5 8 L21 8 M7 14 L19 14 M9 19 L17 19" stroke="#c9a961" stroke-width="1.3" stroke-linecap="square"></path>
-          <path d="M13 19 L13 24" stroke="#c9a961" stroke-width="1.3"></path>
-        </svg>
-      </div>
-      <div class="sigil-text">
-        <div class="l1">Anno Domini 1872</div>
-        <div class="l2">Войсковой Собор</div>
-      </div>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="sigil" aria-label="На главную">
+      <span class="sigil-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="16" y1="6" x2="16" y2="26"/><line x1="11" y1="14" x2="21" y2="14"/><line x1="12" y1="10" x2="20" y2="10"/><line x1="13" y1="20" x2="19" y2="20"/></svg></span>
+      <span class="sigil-text"><span class="l1">Anno Domini 1872</span><span class="l2">Войсковой собор</span></span>
     </a>
-    <nav class="nav">
-      <a href="about.html">О соборе</a>
+    <nav class="primary-nav" aria-label="Основная навигация">
+      <a href="index.html">Главная</a>
       <a href="schedule.html">Расписание</a>
-      <a href="prayer-requests.html">Заказ треб</a>
-      <a href="icons.html" class="active">Святыни</a>
-      <a href="parish-life.html">Жизнь прихода</a>
+      <a href="prayer-requests.html">Требы</a>
+      <a href="about.html">О соборе</a>
+      <a href="clergy.html">Духовенство</a>
+      <a href="parish-life.html">Приход</a>
       <a href="contacts.html">Контакты</a>
     </nav>
     <a href="donate.html" class="donate-cta">Пожертвовать</a>
+    <button class="menu-trigger" type="button" aria-label="Открыть меню" aria-controls="mobile-drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
   </div>
 </header>
 
+<div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true">
+  <button class="close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+  <a href="index.html">Главная</a>
+  <a href="schedule.html">Расписание богослужений</a>
+  <a href="prayer-requests.html">Заказ треб</a>
+  <a href="about.html">О соборе</a>
+  <a href="history.html">История</a>
+  <a href="clergy.html">Духовенство</a>
+  <a href="icons.html" class="active">Святыни</a>
+  <a href="parish-life.html">Жизнь прихода</a>
+  <a href="news.html">Новости</a>
+  <a href="contacts.html">Контакты</a>
+  <a href="donate.html" style="color:var(--gold);">Пожертвовать</a>
+</div>
+
+<main id="main">
+
 <section class="ribbon">
-  <div class="ribbon-inner">
+  <div class="ribbon-inner fade-in">
+    <div class="ribbon-kicker">Иконы и&nbsp;реликвии</div>
     <h1>Святыни собора</h1>
-    <p class="ribbon-quote">«Святыни ваши Господь освятит»<span class="cite">— литургический возглас на освящение храма</span></p>
+    <p class="ribbon-quote">«Чти отца твоего и&nbsp;матерь твою»<span class="cite">— Исх 20:12</span></p>
     <div class="ribbon-rule"></div>
   </div>
 </section>
 
-<section style="padding:40px 0;">
-  <div class="icon-card">
-    <div class="icon-media">
-      <div class="icon-media-inner">
-        <div class="icon-name">Святой благоверный князь Александр Невский</div>
-        Образ небесного покровителя собора, освящён в 2006 году
-        <div class="icon-tag">Главная икона собора</div>
+<section class="plain">
+  <div class="wrap" style="max-width:1180px;">
+
+    <article class="icon-row fade-in">
+      <div class="visual" aria-hidden="true">
+        <svg viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="10" y="10" width="80" height="100" stroke-width="1.5"/>
+          <rect x="14" y="14" width="72" height="92"/>
+          <circle cx="50" cy="38" r="18"/>
+          <path d="M32 70 Q50 60 68 70 L68 100 L32 100 Z"/>
+          <line x1="50" y1="20" x2="50" y2="36" stroke-width="1.2"/>
+          <line x1="44" y1="26" x2="56" y2="26" stroke-width="1.2"/>
+          <line x1="46" y1="22" x2="54" y2="22" stroke-width="1"/>
+        </svg>
       </div>
-    </div>
-    <div class="icon-text">
-      <span class="kicker">Небесный покровитель собора</span>
-      <h2>Святой благоверный князь Александр Невский</h2>
-      <p>Главная икона собора, посвящённого святому благоверному князю — защитнику Русской Земли, покровителю воинства и казачества. Александр Ярославич Невский (1221–1263) — Великий князь Владимирский, разгромивший в 1240 году шведов на Неве и в 1242 году немецких рыцарей на Чудском озере. Прославлен в лике благоверных князей Русской Православной Церковью.</p>
-      <p>Перед иконой совершаются молебны воинам и казакам, отправляющимся в дальние пути, на защиту Отечества. Образ почитается особым покровом для тех, кто несёт ратное служение Кубани.</p>
-      <p>На иконе святой князь изображён в княжеском облачении, с мечом — символом защиты Веры и Отечества, и крестом — символом победы Христа над злом.</p>
-      <span class="feast-day">Память — 6 декабря и 12 сентября</span>
-    </div>
+      <div class="body">
+        <div class="kicker" style="margin-bottom:12px;">Главная святыня</div>
+        <h2>Икона святого князя Александра Невского</h2>
+        <p>Икона небесного покровителя собора и&nbsp;всего Кубанского казачьего войска. Святой Александр Невский (1221–1263) — великий князь Владимирский, защитник Русской земли, в&nbsp;старости принявший монашество с&nbsp;именем Алексий.</p>
+        <p>Перед иконой совершаются молебны о&nbsp;воинах, путешествующих, о&nbsp;защите Отечества. По&nbsp;благословению настоятеля для&nbsp;казаков совершаются особые молебны.</p>
+        <div class="meta">Памяти святого: 6&nbsp;декабря (преставление) и&nbsp;12&nbsp;сентября (перенесение мощей)</div>
+      </div>
+    </article>
+
+    <article class="icon-row reverse fade-in">
+      <div class="visual" aria-hidden="true">
+        <svg viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="10" y="10" width="80" height="100" stroke-width="1.5"/>
+          <rect x="14" y="14" width="72" height="92"/>
+          <ellipse cx="50" cy="42" rx="20" ry="22"/>
+          <path d="M30 70 Q50 64 70 70 L70 100 L30 100 Z"/>
+          <ellipse cx="50" cy="42" rx="14" ry="16" stroke-width="0.8"/>
+          <path d="M44 52 Q50 56 56 52" stroke-width="0.8"/>
+          <line x1="50" y1="22" x2="50" y2="34" stroke-width="0.8"/>
+          <line x1="46" y1="28" x2="54" y2="28" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="body">
+        <div class="kicker" style="margin-bottom:12px;">Чудотворная икона</div>
+        <h2>Казанская икона Пресвятой Богородицы</h2>
+        <p>Один из&nbsp;самых почитаемых на&nbsp;Руси образов Пресвятой Богородицы. Икона является заступницей русского воинства; перед ней молились в&nbsp;дни тяжёлых испытаний и&nbsp;народных бедствий.</p>
+        <p>В&nbsp;соборе пребывает список с&nbsp;Казанской иконы, перед которым молятся о&nbsp;защите семьи, помощи в&nbsp;недугах, о&nbsp;возвращении на&nbsp;Родину.</p>
+        <div class="meta">Памяти: 21&nbsp;июля (явление иконы) и&nbsp;4&nbsp;ноября (избавление Москвы 1612&nbsp;г.)</div>
+      </div>
+    </article>
+
   </div>
 </section>
 
-<section style="padding:40px 0;background:var(--parchment-3);">
-  <div class="icon-card reversed">
-    <div class="icon-media">
-      <div class="icon-media-inner">
-        <div class="icon-name">Казанская икона Пресвятой Богородицы</div>
-        Покровительница Кубанского казачьего войска
-        <div class="icon-tag">Чтимая икона</div>
-      </div>
+<!-- ============ RELICS ============ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <div class="eyebrow center">Реликвии собора</div>
+      <h2>Освящённые святыни</h2>
     </div>
-    <div class="icon-text">
-      <span class="kicker">Покровительница казачества</span>
-      <h2>Казанская икона Пресвятой Богородицы</h2>
-      <p>Казанская икона Божией Матери — особо чтимая святыня Кубанского казачьего войска. Войсковой образ Богородицы Казанской с давних времён сопровождает казаков в походах и битвах. Перед этой иконой казаки давали присягу, освящали знамёна, испрашивали благословение перед службой.</p>
-      <p>Икона Казанской Божией Матери — одна из самых почитаемых на Руси. Явленная в 1579 году в городе Казани, она стала покровительницей русского воинства. Пред этой иконой молились в 1612 году ополченцы Минина и Пожарского, перед нею молился государь Пётр I в Полтавской битве 1709 года.</p>
-      <p>В соборе еженедельно совершается молебен перед Казанской иконой с акафистом — особенно по средам и в дни памяти Богородицы.</p>
-      <span class="feast-day">Память — 21 июля и 4 ноября</span>
-    </div>
-  </div>
-</section>
 
-<section class="relics-section section-pad">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:48px;">
-      <span class="kicker">Реликвии собора</span>
-      <h2>Святыни возрождённого храма</h2>
-    </div>
-    <div class="relics-list">
-      <div class="relic">
-        <span class="year">2006 год</span>
+    <div class="card-grid-3 fade-in">
+      <div class="card">
+        <div class="card-eyebrow">Алтарь</div>
         <h3>Антиминс собора</h3>
-        <p>Священный плат с зашитыми в него мощами святых, на котором совершается Божественная литургия. Освящён в 2006 году митрополитом Смоленским и Калининградским Кириллом, ныне Святейшим Патриархом Московским и всея Руси. Это главная богослужебная святыня — без антиминса литургия не совершается.</p>
+        <p>Антиминс — освящённый плат с&nbsp;частицей мощей, на&nbsp;котором совершается Божественная литургия. Антиминс собора освящён в&nbsp;2006 году митрополитом Кириллом при Великом освящении храма.</p>
       </div>
-      <div class="relic">
-        <span class="year">2005 год</span>
-        <h3>Колокола от Патриарха</h3>
-        <p>Набор колоколов был передан собору в дар от Святейшего Патриарха Московского и всея Руси Алексия II в 2005 году. Главный колокол — благовестник — звучит над Краснодаром перед началом каждой литургии. Звонница оснащена восемью колоколами различного веса и тембра.</p>
+      <div class="card">
+        <div class="card-eyebrow">Колокольня</div>
+        <h3>Колокола 2005&nbsp;года</h3>
+        <p>Колокола собора были освящены 15&nbsp;июня 2005 года Святейшим Патриархом Московским и&nbsp;всея Руси Алексием&nbsp;II в&nbsp;ходе его пребывания в&nbsp;Краснодаре.</p>
       </div>
-      <div class="relic">
-        <span class="year">2005 год</span>
+      <div class="card">
+        <div class="card-eyebrow">Купола</div>
         <h3>Кресты собора</h3>
-        <p>Восемь крестов, венчающих пять глав и колокольню, освящены в 2005 году перед поднятием на купола. Главный, центральный крест собора имеет высоту 4,5 метра и виден с Кубанской набережной и из дальних точек Краснодара. Кресты выполнены с традиционным трёхчастным завершением.</p>
+        <p>Пять золочёных крестов, увенчивающих купола, освящены вместе с&nbsp;колоколами в&nbsp;июне 2005 года перед поднятием на&nbsp;возрождённый храм.</p>
       </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="prayer-requests.html" class="btn">Заказать молебен</a>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
-  <div class="cta-inner">
-    <span class="kicker" style="color:var(--gold-soft);">Помолитесь у святыни</span>
-    <h2>Подать записку или заказать молебен</h2>
-    <p>Перед иконами собора совершаются молебны, акафисты, поминовения. Записки можно подать в храме у свечного киоска или онлайн через наш сайт.</p>
-    <a href="prayer-requests.html" class="btn-gold">Подать записку</a>
-    <a href="schedule.html" class="btn-ghost">Расписание молебнов</a>
-  </div>
-</section>
+</main>
 
-<footer>
-  <div class="foot-inner">
-    <div class="foot-col">
-      <div class="foot-mark">
-        <div class="sigil-mark">
-          <svg width="30" height="30" viewBox="0 0 26 26" fill="none">
-            <path d="M13 2 L13 24 M5 8 L21 8 M7 14 L19 14 M9 19 L17 19" stroke="#c9a961" stroke-width="1.3" stroke-linecap="square"></path>
-          </svg>
-        </div>
-        <div class="name">Войсковой Собор<span class="sub">святого благоверного князя Александра Невского</span></div>
-      </div>
-      <p>350063, г. Краснодар, ул. Постовая, д. 26<br>+7 (861) 262-00-20 · nevskiy-sobor@mail.ru</p>
-      <p style="margin-top:14px;font-style:italic;font-family:'Cormorant Garamond';font-size:16px;color:#c8bfa8;">«Не в силе Бог, а в правде»</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="sigil" style="color:#f0e6cc;">
+        <span class="sigil-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="16" y1="6" x2="16" y2="26"/><line x1="11" y1="14" x2="21" y2="14"/><line x1="12" y1="10" x2="20" y2="10"/><line x1="13" y1="20" x2="19" y2="20"/></svg></span>
+        <span class="sigil-text"><span class="l1">Anno Domini 1872</span><span class="l2">Войсковой собор</span></span>
+      </a>
+      <p>Кафедра Кубанского казачьего войска и&nbsp;Екатеринодарской епархии Русской Православной Церкви. Основан в&nbsp;1853 году.</p>
+      <p class="legal-mini">350063, Краснодар, ул.&nbsp;Постовая, д.&nbsp;26<br>ИНН 2309091590 · ОГРН 1052335002521</p>
     </div>
-    <div class="foot-col">
-      <h5>Приход</h5>
-      <a href="about.html">О соборе</a>
-      <a href="history.html">Летопись</a>
+    <div class="footer-col">
+      <h5>Навигация</h5>
+      <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
       <a href="clergy.html">Духовенство</a>
-      <a href="schedule.html">Расписание богослужений</a>
-      <a href="icons.html">Святыни и иконы</a>
-      <a href="parish-life.html#school">Воскресная школа</a>
-      <a href="parish-life.html#sisterhood">Социальное служение</a>
+      <a href="history.html">История</a>
+      <a href="parish-life.html">Жизнь прихода</a>
       <a href="news.html">Новости</a>
     </div>
-    <div class="foot-col">
+    <div class="footer-col">
       <h5>Помощь храму</h5>
       <a href="donate.html">Пожертвовать</a>
-      <a href="prayer-requests.html">Подать записку</a>
-      <a href="prayer-requests.html">Заказать молебен</a>
-      <a href="parish-life.html">Стать волонтёром</a>
-      <a href="donate.html#bank-details">Реквизиты для перевода</a>
+      <a href="tel:+78612620020">+7&nbsp;(861)&nbsp;262‑00‑20</a>
+      <a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a>
       <a href="https://vk.com/voyskovoysoborkrasnodar" target="_blank" rel="noopener">ВКонтакте</a>
-      <a href="https://t.me/alexnewsobor" target="_blank" rel="noopener">Telegram-канал</a>
+      <a href="https://t.me/alexnewsobor" target="_blank" rel="noopener">Telegram</a>
     </div>
   </div>
-  <div class="foot-bottom">
-    <span>© 1872–2026 МПРПО Войсковой Собор Александра Невского. Екатеринодарская и Кубанская епархия Русской Православной Церкви.</span>
-    <span>ИНН 2309091590 · ОГРН 1052335002521</span>
+  <div class="footer-bottom">
+    <span>© 2026 Войсковой собор Александра Невского</span>
+    <span>Краснодар · Екатеринодарская епархия РПЦ</span>
   </div>
 </footer>
+
+<nav class="mobile-bar" aria-label="Быстрые действия">
+  <a href="schedule.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="16" height="14"/><line x1="4" y1="10" x2="20" y2="10"/></svg>Расписание</a>
+  <a href="prayer-requests.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14v16H5z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>Требы</a>
+  <a href="donate.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M8 10h8M8 14h8"/></svg>Пожертвовать</a>
+</nav>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
