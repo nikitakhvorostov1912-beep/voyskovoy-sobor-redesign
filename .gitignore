@@ -16,4 +16,7 @@ theme/church-kadence-child-dev/database.sql
 
 # Утилиты для чистки HTML — не идут в публикацию
 _clean_react.py
+_unify_header.py
 audit_*.png
+unified_*.png
+docs/_canonical_header*

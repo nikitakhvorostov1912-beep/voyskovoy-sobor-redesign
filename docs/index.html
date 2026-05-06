@@ -915,54 +915,160 @@ footer.foot::before{
   visibility: visible !important;
 }
 </style>
+
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: #f5f0e8;
+}
+body .uheader__name small {
+    display: block;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 9.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a961;
+    margin-top: 4px;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
 </head>
 
 <body>
-
-<!-- ============ HEADER ============ -->
-<header class="topbar" id="topbar">
-  <div class="topbar-inner">
-    <a href="index.html" class="sigil" aria-label="Войсковой Собор Александра Невского">
-      <!-- Двуглавый орёл — heraldic eagle sigil -->
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-        <g stroke="#c9a961" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <!-- crown above -->
-          <path d="M32 4 L29 8 L26 5 L24 9 L22 6 L24 12 L40 12 L42 6 L40 9 L38 5 L35 8 Z"></path>
-          <line x1="32" y1="2" x2="32" y2="4"></line>
-          <!-- bodies -->
-          <path d="M32 14 C28 16 26 20 26 22 C22 22 20 24 18 28 C16 32 16 36 18 38 C20 40 24 40 26 38 L24 44 L26 46 L24 50 L28 50 L28 54 L32 52"></path>
-          <path d="M32 14 C36 16 38 20 38 22 C42 22 44 24 46 28 C48 32 48 36 46 38 C44 40 40 40 38 38 L40 44 L38 46 L40 50 L36 50 L36 54 L32 52"></path>
-          <!-- shield center -->
-          <path d="M32 28 L28 30 L28 36 L32 40 L36 36 L36 30 Z" fill="#c9a961" fill-opacity=".15"></path>
-          <line x1="32" y1="30" x2="32" y2="38"></line>
-          <!-- heads -->
-          <circle cx="27" cy="18" r="2.4"></circle>
-          <circle cx="37" cy="18" r="2.4"></circle>
-          <path d="M25 16 L23 14"></path>
-          <path d="M39 16 L41 14"></path>
+<header class="uheader" role="banner">
+  <div class="uheader__inner">
+    <a href="index.html" class="uheader__brand" aria-label="Войсковой Собор Александра Невского — главная">
+      <svg class="uheader__sigil" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M24 2 L42 9 V25 C42 36 34 43 24 46 C14 43 6 36 6 25 V9 Z" stroke="#c9a961" stroke-width="1.2" fill="rgba(201,169,97,.06)"></path>
+        <g stroke="#c9a961" stroke-width="1.4" stroke-linecap="square">
+          <line x1="24" y1="11" x2="24" y2="38"></line>
+          <line x1="18" y1="17" x2="30" y2="17"></line>
+          <line x1="16" y1="22" x2="32" y2="22"></line>
+          <line x1="18" y1="32" x2="30" y2="29"></line>
         </g>
       </svg>
-      <span class="sigil-text">
-        <small>Войсковой Собор</small>
-        <b>Александра Невского</b>
+      <span class="uheader__name">
+        Войсковой Собор<br>Александра Невского
+        <small>Краснодар · 1872</small>
       </span>
     </a>
-    <nav class="nav" aria-label="Главное меню">
-      <a href="index.html" class="active">Главная</a>
-      <a href="parish-life.html">Жизнь прихода</a>
-      <a href="clergy.html">Духовенство</a>
+    <nav class="uheader__nav" aria-label="Главная навигация">
+      <a href="index.html" class="is-active" aria-current="page">Главная</a>
+      <a href="history.html">История</a>
       <a href="schedule.html">Расписание</a>
-      <a href="donate.html">Пожертвование</a>
+      <a href="clergy.html">Духовенство</a>
+      <a href="parish-life.html">Приход</a>
+      <a href="icons.html">Святыни</a>
+      <a href="news.html">Новости</a>
       <a href="contacts.html">Контакты</a>
     </nav>
-    <div class="top-actions">
-      <button class="icon-btn" aria-label="Поиск">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-      </button>
-      <button class="donate-btn">Пожертвовать</button>
-    </div>
+    <a href="donate.html" class="uheader__cta">Пожертвовать</a>
   </div>
 </header>
+
+
+
+
+<!-- ============ HEADER ============ -->
+
 
 <!-- ============ HERO ============ -->
 <section class="hero in" id="hero">
@@ -1295,36 +1401,28 @@ footer.foot::before{
 
   <div class="schedule-grid">
     <article class="svc-card featured">
-      <header class="svc-date">
-        <span class="svc-num">5</span><span class="svc-month">мая</span>
-      </header>
+      
       <div class="svc-day">Вторник · Великий пост</div>
       <h3 class="svc-name">Литургия Преждеосвящённых&nbsp;Даров</h3>
       <div class="svc-time">17:00</div>
       <div class="svc-priest">Иерей Андрей Кравченко</div>
     </article>
     <article class="svc-card">
-      <header class="svc-date">
-        <span class="svc-num">6</span><span class="svc-month">мая</span>
-      </header>
+      
       <div class="svc-day">Среда · Вмч. Георгия</div>
       <h3 class="svc-name">Божественная литургия</h3>
       <div class="svc-time">09:00</div>
       <div class="svc-priest">Прот. Игорь Олжабаев</div>
     </article>
     <article class="svc-card">
-      <header class="svc-date">
-        <span class="svc-num">9</span><span class="svc-month">мая</span>
-      </header>
+      
       <div class="svc-day">Суббота · Поминовение</div>
       <h3 class="svc-name">Литургия и Панихида о&nbsp;воинах</h3>
       <div class="svc-time">08:30</div>
       <div class="svc-priest">Соборный причт</div>
     </article>
     <article class="svc-card">
-      <header class="svc-date">
-        <span class="svc-num">10</span><span class="svc-month">мая</span>
-      </header>
+      
       <div class="svc-day">Воскресенье · Жён-мироносиц</div>
       <h3 class="svc-name">Всенощное бдение и&nbsp;Литургия</h3>
       <div class="svc-time">17:00 / 09:00</div>
