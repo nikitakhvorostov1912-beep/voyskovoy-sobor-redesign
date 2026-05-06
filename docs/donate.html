@@ -1033,6 +1033,8 @@
 </style>
 
 
+
+<link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap">
 <style id="unified-header-css">
 /* === Unified site header (overrides any per-page header CSS) === */
 html, body { width: 100%; min-width: 0; max-width: 100%; overflow-x: hidden; }
@@ -1042,6 +1044,11 @@ body header:not(.uheader) {
 body .uheader,
 body .uheader * {
     box-sizing: border-box;
+    /* Force the unified font stack regardless of per-page inheritance */
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 body .uheader {
     position: sticky;
@@ -1080,22 +1087,27 @@ body .uheader__sigil {
     flex-shrink: 0;
 }
 body .uheader__name {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: 19px;
-    line-height: 1.05;
-    letter-spacing: 0.01em;
-    color: #f5f0e8;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
 }
 body .uheader__name small {
-    display: block;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 9.5px;
-    font-weight: 400;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #c9a961;
-    margin-top: 4px;
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
 }
 body .uheader__nav {
     flex: 1;
@@ -1184,6 +1196,8 @@ body .uheader__cta:hover {
     <a href="donate.html" class="uheader__cta">Пожертвовать</a>
   </div>
 </header>
+
+
 
 
 
