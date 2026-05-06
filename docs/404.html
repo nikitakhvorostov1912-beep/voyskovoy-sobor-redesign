@@ -1,183 +1,184 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
+<html lang="ru"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Страница не найдена — Войсковой собор Александра Невского</title>
-<meta name="description" content="Страница не найдена на сайте Войскового собора Александра Невского в Краснодаре.">
-<meta name="theme-color" content="#1a1f2e">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Страница не найдена — Войсковой Собор святого благоверного князя Александра Невского</title>
+<meta name="description" content="Страница не найдена. Перейдите на главную или воспользуйтесь меню — расписание богослужений, заказ треб, контакты собора.">
 <meta name="robots" content="noindex">
-
+<link rel="canonical" href="https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/404.html">
+<meta name="theme-color" content="#1a1f2e">
 <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
-<link rel="apple-touch-icon" href="assets/images/icons/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Spectral:ital,wght@0,400;0,500;0,600&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/reset.css">
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/layout.css">
+<style>
+  :root{
+    --parchment:#f5f0e8; --parchment-2:#ede6d9; --parchment-3:#e2d9c5;
+    --ink:#1a1f2e; --ink-2:#2a3142;
+    --gold:#c9a961; --gold-deep:#a8893f; --gold-soft:#e0c98a;
+    --burgundy:#8b2635; --burgundy-deep:#6f1d29;
+    --muted:#5b5345;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);min-height:100vh;}
+  body{font-family:'Spectral', Georgia, serif;font-weight:400;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;display:flex;flex-direction:column;min-height:100vh;}
+  ::selection{background:var(--gold);color:var(--ink);}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,31,46,0.025) 1px, transparent 1px),radial-gradient(rgba(201,169,97,0.03) 1px, transparent 1px);background-size:3px 3px, 7px 7px;background-position:0 0, 1px 2px;mix-blend-mode:multiply;}
+
+  .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, #1a1f2e 0%, #161b29 100%);color:#e8dfca;border-bottom:1px solid rgba(201,169,97,0.25);}
+  .topbar-inner{max-width:1320px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:32px;}
+  .sigil{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;}
+  .sigil-mark{width:44px;height:44px;flex-shrink:0;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center, rgba(201,169,97,0.15), transparent 70%);}
+  .sigil-text{font-family:'Cormorant Garamond', serif; line-height:1;}
+  .sigil-text .l1{font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:500;}
+  .sigil-text .l2{font-size:18px;letter-spacing:0.04em;margin-top:4px;color:#f0e6cc;font-weight:500;}
+  .nav{display:flex;gap:30px;margin-left:auto;flex-wrap:wrap;}
+  .nav a{font-family:'PT Sans', sans-serif;font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#c8bfa8;text-decoration:none;padding:8px 0;position:relative;transition:color .25s;}
+  .nav a:hover{color:#f0e6cc;}
+  .nav a.active{color:var(--gold);}
+  .nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--gold);}
+  .topbar .donate-cta{background:#5a1820;color:#d8c89c;border:1px solid rgba(201,169,97,0.35);padding:11px 22px;font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;cursor:pointer;text-decoration:none;}
+  .topbar .donate-cta:hover{background:#6f1d29;color:#f0e6cc;}
+
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:64px 32px;position:relative;z-index:2;}
+  .lost-inner{max-width:640px;text-align:center;}
+  .kicker{font-family:'PT Sans', sans-serif;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;display:block;margin-bottom:18px;}
+  .lost-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(96px, 18vw, 188px);
+    font-weight:500;color:var(--burgundy);
+    margin:0;line-height:0.95;letter-spacing:-0.02em;
+  }
+  .lost-title{
+    font-family:'Cormorant Garamond';font-weight:500;
+    font-size:clamp(28px, 4vw, 42px);
+    margin:18px 0 28px;color:var(--ink);
+  }
+  .lost-quote{
+    font-family:'Cormorant Garamond';font-style:italic;
+    font-size:clamp(20px, 2.4vw, 26px);
+    color:var(--gold-deep);max-width:520px;margin:0 auto 12px;line-height:1.4;
+  }
+  .lost-cite{
+    font-family:'PT Sans';font-size:11px;letter-spacing:0.24em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:36px;display:block;
+  }
+  .lost-text{margin-bottom:36px;color:#3a3729;font-size:17px;line-height:1.65;}
+  .lost-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--ink);padding:14px 32px;font-family:'PT Sans', sans-serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;text-decoration:none;border:1px solid var(--gold);transition:background .25s;display:inline-block;}
+  .btn-gold:hover{background:var(--gold-soft);}
+  .btn-ghost{background:transparent;color:var(--ink);padding:14px 32px;font-family:'PT Sans', sans-serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;text-decoration:none;border:1px solid var(--gold);transition:background .25s;display:inline-block;}
+  .btn-ghost:hover{background:rgba(201,169,97,0.12);}
+
+  .ornament{display:flex;justify-content:center;margin:30px 0;color:var(--gold);}
+
+  footer{background:var(--ink);color:#c8bfa8;padding:56px 32px 24px;position:relative;z-index:2;}
+  .foot-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;}
+  .foot-mark{display:flex;gap:12px;align-items:center;margin-bottom:16px;}
+  .foot-mark .name{font-family:'Cormorant Garamond';font-size:18px;color:#f0e6cc;line-height:1.3;}
+  .foot-mark .name .sub{display:block;font-size:13px;color:#a89f8a;font-style:italic;}
+  footer p{font-size:14px;line-height:1.6;color:#a89f8a;}
+  footer h5{font-family:'PT Sans';font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin:0 0 16px;font-weight:700;}
+  footer a{display:block;color:#c8bfa8;text-decoration:none;font-size:14px;margin-bottom:8px;transition:color .2s;}
+  footer a:hover{color:#f0e6cc;}
+  .foot-bottom{max-width:1200px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(201,169,97,0.12);display:flex;justify-content:space-between;font-size:12px;color:#7a7363;flex-wrap:wrap;gap:16px;}
+  @media (max-width:900px){.foot-inner{grid-template-columns:1fr;gap:32px;}.nav{display:none;}.topbar-inner{padding:12px 20px;}}
+</style>
 </head>
 <body>
-<a class="cc-skip-link" href="#main">Перейти к содержанию</a>
 
-<header class="cc-header" data-cc-header>
-  <div class="cc-container cc-header__inner">
-    <a class="cc-brand" href="index.html" aria-label="На главную страницу">
-      <svg class="cc-brand__sigil" viewBox="0 0 64 64" aria-hidden="true">
-        <use href="assets/images/icons/sigil.svg#sigil"></use>
-        <g fill="none" stroke="currentColor" stroke-linecap="round">
-          <g stroke-width="1.6" style="color: var(--color-gold)">
-            <line x1="32" y1="8"  x2="32" y2="56"/>
-            <line x1="22" y1="20" x2="42" y2="20"/>
-            <line x1="20" y1="14" x2="44" y2="14"/>
-            <line x1="22" y1="44" x2="42" y2="40"/>
-          </g>
-        </g>
-      </svg>
-      <span>
-        <span class="cc-brand__name">Войсковой собор</span>
-        <span class="cc-brand__tagline">Александра Невского</span>
-      </span>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="sigil">
+      <div class="sigil-mark">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M13 2 L13 24 M5 8 L21 8 M7 14 L19 14 M9 19 L17 19" stroke="#c9a961" stroke-width="1.3" stroke-linecap="square"></path>
+          <path d="M13 19 L13 24" stroke="#c9a961" stroke-width="1.3"></path>
+        </svg>
+      </div>
+      <div class="sigil-text">
+        <div class="l1">Anno Domini 1872</div>
+        <div class="l2">Войсковой Собор</div>
+      </div>
     </a>
-
-    <button class="cc-nav-toggle" data-cc-nav-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav">
-      <span class="cc-nav-toggle__bar"></span>
-    </button>
-
-    <nav class="cc-nav" id="primary-nav" data-cc-nav aria-label="Основное меню">
-      <ul class="cc-nav__list">
-        <li><a class="cc-nav__link" href="schedule.html">Расписание</a></li>
-        <li><a class="cc-nav__link" href="prayer-requests.html">Заказ треб</a></li>
-        <li><a class="cc-nav__link" href="about.html">О соборе</a></li>
-        <li><a class="cc-nav__link" href="history.html">Летопись</a></li>
-        <li><a class="cc-nav__link" href="clergy.html">Духовенство</a></li>
-        <li><a class="cc-nav__link" href="parish-life.html">Жизнь прихода</a></li>
-        <li><a class="cc-nav__link" href="news.html">Новости</a></li>
-        <li><a class="cc-nav__link" href="contacts.html">Контакты</a></li>
-      </ul>
+    <nav class="nav">
+      <a href="about.html">О соборе</a>
+      <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
+      <a href="icons.html">Святыни</a>
+      <a href="parish-life.html">Жизнь прихода</a>
+      <a href="contacts.html">Контакты</a>
     </nav>
-
-    <div class="cc-header__cta">
-      <a class="cc-btn cc-btn--blood cc-btn--small" href="donate.html">Пожертвовать</a>
-    </div>
+    <a href="donate.html" class="donate-cta">Пожертвовать</a>
   </div>
 </header>
 
-<main id="main">
-
-<section class="cc-section" style="text-align: center; min-height: calc(100vh - var(--header-height) - 200px); display: grid; place-content: center;">
-  <div class="cc-container cc-container--narrow">
-    <p class="cc-kicker cc-eyebrow">Ошибка 404</p>
-    <h1 style="font-size: clamp(4rem, 8vw, 6rem); color: var(--color-blood);">Страница не найдена</h1>
-    <blockquote class="cc-quote" style="margin: var(--space-8) auto;">
-      Просите, и дано будет вам; ищите, и найдете
-      <cite>— Евангелие от Матфея 7:7</cite>
-    </blockquote>
-    <p style="margin-bottom: var(--space-8);">К сожалению, такой страницы на сайте нет. Возможно, она была перемещена или вы перешли по неактуальной ссылке.</p>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
-      <a class="cc-btn" href="index.html">На главную</a>
-      <a class="cc-btn cc-btn--outline" href="schedule.html">Расписание</a>
-      <a class="cc-btn cc-btn--outline" href="contacts.html">Контакты</a>
+<main>
+  <div class="lost-inner">
+    <span class="kicker">Ошибка 404</span>
+    <h1 class="lost-num">404</h1>
+    <div class="ornament">
+      <svg width="180" height="20" viewBox="0 0 180 20" fill="none">
+        <path d="M0 10 L70 10 M110 10 L180 10" stroke="currentColor" stroke-width="0.8"></path>
+        <circle cx="90" cy="10" r="3" stroke="currentColor" stroke-width="0.8" fill="none"></circle>
+        <path d="M85 10 L95 10 M90 5 L90 15" stroke="currentColor" stroke-width="0.8"></path>
+      </svg>
+    </div>
+    <h2 class="lost-title">Страница не найдена</h2>
+    <p class="lost-quote">«Просите, и дано будет вам; ищите, и найдете»</p>
+    <span class="lost-cite">— Евангелие от Матфея 7:7</span>
+    <p class="lost-text">К сожалению, такой страницы на сайте нет. Возможно, она была перемещена, переименована или вы перешли по неактуальной ссылке. Воспользуйтесь меню сверху или одной из основных кнопок ниже.</p>
+    <div class="lost-buttons">
+      <a href="index.html" class="btn-gold">На главную</a>
+      <a href="schedule.html" class="btn-ghost">Расписание</a>
+      <a href="contacts.html" class="btn-ghost">Контакты</a>
     </div>
   </div>
-</section>
-
 </main>
 
-<footer class="cc-footer">
-  <div class="cc-container">
-    <div class="cc-footer__grid">
-      <div class="cc-footer__brand">
-        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true" style="color: var(--color-gold);">
-          <g fill="none" stroke="currentColor" stroke-linecap="round">
-            <g stroke-width="1.6">
-              <line x1="32" y1="8"  x2="32" y2="56"/>
-              <line x1="22" y1="20" x2="42" y2="20"/>
-              <line x1="20" y1="14" x2="44" y2="14"/>
-              <line x1="22" y1="44" x2="42" y2="40"/>
-            </g>
-          </g>
-        </svg>
-        <p class="cc-footer__brand-text">
-          Войсковой собор<br>
-          святого благоверного князя<br>
-          <em>Александра Невского</em>
-        </p>
-        <p class="cc-footer__quote">«Не в силе Бог, а в&nbsp;правде»</p>
-      </div>
-
-      <div class="cc-footer__col">
-        <h3>Навигация</h3>
-        <ul>
-          <li><a href="schedule.html">Расписание богослужений</a></li>
-          <li><a href="prayer-requests.html">Заказ треб</a></li>
-          <li><a href="donate.html">Пожертвование</a></li>
-          <li><a href="about.html">О соборе</a></li>
-          <li><a href="history.html">Летопись</a></li>
-          <li><a href="clergy.html">Духовенство</a></li>
-        </ul>
-      </div>
-
-      <div class="cc-footer__col">
-        <h3>Жизнь прихода</h3>
-        <ul>
-          <li><a href="parish-life.html#choir">Хор собора</a></li>
-          <li><a href="parish-life.html#school">Воскресная школа</a></li>
-          <li><a href="parish-life.html#sisterhood">Сестричество</a></li>
-          <li><a href="parish-life.html#youth">Молодёжь Невского</a></li>
-          <li><a href="icons.html">Святыни</a></li>
-          <li><a href="news.html">Новости</a></li>
-        </ul>
-      </div>
-
-      <div class="cc-footer__col">
-        <h3>Контакты</h3>
-        <div class="cc-footer__contact-row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>350063, Краснодар,<br>ул. Постовая, 26</span>
+<footer>
+  <div class="foot-inner">
+    <div class="foot-col">
+      <div class="foot-mark">
+        <div class="sigil-mark">
+          <svg width="30" height="30" viewBox="0 0 26 26" fill="none">
+            <path d="M13 2 L13 24 M5 8 L21 8 M7 14 L19 14 M9 19 L17 19" stroke="#c9a961" stroke-width="1.3" stroke-linecap="square"></path>
+          </svg>
         </div>
-        <div class="cc-footer__contact-row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>
-            <a href="tel:+78612620020">+7 (861) 262‑00‑20</a><br>
-            <a href="tel:+79183159413">+7 (918) 315‑94‑13</a>
-          </span>
-        </div>
-        <div class="cc-footer__contact-row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a>
-        </div>
-        <div class="cc-footer__social">
-          <a href="https://vk.com/voyskovoysoborkrasnodar" target="_blank" rel="noopener" aria-label="ВКонтакте">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.78 16.5c.4 0 .54-.27.53-.62-.05-1.7.65-2.66 1.83-1.5 1.31 1.3 1.59 2.12 3.14 2.12h2.78c.78 0 1.04-.27.81-.91-.7-1.96-3.96-3.27-3.83-3.5.86-1.51 3.95-4.97 3.95-6.36 0-.36-.27-.5-.7-.5h-2.78c-.62 0-.83.16-1.05.53-.66 1.13-2.51 4.34-3.4 4.34-.4 0-.59-.42-.59-.92V5.7c0-.69-.05-.95-.7-.95H8.18c-.6 0-.86.27-.86.62 0 .69 1.03.7 1.03 2.62v3.16c0 .85-.06 1.05-.4 1.05-.95 0-3.16-3.84-4.36-7.85-.18-.6-.31-.65-1.04-.65H.7C.04 3.7 0 3.95 0 4.27c0 .57 1.04 4.97 4.13 9.55C6.31 16.83 9.16 16.5 10.96 16.5h1.82z"/></svg>
-          </a>
-          <a href="https://t.me/alexnewsobor" target="_blank" rel="noopener" aria-label="Telegram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.55 8.16-1.86 8.78c-.14.62-.51.78-1.04.49l-2.87-2.12-1.39 1.34c-.15.15-.28.28-.58.28l.21-2.93 5.34-4.83c.23-.21-.05-.32-.36-.12L9.4 13.6l-2.84-.89c-.62-.19-.63-.62.13-.92l11.07-4.27c.51-.19.96.12.79.93z"/></svg>
-          </a>
-          <a href="mailto:nevskiy-sobor@mail.ru" aria-label="Email">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-        </div>
+        <div class="name">Войсковой Собор<span class="sub">святого благоверного князя Александра Невского</span></div>
       </div>
+      <p>350063, г. Краснодар, ул. Постовая, д. 26<br>+7 (861) 262-00-20 · nevskiy-sobor@mail.ru</p>
+      <p style="margin-top:14px;font-style:italic;font-family:'Cormorant Garamond';font-size:16px;color:#c8bfa8;">«Не в силе Бог, а в правде»</p>
     </div>
-
-    <div class="cc-footer__bottom">
-      <div>
-        © <span data-cc-year>2026</span> · Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г.&nbsp;Краснодара
-      </div>
-      <div class="cc-footer__legal">
-        <span>ИНН 2309091590</span>
-        <span>ОГРН 1052335002521</span>
-      </div>
+    <div class="foot-col">
+      <h5>Приход</h5>
+      <a href="about.html">О соборе</a>
+      <a href="history.html">Летопись</a>
+      <a href="clergy.html">Духовенство</a>
+      <a href="schedule.html">Расписание богослужений</a>
+      <a href="icons.html">Святыни и иконы</a>
+      <a href="parish-life.html#school">Воскресная школа</a>
+      <a href="parish-life.html#sisterhood">Социальное служение</a>
+      <a href="news.html">Новости</a>
+    </div>
+    <div class="foot-col">
+      <h5>Помощь храму</h5>
+      <a href="donate.html">Пожертвовать</a>
+      <a href="prayer-requests.html">Подать записку</a>
+      <a href="prayer-requests.html">Заказать молебен</a>
+      <a href="parish-life.html">Стать волонтёром</a>
+      <a href="donate.html#bank-details">Реквизиты для перевода</a>
+      <a href="https://vk.com/voyskovoysoborkrasnodar" target="_blank" rel="noopener">ВКонтакте</a>
+      <a href="https://t.me/alexnewsobor" target="_blank" rel="noopener">Telegram-канал</a>
     </div>
   </div>
+  <div class="foot-bottom">
+    <span>© 1872–2026 МПРПО Войсковой Собор Александра Невского. Екатеринодарская и Кубанская епархия Русской Православной Церкви.</span>
+    <span>ИНН 2309091590 · ОГРН 1052335002521</span>
+  </div>
 </footer>
-
-<script src="assets/js/main.js"></script>
 </body>
 </html>
