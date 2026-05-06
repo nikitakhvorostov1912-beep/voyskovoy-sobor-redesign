@@ -1445,21 +1445,17 @@ button {
 
 
 
+
+
 <link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap">
 <style id="unified-header-css">
 /* === Unified site header (overrides any per-page header CSS) === */
-html, body { width: 100%; min-width: 0; max-width: 100%; overflow-x: hidden; }
 body header:not(.uheader) {
     display: none !important;
 }
 body .uheader,
 body .uheader * {
     box-sizing: border-box;
-    /* Force the unified font stack regardless of per-page inheritance */
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
 }
 body .uheader {
     position: sticky;
@@ -1607,6 +1603,8 @@ body .uheader__cta:hover {
     <a href="donate.html" class="uheader__cta">Пожертвовать</a>
   </div>
 </header>
+
+
 
 
 
