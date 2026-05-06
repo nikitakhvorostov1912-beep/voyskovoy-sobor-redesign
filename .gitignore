@@ -13,3 +13,7 @@ node_modules/
 
 # Sensitive — НЕ публиковать database.sql (1.4 MB) с возможным PII
 theme/church-kadence-child-dev/database.sql
+
+# Утилиты для чистки HTML — не идут в публикацию
+_clean_react.py
+audit_*.png
