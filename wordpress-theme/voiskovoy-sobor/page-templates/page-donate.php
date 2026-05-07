@@ -1,0 +1,1686 @@
+<?php
+/**
+ * Template Name: Пожертвование
+ *
+ * Шаблон страницы «Пожертвование» — сгенерирован из docs/donate.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+  :root{
+    --parchment:#f5f0e8;
+    --parchment-2:#ede6d9;
+    --parchment-3:#e2d9c5;
+    --ink:#1a1f2e;
+    --ink-2:#2a3142;
+    --gold:#c9a961;
+    --gold-deep:#a8893f;
+    --gold-soft:#e0c98a;
+    --burgundy:#8b2635;
+    --burgundy-deep:#6f1d29;
+    --muted:#5b5345;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);}
+  body{
+    font-family:'Spectral', Georgia, serif;
+    font-weight:400;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--gold);color:var(--ink);}
+
+  /* Subtle parchment grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:
+      radial-gradient(rgba(26,31,46,0.025) 1px, transparent 1px),
+      radial-gradient(rgba(201,169,97,0.03) 1px, transparent 1px);
+    background-size:3px 3px, 7px 7px;
+    background-position:0 0, 1px 2px;
+    mix-blend-mode:multiply;
+  }
+
+  .ui{font-family:'PT Sans', system-ui, sans-serif;}
+  .display{font-family:'Cormorant Garamond', 'Spectral', serif;}
+  .ruslan{font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:.02em;}
+  .tabular{font-feature-settings:"tnum" 1, "lnum" 1;}
+
+  /* ============ STICKY HEADER ============ */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(180deg, #1a1f2e 0%, #161b29 100%);
+    color:#e8dfca;
+    border-bottom:1px solid rgba(201,169,97,0.25);
+  }
+  .topbar-inner{
+    max-width: 1720px;margin:0 auto;
+    padding:14px 32px;
+    display:flex;align-items:center;gap:32px;
+  }
+  .sigil{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;}
+  .sigil-mark{
+    width:44px;height:44px;flex-shrink:0;
+    border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(ellipse at center, rgba(201,169,97,0.15), transparent 70%);
+  }
+  .sigil-text{font-family:'Cormorant Garamond', serif; line-height:1;}
+  .sigil-text .l1{font-size:11px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;font-weight:500;}
+  .sigil-text .l2{font-size:18px;letter-spacing:0.04em;margin-top:4px;color:#f0e6cc;font-weight:500;}
+  .nav{display:flex;gap:30px;margin-left:auto;}
+  .nav a{
+    font-family:'PT Sans', sans-serif;
+    font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;
+    color:#c8bfa8;text-decoration:none;
+    padding:8px 0;position:relative;
+    transition:color .25s;
+  }
+  .nav a:hover{color:#f0e6cc;}
+  .nav a.active{color:var(--gold);}
+  .nav a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;
+    background:var(--gold);
+  }
+  .topbar .donate-cta{
+    background:#5a1820;
+    color:#d8c89c;
+    border:1px solid rgba(201,169,97,0.35);
+    padding:11px 22px;
+    font-family:'PT Sans', sans-serif;
+    font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;
+    cursor:not-allowed;opacity:0.55;
+    pointer-events:none;
+  }
+
+  /* ============ NARROW BURGUNDY HEADER ============ */
+  .ribbon{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.32)),
+      linear-gradient(135deg, #8b2635 0%, #6f1d29 60%, #5a1620 100%);
+    color:#f5e9c8;
+    padding:64px 32px 48px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .ribbon::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(201,169,97,0.12), transparent 40%),
+      radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.3), transparent 50%);
+    pointer-events:none;
+  }
+  .ribbon-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;}
+  .ribbon h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-size:clamp(38px, 5.2vw, 64px);
+    line-height:1.05;
+    margin:0 0 22px;
+    color:#fbf4dd;
+    letter-spacing:0.01em;
+  }
+  .ribbon-quote{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(18px, 2vw, 22px);
+    color:var(--gold-soft);
+    letter-spacing:0.02em;
+  }
+  .ribbon-quote .cite{
+    display:block;margin-top:10px;
+    font-style:normal;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;
+    color:rgba(224,201,138,0.7);
+    font-family:'PT Sans', sans-serif;font-weight:400;
+  }
+  .ribbon-rule{
+    margin:36px auto 0;width:140px;height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ============ HERO SECTION ============ */
+  .hero{
+    max-width: 1720px;margin:0 auto;
+    padding:80px 32px 60px;
+    display:grid;grid-template-columns:minmax(0, 40fr) minmax(0, 60fr);
+    gap:64px;align-items:start;
+  }
+  .story{
+    opacity:0;transform:translateX(-20px);
+    animation:fadeInLeft 0.9s ease-out 0.1s forwards;
+  }
+  @keyframes fadeInLeft{to{opacity:1;transform:translateX(0);}}
+  .story-photo{
+    position:relative;
+    width:100%;aspect-ratio: 1/1;
+    background:#1a1f2e;
+    margin-bottom:36px;
+    overflow:hidden;
+    border:1px solid var(--gold);
+    box-shadow:0 30px 60px -30px rgba(26,31,46,0.5);
+  }
+  .story-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .story-photo svg{width:100%;height:100%;display:block;}
+  .photo-placeholder{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:
+      linear-gradient(180deg, #1f2638 0%, #141826 100%);
+    color:#c9a961;text-align:center;padding:40px;
+    font-family:'Cormorant Garamond', serif;
+  }
+  .photo-placeholder .ph-frame{
+    border:1px solid rgba(201,169,97,0.4);
+    padding:30px 40px;
+  }
+  .photo-placeholder .ph-eyebrow{
+    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:0.28em;
+    text-transform:uppercase;color:#a8893f;font-weight:700;margin-bottom:12px;
+  }
+  .photo-placeholder .ph-title{font-size:24px;font-weight:500;line-height:1.2;color:#e0c98a;}
+  .photo-placeholder .ph-note{font-size:13px;color:#a89f87;margin-top:14px;font-style:italic;}
+  .photo-caption{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;font-size:14px;
+    color:var(--muted);
+    margin-top:-22px;margin-bottom:32px;
+    padding-left:14px;
+    border-left:1px solid var(--gold);
+    line-height:1.5;
+  }
+  .story h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;font-size:36px;line-height:1.1;
+    margin:0 0 24px;color:var(--ink);
+    letter-spacing:0.005em;
+  }
+  .story p{
+    font-size:16.5px;line-height:1.75;color:#3a3729;
+    margin:0 0 18px;
+  }
+  .story p:first-of-type::first-letter{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:78px;
+    float:left;
+    line-height:0.85;
+    margin:8px 10px 0 0;
+    color:var(--gold-deep);
+    text-shadow:0 1px 0 rgba(255,255,255,0.4);
+  }
+  .goals{
+    margin-top:32px;padding-top:28px;
+    border-top:1px solid rgba(201,169,97,0.3);
+    list-style:none;padding-left:0;
+  }
+  .goals li{
+    font-size:15.5px;line-height:1.5;
+    color:#3a3729;
+    padding:9px 0 9px 30px;
+    position:relative;
+    border-bottom:1px dotted rgba(201,169,97,0.2);
+  }
+  .goals li:last-child{border-bottom:none;}
+  .goals li::before{
+    content:"";position:absolute;left:0;top:14px;
+    width:14px;height:8px;
+    border-left:2px solid var(--gold-deep);
+    border-bottom:2px solid var(--gold-deep);
+    transform:rotate(-45deg);
+  }
+
+  /* ============ DONATION FORM ============ */
+  .form-wrap{
+    opacity:0;transform:translateY(24px);
+    animation:fadeInUp 0.9s ease-out 0.3s forwards;
+  }
+  @keyframes fadeInUp{to{opacity:1;transform:translateY(0);}}
+  .form-card{
+    background:linear-gradient(180deg, #faf6ee 0%, var(--parchment) 100%);
+    border:2px solid var(--gold);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.6) inset,
+      0 30px 70px -30px rgba(26,31,46,0.35),
+      0 0 0 8px rgba(201,169,97,0.06);
+    padding:40px 44px;
+    position:relative;
+  }
+  .form-card::before{
+    content:"";position:absolute;inset:6px;
+    border:1px solid rgba(201,169,97,0.35);
+    pointer-events:none;
+  }
+  .form-section{margin-bottom:34px;position:relative;}
+  .form-section:last-of-type{margin-bottom:0;}
+  .form-label{
+    font-family:'PT Sans', sans-serif;
+    font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:700;
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:18px;
+  }
+  .form-label::after{
+    content:"";flex:1;height:1px;background:rgba(201,169,97,0.35);
+  }
+  .form-label .num{
+    width:24px;height:24px;border:1px solid var(--gold);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    font-size:14px;color:var(--gold-deep);font-weight:500;letter-spacing:0;
+  }
+
+  .quick-amounts{
+    display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;
+    margin-bottom:16px;
+  }
+  .qa-btn{
+    background:transparent;
+    border:1.5px solid var(--gold);
+    padding:18px 8px;
+    font-family:'Spectral', serif;font-weight:700;
+    font-size:22px;color:var(--ink);
+    cursor:pointer;
+    transition:transform .2s ease, background .2s, color .2s, box-shadow .25s;
+    position:relative;overflow:hidden;
+  }
+  .qa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -10px rgba(201,169,97,0.6);}
+  .qa-btn.active{
+    background:linear-gradient(180deg, #d4b471 0%, var(--gold) 100%);
+    color:var(--ink);
+    border-color:var(--gold-deep);
+    box-shadow:0 6px 18px -8px rgba(168,137,63,0.55), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .ripple{
+    position:absolute;border-radius:50%;transform:scale(0);
+    animation:rippleAnim .6s linear;
+    background:rgba(201,169,97,0.5);pointer-events:none;
+  }
+  @keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
+  .other-amount{
+    display:flex;align-items:center;gap:0;
+    border:1px solid rgba(201,169,97,0.5);
+    background:rgba(255,255,255,0.5);
+  }
+  .other-amount label{
+    font-family:'PT Sans', sans-serif;font-size:12px;
+    letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);
+    padding:0 18px;border-right:1px solid rgba(201,169,97,0.4);
+    height:54px;display:flex;align-items:center;
+    background:rgba(201,169,97,0.07);
+  }
+  .other-amount input{
+    flex:1;border:0;background:transparent;
+    height:54px;padding:0 18px;
+    font-family:'Spectral', serif;font-weight:600;font-size:20px;color:var(--ink);
+    font-feature-settings:"tnum" 1;
+    outline:none;
+  }
+  .other-amount input::placeholder{color:#a59a7e;font-weight:400;}
+  .other-amount:focus-within{border-color:var(--gold-deep);background:#fffbf0;}
+
+  /* Radio list */
+  .radio-list{display:flex;flex-direction:column;}
+  .radio-row{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:14px 4px;
+    border-bottom:1px solid rgba(201,169,97,0.22);
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .radio-row:last-child{border-bottom:none;}
+  .radio-row:hover{background:rgba(201,169,97,0.05);}
+  .radio-row input{position:absolute;opacity:0;pointer-events:none;}
+  .radio-mark{
+    flex-shrink:0;width:20px;height:20px;border-radius:50%;
+    border:1.5px solid var(--gold-deep);
+    margin-top:3px;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s;
+  }
+  .radio-mark::after{
+    content:"";width:10px;height:10px;border-radius:50%;
+    background:var(--burgundy);
+    transform:scale(0);transition:transform .2s;
+  }
+  .radio-row.checked .radio-mark::after{transform:scale(1);}
+  .radio-row.checked{background:rgba(201,169,97,0.07);}
+  .radio-text{flex:1;font-size:16px;color:var(--ink);line-height:1.4;}
+  .radio-text .sub{display:block;font-size:13px;color:var(--muted);font-style:italic;margin-top:2px;}
+
+  /* Inputs */
+  .input-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .input{
+    position:relative;
+  }
+  .input.full{grid-column:1/-1;}
+  .input input{
+    width:100%;
+    border:1px solid rgba(201,169,97,0.5);
+    background:rgba(255,255,255,0.5);
+    padding:14px 16px;
+    font-family:'Spectral', serif;font-size:16px;color:var(--ink);
+    height:50px;outline:none;
+    transition:border-color .2s, background .2s;
+  }
+  .input input::placeholder{color:#a59a7e;}
+  .input input:focus{border-color:var(--gold-deep);background:#fffbf0;}
+  .input .hint{
+    font-size:12px;color:var(--muted);margin-top:6px;font-style:italic;
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+  }
+
+  /* Custom checkbox */
+  .check-row{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:10px 0;cursor:pointer;
+    font-size:15px;color:var(--ink);
+  }
+  .check-row input{position:absolute;opacity:0;pointer-events:none;}
+  .check-mark{
+    flex-shrink:0;width:20px;height:20px;
+    border:1.5px solid var(--gold-deep);
+    margin-top:1px;background:rgba(255,255,255,0.5);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s;
+  }
+  .check-mark svg{width:13px;height:13px;opacity:0;transition:opacity .2s;}
+  .check-row.checked .check-mark{background:var(--gold);}
+  .check-row.checked .check-mark svg{opacity:1;}
+  .check-row .label{flex:1;line-height:1.45;}
+  .check-row .label a{color:var(--burgundy);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+  .check-row.required .label::after{content:" *";color:var(--burgundy);}
+
+  /* Tabs */
+  .tabs{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border:1px solid rgba(201,169,97,0.5);
+    margin-bottom:18px;
+  }
+  .tab{
+    background:transparent;border:0;
+    padding:15px 8px;
+    font-family:'PT Sans', sans-serif;
+    font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;
+    color:var(--muted);cursor:pointer;
+    border-right:1px solid rgba(201,169,97,0.3);
+    transition:background .2s, color .2s;
+  }
+  .tab:last-child{border-right:none;}
+  .tab.active{background:var(--ink);color:var(--gold-soft);}
+  .tab:hover:not(.active){background:rgba(201,169,97,0.08);color:var(--ink);}
+  .tab-panel{display:none;padding:18px 4px 0;}
+  .tab-panel.active{display:block;}
+  .pay-logos{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .pay-logo{
+    height:32px;padding:0 14px;
+    border:1px solid rgba(201,169,97,0.4);
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'PT Sans', sans-serif;font-weight:700;font-size:13px;letter-spacing:0.05em;
+    color:#1a1f2e;
+  }
+  .pay-logo.visa{color:#1A1F71;font-style:italic;}
+  .pay-logo.mc{color:#EB001B;}
+  .pay-logo.mc span{color:#F79E1B;margin-left:-3px;}
+  .pay-logo.mir{color:#0F754E;}
+  .pay-meta{font-size:13px;color:var(--muted);margin-top:14px;font-style:italic;font-family:'Cormorant Garamond', serif;font-weight:500;}
+  .qr-row{display:flex;gap:24px;align-items:center;}
+  .qr-box{
+    width:140px;height:140px;flex-shrink:0;
+    background:#fff;border:1px solid rgba(201,169,97,0.5);
+    padding:12px;
+  }
+  .qr-box svg{width:100%;height:100%;display:block;}
+  .qr-text{flex:1;}
+  .qr-text strong{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:18px;color:var(--ink);display:block;margin-bottom:6px;}
+  .qr-text p{font-size:14px;color:var(--muted);margin:0;line-height:1.5;}
+  .ym{display:flex;align-items:center;gap:14px;padding:8px 0;}
+  .ym-mark{width:46px;height:46px;border-radius:50%;background:#8B3FFC;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'PT Sans';font-weight:700;font-size:18px;}
+  .ym strong{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:18px;display:block;}
+  .ym span{font-size:14px;color:var(--muted);}
+
+  /* Submit button */
+  .submit-btn{
+    width:100%;
+    background:linear-gradient(180deg, #9c2c3d 0%, var(--burgundy) 60%, var(--burgundy-deep) 100%);
+    color:#f5e9c8;
+    border:1px solid var(--burgundy-deep);
+    height:64px;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:24px;letter-spacing:0.04em;
+    cursor:pointer;
+    margin-top:14px;
+    position:relative;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.15) inset,
+      0 -2px 0 rgba(0,0,0,0.15) inset,
+      0 14px 30px -15px rgba(139,38,53,0.55);
+    transition:transform .15s, box-shadow .25s;
+  }
+  .submit-btn:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 -2px 0 rgba(0,0,0,0.15) inset,0 18px 36px -15px rgba(139,38,53,0.7);}
+  .submit-btn .amount{font-family:'Spectral', serif;font-weight:700;font-feature-settings:"tnum" 1;}
+  @keyframes attentionPulse{
+    0%, 100%{box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 -2px 0 rgba(0,0,0,0.15) inset,0 14px 30px -15px rgba(139,38,53,0.55), 0 0 0 0 rgba(201,169,97,0);}
+    50%{box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 -2px 0 rgba(0,0,0,0.15) inset,0 14px 30px -15px rgba(139,38,53,0.55), 0 0 0 14px rgba(201,169,97,0.2);}
+  }
+  .submit-btn.pulse-once{animation:attentionPulse 1.6s ease-in-out 1;}
+  .submit-meta{
+    font-size:12.5px;color:var(--muted);text-align:center;margin-top:14px;font-style:italic;
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .submit-meta svg{flex-shrink:0;}
+
+  /* ============ CREDENTIALS / REQUISITES ============ */
+  .section{max-width: 1720px;margin:0 auto;padding:50px 32px;}
+  .creds-card{
+    background:linear-gradient(180deg, #faf6ee 0%, var(--parchment) 100%);
+    border-top:1px solid var(--gold);
+    border-bottom:1px solid var(--gold);
+    padding:48px 56px;
+    position:relative;
+    box-shadow:0 1px 0 rgba(255,255,255,0.6) inset;
+  }
+  .creds-card::before, .creds-card::after{
+    content:"";position:absolute;left:0;right:0;height:1px;
+    background:rgba(201,169,97,0.3);
+  }
+  .creds-card::before{top:5px;}
+  .creds-card::after{bottom:5px;}
+  .creds-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    margin-bottom:32px;gap:24px;flex-wrap:wrap;
+  }
+  .creds-head h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;font-size:34px;margin:0;line-height:1;
+    letter-spacing:0.005em;
+  }
+  .creds-head h3 .sub{
+    display:block;
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:8px;font-weight:700;
+  }
+  .creds-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-outline{
+    background:transparent;border:1.5px solid var(--gold);
+    color:var(--gold-deep);
+    padding:12px 22px;font-family:'PT Sans',sans-serif;
+    font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;
+    cursor:pointer;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:background .2s, color .2s;
+  }
+  .btn-outline:hover{background:var(--gold);color:var(--ink);}
+  .btn-outline svg{width:14px;height:14px;}
+
+  .creds-table{
+    display:grid;grid-template-columns:240px 1fr;
+    border-top:1px solid rgba(201,169,97,0.4);
+  }
+  .creds-table .row{display:contents;}
+  .creds-table .k, .creds-table .v{
+    padding:16px 20px;
+    border-bottom:1px solid rgba(201,169,97,0.25);
+    font-size:15px;
+  }
+  .creds-table .k{
+    font-family:'PT Sans', sans-serif;
+    font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;
+    white-space:nowrap;
+  }
+  .creds-table .v{
+    font-family:'Spectral', serif;color:var(--ink);
+    font-feature-settings:"tnum" 1;
+  }
+  .creds-table .v strong{font-weight:600;}
+
+  /* ============ ALLOCATION INFOGRAPHIC ============ */
+  .alloc-section{
+    background:linear-gradient(180deg, var(--parchment) 0%, var(--parchment-2) 100%);
+    border-top:1px solid rgba(201,169,97,0.3);
+    border-bottom:1px solid rgba(201,169,97,0.3);
+    padding:80px 32px;
+    margin-top:30px;
+  }
+  .alloc-inner{max-width: 1720px;margin:0 auto;}
+  .alloc-head{text-align:center;margin-bottom:54px;}
+  .alloc-head .eyebrow{
+    font-family:'PT Sans', sans-serif;
+    font-size:11.5px;letter-spacing:0.32em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:700;
+    margin-bottom:14px;
+    display:flex;align-items:center;justify-content:center;gap:18px;
+  }
+  .alloc-head .eyebrow::before, .alloc-head .eyebrow::after{
+    content:"";width:50px;height:1px;background:var(--gold);
+  }
+  .alloc-head h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;font-size:46px;line-height:1.05;margin:0 0 16px;
+  }
+  .alloc-head p{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    font-size:19px;color:var(--muted);max-width:620px;margin:0 auto;
+  }
+  .alloc-list{
+    max-width:880px;margin:0 auto;
+    display:flex;flex-direction:column;
+    border-top:1px solid rgba(201,169,97,0.4);
+  }
+  .alloc-row{
+    padding:28px 0 22px;
+    border-bottom:1px solid rgba(201,169,97,0.4);
+    display:grid;grid-template-columns:90px 1fr;gap:32px;align-items:center;
+  }
+  .alloc-row .label{
+    display:flex;flex-direction:column;
+  }
+  .alloc-row h4{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;font-size:24px;margin:0 0 4px;line-height:1.15;color:var(--ink);
+  }
+  .alloc-row p{
+    font-size:14.5px;color:var(--muted);margin:10px 0 0;line-height:1.5;
+    max-width:560px;
+  }
+  .alloc-pct{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;font-size:48px;line-height:1;color:var(--ink);
+    text-align:right;
+    font-feature-settings:"lnum" 1, "tnum" 1;
+    letter-spacing:-0.01em;
+  }
+  .alloc-pct .sym{font-size:24px;color:var(--gold-deep);font-style:italic;font-weight:400;margin-left:2px;}
+  .alloc-bar{
+    height:6px;background:rgba(201,169,97,0.18);margin-top:14px;
+    overflow:hidden;
+  }
+  .alloc-bar-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg, var(--gold-deep), var(--gold));
+    transition:width 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .alloc-list.in-view .alloc-bar-fill{width:var(--w);}
+
+  /* ============ THANK YOU SECTION ============ */
+  .thanks{
+    max-width:1080px;margin:0 auto;padding:90px 32px 60px;
+    text-align:center;
+  }
+  .thanks-quote{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    font-size:30px;line-height:1.3;color:var(--ink);
+    max-width:760px;margin:0 auto 22px;
+    position:relative;
+  }
+  .thanks-quote::before, .thanks-quote::after{
+    font-family:'Cormorant Garamond', serif;font-style:normal;
+    color:var(--gold);font-size:60px;line-height:0;position:relative;top:18px;
+  }
+  .thanks-quote::before{content:"« ";}
+  .thanks-quote::after{content:" »";}
+  .thanks-cite{
+    font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.28em;
+    text-transform:uppercase;color:var(--gold-deep);font-weight:700;
+    margin-bottom:50px;
+  }
+  .thanks-list-head{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;font-size:24px;margin:0 0 22px;
+  }
+  .thanks-names{
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px;line-height:2.1;color:var(--ink);
+    max-width:780px;margin:0 auto;
+    column-count:1;
+    word-spacing:0.4em;
+  }
+  .thanks-names .sep{color:rgba(201,169,97,0.5);margin:0 10px;font-weight:300;font-style:italic;}
+  .thanks-names em{color:var(--muted);font-style:italic;font-size:17px;}
+  .thanks-cta{margin-top:40px;}
+
+  .btn-gold{
+    display:inline-flex;align-items:center;gap:10px;
+    background:linear-gradient(180deg, #d4b471 0%, var(--gold) 100%);
+    color:var(--ink);
+    border:1px solid var(--gold-deep);
+    padding:16px 30px;
+    font-family:'PT Sans', sans-serif;font-size:12px;letter-spacing:0.24em;
+    text-transform:uppercase;font-weight:700;
+    cursor:pointer;
+    box-shadow:0 1px 0 rgba(255,255,255,0.4) inset, 0 8px 22px -10px rgba(168,137,63,0.5);
+    transition:transform .2s;
+  }
+  .btn-gold:hover{transform:translateY(-2px);}
+
+  /* ============ RECURRING TIERS ============ */
+  .tiers-section{padding:30px 32px 80px;max-width: 1720px;margin:0 auto;}
+  .tiers-card{
+    border:1.5px solid var(--burgundy);
+    background:#fbf6ec;
+    padding:56px 56px 48px;
+    position:relative;
+  }
+
+  .tiers-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:36px;flex-wrap:wrap;}
+  .tiers-head .eyebrow{
+    font-family:'PT Sans', sans-serif;font-size:11px;letter-spacing:0.28em;
+    text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-bottom:10px;
+  }
+  .tiers-head h2{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:42px;margin:0 0 12px;line-height:1.05;
+  }
+  .tiers-head p{
+    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:400;
+    font-size:18px;color:var(--muted);max-width:560px;margin:0;line-height:1.5;
+  }
+  .tiers-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border:1px solid rgba(201,169,97,0.4);
+  }
+  .tier{
+    background:#fdf9f0;
+    padding:36px 30px 30px;
+    border-right:1px solid rgba(201,169,97,0.4);
+    position:relative;
+    text-align:left;
+  }
+  .tier:last-child{border-right:none;}
+  .tier .tier-eyebrow{
+    font-family:'PT Sans', sans-serif;font-size:10.5px;letter-spacing:0.28em;
+    text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:12px;
+  }
+  .tier h3{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:30px;margin:0 0 18px;letter-spacing:0.005em;
+  }
+  .tier .price{
+    font-family:'Spectral', serif;font-weight:700;font-size:36px;
+    color:var(--ink);margin-bottom:4px;
+    font-feature-settings:"tnum" 1;
+  }
+  .tier .price .per{font-size:15px;color:var(--muted);font-weight:400;font-style:italic;font-family:'Cormorant Garamond';}
+  .tier .desc{
+    font-size:15px;line-height:1.6;color:#3a3729;
+    margin:18px 0 24px;padding-top:18px;border-top:1px solid rgba(201,169,97,0.4);
+    min-height:130px;
+  }
+  .tier .btn-outline{width:100%;justify-content:center;}
+  .tier.featured{
+    background:linear-gradient(180deg, #fdf9f0 0%, #f5ead0 100%);
+  }
+
+  /* ============ FAQ ============ */
+  .faq-section{
+    background:#ede5d2;
+    border-top:1px solid rgba(201,169,97,0.3);
+    padding:80px 32px;
+  }
+  .faq-inner{max-width:880px;margin:0 auto;}
+  .faq-head{text-align:center;margin-bottom:42px;}
+  .faq-head .eyebrow{
+    font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.28em;
+    text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:12px;
+  }
+  .faq-head h2{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:42px;margin:0;line-height:1.05;
+  }
+  .faq-item{
+    border-bottom:1px solid rgba(26,31,46,0.15);
+  }
+  .faq-item:first-child{border-top:1px solid rgba(26,31,46,0.15);}
+  .faq-q{
+    width:100%;background:none;border:0;text-align:left;
+    padding:24px 50px 24px 4px;cursor:pointer;
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:22px;color:var(--ink);
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    position:relative;
+    transition:color .2s;
+  }
+  .faq-q:hover{color:var(--burgundy);}
+  .faq-icon{
+    flex-shrink:0;width:20px;height:20px;
+    position:relative;color:var(--gold-deep);
+    transition:color .2s;
+  }
+  .faq-icon::before, .faq-icon::after{
+    content:"";position:absolute;background:currentColor;
+    transition:transform .3s;
+  }
+  .faq-icon::before{width:14px;height:1.5px;top:50%;left:3px;transform:translateY(-50%);}
+  .faq-icon::after{width:1.5px;height:14px;left:50%;top:3px;transform:translateX(-50%);}
+  .faq-item.open .faq-icon::after{transform:translateX(-50%) scaleY(0);}
+  .faq-a{
+    max-height:0;overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .faq-a-inner{padding:0 4px 24px;font-size:16px;line-height:1.7;color:#3a3729;}
+  .faq-item.open .faq-a{max-height:300px;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:linear-gradient(180deg, #161b29 0%, #0f1320 100%);
+    color:#a89f87;
+    padding:70px 32px 30px;
+    border-top:1px solid rgba(201,169,97,0.2);
+  }
+  .foot-inner{
+    max-width: 1720px;margin:0 auto;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:60px;
+  }
+  .foot-col h5{
+    font-family:'PT Sans', sans-serif;font-size:11.5px;letter-spacing:0.28em;
+    text-transform:uppercase;color:var(--gold);font-weight:700;
+    margin:0 0 18px;
+  }
+  .foot-col p, .foot-col a{
+    font-size:14.5px;color:#a89f87;text-decoration:none;
+    line-height:1.7;display:block;
+  }
+  .foot-col a:hover{color:var(--gold-soft);}
+  .foot-mark{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+  .foot-mark .sigil-mark{width:50px;height:50px;}
+  .foot-mark .name{
+    font-family:'Cormorant Garamond', serif;font-size:20px;color:#f0e6cc;line-height:1.2;
+    font-weight:500;
+  }
+  .foot-mark .name .sub{display:block;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-top:6px;font-family:'PT Sans';font-weight:400;}
+  .foot-bottom{
+    max-width: 1720px;margin:50px auto 0;padding-top:24px;
+    border-top:1px solid rgba(201,169,97,0.15);
+    font-size:12.5px;color:#6e6754;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:'PT Sans',sans-serif;
+  }
+
+  /* ============ MOBILE STICKY DONATE BAR ============ */
+  .mobile-bar{
+    display:none;
+    position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:linear-gradient(180deg, #9c2c3d 0%, var(--burgundy-deep) 100%);
+    padding:14px 16px;
+    box-shadow:0 -10px 30px -10px rgba(0,0,0,0.3);
+    border-top:1px solid var(--gold);
+  }
+  .mobile-bar button{
+    width:100%;background:transparent;color:#f5e9c8;border:0;
+    font-family:'Cormorant Garamond', serif;font-weight:600;font-size:20px;
+    padding:14px;cursor:pointer;letter-spacing:0.02em;
+  }
+  .mobile-bar .amount{font-family:'Spectral';font-weight:700;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px){
+    .hero{grid-template-columns:1fr;gap:50px;padding:50px 24px;}
+    .form-wrap{order:-1;}
+    .form-card{padding:32px 28px;}
+    .tiers-grid{grid-template-columns:1fr;}
+    .tier{border-right:none;border-bottom:1px solid rgba(201,169,97,0.4);}
+    .tier:last-child{border-bottom:none;}
+    .foot-inner{grid-template-columns:1fr 1fr;gap:40px;}
+    .foot-col:first-child{grid-column:1/-1;}
+    .nav{display:none;}
+    .creds-card{padding:32px 22px;}
+    .creds-table{grid-template-columns:1fr;}
+    .creds-table .k{padding:10px 14px 4px;background:transparent;}
+    .creds-table .v{padding:0 14px 12px;border-bottom:1px solid rgba(201,169,97,0.25);}
+  }
+  @media (max-width: 640px){
+    .topbar-inner{padding:12px 18px;gap:10px;}
+    .topbar .donate-cta{padding:9px 14px;font-size:10.5px;letter-spacing:0.18em;}
+    .sigil-text .l2{font-size:14px;}
+    .sigil-text .l1{font-size:9px;}
+    .sigil-mark{width:36px;height:36px;}
+    .ribbon{padding:46px 22px 36px;}
+    .hero{padding:40px 18px;}
+    .quick-amounts{grid-template-columns:repeat(2, 1fr);}
+    .input-grid{grid-template-columns:1fr;}
+    .alloc-row{grid-template-columns:64px 1fr;gap:18px;}
+    .alloc-pct{font-size:36px;}
+    .alloc-pct .sym{font-size:18px;}
+    .alloc-section{padding:60px 18px;}
+    .creds-card{padding:28px 18px;}
+    .tiers-card{padding:36px 22px;}
+    .thanks{padding:60px 22px 40px;}
+    .thanks-quote{font-size:24px;}
+    .faq-section{padding:60px 22px;}
+    .faq-q{font-size:18px;padding:20px 50px 20px 4px;}
+    .mobile-bar{display:block;}
+    body{padding-bottom:80px;}
+    .foot-inner{grid-template-columns:1fr;}
+    .creds-head h3{font-size:26px;}
+    .alloc-head h2, .tiers-head h2, .faq-head h2{font-size:32px;}
+  }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ====== STICKY HEADER ====== -->
+
+
+<!-- ====== RIBBON ====== -->
+<section class="ribbon">
+  <div class="ribbon-inner">
+    <h1>Помогите храму</h1>
+    <div class="ribbon-quote">
+      «Доброхотного дателя любит Бог»
+      <span class="cite">— 2 Кор. 9 : 7</span>
+    </div>
+    <div class="ribbon-rule"></div>
+  </div>
+</section>
+
+<!-- ====== HERO: STORY + FORM ====== -->
+<section class="hero">
+
+  <!-- LEFT: STORY -->
+  <div class="story">
+    <div class="story-photo">
+      <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/cathedral-panoramio.jpg"); ?>"
+           alt="Войсковой собор святого благоверного князя Александра Невского, Краснодар"
+           class="site-photo"
+           loading="lazy"
+           style="width:100%;height:auto;display:block;">
+    </div>
+    <div class="photo-caption">Войсковой Собор святого благоверного князя Александра Невского, освящён в 1872 году.</div>
+
+    <h2>Слово к жертвователю</h2>
+    <p>Cвято-Александро-Невский Войсковой Собор — место молитвы и духовный центр православных Краснодара с 1872 года. Сегодня собор живёт благодаря пожертвованиям прихожан и благотворителей.</p>
+    <p>Каждое ваше приношение помогает служению храма: содержание клира, восстановление росписи, программа социального служения, воскресная школа, помощь нуждающимся.</p>
+    <p>Любая лепта — копейка ли, тысяча ли — принимается с благодарностью и обращается в молитву о вашем здравии и о упокоении ваших сродников.</p>
+
+    <ul class="goals">
+      <li>Восстановление росписи купола и парусов</li>
+      <li>Содержание воскресной школы «Русский щит»</li>
+      <li>Помощь многодетным семьям прихода</li>
+      <li>Реставрация икон XIX века</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="form-wrap">
+    <div class="form-card">
+
+      <!-- Section A: amount -->
+      <div class="form-section">
+        <div class="form-label"><span class="num">I</span> Размер пожертвования</div>
+        <div class="quick-amounts" id="qa">
+          <button type="button" class="qa-btn" data-amount="100">100 ₽</button>
+          <button type="button" class="qa-btn active" data-amount="500">500 ₽</button>
+          <button type="button" class="qa-btn" data-amount="1000">1 000 ₽</button>
+          <button type="button" class="qa-btn" data-amount="3000">3 000 ₽</button>
+        </div>
+        <div class="other-amount">
+          <label for="customAmount">Другая сумма, ₽</label>
+          <input id="customAmount" type="text" inputmode="numeric" autocomplete="off" placeholder="напр. 2 500">
+        </div>
+      </div>
+
+      <!-- Section B: purpose -->
+      <div class="form-section">
+        <div class="form-label"><span class="num">II</span> Как будет назначено</div>
+        <div class="radio-list" id="purposeList">
+          <label class="radio-row checked">
+            <input type="radio" name="purpose" value="general" checked="">
+            <span class="radio-mark"></span>
+            <span class="radio-text">На общие нужды храма<span class="sub">по благословению настоятеля распределяется на текущие потребности</span></span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="purpose" value="dome">
+            <span class="radio-mark"></span>
+            <span class="radio-text">Восстановление росписи купола</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="purpose" value="school">
+            <span class="radio-mark"></span>
+            <span class="radio-text">Содержание воскресной школы «Русский щит»</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="purpose" value="aid">
+            <span class="radio-mark"></span>
+            <span class="radio-text">Помощь нуждающимся</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="purpose" value="memorial">
+            <span class="radio-mark"></span>
+            <span class="radio-text">Помянник усопших воинов</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section C: contact -->
+      <div class="form-section">
+        <div class="form-label"><span class="num">III</span> Ваши данные</div>
+        <div class="input-grid">
+          <div class="input full">
+            <input type="text" placeholder="Имя — для поминовения">
+            <div class="hint">опционально, в крещении</div>
+          </div>
+          <div class="input">
+            <input type="email" placeholder="Электронная почта">
+          </div>
+          <div class="input">
+            <input type="tel" placeholder="Телефон">
+          </div>
+        </div>
+        <label class="check-row" style="margin-top:14px;">
+          <input type="checkbox">
+          <span class="check-mark"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5 L5 9.5 L11 3.5" stroke="#1a1f2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span class="label">Жертвовать каждый месяц этой суммой <em style="color:var(--muted);font-style:italic;font-family:'Cormorant Garamond';">— стать постоянным благотворителем храма</em></span>
+        </label>
+        <label class="check-row checked required">
+          <input type="checkbox" checked="">
+          <span class="check-mark"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5 L5 9.5 L11 3.5" stroke="#1a1f2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span class="label">Я согласен с <a href="<?php echo esc_url(home_url("/privacy")); ?>">положением о персональных данных</a></span>
+        </label>
+      </div>
+
+      <!-- Section D: payment -->
+      <div class="form-section">
+        <div class="form-label"><span class="num">IV</span> Способ оплаты</div>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="card">Картой</button>
+          <button class="tab" data-tab="sbp">СБП</button>
+          <button class="tab" data-tab="ym">ЮMoney</button>
+        </div>
+
+        <div class="tab-panel active" data-panel="card">
+          <div class="pay-logos">
+            <div class="pay-logo visa">VISA</div>
+            <div class="pay-logo mc">MasterCard</div>
+            <div class="pay-logo mir">МИР</div>
+          </div>
+          <div class="pay-meta">Перевод через защищённый шлюз Сбербанк / Тинькофф. Комиссия не взимается.</div>
+        </div>
+
+        <div class="tab-panel" data-panel="sbp">
+          <div class="qr-row">
+            <div class="qr-box">
+              <!-- stylized QR -->
+              <svg viewBox="0 0 100 100">
+                <rect width="100" height="100" fill="#fff"></rect>
+                <g fill="#1a1f2e">
+                  <!-- finder squares -->
+                  <rect x="6" y="6" width="22" height="22"></rect><rect x="10" y="10" width="14" height="14" fill="#fff"></rect><rect x="14" y="14" width="6" height="6"></rect>
+                  <rect x="72" y="6" width="22" height="22"></rect><rect x="76" y="10" width="14" height="14" fill="#fff"></rect><rect x="80" y="14" width="6" height="6"></rect>
+                  <rect x="6" y="72" width="22" height="22"></rect><rect x="10" y="76" width="14" height="14" fill="#fff"></rect><rect x="14" y="80" width="6" height="6"></rect>
+                  <!-- random data -->
+                  <rect x="34" y="8" width="4" height="4"></rect><rect x="42" y="8" width="4" height="4"></rect><rect x="50" y="8" width="4" height="4"></rect><rect x="58" y="8" width="4" height="4"></rect><rect x="66" y="8" width="4" height="4"></rect>
+                  <rect x="34" y="16" width="4" height="4"></rect><rect x="46" y="16" width="4" height="4"></rect><rect x="54" y="16" width="4" height="4"></rect><rect x="62" y="16" width="4" height="4"></rect>
+                  <rect x="38" y="24" width="4" height="4"></rect><rect x="50" y="24" width="4" height="4"></rect><rect x="58" y="24" width="4" height="4"></rect>
+                  <rect x="8" y="34" width="4" height="4"></rect><rect x="20" y="34" width="4" height="4"></rect><rect x="32" y="34" width="4" height="4"></rect><rect x="40" y="34" width="4" height="4"></rect><rect x="48" y="34" width="4" height="4"></rect><rect x="56" y="34" width="4" height="4"></rect><rect x="68" y="34" width="4" height="4"></rect><rect x="80" y="34" width="4" height="4"></rect><rect x="88" y="34" width="4" height="4"></rect>
+                  <rect x="14" y="42" width="4" height="4"></rect><rect x="26" y="42" width="4" height="4"></rect><rect x="38" y="42" width="4" height="4"></rect><rect x="50" y="42" width="4" height="4"></rect><rect x="62" y="42" width="4" height="4"></rect><rect x="74" y="42" width="4" height="4"></rect><rect x="86" y="42" width="4" height="4"></rect>
+                  <rect x="8" y="50" width="4" height="4"></rect><rect x="20" y="50" width="4" height="4"></rect><rect x="32" y="50" width="4" height="4"></rect><rect x="44" y="50" width="4" height="4"></rect><rect x="56" y="50" width="4" height="4"></rect><rect x="68" y="50" width="4" height="4"></rect><rect x="80" y="50" width="4" height="4"></rect><rect x="92" y="50" width="4" height="4"></rect>
+                  <rect x="14" y="58" width="4" height="4"></rect><rect x="26" y="58" width="4" height="4"></rect><rect x="38" y="58" width="4" height="4"></rect><rect x="50" y="58" width="4" height="4"></rect><rect x="62" y="58" width="4" height="4"></rect><rect x="74" y="58" width="4" height="4"></rect><rect x="86" y="58" width="4" height="4"></rect>
+                  <rect x="8" y="66" width="4" height="4"></rect><rect x="20" y="66" width="4" height="4"></rect><rect x="32" y="66" width="4" height="4"></rect><rect x="44" y="66" width="4" height="4"></rect><rect x="56" y="66" width="4" height="4"></rect><rect x="68" y="66" width="4" height="4"></rect><rect x="80" y="66" width="4" height="4"></rect><rect x="92" y="66" width="4" height="4"></rect>
+                  <rect x="34" y="76" width="4" height="4"></rect><rect x="46" y="76" width="4" height="4"></rect><rect x="58" y="76" width="4" height="4"></rect><rect x="70" y="76" width="4" height="4"></rect><rect x="82" y="76" width="4" height="4"></rect>
+                  <rect x="38" y="84" width="4" height="4"></rect><rect x="50" y="84" width="4" height="4"></rect><rect x="62" y="84" width="4" height="4"></rect><rect x="74" y="84" width="4" height="4"></rect><rect x="86" y="84" width="4" height="4"></rect>
+                  <rect x="34" y="92" width="4" height="4"></rect><rect x="46" y="92" width="4" height="4"></rect><rect x="58" y="92" width="4" height="4"></rect><rect x="70" y="92" width="4" height="4"></rect><rect x="82" y="92" width="4" height="4"></rect>
+                </g>
+                <!-- center logo -->
+                <rect x="40" y="40" width="20" height="20" fill="#fff"></rect>
+                <text x="50" y="55" text-anchor="middle" font-family="PT Sans" font-size="9" font-weight="700" fill="#8b2635">СБП</text>
+              </svg>
+            </div>
+            <div class="qr-text">
+              <strong>Система быстрых платежей</strong>
+              <p>Откройте приложение вашего банка, отсканируйте код или нажмите на него с телефона. Перевод поступит на счёт собора в течение нескольких секунд.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="ym">
+          <div class="ym">
+            <div class="ym-mark">Ю</div>
+            <div>
+              <strong>ЮMoney — кошелёк 410 011 ••• ••• 234</strong>
+              <span>Перевод с любого кошелька, банковской карты или электронной почты.</span>
+            </div>
+          </div>
+          <div class="pay-meta">При переводе укажите назначение, чтобы пожертвование было учтено правильно.</div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button class="submit-btn pulse-once" id="submitBtn">
+        Пожертвовать <span class="amount" id="btnAmount">500 ₽</span>
+      </button>
+      <div class="submit-meta">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 L12 3 V6.5 C12 9.8 9.8 12 7 13 C4.2 12 2 9.8 2 6.5 V3 L7 1 Z" stroke="#a8893f" stroke-width="1.2" fill="none"></path></svg>
+        Все платежи проходят через защищённый шлюз. Мы не храним данные карт.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== REQUISITES ====== -->
+<section class="section" id="requisites">
+  <div class="creds-card">
+    <div class="creds-head">
+      <h3><span class="sub">Документы</span>Реквизиты для прямого перевода</h3>
+      <div class="creds-actions">
+        <button class="btn-outline" id="copyBtn">
+          <svg viewBox="0 0 14 14" fill="none"><rect x="3" y="3" width="8" height="9" stroke="currentColor" stroke-width="1.2"></rect><rect x="5" y="1" width="8" height="9" stroke="currentColor" stroke-width="1.2" fill="#fbf6ec"></rect></svg>
+          <span id="copyLabel">Скопировать реквизиты</span>
+        </button>
+        <button class="btn-outline" type="button" onclick="window.print()">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1 V10 M3 6 L7 10 L11 6 M2 12 H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Распечатать реквизиты
+        </button>
+      </div>
+    </div>
+    <div class="creds-table" id="credsTable">
+      <div class="row"><div class="k">Получатель</div><div class="v"><strong>Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г. Краснодара Екатеринодарской и Кубанской епархии Русской Православной Церкви</strong></div></div>
+      <div class="row"><div class="k">ИНН</div><div class="v">2309091590</div></div>
+      <div class="row"><div class="k">КПП</div><div class="v">230901001</div></div><div class="row"><div class="k">ОГРН</div><div class="v">1052335002521</div></div>
+      <div class="row"><div class="k">Расчётный счёт</div><div class="v">40703810100005000023</div></div>
+      <div class="row"><div class="k">Банк</div><div class="v">Филиал «Центральный» Банка ВТБ (ПАО) г. Москва</div></div>
+      <div class="row"><div class="k">БИК</div><div class="v">044525411</div></div>
+      <div class="row"><div class="k">Корр. счёт</div><div class="v">30101810145250000411</div></div>
+      <div class="row"><div class="k">Назначение</div><div class="v"><em>«Добровольное пожертвование на уставную деятельность. НДС не облагается»</em></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ALLOCATION ====== -->
+<section class="alloc-section">
+  <div class="alloc-inner">
+    <div class="alloc-head">
+      <div class="eyebrow">Прозрачность</div>
+      <h2>Куда идут средства</h2>
+      <p>Распределение поступивших пожертвований за минувший приходской год, утверждённое приходским советом.</p>
+    </div>
+    <div class="alloc-list" id="allocGrid">
+      <div class="alloc-row" style="--w:60%;">
+        <div class="alloc-pct">60<span class="sym">%</span></div>
+        <div class="label">
+          <h4>Содержание клира и хора</h4>
+          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
+          <p>Содержание священства, диаконов, певчих и алтарников; богослужебная утварь, просфоры, ладан, свечи.</p>
+        </div>
+      </div>
+      <div class="alloc-row" style="--w:20%;">
+        <div class="alloc-pct">20<span class="sym">%</span></div>
+        <div class="label">
+          <h4>Социальное служение</h4>
+          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
+          <p>Помощь многодетным семьям, одиноким старикам, бездомным; продовольственные наборы и адресная поддержка.</p>
+        </div>
+      </div>
+      <div class="alloc-row" style="--w:15%;">
+        <div class="alloc-pct">15<span class="sym">%</span></div>
+        <div class="label">
+          <h4>Восстановление и ремонт</h4>
+          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
+          <p>Реставрация росписи и икон, поддержание здания, инженерных систем и территории прихода.</p>
+        </div>
+      </div>
+      <div class="alloc-row" style="--w:5%;">
+        <div class="alloc-pct">5<span class="sym">%</span></div>
+        <div class="label">
+          <h4>Административные расходы</h4>
+          <div class="alloc-bar"><div class="alloc-bar-fill"></div></div>
+          <p>Бухгалтерия, банковские комиссии, обязательные отчисления, канцелярия и связь.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== THANKS ====== -->
+<section class="thanks">
+  <div class="thanks-quote">Творящий милостыню, как сам Господь, бывает услышан в день нужды</div>
+  <div class="thanks-cite">Свт. Иоанн Златоуст</div>
+
+  <h3 class="thanks-list-head">Благодетели в этом году</h3>
+  <p class="thanks-names">
+    Анна <span class="sep">/</span> Михаил <span class="sep">/</span> Иоанн <span class="sep">/</span> Сергий <span class="sep">/</span> Мария <span class="sep">/</span> Александр <span class="sep">/</span> Елена <span class="sep">/</span> Николай <span class="sep">/</span> Татиана <span class="sep">/</span> Димитрий <span class="sep">/</span> Ольга <span class="sep">/</span> Пётр <span class="sep">/</span> Ирина <span class="sep">/</span> Иаков <span class="sep">/</span> Параскева <span class="sep">/</span> Феодор <span class="sep">/</span> Любовь <span class="sep">/</span> Андрей <span class="sep">/</span> Ксения <span class="sep">/</span> <em>и анонимные жертвователи</em>
+  </p>
+  <div class="thanks-cta">
+    <a class="btn-gold" href="<?php echo esc_url(home_url("/prayer-requests")); ?>">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1 V13 M1 7 H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+      Подать имя для поминовения о здравии
+    </a>
+  </div>
+</section>
+
+<!-- ====== TIERS ====== -->
+<section class="tiers-section">
+  <div class="tiers-card">
+    <div class="tiers-head">
+      <div>
+        <div class="eyebrow">Программа</div>
+        <h2>Ангел-хранитель храма</h2>
+        <p>Прихожане, поддерживающие храм регулярно, поминаются именно на каждой Божественной Литургии в течение года.</p>
+      </div>
+    </div>
+    <div class="tiers-grid">
+
+      <div class="tier">
+        <div class="tier-eyebrow">Ступень I</div>
+        <h3>Жертвователь</h3>
+        <div class="price">500 ₽<span class="per"> / месяц</span></div>
+        <p class="desc">Поминовение на проскомидии в течение года. Электронная иконка благословения от настоятеля по почте.</p>
+        <a class="btn-outline" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B2%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83%20%C2%AB%D0%90%D0%BD%D0%B3%D0%B5%D0%BB-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D1%85%D1%80%D0%B0%D0%BC%D0%B0%C2%BB&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%B2%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83%20%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%BD%D1%8B%D1%85%20%D0%B6%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9.%0A%0A%D0%A1%D1%82%D1%83%D0%BF%D0%B5%D0%BD%D1%8C%20(%D0%96%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20%2F%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B5%D1%82%D0%B5%D0%BB%D1%8C%20%2F%20%D0%9A%D1%82%D0%B8%D1%82%D0%BE%D1%80)%3A%20%0A%D0%98%D0%BC%D1%8F%3A%20%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20(%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email)%3A%20">Записаться</a>
+      </div>
+
+      <div class="tier featured">
+        <div class="tier-eyebrow">Ступень II</div>
+        <h3>Благодетель</h3>
+        <div class="price">1 500 ₽<span class="per"> / месяц</span></div>
+        <p class="desc">Поминовение на проскомидии и сугубой ектении. Именное приглашение на престольные праздники, освящённая просфора по большим праздникам.</p>
+        <a class="btn-outline" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B2%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83%20%C2%AB%D0%90%D0%BD%D0%B3%D0%B5%D0%BB-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D1%85%D1%80%D0%B0%D0%BC%D0%B0%C2%BB&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%B2%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83%20%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%BD%D1%8B%D1%85%20%D0%B6%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9.%0A%0A%D0%A1%D1%82%D1%83%D0%BF%D0%B5%D0%BD%D1%8C%20(%D0%96%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20%2F%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B5%D1%82%D0%B5%D0%BB%D1%8C%20%2F%20%D0%9A%D1%82%D0%B8%D1%82%D0%BE%D1%80)%3A%20%0A%D0%98%D0%BC%D1%8F%3A%20%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20(%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email)%3A%20">Записаться</a>
+      </div>
+
+      <div class="tier">
+        <div class="tier-eyebrow">Ступень III</div>
+        <h3>Ктитор</h3>
+        <div class="price">5 000 ₽<span class="per"> / месяц</span></div>
+        <p class="desc">Имя жертвователя вносится в синодик ктиторов прихода. Поминовение за каждой Литургией. Личная встреча с настоятелем по запросу.</p>
+        <a class="btn-outline" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B2%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83%20%C2%AB%D0%90%D0%BD%D0%B3%D0%B5%D0%BB-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%D1%85%D1%80%D0%B0%D0%BC%D0%B0%C2%BB&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%B2%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83%20%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%BD%D1%8B%D1%85%20%D0%B6%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9.%0A%0A%D0%A1%D1%82%D1%83%D0%BF%D0%B5%D0%BD%D1%8C%20(%D0%96%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20%2F%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B5%D1%82%D0%B5%D0%BB%D1%8C%20%2F%20%D0%9A%D1%82%D0%B8%D1%82%D0%BE%D1%80)%3A%20%0A%D0%98%D0%BC%D1%8F%3A%20%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20(%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email)%3A%20">Записаться</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <div class="eyebrow">Частые вопросы</div>
+      <h2>О пожертвованиях</h2>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item open">
+        <button class="faq-q">Можно ли получить квитанцию для налогового вычета?<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Да. После пожертвования через сайт вы получите электронную квитанцию на указанную почту. Для налогового вычета по ст. 219 НК РФ мы можем выдать справку с реквизитами прихода — напишите на <a href="<?php echo esc_url(home_url("/donate")); ?>" style="color:var(--burgundy);text-decoration:underline;">nevskiy-sobor@mail.ru</a>, мы подготовим документы в течение трёх рабочих дней.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как отменить ежемесячное пожертвование?<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">В каждом письме о списании есть прямая ссылка для отмены подписки. Также вы можете написать нам или позвонить в канцелярию — отмена производится в тот же день, никакие комиссии и удержания не предусмотрены.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Куда обратиться, если перевод не дошёл?<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Сообщите дату, сумму и последние четыре цифры карты на почту канцелярии или по телефону +7 (861) 262-00-20. Мы сверим выписку и поможем найти платёж — обычно вопрос решается за 1–2 дня.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Можно ли пожертвовать иконы, утварь или книги?<span class="faq-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Будем благодарны за любое приношение. Просьба предварительно согласовать: некоторые предметы требуют чина освящения, некоторые — экспертизы. Свяжитесь с канцелярией, и мы договоримся об удобном времени.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+  // ====== AMOUNT ======
+  const qa = document.getElementById('qa');
+  const customAmount = document.getElementById('customAmount');
+  const btnAmount = document.getElementById('btnAmount');
+  const mobileAmount = document.querySelector('.mobile-bar .amount');
+  let currentAmount = 500;
+
+  function formatAmount(n){
+    return n.toLocaleString('ru-RU').replace(/,/g, '\u00A0') + ' ₽';
+  }
+  function setAmount(n){
+    currentAmount = n;
+    btnAmount.textContent = formatAmount(n);
+    if(mobileAmount) mobileAmount.textContent = formatAmount(n);
+  }
+
+  qa.addEventListener('click', e=>{
+    const b = e.target.closest('.qa-btn');
+    if(!b) return;
+    qa.querySelectorAll('.qa-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    customAmount.value = '';
+    setAmount(parseInt(b.dataset.amount, 10));
+    // ripple
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = b.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    r.style.width = r.style.height = size + 'px';
+    r.style.left = (e.clientX - rect.left - size/2) + 'px';
+    r.style.top = (e.clientY - rect.top - size/2) + 'px';
+    b.appendChild(r);
+    setTimeout(()=>r.remove(), 600);
+  });
+
+  customAmount.addEventListener('input', e=>{
+    let v = e.target.value.replace(/[^\d]/g, '');
+    if(v){
+      e.target.value = parseInt(v,10).toLocaleString('ru-RU').replace(/,/g, '\u00A0');
+      qa.querySelectorAll('.qa-btn').forEach(x=>x.classList.remove('active'));
+      setAmount(parseInt(v, 10));
+    } else {
+      e.target.value = '';
+    }
+  });
+
+  // ====== RADIO LIST ======
+  document.querySelectorAll('#purposeList .radio-row').forEach(row=>{
+    row.addEventListener('click', ()=>{
+      document.querySelectorAll('#purposeList .radio-row').forEach(r=>r.classList.remove('checked'));
+      row.classList.add('checked');
+      row.querySelector('input').checked = true;
+    });
+  });
+
+  // ====== CHECKBOXES ======
+  document.querySelectorAll('.check-row').forEach(row=>{
+    row.addEventListener('click', e=>{
+      e.preventDefault();
+      const inp = row.querySelector('input');
+      inp.checked = !inp.checked;
+      row.classList.toggle('checked', inp.checked);
+    });
+  });
+
+  // ====== TABS ======
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      document.querySelector('[data-panel="'+t.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  // ====== FAQ ======
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click', ()=> q.parentElement.classList.toggle('open'));
+  });
+
+  // ====== ALLOCATION SCROLL ANIM ======
+  const allocGrid = document.getElementById('allocGrid');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        allocGrid.classList.add('in-view');
+        io.disconnect();
+      }
+    });
+  }, {threshold: 0.25});
+  io.observe(allocGrid);
+
+  // ====== COPY ======
+  document.getElementById('copyBtn').addEventListener('click', ()=>{
+    const rows = document.querySelectorAll('#credsTable .row');
+    let txt = '';
+    rows.forEach(r=>{
+      const k = r.querySelector('.k').textContent.trim();
+      const v = r.querySelector('.v').textContent.trim();
+      txt += k + ': ' + v + '\n';
+    });
+    navigator.clipboard?.writeText(txt);
+    const lbl = document.getElementById('copyLabel');
+    const orig = lbl.textContent;
+    lbl.textContent = 'Скопировано ✓';
+    setTimeout(()=> lbl.textContent = orig, 1800);
+  });
+
+  // ====== PULSE ======
+  setTimeout(()=>{
+    document.getElementById('submitBtn').classList.add('pulse-once');
+  }, 3000);
+
+  // ====== TOAST helper ======
+  function showToast(message, ms){
+    let toast = document.getElementById('siteToast');
+    if(!toast){
+      toast = document.createElement('div');
+      toast.id = 'siteToast';
+      toast.className = 'site-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = message;
+    toast.classList.add('visible');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=> toast.classList.remove('visible'), ms || 5500);
+  }
+
+  // ====== SUBMIT — fallback на реквизиты (нет платёжного шлюза) ======
+  function donateAction(){
+    const reqs = document.getElementById('requisites');
+    if(reqs){
+      reqs.scrollIntoView({behavior:'smooth', block:'start'});
+      const card = reqs.querySelector('.creds-card');
+      if(card){
+        card.classList.remove('attention-glow');
+        // restart animation
+        void card.offsetWidth;
+        card.classList.add('attention-glow');
+      }
+    }
+    const purposeInput = document.querySelector('input[name="purpose"]:checked');
+    const purposeText = purposeInput
+      ? purposeInput.parentElement.querySelector('.radio-text').firstChild.textContent.trim()
+      : 'на нужды храма';
+    showToast(
+      'Спасибо за желание поддержать собор. <strong>Онлайн-приём пожертвований сейчас настраивается.</strong><br>' +
+      'Реквизиты для перевода <strong>' + formatAmount(currentAmount) + '</strong> (' + purposeText + ') — ниже на странице. ' +
+      'Также можно отсканировать QR-код СБП в форме выше.'
+    );
+  }
+  document.getElementById('submitBtn').addEventListener('click', donateAction);
+  const mobileDonateBtn = document.getElementById('mobileDonate');
+  if(mobileDonateBtn) mobileDonateBtn.addEventListener('click', donateAction);
+</script>
+
+<?php get_footer(); ?>

@@ -1,0 +1,1690 @@
+<?php
+/**
+ * Front-page template — главная страница.
+ *
+ * Сгенерирован из docs/index.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:        #f5f0e8;
+  --paper-2:      #efe8dc;          /* slightly darker for cards/contrast */
+  --paper-warm:   #ebe2d0;
+  --ink:          #1a1f2e;
+  --ink-soft:     #2a3144;
+  --ink-mute:     #4a516680;
+  --gold:         #c9a961;
+  --gold-deep:    #a78843;
+  --gold-pale:    #e0cd97;
+  --gold-line:    rgba(201,169,97,0.32);
+  --gold-line-faint:rgba(201,169,97,0.18);
+  --burgundy:     #8b2635;
+  --burgundy-deep:#6e1d29;
+  --shadow-warm:  0 4px 20px rgba(42,38,32,0.06);
+  --shadow-card:  0 1px 0 rgba(201,169,97,0.18), 0 6px 28px rgba(42,38,32,0.07);
+  --shadow-deep:  0 18px 60px rgba(26,31,46,0.18);
+
+  --f-display: "Cormorant Garamond", "Times New Roman", serif;
+  --f-body:    "Spectral", "Times New Roman", serif;
+  --f-ui:      "PT Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-decor:   "Cormorant Garamond", serif; /* Ruslan Display fallback - using Cormorant 700 italic */
+}
+
+/* ============ RESET ============ */
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga","kern";
+  overflow-x: hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color: var(--ink); text-decoration: none; }
+button{ font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+/* paper noise (subtle, applied as fixed overlay) */
+body::before{
+  content:""; position: fixed; inset:0; pointer-events:none; z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.32  0 0 0 0 0.27  0 0 0 0 0.18  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity:.55;
+  mix-blend-mode: multiply;
+}
+
+/* ============ CONTAINER ============ */
+.wrap{ max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+@media (max-width:720px){ .wrap{ padding:0 20px; } }
+
+/* ============ HEADER ============ */
+.topbar{
+  position: sticky; top:0; z-index: 50;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: 1px solid rgba(201,169,97,.22);
+  transition: box-shadow .35s ease, background .35s ease;
+}
+.topbar.scrolled{ box-shadow: 0 6px 28px rgba(0,0,0,.22); }
+.topbar-inner{
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  align-items:center; gap: 28px;
+  padding: 14px 32px;
+  max-width: 1720px; margin:0 auto;
+}
+
+/* Sigil — двуглавый орёл */
+.sigil{
+  display:flex; align-items:center; gap:14px;
+  text-decoration:none; color: var(--paper);
+}
+.sigil svg{ width: 44px; height:44px; flex:0 0 auto; }
+.sigil-text{
+  display:flex; flex-direction:column; line-height:1;
+  font-family: var(--f-ui); letter-spacing: 0.18em;
+}
+.sigil-text small{ font-size:9.5px; color: var(--gold-pale); text-transform: uppercase; letter-spacing: 0.32em; margin-bottom: 4px; opacity:.85; }
+.sigil-text b{ font-family: var(--f-display); font-weight: 600; font-size: 16px; letter-spacing:.05em; }
+
+.nav{
+  display:flex; justify-content:center; align-items:center;
+  gap: 28px;
+  font-family: var(--f-ui);
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.nav a{
+  color: var(--paper);
+  position: relative;
+  padding: 10px 2px;
+  opacity: .92;
+}
+.nav a:hover{ color: var(--gold-pale); }
+.nav a.active{ color: var(--gold); }
+.nav a.active::after{
+  content:""; position:absolute; left:0; right:0; bottom: 4px;
+  height:1px; background: var(--gold);
+}
+
+.top-actions{ display:flex; align-items:center; gap: 14px; }
+.icon-btn{
+  width:36px; height:36px; border-radius: 50%;
+  display:grid; place-items:center;
+  border:1px solid rgba(201,169,97,.32);
+  color: var(--gold-pale);
+  transition: all .25s;
+}
+.icon-btn:hover{ background: rgba(201,169,97,.12); color: var(--gold); }
+.donate-btn{
+  font-family: var(--f-ui);
+  font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;
+  padding: 11px 20px;
+  background: var(--burgundy);
+  color: var(--paper);
+  border: 1px solid var(--burgundy);
+  transition: all .25s;
+}
+.donate-btn:hover{ background: var(--burgundy-deep); border-color: var(--burgundy-deep); }
+
+/* ============ HERO ============ */
+.hero{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--ink);
+  isolation: isolate;
+  padding: 0 0 80px;
+}
+.hero-bg{
+  position: absolute; inset: -10% 0 0 0;
+  z-index: 0;
+  will-change: transform;
+}
+.hero-bg::before{
+  /* Реальное фото собора — Wikimedia Commons CC BY-SA */
+  content:"";
+  position:absolute; inset:0;
+  background-image: url("assets/images/photos/cathedral-2021-facade.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  filter: brightness(0.62) contrast(1.04) saturate(0.85);
+}
+.hero-bg::after{
+  /* dark-gold gradient overlay */
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(15,18,28,.35) 0%, rgba(15,18,28,.55) 60%, rgba(15,18,28,.85) 100%),
+    radial-gradient(ellipse at 30% 35%, rgba(201,169,97,.18) 0%, rgba(201,169,97,0) 60%),
+    linear-gradient(180deg, rgba(26,31,46,.5) 0%, rgba(26,31,46,.2) 30%, rgba(26,31,46,.7) 100%);
+}
+
+.hero-inner{
+  position: relative; z-index: 2;
+  max-width: 1240px; margin: 0 auto;
+  padding: 88px 32px 0;
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-kicker{
+  font-family: var(--f-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: inline-flex; align-items:center; gap: 18px;
+}
+.hero-kicker::before, .hero-kicker::after{
+  content:""; display:inline-block; width: 38px; height:1px;
+  background: var(--gold);
+  opacity: .65;
+}
+
+.hero-title{
+  font-family: var(--f-decor);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--paper);
+  font-size: clamp(56px, 8.6vw, 124px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  text-shadow: 0 2px 30px rgba(0,0,0,.4);
+}
+.hero-title .line{
+  display:block; overflow:hidden;
+}
+.hero-title .ch{
+  display:inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.hero-title.in .ch{
+  animation: charRise 1.1s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.hero-sub{
+  font-family: var(--f-ui);
+  font-size: 13px;
+  letter-spacing: 0.42em;
+  color: var(--gold-pale);
+  text-transform: uppercase;
+  margin: 8px 0 44px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .9s ease 1.0s, transform .9s ease 1.0s;
+}
+.hero.in .hero-sub{ opacity:.85; transform:none; }
+
+.hero-quote{
+  max-width: 560px;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.45;
+  color: rgba(245,240,232,.92);
+  border-left: 1px solid var(--gold);
+  padding: 6px 0 6px 28px;
+  margin: 0 0 44px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 1s ease 1.2s, transform 1s ease 1.2s;
+}
+.hero.in .hero-quote{ opacity:1; transform:none; }
+.hero-quote .lq, .hero-quote .rq{ color: var(--gold); font-style: normal; font-size: 1.15em; line-height: 0; vertical-align: -0.05em; }
+.hero-quote-attr{
+  display:block; margin-top: 18px;
+  font-family: var(--f-ui); font-style: normal;
+  font-size: 11.5px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold-pale); opacity: .75;
+}
+
+/* schedule cta card */
+.schedule-cta{
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: auto 1px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 28px;
+  background: rgba(245,240,232,.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201,169,97,.28);
+  color: var(--paper);
+  text-align:left;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .9s ease 2.0s, transform .9s ease 2.0s;
+}
+.hero.in .schedule-cta{ opacity:1; transform:none; }
+.schedule-cta::before{
+  content:""; position:absolute; left:0; right:0; top:0;
+  height:2px; background: var(--gold);
+}
+.schedule-cta.pulse-once{ animation: pulse 1.1s ease 2.3s 1; }
+.schedule-cta-eyebrow{
+  font-family: var(--f-ui);
+  font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold);
+}
+.schedule-cta-divider{ width:1px; height:36px; background: rgba(201,169,97,.4); }
+.schedule-cta-time{
+  font-family: var(--f-body);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--paper);
+  letter-spacing: .02em;
+}
+.schedule-cta-name{
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--gold-pale);
+  margin-top: 2px;
+  letter-spacing: .01em;
+}
+.schedule-cta-arrow{
+  width: 42px; height: 42px;
+  border: 1px solid var(--gold);
+  display:grid; place-items:center;
+  color: var(--gold);
+  transition: all .3s;
+  border-radius: 50%;
+}
+.schedule-cta:hover .schedule-cta-arrow{ background: var(--gold); color: var(--ink); }
+
+/* hero icon (right column) */
+.icon-frame{
+  position: relative;
+  width: 100%; max-width: 380px;
+  aspect-ratio: 3 / 4.2;
+  margin-left: auto;
+  opacity: 0; transform: translateX(60px);
+  transition: opacity .85s ease .25s, transform .85s ease .25s;
+}
+.hero.in .icon-frame{ opacity:1; transform:none; }
+.icon-frame::before{
+  content:""; position: absolute; inset: -14px;
+  border: 1px solid var(--gold);
+  pointer-events:none;
+}
+.icon-frame::after{
+  content:""; position: absolute; inset: -22px;
+  border: 1px solid rgba(201,169,97,.3);
+  pointer-events:none;
+}
+.icon-corner{
+  position:absolute; width:18px; height:18px;
+  border: 1.5px solid var(--gold);
+}
+.icon-corner.tl{ top:-22px; left:-22px; border-right:0; border-bottom:0;}
+.icon-corner.tr{ top:-22px; right:-22px; border-left:0; border-bottom:0;}
+.icon-corner.bl{ bottom:-22px; left:-22px; border-right:0; border-top:0;}
+.icon-corner.br{ bottom:-22px; right:-22px; border-left:0; border-top:0;}
+
+.icon-img{
+  position:relative;
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(180deg, #c89a4f 0%, #a87c3a 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow-deep);
+}
+
+/* SVG painted icon */
+.icon-img svg{ width:100%; height:100%; display:block; }
+
+/* hero scroll cue */
+.hero-cue{
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  z-index: 3;
+  font-family: var(--f-ui);
+  font-size: 10.5px; letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--gold-pale); opacity:.75;
+  display:flex; flex-direction:column; align-items:center; gap: 12px;
+}
+.hero-cue::after{
+  content:""; width: 1px; height: 38px; background: var(--gold-pale);
+  animation: cueLine 2.4s ease-in-out infinite;
+}
+
+/* ============ DECORATION DIVIDER ============ */
+.divider{
+  display:flex; justify-content:center; align-items:center;
+  margin: 96px auto 64px;
+  color: var(--gold);
+}
+.divider svg{ width: 220px; height: 36px; }
+
+.section-eyebrow{
+  display:flex; align-items:center; gap:14px;
+  font-family: var(--f-ui);
+  font-size: 11.5px; letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 18px;
+}
+.section-eyebrow::before{
+  content:""; width: 28px; height:1px; background: var(--gold);
+}
+.section-title{
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+/* ============ ABOUT ============ */
+.about{
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 72px;
+  align-items: center;
+  padding: 0 0 24px;
+}
+.about-photo{
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background:#241a13;
+  box-shadow: var(--shadow-deep);
+  border: 1px solid var(--gold-line);
+  outline: 1px solid var(--gold-line-faint);
+  outline-offset: 8px;
+}
+.about-photo::before{
+  content:""; position:absolute; inset:0; z-index:1;
+  background: linear-gradient(140deg, rgba(232,200,138,.12), rgba(40,28,18,.55));
+  mix-blend-mode: multiply;
+}
+.about-photo svg{ width: 100%; height: 100%; display:block; filter: sepia(.55) contrast(1.05) brightness(.92); }
+
+.about-body p{
+  font-size: 18px; line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  text-wrap: pretty;
+}
+.about-body p.lead::first-letter{
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 4.6em;
+  float:left;
+  line-height: 0.86;
+  padding: 8px 14px 0 0;
+  color: var(--gold-deep);
+  font-style: italic;
+}
+.about-meta{
+  display:flex; gap:48px; margin-top: 32px; padding-top: 28px;
+  border-top: 1px solid var(--gold-line);
+}
+.about-meta div{ font-family: var(--f-body); font-variant-numeric: tabular-nums; }
+.about-meta b{ display:block; font-family: var(--f-display); font-weight:600; font-size: 36px; color: var(--gold-deep); line-height:1; letter-spacing: -.01em; }
+.about-meta span{ display:block; font-family: var(--f-ui); font-size: 11.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-mute); margin-top: 8px; }
+
+.btn-link{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family: var(--f-ui);
+  font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--gold);
+  padding: 12px 0 12px;
+  margin-top: 24px;
+  transition: all .3s;
+}
+.btn-link::after{ content:"→"; font-family: var(--f-display); font-size: 16px; transition: transform .3s; }
+.btn-link:hover{ color: var(--gold-deep); }
+.btn-link:hover::after{ transform: translateX(4px); }
+
+/* ============ SCHEDULE ============ */
+.schedule-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.svc-card{
+  position: relative;
+  background: var(--paper-2);
+  border: 1px solid var(--gold-line-faint);
+  padding: 32px 28px 28px;
+  display:flex; flex-direction:column; gap: 14px;
+  transition: all .35s;
+}
+.svc-card:hover{
+  background: #f9f3e5;
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+.svc-card.featured{
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--gold);
+}
+.svc-card.featured .svc-day{ color: var(--gold-pale); }
+.svc-card.featured .svc-name{ color: var(--paper); }
+.svc-card.featured .svc-time{ color: var(--gold); }
+.svc-card.featured .svc-priest{ color: rgba(245,240,232,.65); }
+.svc-card.featured::before{
+  content:"СЕГОДНЯ";
+  position:absolute; top: 0; left: 28px; transform: translateY(-50%);
+  background: var(--gold); color: var(--ink);
+  font-family: var(--f-ui); font-size: 10px; letter-spacing: .3em;
+  padding: 5px 10px;
+}
+
+.svc-date{
+  display:flex; align-items: baseline; gap: 14px;
+  border-bottom: 1px solid var(--gold-line-faint);
+  padding-bottom: 14px;
+}
+.svc-card.featured .svc-date{ border-color: rgba(201,169,97,.3); }
+.svc-num{
+  font-family: var(--f-body); font-variant-numeric: tabular-nums;
+  font-weight: 700; font-size: 44px; line-height:1; color: var(--gold-deep);
+  letter-spacing: -.01em;
+}
+.svc-card.featured .svc-num{ color: var(--gold); }
+.svc-month{
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-soft);
+}
+.svc-card.featured .svc-month{ color: var(--paper); }
+.svc-day{
+  font-family: var(--f-ui);
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.svc-name{
+  font-family: var(--f-display); font-weight: 600;
+  font-size: 22px; line-height: 1.18; color: var(--ink); letter-spacing: -.005em;
+  flex: 1;
+}
+.svc-time{
+  font-family: var(--f-body); font-variant-numeric: tabular-nums;
+  font-weight: 500; font-size: 28px; color: var(--ink); letter-spacing: -.01em;
+}
+.svc-priest{
+  font-family: var(--f-body); font-style: italic;
+  font-size: 14px; color: var(--ink-mute);
+  border-top: 1px solid var(--gold-line-faint);
+  padding-top: 12px;
+}
+.svc-card.featured .svc-priest{ border-color: rgba(201,169,97,.18); }
+
+.schedule-foot{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top: 36px; padding-top: 24px;
+  border-top: 1px solid var(--gold-line);
+}
+
+/* ============ QUICK LINKS ============ */
+.quick{
+  display:grid; grid-template-columns: repeat(4,1fr); gap: 0;
+  border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line);
+  margin-top: 8px;
+}
+.quick a{
+  display:flex; flex-direction:column; gap: 22px;
+  padding: 44px 32px;
+  border-right: 1px solid var(--gold-line-faint);
+  transition: background .35s;
+  position: relative;
+}
+.quick a:last-child{ border-right: 0; }
+.quick a:hover{ background: var(--paper-2); }
+.quick a:hover .quick-icon{ color: var(--gold); transform: translateY(-2px);}
+.quick-icon{
+  width: 56px; height: 56px;
+  color: var(--gold-deep);
+  transition: all .35s;
+}
+.quick-icon svg{ width:100%; height:100%; }
+.quick-title{
+  font-family: var(--f-display); font-weight: 600;
+  font-size: 24px; color: var(--ink); letter-spacing:-.005em;
+  line-height: 1.15;
+}
+.quick-desc{
+  font-family: var(--f-body);
+  font-size: 14px; color: var(--ink-mute); line-height: 1.5;
+  flex: 1;
+}
+.quick-arrow{
+  font-family: var(--f-ui);
+  font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold-deep);
+  display:flex; align-items: center; gap: 10px;
+}
+.quick-arrow::after{ content:"→"; }
+
+/* burgundy highlight on the donate quick-link */
+.quick a.donate-quick .quick-icon{ color: var(--burgundy); }
+.quick a.donate-quick:hover .quick-icon{ color: var(--burgundy-deep); }
+
+/* ============ NEWS ============ */
+.news-grid{
+  display:grid; grid-template-columns: repeat(3,1fr); gap: 36px;
+  margin-top: 32px;
+}
+.news-card{
+  display:flex; flex-direction:column; gap: 18px;
+  background: transparent;
+}
+.news-img{
+  aspect-ratio: 4/3;
+  background: var(--paper-2);
+  border: 1px solid var(--gold-line-faint);
+  overflow: hidden;
+  position: relative;
+}
+.news-img svg{ width:100%; height:100%; display:block; transition: transform .8s ease; }
+.news-card:hover .news-img svg{ transform: scale(1.04); }
+.news-meta{
+  display:flex; align-items:center; gap: 12px;
+  font-family: var(--f-ui);
+  font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.news-meta .dot{ width:3px; height:3px; background: var(--gold); border-radius:50%; }
+.news-meta .tag{ color: var(--gold-deep); }
+.news-title{
+  font-family: var(--f-display); font-weight: 600;
+  font-size: clamp(22px, 1.8vw, 26px);
+  line-height: 1.18; letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 0;
+}
+.news-excerpt{
+  font-family: var(--f-body);
+  font-size: 16px; line-height: 1.6; color: var(--ink-soft);
+  margin: 0;
+}
+.news-more{
+  font-family: var(--f-ui);
+  font-size: 11.5px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold-deep);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 4px;
+  align-self: flex-start;
+  transition: border-color .3s;
+}
+.news-card:hover .news-more{ border-color: var(--gold); }
+
+.section-head{
+  display:flex; justify-content:space-between; align-items: end;
+  flex-wrap: wrap; gap: 24px;
+}
+
+/* ============ FOOTER ============ */
+footer.foot{
+  margin-top: 120px;
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+footer.foot::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.79  0 0 0 0 0.66  0 0 0 0 0.38  0 0 0 .04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: .8;
+}
+.foot-top{
+  position: relative; z-index: 1;
+  padding: 80px 32px 40px;
+  max-width: 1240px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+.foot-brand .sigil-eagle{ width: 64px; height: 64px; color: var(--gold); margin-bottom: 18px; }
+.foot-brand h4{
+  font-family: var(--f-display); font-weight: 600; font-style: italic;
+  font-size: 24px; line-height:1.2; margin: 0 0 6px; color: var(--paper);
+}
+.foot-brand .city{
+  font-family: var(--f-ui); font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold-pale);
+}
+.foot-brand p{
+  margin-top: 22px;
+  font-family: var(--f-body); font-style: italic;
+  font-size: 15px; line-height: 1.6;
+  color: rgba(245,240,232,.7);
+  max-width: 320px;
+}
+.foot h5{
+  font-family: var(--f-ui); font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 22px;
+}
+.foot ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap: 12px; }
+.foot li a{ color: rgba(245,240,232,.82); font-family: var(--f-body); font-size: 15.5px; transition: color .25s; }
+.foot li a:hover{ color: var(--gold-pale); }
+.foot-contact b{
+  display:block; font-family: var(--f-display); font-weight: 600; font-style: italic;
+  font-size: 18px; color: var(--paper); margin-bottom: 4px;
+}
+.foot-contact p{
+  margin: 0 0 16px; color: rgba(245,240,232,.78);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.6;
+}
+.foot-contact .num{ font-variant-numeric: tabular-nums; }
+.socials{ display:flex; gap: 10px; margin-top: 20px; }
+.socials a{
+  width: 40px; height:40px; display:grid; place-items:center;
+  border:1px solid rgba(201,169,97,.32);
+  color: var(--gold-pale); border-radius: 50%;
+  transition: all .25s;
+}
+.socials a:hover{ background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+.foot-bottom{
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(201,169,97,.18);
+  padding: 22px 32px;
+  max-width: 1240px; margin: 0 auto;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family: var(--f-ui); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(245,240,232,.55);
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes charRise{
+  to{ transform: translateY(0); opacity: 1; }
+}
+@keyframes pulse{
+  0%, 100%{ box-shadow: 0 0 0 0 rgba(201,169,97,0); }
+  50%{ box-shadow: 0 0 0 14px rgba(201,169,97,0.18); }
+}
+@keyframes cueLine{
+  0%, 100%{ transform: scaleY(0.4); transform-origin: top; opacity:.4; }
+  50%{ transform: scaleY(1); opacity:.85; }
+}
+
+@keyframes bgFade{
+  from{ opacity: 0; transform: scale(1.06); }
+  to{ opacity: 1; transform: scale(1); }
+}
+.hero-bg{ animation: bgFade 1.4s ease forwards; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1080px){
+  .hero-inner{ grid-template-columns: 1fr; }
+  .icon-frame{ display:none; }
+  .schedule-grid{ grid-template-columns: repeat(2,1fr); }
+  .quick{ grid-template-columns: repeat(2,1fr); }
+  .quick a{ border-bottom: 1px solid var(--gold-line-faint); }
+  .quick a:nth-child(2){ border-right: 0; }
+  .quick a:nth-last-child(-n+2){ border-bottom: 0; }
+  .news-grid{ grid-template-columns: 1fr; }
+  .foot-top{ grid-template-columns: 1fr 1fr; gap: 40px; }
+  .nav{ display:none; }
+}
+@media (max-width: 720px){
+  .hero{ min-height: 60vh; padding-bottom: 40px; }
+  .hero-inner{ min-height: 60vh; padding-top: 56px; }
+  .hero-title{ font-size: clamp(44px, 14vw, 78px); }
+  .about{ grid-template-columns: 1fr; gap: 36px; }
+  .schedule-grid{ grid-template-columns: 1fr; }
+  .quick{ grid-template-columns: 1fr; }
+  .quick a{ border-right: 0 !important; border-bottom: 1px solid var(--gold-line-faint); }
+  .foot-top{ grid-template-columns: 1fr; }
+  .topbar-inner{ grid-template-columns: 1fr auto; }
+  .donate-btn{ display:none; }
+  .schedule-cta{ grid-template-columns: 1fr; gap: 12px; }
+  .schedule-cta-divider{ display:none; }
+  .sticky-mobile-cta{ display:flex !important; }
+}
+
+/* mobile sticky cta */
+.sticky-mobile-cta{
+  display: none;
+  position: fixed; left: 12px; right: 12px; bottom: 12px;
+  z-index: 60;
+  background: var(--ink); color: var(--paper);
+  border: 1px solid var(--gold);
+  padding: 14px 18px;
+  align-items:center; justify-content: space-between; gap: 10px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
+}
+.sticky-mobile-cta b{ font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: 18px; color: var(--gold); }
+.sticky-mobile-cta span{ font-family: var(--f-ui); font-size: 11px; letter-spacing:.24em; text-transform:uppercase; }
+
+/* utility */
+.row{ display:flex; align-items:center; gap: 14px; }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ============ HEADER ============ -->
+
+
+<!-- ============ HERO ============ -->
+<section class="hero in" id="hero">
+  <div class="hero-bg" id="heroBg" style="transform: translate3d(0px, 0px, 0px) scale(1.06);"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-kicker">Войсковой&nbsp;Собор · С 1872 года</div>
+
+      <h1 class="hero-title in" id="heroTitle">
+        <span class="line" data-text="Александра"><span class="ch" style="animation-delay: 0.4s;">А</span><span class="ch" style="animation-delay: 0.435s;">л</span><span class="ch" style="animation-delay: 0.47s;">е</span><span class="ch" style="animation-delay: 0.505s;">к</span><span class="ch" style="animation-delay: 0.54s;">с</span><span class="ch" style="animation-delay: 0.575s;">а</span><span class="ch" style="animation-delay: 0.61s;">н</span><span class="ch" style="animation-delay: 0.645s;">д</span><span class="ch" style="animation-delay: 0.68s;">р</span><span class="ch" style="animation-delay: 0.715s;">а</span></span>
+        <span class="line" data-text="Невского"><span class="ch" style="animation-delay: 0.58s;">Н</span><span class="ch" style="animation-delay: 0.615s;">е</span><span class="ch" style="animation-delay: 0.65s;">в</span><span class="ch" style="animation-delay: 0.685s;">с</span><span class="ch" style="animation-delay: 0.72s;">к</span><span class="ch" style="animation-delay: 0.755s;">о</span><span class="ch" style="animation-delay: 0.79s;">г</span><span class="ch" style="animation-delay: 0.825s;">о</span></span>
+      </h1>
+      <div class="hero-sub">Краснодар · Постовая 26</div>
+
+      <blockquote class="hero-quote">
+        <span class="lq">«</span>Не в силе Бог, а в правде<span class="rq">»</span>
+        <span class="hero-quote-attr">— Святой благоверный князь Александр Невский</span>
+      </blockquote>
+
+      <a href="<?php echo esc_url(home_url("/schedule")); ?>" class="schedule-cta pulse-once">
+        <div>
+          <div class="schedule-cta-eyebrow">Ближайшая служба</div>
+          <div class="schedule-cta-name">Божественная литургия</div>
+        </div>
+        <div class="schedule-cta-divider"></div>
+        <div>
+          <div class="schedule-cta-eyebrow" id="nextSvcDate" style="margin-bottom:4px">См. расписание</div>
+          <div class="schedule-cta-time">09 : 00</div>
+        </div>
+        <span class="schedule-cta-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Icon of St. Alexander Nevsky -->
+    <figure class="icon-frame">
+      <span class="icon-corner tl"></span>
+      <span class="icon-corner tr"></span>
+      <span class="icon-corner bl"></span>
+      <span class="icon-corner br"></span>
+      <div class="icon-img">
+        <svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="halo" cx="50%" cy="42%" r="32%">
+              <stop offset="0%" stop-color="#fde7a4"></stop>
+              <stop offset="60%" stop-color="#d4a447"></stop>
+              <stop offset="100%" stop-color="#8a6620"></stop>
+            </linearGradient>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#a87c3a"></stop>
+              <stop offset="100%" stop-color="#6a4920"></stop>
+            </linearGradient>
+            <linearGradient id="cloak" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7a1f25"></stop>
+              <stop offset="100%" stop-color="#4a0f15"></stop>
+            </linearGradient>
+            <linearGradient id="armor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3c4150"></stop>
+              <stop offset="100%" stop-color="#1f2330"></stop>
+            </linearGradient>
+            <pattern id="texture" width="4" height="4" patternUnits="userSpaceOnUse">
+              <rect width="4" height="4" fill="none"></rect>
+              <circle cx="2" cy="2" r="0.4" fill="#000" opacity=".15"></circle>
+            </pattern>
+            <radialGradient id="halogold" cx="50%" cy="42%" r="34%">
+              <stop offset="0%" stop-color="#fde7a4"></stop>
+              <stop offset="55%" stop-color="#d4a447"></stop>
+              <stop offset="100%" stop-color="#7a5717"></stop>
+            </radialGradient>
+          </defs>
+          <!-- gold panel background -->
+          <rect width="300" height="420" fill="url(#bg)"></rect>
+          <rect width="300" height="420" fill="url(#texture)"></rect>
+          <!-- top arch decoration -->
+          <path d="M0 0 L300 0 L300 60 Q150 90 0 60 Z" fill="#7a5210" opacity=".5"></path>
+          <!-- halo -->
+          <circle cx="150" cy="148" r="78" fill="url(#halogold)"></circle>
+          <circle cx="150" cy="148" r="78" fill="none" stroke="#3a280a" stroke-width="1.5"></circle>
+          <circle cx="150" cy="148" r="72" fill="none" stroke="#fde7a4" stroke-width=".6" opacity=".6"></circle>
+          <!-- halo cross (inscribed cross typical for Christ — but used decoratively) -->
+          <g stroke="#7a5210" stroke-width="1" fill="none" opacity=".4">
+            <line x1="150" y1="74" x2="150" y2="222"></line>
+            <line x1="76" y1="148" x2="224" y2="148"></line>
+          </g>
+          <!-- shoulders / cloak -->
+          <path d="M40 420 L40 320 Q40 260 90 240 L150 230 L210 240 Q260 260 260 320 L260 420 Z" fill="url(#cloak)"></path>
+          <!-- ermine collar -->
+          <path d="M80 252 Q150 230 220 252 L218 270 Q150 250 82 270 Z" fill="#f1e7d2"></path>
+          <g fill="#1a1410" opacity=".7">
+            <circle cx="98" cy="262" r="1.4"></circle><circle cx="118" cy="258" r="1.4"></circle><circle cx="138" cy="256" r="1.4"></circle>
+            <circle cx="158" cy="256" r="1.4"></circle><circle cx="178" cy="258" r="1.4"></circle><circle cx="198" cy="262" r="1.4"></circle>
+          </g>
+          <!-- chest armor -->
+          <path d="M115 280 L115 360 L185 360 L185 280 Z" fill="url(#armor)"></path>
+          <g stroke="#c9a961" stroke-width="1.2" fill="none" opacity=".75">
+            <line x1="125" y1="295" x2="175" y2="295"></line>
+            <line x1="125" y1="310" x2="175" y2="310"></line>
+            <line x1="125" y1="325" x2="175" y2="325"></line>
+            <circle cx="150" cy="320" r="9" fill="#c9a961" opacity=".4"></circle>
+            <path d="M150 313 v14 M143 320 h14" stroke-width="1"></path>
+          </g>
+          <!-- neck -->
+          <rect x="138" y="220" width="24" height="36" fill="#dba87a"></rect>
+          <!-- face -->
+          <ellipse cx="150" cy="172" rx="40" ry="50" fill="#e1b486"></ellipse>
+          <!-- hair / beard outline (saint long beard) -->
+          <path d="M110 158 Q110 110 150 102 Q190 110 190 158 L188 178 Q150 168 112 178 Z" fill="#3a2412"></path>
+          <!-- beard -->
+          <path d="M120 200 Q150 240 180 200 L182 226 Q150 250 118 226 Z" fill="#3a2412"></path>
+          <path d="M132 218 Q150 244 168 218 L166 232 Q150 246 134 232 Z" fill="#1f1408" opacity=".6"></path>
+          <!-- moustache -->
+          <path d="M128 196 Q150 206 172 196 Q160 204 150 204 Q140 204 128 196 Z" fill="#1f1408"></path>
+          <!-- eyes -->
+          <g fill="#1a1410">
+            <ellipse cx="135" cy="172" rx="3" ry="2"></ellipse>
+            <ellipse cx="165" cy="172" rx="3" ry="2"></ellipse>
+          </g>
+          <g stroke="#3a2412" stroke-width="1.4" fill="none">
+            <path d="M126 165 Q135 161 144 165"></path>
+            <path d="M156 165 Q165 161 174 165"></path>
+          </g>
+          <!-- nose -->
+          <path d="M150 178 L146 198 Q150 200 154 198 Z" fill="#c69a6a" opacity=".6"></path>
+          <!-- mouth -->
+          <path d="M142 210 Q150 213 158 210" stroke="#7a3320" stroke-width="1.2" fill="none"></path>
+          <!-- right hand holding cross -->
+          <g transform="translate(225 290)">
+            <rect x="-3" y="-50" width="6" height="100" fill="#c9a961"></rect>
+            <rect x="-22" y="-30" width="44" height="6" fill="#c9a961"></rect>
+            <rect x="-14" y="-12" width="28" height="4" fill="#c9a961"></rect>
+            <line x1="-10" y1="0" x2="10" y2="-10" stroke="#c9a961" stroke-width="3"></line>
+          </g>
+          <!-- left hand holding scroll -->
+          <g transform="translate(75 320)">
+            <rect x="-12" y="-32" width="24" height="64" fill="#f1e7d2"></rect>
+            <rect x="-14" y="-32" width="28" height="6" fill="#dcc999"></rect>
+            <rect x="-14" y="26" width="28" height="6" fill="#dcc999"></rect>
+            <g stroke="#3a2412" stroke-width="0.6" fill="none" opacity=".7">
+              <line x1="-8" y1="-22" x2="8" y2="-22"></line>
+              <line x1="-8" y1="-14" x2="8" y2="-14"></line>
+              <line x1="-8" y1="-6" x2="8" y2="-6"></line>
+              <line x1="-8" y1="2" x2="8" y2="2"></line>
+              <line x1="-8" y1="10" x2="8" y2="10"></line>
+              <line x1="-8" y1="18" x2="8" y2="18"></line>
+            </g>
+          </g>
+          <!-- inscription panels at top corners — церковнославянский SC ALEXANDER -->
+          <g font-family="serif" font-size="11" fill="#3a280a" font-weight="700" text-anchor="middle" opacity=".85">
+            <text x="50" y="56">СВ∙БЛГВ</text>
+            <text x="50" y="70">КНЗЬ</text>
+            <text x="250" y="56">АЛЕЌСАНДРЪ</text>
+            <text x="250" y="70">НЕВСКIЙ</text>
+          </g>
+          <!-- bottom inscription strip -->
+          <rect x="0" y="396" width="300" height="24" fill="#7a5210" opacity=".55"></rect>
+          <text x="150" y="412" text-anchor="middle" font-family="serif" font-size="11" fill="#fde7a4" font-weight="700" letter-spacing="2">МОЛИ БОГА О НАСЪ</text>
+          <!-- film vignette -->
+          <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+            <stop offset="60%" stop-color="#000" stop-opacity="0"></stop>
+            <stop offset="100%" stop-color="#000" stop-opacity=".55"></stop>
+          </radialGradient>
+          <rect width="300" height="420" fill="url(#vignette)"></rect>
+        </svg>
+      </div>
+    </figure>
+  </div>
+
+  <div class="hero-cue">Прокрутите</div>
+</section>
+
+<!-- ============ DECORATION DIVIDER ============ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 220 36" fill="none" stroke="currentColor" stroke-width="1">
+    <!-- left vine -->
+    <g stroke-linecap="round">
+      <path d="M2 18 Q22 8 44 18"></path>
+      <path d="M44 18 Q56 6 70 14"></path>
+      <circle cx="14" cy="14" r="2.2" fill="currentColor"></circle>
+      <circle cx="30" cy="22" r="2.2" fill="currentColor"></circle>
+      <circle cx="58" cy="11" r="2.2" fill="currentColor"></circle>
+      <path d="M22 13 q-3 -4 -7 -3"></path>
+      <path d="M40 22 q3 4 8 3"></path>
+    </g>
+    <!-- center cross -->
+    <g transform="translate(110 18)" stroke-linecap="round">
+      <line x1="0" y1="-14" x2="0" y2="14" stroke-width="1.6"></line>
+      <line x1="-9" y1="-6" x2="9" y2="-6" stroke-width="1.6"></line>
+      <line x1="-6" y1="2" x2="6" y2="-4" stroke-width="1.4"></line>
+      <circle cx="0" cy="-14" r="1.6" fill="currentColor"></circle>
+    </g>
+    <!-- right vine -->
+    <g stroke-linecap="round">
+      <path d="M150 14 Q164 6 176 18"></path>
+      <path d="M176 18 Q198 8 218 18"></path>
+      <circle cx="206" cy="14" r="2.2" fill="currentColor"></circle>
+      <circle cx="190" cy="22" r="2.2" fill="currentColor"></circle>
+      <circle cx="162" cy="11" r="2.2" fill="currentColor"></circle>
+      <path d="M180 22 q-3 4 -8 3"></path>
+      <path d="M198 13 q3 -4 7 -3"></path>
+    </g>
+  </svg>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="wrap" id="about">
+  <div class="about">
+    <figure class="about-photo">
+      <!-- sepia photo placeholder of cathedral -->
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8d6a8"></stop>
+            <stop offset="100%" stop-color="#b89968"></stop>
+          </linearGradient>
+          <linearGradient id="bldg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d4b88b"></stop>
+            <stop offset="100%" stop-color="#7a5a32"></stop>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="500" fill="url(#sky2)"></rect>
+        <!-- distant clouds -->
+        <g fill="#f2e3bf" opacity=".6">
+          <ellipse cx="80" cy="80" rx="60" ry="14"></ellipse>
+          <ellipse cx="280" cy="50" rx="80" ry="16"></ellipse>
+          <ellipse cx="340" cy="120" rx="50" ry="10"></ellipse>
+        </g>
+        <!-- main cathedral - 5 domes -->
+        <g fill="url(#bldg)">
+          <!-- base building -->
+          <rect x="80" y="290" width="240" height="160"></rect>
+          <!-- corner towers -->
+          <rect x="60" y="320" width="40" height="130"></rect>
+          <rect x="300" y="320" width="40" height="130"></rect>
+          <!-- main central drum -->
+          <rect x="170" y="200" width="60" height="100"></rect>
+          <!-- 4 side drums -->
+          <rect x="100" y="240" width="36" height="60"></rect>
+          <rect x="264" y="240" width="36" height="60"></rect>
+          <rect x="146" y="250" width="28" height="50"></rect>
+          <rect x="226" y="250" width="28" height="50"></rect>
+        </g>
+        <!-- onion domes -->
+        <g fill="#9c7a44">
+          <path d="M170 200 Q170 150 200 140 Q230 150 230 200 Z"></path>
+          <path d="M100 240 Q100 210 118 204 Q136 210 136 240 Z"></path>
+          <path d="M264 240 Q264 210 282 204 Q300 210 300 240 Z"></path>
+          <path d="M146 250 Q146 226 160 222 Q174 226 174 250 Z"></path>
+          <path d="M226 250 Q226 226 240 222 Q254 226 254 250 Z"></path>
+          <path d="M60 320 Q60 290 80 286 Q100 290 100 320 Z"></path>
+          <path d="M300 320 Q300 290 320 286 Q340 290 340 320 Z"></path>
+        </g>
+        <!-- crosses on domes -->
+        <g stroke="#3a2818" stroke-width="2" fill="none">
+          <line x1="200" y1="140" x2="200" y2="116"></line>
+          <line x1="192" y1="124" x2="208" y2="124"></line>
+          <line x1="118" y1="204" x2="118" y2="190"></line>
+          <line x1="113" y1="195" x2="123" y2="195"></line>
+          <line x1="282" y1="204" x2="282" y2="190"></line>
+          <line x1="277" y1="195" x2="287" y2="195"></line>
+        </g>
+        <!-- arched windows -->
+        <g fill="#3a2818" opacity=".55">
+          <rect x="100" y="350" width="14" height="40" rx="7"></rect>
+          <rect x="130" y="350" width="14" height="40" rx="7"></rect>
+          <rect x="162" y="350" width="14" height="40" rx="7"></rect>
+          <rect x="194" y="350" width="14" height="40" rx="7" opacity=".7"></rect>
+          <rect x="226" y="350" width="14" height="40" rx="7"></rect>
+          <rect x="258" y="350" width="14" height="40" rx="7"></rect>
+          <rect x="288" y="350" width="14" height="40" rx="7"></rect>
+          <!-- main door -->
+          <rect x="184" y="400" width="32" height="50" rx="16" fill="#1a1410"></rect>
+        </g>
+        <!-- ground -->
+        <rect x="0" y="450" width="400" height="50" fill="#6e4f2b"></rect>
+        <!-- trees -->
+        <g fill="#3a2818" opacity=".7">
+          <ellipse cx="30" cy="430" rx="40" ry="22"></ellipse>
+          <ellipse cx="380" cy="430" rx="40" ry="22"></ellipse>
+        </g>
+        <!-- film grain via overlay -->
+        <rect width="400" height="500" fill="url(#texture)" opacity=".4"></rect>
+      </svg>
+    </figure>
+    <div class="about-body">
+      <div class="section-eyebrow">О Соборе</div>
+      <h2 class="section-title">Сердце православного<br>Краснодара с 1872 года</h2>
+      <p class="lead">Войсковой Собор святого благоверного князя Александра Невского — первый каменный храм Екатеринодара, заложенный в 1853 году и освящённый в 1872 году как духовный центр Кубанского казачьего войска. Разрушенный в 1932-м, собор был возрождён в 2006 году на новом месте — у пересечения улиц Постовой и Красной — и вновь стал местом, где молится казачья столица Юга России.</p>
+      <p>Сегодня под высокими сводами собора звучит пение братского хора, совершаются ежедневные богослужения, совершаются таинства, и продолжается дело духовного просвещения, которое полтора века неразрывно связывает Краснодар с памятью святого князя.</p>
+      <div class="about-meta">
+        <div><b>1872</b><span>Год освящения</span></div>
+        <div><b>2006</b><span>Год возрождения</span></div>
+        <div><b>43&nbsp;м</b><span>Высота купола</span></div>
+      </div>
+      <a href="<?php echo esc_url(home_url("/history")); ?>" class="btn-link">История храма</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ============ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 220 36" fill="none" stroke="currentColor" stroke-width="1">
+    <g stroke-linecap="round">
+      <path d="M2 18 Q22 8 44 18"></path><path d="M44 18 Q56 6 70 14"></path>
+      <circle cx="14" cy="14" r="2.2" fill="currentColor"></circle><circle cx="30" cy="22" r="2.2" fill="currentColor"></circle><circle cx="58" cy="11" r="2.2" fill="currentColor"></circle>
+    </g>
+    <g transform="translate(110 18)" stroke-linecap="round">
+      <line x1="0" y1="-14" x2="0" y2="14" stroke-width="1.6"></line>
+      <line x1="-9" y1="-6" x2="9" y2="-6" stroke-width="1.6"></line>
+      <line x1="-6" y1="2" x2="6" y2="-4" stroke-width="1.4"></line>
+      <circle cx="0" cy="-14" r="1.6" fill="currentColor"></circle>
+    </g>
+    <g stroke-linecap="round">
+      <path d="M150 14 Q164 6 176 18"></path><path d="M176 18 Q198 8 218 18"></path>
+      <circle cx="206" cy="14" r="2.2" fill="currentColor"></circle><circle cx="190" cy="22" r="2.2" fill="currentColor"></circle><circle cx="162" cy="11" r="2.2" fill="currentColor"></circle>
+    </g>
+  </svg>
+</div>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="wrap" id="schedule">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Расписание Богослужений</div>
+      <h2 class="section-title">Ближайшие службы</h2>
+    </div>
+    <a href="<?php echo esc_url(home_url("/schedule")); ?>" class="btn-link">Полное расписание</a>
+  </div>
+
+  <div class="schedule-grid">
+    <article class="svc-card featured">
+      
+      <div class="svc-day">Вторник · Великий пост</div>
+      <h3 class="svc-name">Литургия Преждеосвящённых&nbsp;Даров</h3>
+      <div class="svc-time">17:00</div>
+      <div class="svc-priest">Иерей Андрей Кравченко</div>
+    </article>
+    <article class="svc-card">
+      
+      <div class="svc-day">Среда · Вмч. Георгия</div>
+      <h3 class="svc-name">Божественная литургия</h3>
+      <div class="svc-time">09:00</div>
+      <div class="svc-priest">Прот. Игорь Олжабаев</div>
+    </article>
+    <article class="svc-card">
+      
+      <div class="svc-day">Суббота · Поминовение</div>
+      <h3 class="svc-name">Литургия и Панихида о&nbsp;воинах</h3>
+      <div class="svc-time">08:30</div>
+      <div class="svc-priest">Соборный причт</div>
+    </article>
+    <article class="svc-card">
+      
+      <div class="svc-day">Воскресенье · Жён-мироносиц</div>
+      <h3 class="svc-name">Всенощное бдение и&nbsp;Литургия</h3>
+      <div class="svc-time">17:00 / 09:00</div>
+      <div class="svc-priest">Соборный причт</div>
+    </article>
+  </div>
+
+  <div class="schedule-foot">
+    <div style="font-family:var(--f-display); font-style:italic; font-size:18px; color: var(--ink-mute);">
+      Расписание служб обновляется еженедельно. Подайте записку через сайт.
+    </div>
+    <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="btn-link" style="margin-top:0">Заказать поминовение</a>
+  </div>
+</section>
+
+<!-- ============ DIVIDER ============ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 220 36" fill="none" stroke="currentColor" stroke-width="1">
+    <g stroke-linecap="round">
+      <path d="M2 18 Q22 8 44 18"></path><path d="M44 18 Q56 6 70 14"></path>
+      <circle cx="14" cy="14" r="2.2" fill="currentColor"></circle><circle cx="30" cy="22" r="2.2" fill="currentColor"></circle><circle cx="58" cy="11" r="2.2" fill="currentColor"></circle>
+    </g>
+    <g transform="translate(110 18)" stroke-linecap="round">
+      <line x1="0" y1="-14" x2="0" y2="14" stroke-width="1.6"></line>
+      <line x1="-9" y1="-6" x2="9" y2="-6" stroke-width="1.6"></line>
+      <line x1="-6" y1="2" x2="6" y2="-4" stroke-width="1.4"></line>
+      <circle cx="0" cy="-14" r="1.6" fill="currentColor"></circle>
+    </g>
+    <g stroke-linecap="round">
+      <path d="M150 14 Q164 6 176 18"></path><path d="M176 18 Q198 8 218 18"></path>
+      <circle cx="206" cy="14" r="2.2" fill="currentColor"></circle><circle cx="190" cy="22" r="2.2" fill="currentColor"></circle><circle cx="162" cy="11" r="2.2" fill="currentColor"></circle>
+    </g>
+  </svg>
+</div>
+
+<!-- ============ QUICK LINKS ============ -->
+<section class="wrap">
+  <div class="section-eyebrow" style="text-align:center; justify-content:center;">
+    <span style="height:1px; width:28px; background:var(--gold); display:inline-block;"></span>
+    Главное на сайте
+    <span style="height:1px; width:28px; background:var(--gold); display:inline-block;"></span>
+  </div>
+  <nav class="quick" aria-label="Быстрые ссылки">
+    <a href="<?php echo esc_url(home_url("/schedule")); ?>">
+      <span class="quick-icon">
+        <!-- engraved cross with rays -->
+        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="28" cy="28" r="22" opacity=".25"></circle>
+          <line x1="28" y1="10" x2="28" y2="46" stroke-width="2"></line>
+          <line x1="16" y1="20" x2="40" y2="20" stroke-width="2"></line>
+          <line x1="20" y1="32" x2="36" y2="28" stroke-width="2"></line>
+          <g opacity=".4">
+            <line x1="28" y1="2" x2="28" y2="6"></line>
+            <line x1="28" y1="50" x2="28" y2="54"></line>
+            <line x1="2" y1="28" x2="6" y2="28"></line>
+            <line x1="50" y1="28" x2="54" y2="28"></line>
+          </g>
+        </svg>
+      </span>
+      <h3 class="quick-title">Расписание<br>богослужений</h3>
+      <p class="quick-desc">Литургии, утрени, всенощные бдения и требы — на текущую неделю и месяц.</p>
+      <span class="quick-arrow">Смотреть</span>
+    </a>
+    <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>">
+      <span class="quick-icon">
+        <!-- dove with olive branch -->
+        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M10 32 Q12 22 22 22 L34 22 Q44 22 46 28 L42 30 Q44 36 38 38 L32 36 L30 44 L26 44 L26 38 Q18 38 14 36 Z"></path>
+          <circle cx="40" cy="26" r="1" fill="currentColor"></circle>
+          <path d="M22 22 Q22 16 26 14"></path>
+          <path d="M28 16 Q26 12 22 10"></path>
+          <path d="M32 18 Q34 14 38 14"></path>
+          <path d="M38 14 q-1 -2 -3 -2"></path>
+        </svg>
+      </span>
+      <h3 class="quick-title">Заказать<br>требу</h3>
+      <p class="quick-desc">Подайте записку о здравии или упокоении. Молебны, сорокоусты, панихиды.</p>
+      <span class="quick-arrow">Подать</span>
+    </a>
+    <a href="<?php echo esc_url(home_url("/donate")); ?>" class="donate-quick">
+      <span class="quick-icon">
+        <!-- engraved heart with cross -->
+        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M28 46 Q12 34 12 22 Q12 14 20 14 Q26 14 28 20 Q30 14 36 14 Q44 14 44 22 Q44 34 28 46 Z"></path>
+          <line x1="28" y1="20" x2="28" y2="34" stroke-width="1.6"></line>
+          <line x1="22" y1="26" x2="34" y2="26" stroke-width="1.6"></line>
+        </svg>
+      </span>
+      <h3 class="quick-title">Пожертвование<br>на собор</h3>
+      <p class="quick-desc">Поддержка содержания храма, восстановления росписи и социальных служений.</p>
+      <span class="quick-arrow" style="color:var(--burgundy)">Помочь</span>
+    </a>
+    <a href="<?php echo esc_url(home_url("/news")); ?>">
+      <span class="quick-icon">
+        <!-- newspaper / scroll -->
+        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="10" y="12" width="36" height="32"></rect>
+          <line x1="10" y1="20" x2="46" y2="20"></line>
+          <line x1="14" y1="26" x2="42" y2="26"></line>
+          <line x1="14" y1="30" x2="42" y2="30"></line>
+          <line x1="14" y1="34" x2="34" y2="34"></line>
+          <line x1="14" y1="38" x2="42" y2="38"></line>
+          <circle cx="42" cy="16" r="1" fill="currentColor"></circle>
+          <circle cx="38" cy="16" r="1" fill="currentColor"></circle>
+        </svg>
+      </span>
+      <h3 class="quick-title">Новости<br>прихода</h3>
+      <p class="quick-desc">События, праздники, престольные торжества и слова настоятеля.</p>
+      <span class="quick-arrow">Читать</span>
+    </a>
+  </nav>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="wrap" id="news" style="margin-top:96px;">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Жизнь прихода</div>
+      <h2 class="section-title">Последние новости</h2>
+    </div>
+    <a href="<?php echo esc_url(home_url("/news")); ?>" class="btn-link">Все новости</a>
+  </div>
+
+  <div class="news-grid">
+    <article class="news-card">
+      <div class="news-img">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="n1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a3a52"></stop><stop offset="100%" stop-color="#1a1f2e"></stop></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#n1)"></rect>
+          <!-- candles in church -->
+          <g fill="#c9a961">
+            <rect x="60" y="120" width="6" height="100"></rect>
+            <rect x="90" y="105" width="6" height="115"></rect>
+            <rect x="120" y="115" width="6" height="105"></rect>
+            <rect x="150" y="100" width="6" height="120"></rect>
+            <rect x="180" y="118" width="6" height="102"></rect>
+            <rect x="210" y="108" width="6" height="112"></rect>
+            <rect x="240" y="120" width="6" height="100"></rect>
+            <rect x="270" y="105" width="6" height="115"></rect>
+            <rect x="300" y="118" width="6" height="102"></rect>
+            <rect x="330" y="110" width="6" height="110"></rect>
+          </g>
+          <g fill="#fde7a4">
+            <ellipse cx="63" cy="118" rx="3" ry="6"></ellipse><ellipse cx="93" cy="103" rx="3" ry="6"></ellipse>
+            <ellipse cx="123" cy="113" rx="3" ry="6"></ellipse><ellipse cx="153" cy="98" rx="3" ry="6"></ellipse>
+            <ellipse cx="183" cy="116" rx="3" ry="6"></ellipse><ellipse cx="213" cy="106" rx="3" ry="6"></ellipse>
+            <ellipse cx="243" cy="118" rx="3" ry="6"></ellipse><ellipse cx="273" cy="103" rx="3" ry="6"></ellipse>
+            <ellipse cx="303" cy="116" rx="3" ry="6"></ellipse><ellipse cx="333" cy="108" rx="3" ry="6"></ellipse>
+          </g>
+          <radialGradient id="glow1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#fde7a4" stop-opacity=".35"></stop><stop offset="100%" stop-color="#fde7a4" stop-opacity="0"></stop></radialGradient>
+          <rect width="400" height="300" fill="url(#glow1)"></rect>
+        </svg>
+      </div>
+      <div class="news-meta">
+        <span>2 мая 2026</span><span class="dot"></span><span class="tag">Богослужение</span>
+      </div>
+      <h3 class="news-title">Пасхальная вечерня и крестный ход вокруг собора</h3>
+      <p class="news-excerpt">В Светлый понедельник настоятель совершил пасхальную вечерню при пении соборного хора. По окончании службы прихожане прошли крестным ходом…</p>
+      <a class="news-more" href="<?php echo esc_url(home_url("/news")); ?>">Читать далее →</a>
+    </article>
+
+    <article class="news-card">
+      <div class="news-img">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="n2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4b88b"></stop><stop offset="100%" stop-color="#7a5a32"></stop></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#n2)"></rect>
+          <!-- baptism scene silhouette -->
+          <g fill="#1a1410">
+            <ellipse cx="200" cy="240" rx="170" ry="20" opacity=".4"></ellipse>
+            <!-- font -->
+            <ellipse cx="200" cy="200" rx="60" ry="16" fill="#3a2818"></ellipse>
+            <path d="M150 200 L160 240 L240 240 L250 200 Z" fill="#3a2818"></path>
+            <!-- priest figure -->
+            <path d="M120 100 Q120 80 138 80 Q156 80 156 100 L154 200 L122 200 Z"></path>
+            <circle cx="138" cy="74" r="14"></circle>
+            <!-- second figure -->
+            <path d="M260 110 Q260 92 276 92 Q292 92 292 110 L290 200 L262 200 Z"></path>
+            <circle cx="276" cy="86" r="12"></circle>
+          </g>
+          <g fill="#c9a961" opacity=".7">
+            <path d="M200 70 q-8 12 0 24 q8 -12 0 -24z"></path>
+            <line x1="200" y1="60" x2="200" y2="100" stroke="#c9a961" stroke-width="2"></line>
+          </g>
+        </svg>
+      </div>
+      <div class="news-meta">
+        <span>28 апреля 2026</span><span class="dot"></span><span class="tag">Таинства</span>
+      </div>
+      <h3 class="news-title">В соборе крещены десять воспитанников воскресной школы</h3>
+      <p class="news-excerpt">В Великую Субботу настоятель совершил Таинство Крещения над детьми — воспитанниками приходской воскресной школы. Восприемниками…</p>
+      <a class="news-more" href="<?php echo esc_url(home_url("/news")); ?>">Читать далее →</a>
+    </article>
+
+    <article class="news-card">
+      <div class="news-img">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="n3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b2635"></stop><stop offset="100%" stop-color="#3a0a14"></stop></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#n3)"></rect>
+          <!-- cossack banner -->
+          <g fill="#c9a961">
+            <rect x="180" y="60" width="6" height="200"></rect>
+            <path d="M186 70 L320 70 L300 110 L320 150 L186 150 Z"></path>
+          </g>
+          <g fill="#1a1410">
+            <text x="252" y="118" text-anchor="middle" font-family="serif" font-weight="700" font-size="28">КАЗ</text>
+          </g>
+          <g fill="#1a1410" opacity=".55">
+            <ellipse cx="200" cy="280" rx="180" ry="20"></ellipse>
+            <path d="M60 260 Q90 200 120 260 Z"></path>
+            <path d="M280 260 Q320 200 360 260 Z"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="news-meta">
+        <span>21 апреля 2026</span><span class="dot"></span><span class="tag">Казачество</span>
+      </div>
+      <h3 class="news-title">Освящение знамени Кубанского казачьего войска в&nbsp;соборе</h3>
+      <p class="news-excerpt">По окончании Божественной литургии настоятель в сослужении соборного духовенства совершил молебен и освятил новое знамя…</p>
+      <a class="news-more" href="<?php echo esc_url(home_url("/news")); ?>">Читать далее →</a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+/* ============ Title char animation (one-shot on load) ============ */
+(function(){
+  const titleEl = document.getElementById('heroTitle');
+  // Use Ruslan-Display-styled italic — kicker prefix shown above; main title is "Александра / Невского"
+  const lines = titleEl.querySelectorAll('.line');
+  lines.forEach((line, lineIdx) => {
+    const text = line.dataset.text;
+    line.innerHTML = '';
+    [...text].forEach((c, i) => {
+      const s = document.createElement('span');
+      s.className = 'ch';
+      s.textContent = c === ' ' ? '\u00A0' : c;
+      // stagger: per line + per char
+      s.style.animationDelay = (0.4 + lineIdx*0.18 + i * 0.035) + 's';
+      line.appendChild(s);
+    });
+  });
+  // trigger once on load
+  requestAnimationFrame(()=>{
+    titleEl.classList.add('in');
+    document.getElementById('hero').classList.add('in');
+  });
+})();
+
+/* ============ Header shadow on scroll + hero parallax ============ */
+(function(){
+  const topbar = document.querySelector('.uheader') || document.getElementById('topbar');
+  const heroBg = document.getElementById('heroBg');
+  const hero = document.getElementById('hero');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let raf = 0;
+  function update(){
+    const y = window.scrollY || 0;
+    if(topbar){
+      if(y > 8) topbar.classList.add('scrolled'); else topbar.classList.remove('scrolled');
+    }
+    // parallax — only while hero is in view AND user has not opted out of motion
+    if(heroBg && hero && !reduced){
+      const heroH = hero.offsetHeight;
+      if(y < heroH){
+        heroBg.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(1.06)`;
+      }
+    }
+    raf = 0;
+  }
+  window.addEventListener('scroll', () => {
+    if(!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+  update();
+})();
+</script>
+
+<?php get_footer(); ?>

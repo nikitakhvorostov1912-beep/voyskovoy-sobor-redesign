@@ -1,0 +1,1590 @@
+<?php
+/**
+ * Template Name: Заказ треб
+ *
+ * Шаблон страницы «Заказ треб» — сгенерирован из docs/prayer-requests.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>/* ==========================================================
+   Войсковой Собор Александра Невского — Заказ треб
+   Design tokens
+   ========================================================== */
+
+:root {
+  --parchment: #f5f0e8;
+  --parchment-warm: #ede5d3;
+  --parchment-deep: #e6dcc4;
+  --ink: #1a1f2e;
+  --ink-soft: #2a3142;
+  --ink-muted: #4a5165;
+  --gold: #c9a961;
+  --gold-deep: #a8893f;
+  --gold-light: #e0c789;
+  --burgundy: #8b2635;
+  --burgundy-deep: #6b1d28;
+  --line: rgba(201, 169, 97, 0.25);
+  --line-soft: rgba(201, 169, 97, 0.15);
+  --shadow-card: 0 1px 2px rgba(26,31,46,0.04);
+  --shadow-card-hover: 0 12px 28px -10px rgba(26,31,46,0.18), 0 2px 6px rgba(26,31,46,0.06);
+  --shadow-modal: 0 30px 80px -20px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.25);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Spectral', Georgia, serif;
+  background: var(--parchment);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga', 'kern';
+}
+
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image:
+    radial-gradient(ellipse 800px 400px at 20% 10%, rgba(201,169,97,0.06), transparent 60%),
+    radial-gradient(ellipse 600px 300px at 80% 90%, rgba(139,38,53,0.04), transparent 60%);
+}
+
+.ui { font-family: 'PT Sans', system-ui, sans-serif; }
+.display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 500; }
+.decor { font-family: 'Ruslan Display', 'Cormorant Garamond', serif; }
+.body-serif { font-family: 'Spectral', Georgia, serif; }
+.num { font-family: 'Spectral', Georgia, serif; font-variant-numeric: tabular-nums; font-feature-settings: 'tnum'; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* ==========================================================
+   Sticky main header
+   ========================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--parchment);
+  border-bottom: 1px solid rgba(201,169,97,0.18);
+}
+
+.main-header-inner {
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sigil-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sigil {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.sigil-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.sigil-text .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--parchment);
+}
+
+.sigil-text .sub {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.main-nav a {
+  position: relative;
+  padding: 10px 0;
+  color: var(--parchment);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.main-nav a:hover { opacity: 1; }
+
+.main-nav a.active {
+  opacity: 1;
+  color: var(--gold-light);
+}
+
+.main-nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--gold);
+}
+
+.nav-donate {
+  color: var(--gold) !important;
+  letter-spacing: 0.16em;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.search-btn {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: var(--parchment);
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  border-radius: 2px;
+}
+.search-btn:hover { opacity: 1; }
+
+.btn-donate {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--burgundy);
+  color: var(--parchment);
+  padding: 11px 22px;
+  border: 1px solid var(--burgundy);
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-donate:hover { background: var(--burgundy-deep); }
+
+/* ==========================================================
+   Page header (узкий)
+   ========================================================== */
+.page-header {
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 64px 32px 56px;
+  text-align: center;
+  border-bottom: 1px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before,
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.page-header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.breadcrumbs {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+  opacity: 0.85;
+}
+
+.breadcrumbs span { opacity: 0.55; margin: 0 8px; }
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  margin-bottom: 28px;
+}
+
+.page-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.monastery-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--gold-light);
+  letter-spacing: 0.01em;
+  position: relative;
+  display: inline-block;
+  padding: 0 32px;
+}
+
+.monastery-quote::before,
+.monastery-quote::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+.monastery-quote::before { left: 0; }
+.monastery-quote::after { right: 0; }
+
+.quote-attribution {
+  display: block;
+  margin-top: 8px;
+  font-family: 'PT Sans', sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+/* ==========================================================
+   Intro section
+   ========================================================== */
+.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 32px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.intro p {
+  font-family: 'Spectral', serif;
+  font-size: 17.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+  text-wrap: pretty;
+}
+
+.intro p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 78px;
+  line-height: 0.85;
+  float: left;
+  color: var(--gold);
+  margin: 6px 14px 0 0;
+  font-style: italic;
+}
+
+.intro-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 8px 0 32px;
+  color: var(--gold);
+}
+.intro-divider .line { width: 50px; height: 1px; background: var(--gold); opacity: 0.5; }
+.intro-divider .ornament { font-size: 14px; opacity: 0.7; }
+
+.intro-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--burgundy);
+  border-bottom: 1px solid var(--burgundy);
+  padding-bottom: 2px;
+  transition: gap 0.2s;
+}
+.intro-cta:hover { gap: 14px; }
+
+.intro-note {
+  margin-top: 28px;
+  padding: 18px 22px;
+  border-left: 2px solid var(--gold);
+  background: rgba(201,169,97,0.06);
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   Catalog
+   ========================================================== */
+.catalog-section {
+  padding: 60px 32px 80px;
+  max-width: 1720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.section-eyebrow .line { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 52px);
+  text-align: center;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.section-heading em { font-style: italic; color: var(--gold-deep); }
+
+.section-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19px;
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 56px;
+  line-height: 1.5;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.treba-card {
+  position: relative;
+  background: var(--parchment);
+  border: 1px solid var(--line-soft);
+  padding: 36px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  min-height: 380px;
+}
+
+.treba-card::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.25s;
+}
+
+.treba-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(201,169,97,0.5);
+}
+.treba-card:hover::before {
+  border-color: rgba(201,169,97,0.15);
+}
+
+.treba-card.featured {
+  background: linear-gradient(180deg, #f8f3e9 0%, var(--parchment) 100%);
+  border-color: rgba(201,169,97,0.4);
+}
+
+.treba-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 22px;
+  color: var(--gold-deep);
+}
+
+.treba-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.treba-desc {
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-bottom: 22px;
+  flex: 1;
+  text-wrap: pretty;
+}
+
+.treba-divider {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--gold);
+  opacity: 0.5;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+}
+
+.treba-price {
+  font-family: 'Spectral', serif;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 28px;
+  color: var(--gold-deep);
+  text-align: center;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.treba-price .unit {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: block;
+  margin-top: 2px;
+}
+.treba-price.no-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--ink-muted);
+}
+
+.treba-cta {
+  margin-top: 22px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 12px 18px;
+  border: 1px solid var(--gold);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.treba-cta:hover {
+  background: var(--ink);
+  color: var(--gold);
+}
+.treba-cta.outlined {
+  background: transparent;
+  color: var(--ink);
+}
+.treba-cta.outlined:hover {
+  background: var(--ink);
+  color: var(--gold);
+}
+
+/* Card entrance animation */
+.treba-card {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.treba-card.in {
+  animation: cardIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes cardIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   How to order section
+   ========================================================== */
+.how-section {
+  padding: 80px 32px;
+  background: var(--ink);
+  color: var(--parchment);
+  position: relative;
+  z-index: 1;
+}
+
+.how-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.how-section .section-eyebrow { color: var(--gold); }
+.how-section .section-heading { color: var(--parchment); }
+.how-section .section-sub { color: rgba(245,240,232,0.7); }
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.how-card {
+  border: 1px solid rgba(201,169,97,0.2);
+  padding: 36px 28px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.2s, background 0.2s;
+}
+.how-card:hover {
+  border-color: rgba(201,169,97,0.5);
+  background: rgba(255,255,255,0.04);
+}
+
+.how-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 20px;
+  color: var(--gold);
+}
+
+.how-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  margin-bottom: 6px;
+  color: var(--parchment);
+}
+
+.how-hours {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.how-contact {
+  font-family: 'Spectral', serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+  color: var(--parchment);
+  border-bottom: 1px solid rgba(201,169,97,0.4);
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+.how-meta {
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(245,240,232,0.6);
+  margin-top: 14px;
+}
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+.faq-section {
+  padding: 80px 32px;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.faq-list {
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-q {
+  width: 100%;
+  text-align: left;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+
+.faq-q:hover { color: var(--gold-deep); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+.faq-icon::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.faq-icon::after {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-a-inner {
+  padding: 0 0 28px 0;
+  font-family: 'Spectral', serif;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  max-width: 720px;
+}
+
+.faq-item.open .faq-a {
+  max-height: 400px;
+}
+
+/* ==========================================================
+   Priest CTA
+   ========================================================== */
+.priest-cta {
+  padding: 80px 32px;
+  background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-warm) 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 1;
+}
+
+.priest-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.priest-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 44px);
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.priest-text h3 em { font-style: italic; color: var(--gold-deep); }
+
+.priest-text p {
+  font-family: 'Spectral', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+  text-wrap: pretty;
+}
+
+.priest-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-priest {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid;
+  transition: all 0.25s;
+}
+.btn-priest .num { font-variant-numeric: tabular-nums; }
+.btn-priest.solid {
+  background: var(--burgundy);
+  color: var(--parchment);
+  border-color: var(--burgundy);
+}
+.btn-priest.solid:hover {
+  background: var(--burgundy-deep);
+  border-color: var(--burgundy-deep);
+}
+.btn-priest.outlined {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-priest.outlined:hover {
+  background: var(--ink);
+  color: var(--gold);
+}
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.footer {
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 70px 32px 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 1720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(201,169,97,0.15);
+}
+
+.footer-brand .sigil { width: 52px; height: 52px; margin-bottom: 18px; }
+.footer-brand h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.footer-brand .since {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.footer-brand p {
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-col h5 {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a {
+  font-family: 'Spectral', serif;
+  font-size: 16px;
+  color: rgba(245,240,232,0.85);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--gold-light); }
+.footer-col .num { font-variant-numeric: tabular-nums; }
+
+.footer-bottom {
+  max-width: 1720px;
+  margin: 0 auto;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.4);
+}
+
+/* ==========================================================
+   Modal
+   ========================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 31, 46, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  overflow-y: auto;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 580px;
+  background: var(--parchment);
+  border: 1px solid rgba(201,169,97,0.5);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: var(--shadow-modal);
+  margin: auto;
+}
+.modal-overlay.open .modal-card { transform: scale(1); }
+
+.modal-card::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px solid rgba(201,169,97,0.18);
+  pointer-events: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--ink-muted);
+  z-index: 2;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--burgundy); }
+
+.modal-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 26px 32px 0;
+}
+.progress-dot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.progress-dot .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(26,31,46,0.15);
+  transition: background 0.3s;
+}
+.progress-dot.done .dot { background: var(--gold); }
+.progress-dot.active .dot { background: var(--gold); box-shadow: 0 0 0 4px rgba(201,169,97,0.18); }
+.progress-line {
+  width: 36px;
+  height: 1px;
+  background: rgba(26,31,46,0.15);
+}
+.progress-line.done { background: var(--gold); }
+
+.modal-body {
+  padding: 26px 44px 36px;
+}
+
+.modal-eyebrow {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: -0.005em;
+}
+.modal-title em { font-style: italic; color: var(--gold-deep); }
+
+.modal-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto 28px;
+  line-height: 1.5;
+}
+.modal-quote .attr {
+  display: block;
+  margin-top: 6px;
+  font-family: 'PT Sans', sans-serif;
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  opacity: 0.8;
+}
+
+.modal-step {
+  display: none;
+}
+.modal-step.active {
+  display: block;
+  animation: stepFade 0.3s ease;
+}
+@keyframes stepFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+.field-label .req { color: var(--burgundy); }
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(26,31,46,0.18);
+  padding: 12px 14px;
+  font-family: 'Spectral', serif;
+  font-size: 16px;
+  color: var(--ink);
+  transition: border-color 0.2s, background 0.2s;
+}
+.field-input:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #fff;
+}
+
+.field-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.55;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+}
+
+.field-help {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--ink-muted);
+}
+.field-help.error { color: var(--burgundy); }
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: 'Spectral', serif;
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.checkbox-row input {
+  margin-top: 3px;
+  accent-color: var(--gold);
+}
+
+.method-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.method-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(26,31,46,0.15);
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.method-row.selected {
+  border-color: var(--gold);
+  background: rgba(201,169,97,0.08);
+}
+.method-row .radio {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 1px solid var(--ink-muted);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.method-row.selected .radio { border-color: var(--gold); }
+.method-row.selected .radio::after {
+  content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
+}
+.method-row .name {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  flex: 1;
+}
+.method-row .icon {
+  width: 22px; height: 22px;
+  color: var(--gold-deep);
+}
+
+.summary {
+  background: rgba(201,169,97,0.06);
+  border: 1px solid var(--line);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dotted rgba(26,31,46,0.12);
+  font-family: 'Spectral', serif;
+  font-size: 15.5px;
+}
+.summary-row:last-of-type { border-bottom: none; }
+.summary-row .lbl {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.summary-row .val { color: var(--ink); font-style: italic; }
+.summary-row .val.num { font-variant-numeric: tabular-nums; font-style: normal; }
+
+.summary-total {
+  margin-top: 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gold) !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.summary-total .lbl {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+}
+.summary-total .val {
+  font-family: 'Spectral', serif;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 36px;
+  color: var(--gold-deep);
+  letter-spacing: -0.01em;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn {
+  flex: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  padding: 14px 22px;
+  border: 1px solid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+.btn-outlined {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-outlined:hover { background: var(--ink); color: var(--parchment); }
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.btn-gold:hover { background: var(--gold-deep); border-color: var(--gold-deep); color: var(--parchment); }
+.btn-gold:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ==========================================================
+   Mobile
+   ========================================================== */
+@media (max-width: 1024px) {
+  .main-nav { display: none; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-grid { grid-template-columns: 1fr; }
+  .priest-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+@media (max-width: 720px) {
+  .main-header-inner { padding: 12px 18px; gap: 16px; }
+  .btn-donate { padding: 9px 14px; font-size: 11px; }
+  .sigil-text .name { font-size: 14px; }
+  .sigil-text .sub { font-size: 9px; }
+  .page-header { padding: 48px 22px 40px; }
+  .intro { padding: 56px 22px 40px; }
+  .catalog-section { padding: 40px 18px 60px; }
+  .catalog-grid { grid-template-columns: 1fr; gap: 16px; }
+  .treba-card { min-height: auto; padding: 32px 24px 24px; }
+  .how-section, .faq-section, .priest-cta { padding: 56px 22px; }
+  .footer { padding: 48px 22px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .modal-body { padding: 20px 24px 28px; }
+  .modal-title { font-size: 28px; }
+  .summary-total .val { font-size: 28px; }
+  .priest-actions { gap: 10px; }
+  .btn-priest { font-size: 17px; padding: 14px 20px; }
+}
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<div id="root"><section class="page-header"><div class="page-header-inner"><div class="breadcrumbs">Главная <span>/</span> Жизнь прихода <span>/</span> Заказ треб</div><h1 class="page-title">Помолитесь <em>о близких</em></h1><div class="monastery-quote">Молитесь друг за друга, чтобы исцелиться<span class="quote-attribution">Послание ап. Иакова, 5:16</span></div></div></section><section class="intro"><p>Требы — это особые богослужения и молитвословия, совершаемые по просьбе верующих о конкретных людях: о здравии живущих и упокоении усопших. Подавая имя на молитву, вы соединяете близкого человека с богослужением соборной Церкви — там, где «Сам Христос приносится и приемлется».</p><div class="intro-divider"><span class="line"></span><span class="ornament">✦</span><span class="line"></span></div><p>Имена подаются в начальной форме (Иоанн, не Ивана), русскими буквами, как они даны в Святом Крещении. На богослужебное поминовение принимаются имена крещёных в Православной Церкви и не отлучённых от неё. О иноверных и некрещёных близких возможна домашняя молитва — обратитесь за советом к священнику.</p><a href="#faq" class="intro-cta">Подробнее о церковных таинствах <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><div class="intro-note">Пожертвование — не плата за молитву, но добровольный труд для нужд храма и причта. Размер указан для удобства; если ваше пожертвование иное — обратитесь в свечной киоск собора.</div></section><section class="catalog-section"><div class="section-eyebrow"><span class="line"></span><span>Каталог треб</span><span class="line"></span></div><h2 class="section-heading">Виды <em>церковных молитвословий</em></h2><p class="section-sub">Выберите вид поминовения. Каждая треба совершается священством собора у престола святого благоверного князя Александра Невского.</p><div class="catalog-grid"><article class="treba-card featured in" style="animation-delay: 0ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="28" cy="18" r="9"></circle><circle cx="28" cy="18" r="10.5" stroke-opacity="0.3"></circle><ellipse cx="28" cy="18" rx="3.5" ry="4.5"></ellipse><path d="M22 12 Q28 8 34 12" stroke-opacity="0.5"></path><path d="M16 36 Q20 28 28 28 Q36 28 40 36 L40 48 L16 48 Z"></path><path d="M44 22 L44 50" stroke-linecap="round"></path><path d="M40 26 L48 26" stroke-linecap="round"></path><circle cx="44" cy="22" r="1.3"></circle><path d="M22 36 L34 36 M24 40 L32 40" stroke-opacity="0.4"></path><path d="M28 38 L28 42 M26.5 40 L29.5 40" stroke-opacity="0.6"></path></svg></div><h3 class="treba-name">Молебен Александру Невскому</h3><p class="treba-desc">Перед мощами небесного покровителя собора — о воинах, защитниках, путешествующих.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">100 ₽<span class="unit">фиксированная</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9C%D0%BE%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D1%83%20%D0%9D%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9C%D0%BE%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D1%83%20%D0%9D%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 80ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M28 6 Q32 12 30 16 Q28 14 28 12 Q26 16 26 18 Q25 14 28 6 Z" fill="currentColor" fill-opacity="0.2"></path><ellipse cx="28" cy="14" rx="6" ry="9" stroke-opacity="0.2"></ellipse><path d="M24 20 L24 48 L32 48 L32 20"></path><path d="M24 20 Q28 18 32 20"></path><path d="M24 28 Q23 32 25 32 M32 32 Q33 36 31 36" stroke-opacity="0.5"></path><path d="M20 50 L36 50" stroke-linecap="round" stroke-width="1.4"></path><path d="M22 48 L34 48" stroke-linecap="round"></path></svg></div><h3 class="treba-name">Молебен о здравии</h3><p class="treba-desc">О здравии, спасении и благоденствии живущих православных христиан.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">100 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9C%D0%BE%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%20%D0%BE%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9C%D0%BE%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%20%D0%BE%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 160ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M28 4 L28 52" stroke-linecap="round"></path><path d="M20 12 L36 12" stroke-linecap="round"></path><path d="M16 22 L40 22" stroke-linecap="round" stroke-width="1.4"></path><path d="M14 38 L42 32" stroke-linecap="round"></path><circle cx="28" cy="22" r="14" stroke-opacity="0.15"></circle></svg></div><h3 class="treba-name">Молебен о упокоении</h3><p class="treba-desc">Поминовение усопших на богослужении в храме.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">100 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9C%D0%BE%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%20%D0%BE%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9C%D0%BE%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%20%D0%BE%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 240ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M26 18 L26 42 L30 42 L30 18 Z"></path><path d="M28 10 Q30 14 29 18 Q28 16 28 14 Q27 17 27 18 Q26.5 14 28 10 Z" fill="currentColor" fill-opacity="0.25"></path><ellipse cx="28" cy="14" rx="3" ry="5" stroke-opacity="0.2"></ellipse><path d="M14 30 L14 42 L17 42 L17 30 Z M19 30 L19 42 L22 42 L22 30 Z M34 30 L34 42 L37 42 L37 30 Z M39 30 L39 42 L42 42 L42 30 Z" stroke-opacity="0.6"></path><path d="M15.5 26 Q16 28 15.5 30 M20.5 26 Q21 28 20.5 30 M35.5 26 Q36 28 35.5 30 M40.5 26 Q41 28 40.5 30" stroke-opacity="0.5"></path><path d="M10 46 L46 46" stroke-linecap="round" stroke-width="1.4"></path><text x="28" y="52" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="7" fill="currentColor" stroke="none" font-style="italic" opacity="0.7">XL</text></svg></div><h3 class="treba-name">Сорокоуст о здравии</h3><p class="treba-desc">Поминовение на сорока Литургиях подряд — особое молитвенное предстательство.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">160 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%A1%D0%BE%D1%80%D0%BE%D0%BA%D0%BE%D1%83%D1%81%D1%82%20%D0%BE%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%A1%D0%BE%D1%80%D0%BE%D0%BA%D0%BE%D1%83%D1%81%D1%82%20%D0%BE%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 320ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M26 18 L26 42 L30 42 L30 18 Z"></path><path d="M28 10 Q30 14 29 18 Q28 16 28 14 Q27 17 27 18 Q26.5 14 28 10 Z" fill="currentColor" fill-opacity="0.25"></path><ellipse cx="28" cy="14" rx="3" ry="5" stroke-opacity="0.2"></ellipse><path d="M14 30 L14 42 L17 42 L17 30 Z M19 30 L19 42 L22 42 L22 30 Z M34 30 L34 42 L37 42 L37 30 Z M39 30 L39 42 L42 42 L42 30 Z" stroke-opacity="0.6"></path><path d="M15.5 26 Q16 28 15.5 30 M20.5 26 Q21 28 20.5 30 M35.5 26 Q36 28 35.5 30 M40.5 26 Q41 28 40.5 30" stroke-opacity="0.5"></path><path d="M10 46 L46 46" stroke-linecap="round" stroke-width="1.4"></path><text x="28" y="52" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="7" fill="currentColor" stroke="none" font-style="italic" opacity="0.7">XL</text></svg></div><h3 class="treba-name">Сорокоуст о упокоении</h3><p class="treba-desc">Сорок Литургий о новопреставленном — сугубое поминовение в первые дни.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">160 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%A1%D0%BE%D1%80%D0%BE%D0%BA%D0%BE%D1%83%D1%81%D1%82%20%D0%BE%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%A1%D0%BE%D1%80%D0%BE%D0%BA%D0%BE%D1%83%D1%81%D1%82%20%D0%BE%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 400ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M28 4 L28 52" stroke-linecap="round"></path><path d="M20 12 L36 12" stroke-linecap="round"></path><path d="M16 22 L40 22" stroke-linecap="round" stroke-width="1.4"></path><path d="M14 38 L42 32" stroke-linecap="round"></path><circle cx="28" cy="22" r="14" stroke-opacity="0.15"></circle></svg></div><h3 class="treba-name">Панихида</h3><p class="treba-desc">На 9-й, 40-й день, годовщину преставления и в родительские субботы.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">50 ₽<span class="unit">служба</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9F%D0%B0%D0%BD%D0%B8%D1%85%D0%B8%D0%B4%D0%B0&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9F%D0%B0%D0%BD%D0%B8%D1%85%D0%B8%D0%B4%D0%B0.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 480ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 10 Q14 28 28 32 Q42 28 42 10 Z"></path><path d="M14 14 L42 14" stroke-opacity="0.5"></path><path d="M28 32 L28 44" stroke-linecap="round"></path><path d="M22 44 L34 44" stroke-linecap="round"></path><path d="M18 50 L38 50" stroke-linecap="round" stroke-width="1.4"></path><path d="M28 4 L28 10 M25 7 L31 7" stroke-linecap="round"></path><circle cx="28" cy="20" r="3.5" fill="currentColor" fill-opacity="0.15"></circle><path d="M28 16 L28 24 M24.5 20 L31.5 20" stroke-width="0.9" stroke-opacity="0.7"></path></svg></div><h3 class="treba-name">Поминовение на проскомидии</h3><p class="treba-desc">Изъятие частицы из просфоры с поминовением имени за каждой Литургией.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">50 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BC%D0%B8%D0%B4%D0%B8%D0%B8&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BC%D0%B8%D0%B4%D0%B8%D0%B8.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 560ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 14 Q12 10 16 10 L42 10 Q46 10 46 14 L46 42 Q46 46 42 46 L16 46 Q12 46 12 42 Z"></path><path d="M12 14 Q12 18 16 18 L42 18 Q46 18 46 14" stroke-opacity="0.5"></path><path d="M12 42 Q12 38 16 38 L42 38 Q46 38 46 42" stroke-opacity="0.5"></path><path d="M18 24 L40 24 M18 28 L36 28 M18 32 L38 32" stroke-opacity="0.4" stroke-linecap="round"></path><path d="M28 12 L28 16 M26 14 L30 14" stroke-opacity="0.7" stroke-width="0.9"></path></svg></div><h3 class="treba-name">Поминовение на полгода</h3><p class="treba-desc">Шесть месяцев непрерывного поминовения на Божественной литургии.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">500 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BB%D0%B3%D0%BE%D0%B4%D0%B0&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BB%D0%B3%D0%BE%D0%B4%D0%B0.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 640ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 14 Q12 10 16 10 L42 10 Q46 10 46 14 L46 42 Q46 46 42 46 L16 46 Q12 46 12 42 Z"></path><path d="M12 14 Q12 18 16 18 L42 18 Q46 18 46 14" stroke-opacity="0.5"></path><path d="M12 42 Q12 38 16 38 L42 38 Q46 38 46 42" stroke-opacity="0.5"></path><path d="M18 24 L40 24 M18 28 L36 28 M18 32 L38 32" stroke-opacity="0.4" stroke-linecap="round"></path><path d="M28 12 L28 16 M26 14 L30 14" stroke-opacity="0.7" stroke-width="0.9"></path></svg></div><h3 class="treba-name">Поминовение на год</h3><p class="treba-desc">Двенадцать месяцев имя возносится за каждой Литургией в соборе.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price">1 000 ₽<span class="unit">за имя</span></div><a class="treba-cta" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%82%D1%80%D0%B5%D0%B1%D1%8B%20%E2%80%94%20%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%B3%D0%BE%D0%B4&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BD%D0%B0%20%D1%82%D1%80%D0%B5%D0%B1%D1%83%3A%20%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%B3%D0%BE%D0%B4.%0A%0A%D0%98%D0%BC%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%BE%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F%20%28%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B7%D0%B0%D0%BF%D1%8F%D1%82%D1%83%D1%8E%2C%20%D0%B2%20%D0%BA%D1%80%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%29%3A%0A%D0%9E%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B8%D0%B8%20%E2%80%94%20%0A%D0%9E%20%D1%83%D0%BF%D0%BE%D0%BA%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8%20%E2%80%94%20%0A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A" target="_blank" rel="noopener">Заказать<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article><article class="treba-card in" style="animation-delay: 720ms;"><div class="treba-icon"><svg viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 28 L8 38 L24 38 L24 28 L20 32 L16 26 L12 32 Z"></path><path d="M32 28 L32 38 L48 38 L48 28 L44 32 L40 26 L36 32 Z"></path><circle cx="12" cy="32" r="0.9" fill="currentColor"></circle><circle cx="20" cy="32" r="0.9" fill="currentColor"></circle><circle cx="36" cy="32" r="0.9" fill="currentColor"></circle><circle cx="44" cy="32" r="0.9" fill="currentColor"></circle><path d="M16 22 L16 26 M14.5 24 L17.5 24" stroke-linecap="round"></path><path d="M40 22 L40 26 M38.5 24 L41.5 24" stroke-linecap="round"></path><path d="M24 33 Q28 30 32 33" stroke-opacity="0.5"></path><path d="M24 35 Q28 38 32 35" stroke-opacity="0.4"></path><path d="M6 42 L26 42 M30 42 L50 42" stroke-linecap="round" stroke-opacity="0.5"></path></svg></div><h3 class="treba-name">Венчание</h3><p class="treba-desc">Таинство брака. Совершается после беседы со священником и подготовки.</p><div class="treba-divider">✦ ✦ ✦</div><div class="treba-price no-price">по согласованию<span class="unit">требуется подготовка</span></div><a class="treba-cta outlined" href="mailto:nevskiy-sobor@mail.ru?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%BD%D0%B0%20%D0%B1%D0%B5%D1%81%D0%B5%D0%B4%D1%83%20%E2%80%94%20%D0%92%D0%B5%D0%BD%D1%87%D0%B0%D0%BD%D0%B8%D0%B5&body=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20%D0%B1%D0%B5%D1%81%D0%B5%D0%B4%D1%83%20%D0%BF%D0%BE%20%D1%82%D0%B0%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D1%83%3A%20%D0%92%D0%B5%D0%BD%D1%87%D0%B0%D0%BD%D0%B8%D0%B5.%0A%0A%D0%98%D0%BC%D1%8F%3A%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%20%28%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%D0%B8%D0%BB%D0%B8%20email%29%3A%0A%D0%A3%D0%B4%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%20%D0%B2%D1%80%D0%B5%D0%BC%D1%8F%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B8%3A%0A" target="_blank" rel="noopener">Записаться на беседу<svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></article></div></section><section class="how-section"><div class="how-inner"><div class="section-eyebrow"><span class="line"></span><span>Иные способы</span><span class="line"></span></div><h2 class="section-heading">Заказать <em>без сайта</em></h2><p class="section-sub">Если вам привычнее живое общение или вы предпочитаете обратиться лично — мы рады каждому из этих способов.</p><div class="how-grid"><div class="how-card"><div class="how-icon"><svg viewBox="0 0 44 44" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 4 L22 8 M20 6 L24 6"></path><path d="M22 8 Q18 10 18 14 Q18 18 22 18 Q26 18 26 14 Q26 10 22 8 Z"></path><path d="M22 18 L22 24"></path><path d="M10 24 L10 40 L34 40 L34 24 L28 24 L28 18 L16 18 L16 24 Z"></path><path d="M14 28 L14 36 M30 28 L30 36 M20 30 L24 30 L24 40 L20 40 Z" stroke-opacity="0.5"></path></svg></div><div class="how-name">Лично в соборе</div><div class="how-hours">Ежедневно · 7:00 — 19:00</div><div class="how-contact">ул. Постовая, 26</div><div class="how-meta">Свечной киоск у входа</div></div><div class="how-card"><div class="how-icon"><svg viewBox="0 0 44 44" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 8 L14 36 Q14 40 18 40 L26 40 Q30 40 30 36 L30 8 Q30 4 26 4 L18 4 Q14 4 14 8 Z"></path><path d="M14 12 L30 12 M14 32 L30 32" stroke-opacity="0.5"></path><circle cx="22" cy="36" r="1.2"></circle></svg></div><div class="how-name">По телефону</div><div class="how-hours">Пн — Вс · 8:00 — 18:00</div><div class="how-contact num">+7 (861) 262-00-20</div><div class="how-meta">Канцелярия собора</div></div><div class="how-card"><div class="how-icon"><svg viewBox="0 0 44 44" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 12 Q6 8 10 8 L34 8 Q38 8 38 12 L38 28 Q38 32 34 32 L18 32 L10 38 L10 32 Q6 32 6 28 Z"></path><path d="M14 16 L30 16 M14 22 L26 22" stroke-opacity="0.5"></path></svg></div><div class="how-name">В Telegram</div><div class="how-hours">Круглосуточно · ответ до 12 часов</div><div class="how-contact">@alexnewsobor</div><div class="how-meta">Дежурный свечной киоск</div></div></div></div></section><section class="faq-section" id="faq"><div class="section-eyebrow"><span class="line"></span><span>Часто спрашивают</span><span class="line"></span></div><h2 class="section-heading">О подаче <em>записок</em></h2><p class="section-sub">Если ваш вопрос остался без ответа — спросите у священника. В соборе ежедневно дежурит клирик, готовый побеседовать.</p><div class="faq-list"><div class="faq-item open"><button class="faq-q"><span>Можно ли подавать имя некрещёного?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">В церковных записках на проскомидии и литургии поминаются только крещёные в Православной Церкви. О некрещёных близких можно молиться домашней молитвой, ставить свечи, подавать милостыню. Также вы можете обратиться к священнику — в особых случаях возможно домашнее поминовение.</div></div></div><div class="faq-item"><button class="faq-q"><span>Сколько имён можно подать в одной записке?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">На сайте — до 10 имён в одной записке. В храме можно подать записку любой длины, но мы рекомендуем не более 15-20 имён, чтобы священник мог осмысленно произнести каждое имя у престола Божия.</div></div></div><div class="faq-item"><button class="faq-q"><span>Когда обновлять поминовение?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Если вы заказали разовое поминовение (молебен, панихиду) — оно совершается единократно. Сорокоуст длится 40 дней, поминовения на полгода и год — соответствующий срок. По истечении вы можете заказать снова. Уведомление об окончании придёт на ваш email.</div></div></div><div class="faq-item"><button class="faq-q"><span>Что такое «вынимание частиц» на проскомидии?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Проскомидия — первая часть Божественной литургии. За каждое имя из ваших записок священник вынимает из просфоры малую частицу со словами молитвы. По окончании Литургии эти частицы погружаются в Святую Чашу с молитвой об омовении грехов поминаемых Кровью Христовой — это считается одной из сильнейших молитв за человека.</div></div></div><div class="faq-item"><button class="faq-q"><span>Можно ли заказать поминовение онлайн заранее?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Да. При заказе вы можете указать желаемую дату богослужения в комментарии — мы постараемся учесть. Если дата не указана, поминовение начинается с ближайшей Литургии. Заказы принимаются круглосуточно, но обрабатываются с 7:00 до 19:00.</div></div></div><div class="faq-item"><button class="faq-q"><span>Как отменить или изменить заказ?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Если поминовение ещё не началось — позвоните в свечной киоск (861) 262-00-20 или напишите в Telegram. Пожертвование может быть возвращено или перенаправлено на другую требу. После начала поминовения отмена невозможна — молитва уже принесена за ваших близких.</div></div></div></div></section><section class="priest-cta"><div class="priest-inner"><div class="priest-text"><h3>Сомневаетесь? <em>Спросите священника</em></h3><p>Если вы впервые заказываете требу или не знаете, какое поминовение уместнее в вашем случае — настоятель и духовенство собора всегда готовы выслушать и подсказать.</p><p style="font-style: italic; font-size: 15.5px; color: var(--gold-deep); margin-top: 8px;">«Не стесняйтесь спрашивать — церковь не суд, а лечебница души».</p></div><div class="priest-actions"><a class="btn-priest solid" href="tel:+78612620020"><span>Позвонить настоятелю</span><span class="num">+7 (861) 262-00-20</span></a><a class="btn-priest outlined" href="https://t.me/alexnewsobor" target="_blank" rel="noopener"><span>Написать в Telegram</span><span>@alexnewsobor</span></a></div></div></section>
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+  // FAQ accordion (added by fix-prayer-requests.py)
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      if (item) item.classList.toggle('open');
+    });
+  });
+</script>
+
+<?php get_footer(); ?>

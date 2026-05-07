@@ -1,0 +1,2684 @@
+<?php
+/**
+ * Template Name: Расписание богослужений
+ *
+ * Шаблон страницы «Расписание богослужений» — сгенерирован из docs/schedule.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --parchment: #f5f0e8;
+    --parchment-2: #ede5d6;
+    --parchment-3: #e3d8c1;
+    --ink: #1a1f2e;
+    --ink-2: #2a3142;
+    --ink-soft: #3a4258;
+    --gold: #c9a961;
+    --gold-deep: #a88840;
+    --gold-pale: #e8d9a8;
+    --gold-wash: #f1e6c6;
+    --burgundy: #8b2635;
+    --burgundy-deep: #6f1d29;
+    --cream: #fbf6ec;
+    --hair: rgba(26,31,46,0.12);
+    --hair-strong: rgba(26,31,46,0.22);
+    --gold-line: rgba(201,169,97,0.55);
+
+    --f-display: "Cormorant Garamond", "Times New Roman", serif;
+    --f-body: "Spectral", Georgia, serif;
+    --f-ui: "PT Sans", "Helvetica Neue", Arial, sans-serif;
+
+    --maxw: 1240px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--f-body);
+    color: var(--ink);
+    background: var(--parchment);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+
+  /* parchment grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 1;
+    background-image:
+      radial-gradient(rgba(120,90,40,0.04) 1px, transparent 1px),
+      radial-gradient(rgba(120,90,40,0.025) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+  }
+
+  /* ---------- Top sticky header ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--hair);
+  }
+  .topbar::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-line) 20%, var(--gold-line) 80%, transparent);
+  }
+  .topbar-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 14px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 32px;
+    align-items: center;
+  }
+  .sigil {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink);
+  }
+  .sigil .mark {
+    width: 38px; height: 38px;
+    color: var(--burgundy);
+  }
+  .sigil .name {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+  .sigil .name small {
+    display: block;
+    font-family: var(--f-ui);
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  nav.main {
+    display: flex; gap: 28px;
+    justify-self: center;
+    font-family: var(--f-ui);
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  nav.main a {
+    color: var(--ink-soft);
+    padding: 6px 0;
+    position: relative;
+    transition: color .2s;
+  }
+  nav.main a:hover { color: var(--ink); }
+  nav.main a.active {
+    color: var(--ink);
+  }
+  nav.main a.active::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+    background: var(--gold);
+  }
+  .topbar-search {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--hair-strong);
+    background: transparent;
+    display: grid; place-items: center;
+    color: var(--ink-soft);
+    transition: all .2s;
+  }
+  .topbar-search:hover { border-color: var(--gold); color: var(--ink); }
+  .btn-donate {
+    font-family: var(--f-ui);
+    font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: var(--burgundy);
+    color: var(--cream);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 0;
+    transition: background .2s;
+    position: relative;
+  }
+  .btn-donate:hover { background: var(--burgundy-deep); }
+  .btn-donate::before {
+    content: ""; position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(251,246,236,0.25);
+    pointer-events: none;
+  }
+
+  /* ---------- Page header (40vh) ---------- */
+  .page-head {
+    position: relative;
+    min-height: 40vh;
+    background:
+      radial-gradient(1200px 400px at 50% 100%, rgba(201,169,97,0.10), transparent 60%),
+      linear-gradient(180deg, #161b29 0%, #1f2640 60%, #1a1f2e 100%);
+    color: var(--cream);
+    display: grid; place-items: center;
+    padding: 64px 32px 56px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* texture */
+  .page-head::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 3px),
+      radial-gradient(circle at 20% 30%, rgba(201,169,97,0.08), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(201,169,97,0.06), transparent 55%);
+    z-index: -1;
+  }
+  /* faint cross watermarks */
+  .page-head::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%23c9a961' stroke-width='0.7' opacity='0.08'><path d='M60 20 v80 M40 40 h40 M50 65 h20 M45 90 l30 -30 M75 90 l-30 -30'/></g></svg>");
+    background-size: 200px 200px;
+    background-position: center;
+    opacity: 0.6;
+    z-index: -1;
+  }
+  .head-inner { text-align: center; max-width: 880px; }
+  .head-eyebrow {
+    font-family: var(--f-ui);
+    font-size: 11px; letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 22px;
+    display: inline-flex; align-items: center; gap: 18px;
+  }
+  .head-eyebrow::before, .head-eyebrow::after {
+    content: ""; width: 36px; height: 1px; background: var(--gold-line);
+  }
+  .head-title {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(40px, 5.6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    margin: 0 0 24px;
+  }
+  .head-quote {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: var(--gold);
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: 0.005em;
+  }
+  .head-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--f-ui);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: rgba(232, 217, 168, 0.6);
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  .head-rule {
+    margin-top: 40px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.55;
+  }
+
+  /* ---------- Section shells ---------- */
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+  .section { padding: 56px 0; position: relative; }
+
+  .section-eyebrow {
+    font-family: var(--f-ui);
+    font-size: 10.5px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: inline-flex; align-items: center; gap: 14px;
+    margin: 0 0 16px;
+  }
+  .section-eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(30px, 3.4vw, 44px);
+    line-height: 1.05;
+    margin: 0 0 8px;
+    letter-spacing: -0.005em;
+  }
+  .section-sub {
+    font-family: var(--f-display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 18px;
+    margin: 0 0 32px;
+  }
+
+  /* ---------- Month navigator ---------- */
+  .month-nav {
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    background: var(--parchment-2);
+    position: relative;
+  }
+  .month-nav::before, .month-nav::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 1px;
+    background: var(--gold-line); opacity: 0.5;
+  }
+  .month-nav::before { top: -1px; }
+  .month-nav::after { bottom: -1px; }
+  .month-nav-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 18px 24px;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .nav-arrow {
+    width: 38px; height: 38px;
+    border: 1px solid var(--hair-strong);
+    background: var(--parchment);
+    display: grid; place-items: center;
+    color: var(--ink-soft);
+    transition: all .2s;
+  }
+  .nav-arrow:hover { color: var(--ink); border-color: var(--gold); background: var(--cream); }
+
+  .months {
+    display: flex; gap: 4px; overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: center;
+  }
+  .months::-webkit-scrollbar { display: none; }
+  .months button {
+    font-family: var(--f-ui);
+    font-size: 11.5px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: transparent; border: none;
+    color: var(--ink-soft);
+    padding: 10px 14px;
+    position: relative;
+    font-feature-settings: "tnum" 1;
+    transition: color .2s;
+    white-space: nowrap;
+  }
+  .months button:hover { color: var(--ink); }
+  .months button.active {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .months button.active::after {
+    content: ""; position: absolute;
+    left: 14px; right: 14px; bottom: 4px; height: 2px;
+    background: var(--gold);
+  }
+  .year-label {
+    font-family: "Spectral", serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    padding: 0 14px;
+    border-left: 1px solid var(--hair);
+    font-feature-settings: "tnum" 1;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Calendar layout ---------- */
+  .cal-section { padding: 48px 0 64px; }
+  .cal-grid-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .calendar {
+    background: var(--cream);
+    border: 1px solid var(--hair);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.7) inset,
+      0 30px 60px -40px rgba(26,31,46,0.25),
+      0 0 0 1px var(--gold-line) inset;
+    position: relative;
+  }
+  .calendar::before {
+    /* subtle inner ornament corners */
+    content: "";
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(201,169,97,0.18);
+    pointer-events: none;
+  }
+
+  .cal-head {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--gold-line);
+    background: linear-gradient(180deg, var(--cream), var(--parchment-2));
+  }
+  .cal-head div {
+    padding: 16px 0 14px;
+    text-align: center;
+    font-family: var(--f-ui);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    border-right: 1px solid rgba(201,169,97,0.18);
+  }
+  .cal-head div:last-child { border-right: none; }
+  .cal-head div.weekend { color: var(--burgundy); }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 124px;
+  }
+  .cell {
+    position: relative;
+    border-right: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    padding: 10px 12px 8px;
+    background: transparent;
+    text-align: left;
+    border-top: none; border-left: none;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cell:nth-child(7n) { border-right: none; }
+  .cell.row-last { border-bottom: none; }
+  .cell.muted { color: var(--ink-soft); opacity: 0.35; pointer-events: none; }
+
+  .cell .num {
+    font-family: "Spectral", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    font-feature-settings: "tnum" 1;
+    letter-spacing: -0.01em;
+    display: block;
+  }
+  /* (day-label removed — using number color + svc-tag instead) */
+
+  /* service-type label under number (no dots) */
+  .cell .svc-tag {
+    font-family: var(--f-ui);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* feast label */
+  .cell .feast {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--burgundy);
+    line-height: 1.15;
+    margin-top: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* day with services — number in gold + thin gold rule at bottom */
+  .cell.has-svc { background: rgba(255,255,255,0.4); }
+  .cell.has-svc .num {
+    font-weight: 500;
+    color: var(--gold-deep);
+  }
+  .cell.has-svc::after {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: 8px;
+    transform: translateX(-50%);
+    width: 30%; height: 1px;
+    background: var(--gold);
+  }
+
+  /* feast (gold-pale bg) */
+  .cell.feast-day {
+    background:
+      linear-gradient(180deg, rgba(232,217,168,0.55), rgba(241,230,198,0.45));
+  }
+  .cell.feast-day .num { color: var(--gold-deep); }
+
+  /* sunday & great feasts — burgundy number */
+  .cell.great {
+    background:
+      linear-gradient(180deg, rgba(139,38,53,0.04), rgba(139,38,53,0.08));
+  }
+  .cell.great .num { color: var(--burgundy-deep); font-weight: 500; }
+  .cell.great .svc-tag { color: var(--burgundy); }
+  .cell.great::after { background: var(--burgundy); }
+
+  /* today */
+  .cell.today {
+    background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    color: var(--cream);
+  }
+  .cell.today .num { color: var(--cream); font-weight: 600; }
+  .cell.today .feast { color: var(--gold-pale); }
+  .cell.today .svc-tag { color: var(--gold); }
+  .cell.today::after { background: var(--gold); }
+
+  /* selected (clicked) */
+  .cell.selected:not(.today) {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+    background: var(--gold-wash);
+  }
+
+  .cell:hover:not(.muted):not(.today) {
+    background: rgba(201,169,97,0.10);
+  }
+
+  /* hover popover */
+  .cell .popover {
+    position: absolute;
+    left: 50%; bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(8px);
+    width: 260px;
+    background: var(--cream);
+    border: 1px solid var(--gold-line);
+    box-shadow: 0 18px 40px -10px rgba(26,31,46,0.35);
+    padding: 14px 16px 12px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .18s, transform .18s;
+    z-index: 5;
+    text-align: left;
+  }
+  .cell .popover::after {
+    content: "";
+    position: absolute; left: 50%; top: 100%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px; height: 10px;
+    background: var(--cream);
+    border-right: 1px solid var(--gold-line);
+    border-bottom: 1px solid var(--gold-line);
+    margin-top: -5px;
+  }
+  .cell:hover .popover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+  .popover-date {
+    font-family: var(--f-display);
+    font-size: 14px;
+    color: var(--gold-deep);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .popover-title {
+    font-family: var(--f-display);
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .popover-svc {
+    display: flex; gap: 10px; align-items: baseline;
+    padding: 4px 0;
+    border-top: 1px solid var(--hair);
+    font-size: 13px;
+  }
+  .popover-svc:first-of-type { border-top: 1px solid var(--gold-line); margin-top: 4px; }
+  .popover-svc .t {
+    font-family: "Spectral", serif;
+    font-weight: 600;
+    color: var(--gold-deep);
+    font-feature-settings: "tnum" 1;
+    flex: 0 0 56px;
+  }
+  .popover-svc .n {
+    color: var(--ink);
+    font-family: "Spectral", serif;
+  }
+
+  /* edge cells: flip popover */
+  .cell:nth-child(7n) .popover, .cell:nth-child(7n-1) .popover {
+    left: auto; right: 0; transform: translateX(0) translateY(8px);
+  }
+  .cell:nth-child(7n) .popover::after, .cell:nth-child(7n-1) .popover::after {
+    left: auto; right: 22px; transform: rotate(45deg);
+  }
+  .cell:hover:nth-child(7n) .popover,
+  .cell:hover:nth-child(7n-1) .popover {
+    transform: translateX(0) translateY(0);
+  }
+  /* first row: flip below */
+  .cell.row-first .popover {
+    bottom: auto; top: calc(100% + 10px);
+  }
+  .cell.row-first .popover::after {
+    top: 0; bottom: auto;
+    border: none;
+    border-top: 1px solid var(--gold-line);
+    border-left: 1px solid var(--gold-line);
+    margin-top: -5px;
+  }
+
+  /* legend strip */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 20px;
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid var(--hair);
+    background: var(--parchment-2);
+    font-family: var(--f-ui);
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-swatch {
+    width: 22px; height: 22px;
+    border: 1px solid var(--hair);
+    position: relative;
+    display: grid; place-items: center;
+    font-family: "Spectral", serif;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .legend-swatch.svc { color: var(--gold-deep); }
+  .legend-swatch.svc::after {
+    content: ""; position: absolute;
+    left: 50%; bottom: 2px; transform: translateX(-50%);
+    width: 30%; height: 1px; background: var(--gold);
+  }
+  .legend-swatch.feast { background: var(--gold-pale); color: var(--gold-deep); border-color: var(--gold-deep); }
+  .legend-swatch.great { background: rgba(139,38,53,0.08); color: var(--burgundy-deep); border-color: rgba(139,38,53,0.3); }
+  .legend-swatch.today { background: var(--ink); color: var(--cream); border-color: var(--gold); }
+
+  /* ---------- Right column: services ---------- */
+  .svc-panel { position: sticky; top: 92px; }
+  .svc-panel-head {
+    border-bottom: 1px solid var(--gold-line);
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+  .svc-panel-head .label {
+    font-family: var(--f-ui);
+    font-size: 10.5px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+  }
+  .svc-panel-head .date-big {
+    font-family: var(--f-display);
+    font-size: 38px;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--ink);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .svc-panel-head .date-big .num {
+    font-size: 56px;
+    font-weight: 500;
+    color: var(--burgundy);
+    font-feature-settings: "tnum" 1;
+  }
+  .svc-panel-head .feast-name {
+    font-family: var(--f-display);
+    font-style: italic;
+    color: var(--burgundy);
+    font-size: 18px;
+    margin-top: 8px;
+    line-height: 1.3;
+  }
+  .svc-panel-head .tone {
+    font-family: var(--f-ui);
+    font-size: 10.5px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  .svc-card {
+    border-bottom: 1px solid var(--hair);
+    padding: 18px 0;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .svc-card:last-child { border-bottom: none; }
+  .svc-time {
+    font-family: "Spectral", serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold-deep);
+    font-feature-settings: "tnum" 1;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  .svc-time small {
+    display: block;
+    font-family: var(--f-ui);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .svc-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 0 0 4px;
+  }
+  .svc-desc {
+    font-family: var(--f-display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  .svc-meta {
+    font-family: var(--f-ui);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .svc-meta b {
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 10px;
+  }
+  .svc-record {
+    font-family: var(--f-ui);
+    font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    border-bottom: 1px solid var(--gold-line);
+    padding-bottom: 2px;
+    transition: all .2s;
+  }
+  .svc-record:hover { color: var(--burgundy); border-color: var(--burgundy); }
+
+  /* ---------- Pamyatki ---------- */
+  .pamyatki {
+    background: var(--parchment-2);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    position: relative;
+  }
+  .pamyatki::before, .pamyatki::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 1px;
+    background: var(--gold-line);
+  }
+  .pamyatki::before { top: 0; }
+  .pamyatki::after { bottom: 0; }
+  .pam-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 36px;
+  }
+  .pam-card {
+    background: var(--cream);
+    border: 1px solid var(--gold-line);
+    padding: 32px 28px 26px;
+    position: relative;
+    transition: transform .25s, box-shadow .25s;
+    display: flex; flex-direction: column;
+  }
+  .pam-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -20px rgba(26,31,46,0.3);
+  }
+  .pam-icon {
+    width: 56px; height: 56px;
+    color: var(--gold-deep);
+    margin-bottom: 22px;
+  }
+  .pam-eyebrow {
+    font-family: var(--f-ui);
+    font-size: 10px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 10px;
+  }
+  .pam-title {
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .pam-text {
+    font-family: var(--f-display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+    flex: 1;
+  }
+  .pam-link {
+    font-family: var(--f-ui);
+    font-size: 11px; letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    align-self: flex-start;
+    transition: color .2s;
+  }
+  .pam-link:hover { color: var(--burgundy-deep); }
+  .pam-link::after { content: " →"; }
+
+  /* ---------- Info block ---------- */
+  .info-block {
+    padding: 56px 0;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--gold-line);
+    background: var(--cream);
+  }
+  .info-cell {
+    padding: 32px 28px;
+    border-right: 1px solid var(--hair);
+    position: relative;
+  }
+  .info-cell:last-child { border-right: none; }
+  .info-cell .label {
+    font-family: var(--f-ui);
+    font-size: 10px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 10px;
+  }
+  .info-cell .head {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+  .info-cell .body {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-row {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0 64px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--f-ui);
+    font-size: 12px; letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding: 18px 38px;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all .2s;
+    position: relative;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+  }
+  .btn-gold::before {
+    content: ""; position: absolute; inset: 4px;
+    border: 1px solid rgba(26,31,46,0.2);
+    pointer-events: none;
+  }
+  .btn-gold:hover { background: var(--gold-deep); border-color: var(--gold-deep); color: var(--cream); }
+  .btn-out {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-out:hover { background: var(--ink); color: var(--cream); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(251,246,236,0.78);
+    padding: 64px 0 28px;
+    margin-top: 0;
+    position: relative;
+  }
+  footer::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-line) 30%, var(--gold-line) 70%, transparent);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr auto;
+    gap: 56px;
+    align-items: start;
+  }
+  .footer h4 {
+    font-family: var(--f-ui);
+    font-size: 10.5px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 18px;
+    font-weight: 700;
+  }
+  .footer-col p, .footer-col li {
+    font-family: var(--f-display);
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(251,246,236,0.7);
+    margin: 0 0 6px;
+  }
+  .footer-col a { transition: color .2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .footer-eagle {
+    color: var(--gold);
+    width: 100px; height: 100px;
+    opacity: 0.85;
+  }
+  .footer-bottom {
+    margin-top: 56px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(251,246,236,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--f-ui);
+    font-size: 11px; letter-spacing: 0.16em;
+    color: rgba(251,246,236,0.4);
+  }
+  .footer-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .footer-name small {
+    display: block;
+    font-family: var(--f-ui);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 6px;
+  }
+  .socials { display: flex; gap: 10px; margin-top: 14px; }
+  .socials a {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    border: 1px solid rgba(201,169,97,0.4);
+    color: var(--gold);
+    transition: all .2s;
+  }
+  .socials a:hover { background: var(--gold); color: var(--ink); }
+
+  /* ---------- Mobile ---------- */
+  .mobile-stickybar {
+    display: none;
+  }
+
+  @media (max-width: 980px) {
+    .topbar-inner { grid-template-columns: auto 1fr auto; gap: 16px; padding: 12px 20px; }
+    nav.main { display: none; }
+    .topbar-search { display: none; }
+    .btn-donate { grid-column: 3; justify-self: end; padding: 10px 14px; font-size: 10.5px; letter-spacing: 0.18em; }
+    .sigil .name { font-size: 16px; }
+    .sigil .name small { display: none; }
+
+    .page-head { min-height: auto; padding: 48px 20px 36px; }
+    .wrap { padding: 0 20px; }
+    .month-nav-inner { padding: 14px 16px; grid-template-columns: auto 1fr auto; }
+    .year-label { display: none; }
+    .months { justify-content: flex-start; }
+
+    .cal-grid-wrap { grid-template-columns: 1fr; gap: 28px; }
+    .calendar { display: none; } /* hide grid on mobile, show list */
+
+    .mobile-list { display: block !important; }
+    .svc-panel { position: static; }
+
+    .pam-grid { grid-template-columns: 1fr; gap: 20px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .info-cell { border-right: none; border-bottom: 1px solid var(--hair); }
+    .info-cell:last-child { border-bottom: none; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-col.eagle { grid-column: 1 / -1; order: -1; }
+
+    .mobile-stickybar {
+      display: flex;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--ink);
+      z-index: 40;
+      border-top: 1px solid var(--gold-line);
+    }
+    .mobile-stickybar button {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--cream);
+      padding: 14px 8px;
+      font-family: var(--f-ui);
+      font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(251,246,236,0.1);
+      position: relative;
+    }
+    .mobile-stickybar button:last-child { border-right: none; }
+    .mobile-stickybar button.active {
+      color: var(--gold);
+    }
+    .mobile-stickybar button.active::before {
+      content: ""; position: absolute; left: 16px; right: 16px; top: 0; height: 2px;
+      background: var(--gold);
+    }
+    body { padding-bottom: 56px; }
+  }
+
+  .mobile-list { display: none; }
+  .mday {
+    border-bottom: 1px solid var(--hair);
+    padding: 16px 0;
+  }
+  .mday-head {
+    display: flex; gap: 14px; align-items: baseline;
+    cursor: pointer;
+  }
+  .mday-num {
+    font-family: "Spectral", serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--ink);
+    width: 50px;
+  }
+  .mday-num.great { color: var(--burgundy); }
+  .mday-info { flex: 1; }
+  .mday-day {
+    font-family: var(--f-ui);
+    font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .mday-feast {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--burgundy);
+    margin-top: 2px;
+  }
+  .mday-toggle { color: var(--gold-deep); font-size: 18px; }
+  .mday-svcs { padding: 8px 0 0 64px; display: none; }
+  .mday.open .mday-svcs { display: block; }
+  .mday-svc {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .mday-svc b {
+    font-family: "Spectral", serif;
+    font-weight: 700;
+    color: var(--gold-deep);
+    margin-right: 12px;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* ---------- One-shot load animation ---------- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes cellIn {
+    from { opacity: 0; transform: translateY(6px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .anim-fade-1 { animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both; animation-delay: .1s; }
+  .anim-fade-2 { animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both; animation-delay: .35s; }
+  .anim-fade-3 { animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both; animation-delay: .55s; }
+  .cell { animation: cellIn 0.5s cubic-bezier(.2,.7,.2,1) both; }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+/* Calendar cells: skip cellIn animation (causes invisibility in some renderers) */
+.cell {
+  animation: none !important;
+  opacity: 1 !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ============== STICKY HEADER ============== -->
+
+
+<!-- ============== PAGE HEAD ============== -->
+<section class="page-head">
+  <div class="head-inner">
+    <p class="head-eyebrow anim-fade-1">Литургический календарь · Май 2026</p>
+    <h1 class="head-title anim-fade-1">Расписание<br>богослужений</h1>
+    <p class="head-quote anim-fade-2">
+      «Бдите и молитеся, да не внидете в напасть»
+      <cite>— Евангелие от Матфея, глава 26, стих 41</cite>
+    </p>
+  </div>
+  <div class="head-rule anim-fade-3" style="position:absolute; left:8%; right:8%; bottom:0;"></div>
+</section>
+
+<!-- ============== MONTH NAV ============== -->
+<nav class="month-nav anim-fade-2" aria-label="Месяц">
+  <div class="month-nav-inner">
+    <button class="nav-arrow" aria-label="Предыдущий месяц">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+    </button>
+    <div class="months" id="months"></div>
+    <span class="year-label">2026</span>
+    <button class="nav-arrow" aria-label="Следующий месяц">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============== CALENDAR + SERVICES ============== -->
+<section class="section cal-section">
+  <div class="wrap">
+
+    <p class="section-eyebrow">Богослужения мая</p>
+    <h2 class="section-title">Седмица 2-я по Пасхе. Антипасха</h2>
+    <p class="section-sub">Глас 1-й. Постов нет — Светлая радость продолжается</p>
+
+    <div class="cal-grid-wrap">
+
+      <!-- ===== Calendar ===== -->
+      <div>
+        <div class="calendar">
+          <div class="cal-head">
+            <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div>
+            <div class="weekend">Сб</div><div class="weekend">Вс</div>
+          </div>
+          <div class="cal-grid" id="calGrid"><!-- pre-rendered cells removed; JS now builds the grid --><button class="cell row-first has-svc placeholder-cell" data-day="1" style="display:none">
+      <span class="num">1</span>
+      <span class="svc-tag">Молебен</span>
+      <div class="feast">Великая Пятница (повтор воспом.)</div>
+      
+        <div class="popover">
+          <div class="popover-date">Пятница, 1 мая</div>
+          <div class="popover-title">Великая Пятница (повтор воспом.)</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Молебен</span></div>
+        </div>
+      
+    </button><button class="cell row-first" data-day="2" style="animation-delay: 150ms;">
+      <span class="num">2</span>
+      
+      
+      
+    </button><button class="cell row-first has-svc great" data-day="3" style="animation-delay: 168ms;">
+      <span class="num">3</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя о Фоме · Антипасха</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 3 мая</div>
+          <div class="popover-title">Неделя о Фоме · Антипасха</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="4" style="animation-delay: 186ms;">
+      <span class="num">4</span>
+      
+      
+      
+    </button><button class="cell" data-day="5" style="animation-delay: 204ms;">
+      <span class="num">5</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="6" style="animation-delay: 222ms;">
+      <span class="num">6</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Вмч. Георгия Победоносца</div>
+      
+        <div class="popover">
+          <div class="popover-date">Среда, 6 мая</div>
+          <div class="popover-title">Вмч. Георгия Победоносца</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Часы. Божественная Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Великая вечерня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="7" style="animation-delay: 240ms;">
+      <span class="num">7</span>
+      
+      
+      
+    </button><button class="cell" data-day="8" style="animation-delay: 258ms;">
+      <span class="num">8</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="9" style="animation-delay: 276ms;">
+      <span class="num">9</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Поминовение усопших воинов · День Победы</div>
+      
+        <div class="popover">
+          <div class="popover-date">Суббота, 9 мая</div>
+          <div class="popover-title">Поминовение усопших воинов · День Победы</div>
+          <div class="popover-svc"><span class="t">7:30</span><span class="n">Часы. Литургия</span></div><div class="popover-svc"><span class="t">10:00</span><span class="n">Великая панихида</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Заупокойная вечерня</span></div>
+        </div>
+      
+    </button><button class="cell has-svc great today selected" data-day="10" style="animation-delay: 294ms;">
+      <span class="num">10</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 10 мая</div>
+          <div class="popover-title">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Исповедь</span></div><div class="popover-svc"><span class="t">7:30</span><span class="n">Утренние молитвы. Часы</span></div><div class="popover-svc"><span class="t">8:00</span><span class="n">Ранняя Божественная Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня с акафистом</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="11" style="animation-delay: 312ms;">
+      <span class="num">11</span>
+      
+      
+      
+    </button><button class="cell" data-day="12" style="animation-delay: 330ms;">
+      <span class="num">12</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="13" style="animation-delay: 348ms;">
+      <span class="num">13</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Прп. Игнатия Брянчанинова</div>
+      
+        <div class="popover">
+          <div class="popover-date">Среда, 13 мая</div>
+          <div class="popover-title">Прп. Игнатия Брянчанинова</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня с полиелеем</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="14" style="animation-delay: 366ms;">
+      <span class="num">14</span>
+      
+      
+      
+    </button><button class="cell has-svc" data-day="15" style="animation-delay: 384ms;">
+      <span class="num">15</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Перенесение мощей блгв. кн. Бориса и Глеба</div>
+      
+        <div class="popover">
+          <div class="popover-date">Пятница, 15 мая</div>
+          <div class="popover-title">Перенесение мощей блгв. кн. Бориса и Глеба</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Часы. Литургия</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="16" style="animation-delay: 402ms;">
+      <span class="num">16</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="17" style="animation-delay: 420ms;">
+      <span class="num">17</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя 3-я по Пасхе, святых жён-мироносиц</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 17 мая</div>
+          <div class="popover-title">Неделя 3-я по Пасхе, святых жён-мироносиц</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="18" style="animation-delay: 438ms;">
+      <span class="num">18</span>
+      
+      
+      
+    </button><button class="cell" data-day="19" style="animation-delay: 456ms;">
+      <span class="num">19</span>
+      
+      
+      
+    </button><button class="cell" data-day="20" style="animation-delay: 474ms;">
+      <span class="num">20</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="21" style="animation-delay: 492ms;">
+      <span class="num">21</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Апостола и евангелиста Иоанна Богослова</div>
+      
+        <div class="popover">
+          <div class="popover-date">Четверг, 21 мая</div>
+          <div class="popover-title">Апостола и евангелиста Иоанна Богослова</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Всенощное бдение</span></div>
+        </div>
+      
+    </button><button class="cell has-svc feast-day" data-day="22" style="animation-delay: 510ms;">
+      <span class="num">22</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Перенесение мощей свт. Николая Чудотворца</div>
+      
+        <div class="popover">
+          <div class="popover-date">Пятница, 22 мая</div>
+          <div class="popover-title">Перенесение мощей свт. Николая Чудотворца</div>
+          <div class="popover-svc"><span class="t">7:30</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="23" style="animation-delay: 528ms;">
+      <span class="num">23</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="24" style="animation-delay: 546ms;">
+      <span class="num">24</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя 4-я по Пасхе, о расслабленном</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 24 мая</div>
+          <div class="popover-title">Неделя 4-я по Пасхе, о расслабленном</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="25" style="animation-delay: 564ms;">
+      <span class="num">25</span>
+      
+      
+      
+    </button><button class="cell" data-day="26" style="animation-delay: 582ms;">
+      <span class="num">26</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="27" style="animation-delay: 600ms;">
+      <span class="num">27</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Преполовение Пятидесятницы</div>
+      
+        <div class="popover">
+          <div class="popover-date">Среда, 27 мая</div>
+          <div class="popover-title">Преполовение Пятидесятницы</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Литургия с водосвятным молебном</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Великая вечерня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="28" style="animation-delay: 618ms;">
+      <span class="num">28</span>
+      
+      
+      
+    </button><button class="cell" data-day="29" style="animation-delay: 636ms;">
+      <span class="num">29</span>
+      
+      
+      
+    </button><button class="cell" data-day="30" style="animation-delay: 654ms;">
+      <span class="num">30</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="31" style="animation-delay: 672ms;">
+      <span class="num">31</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя 5-я по Пасхе, о самаряныне</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 31 мая</div>
+          <div class="popover-title">Неделя 5-я по Пасхе, о самаряныне</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell row-last muted" style="animation-delay: 690ms;"><span class="num">1</span></button><button class="cell row-last muted" style="animation-delay: 708ms;"><span class="num">2</span></button><button class="cell row-last muted" style="animation-delay: 726ms;"><span class="num">3</span></button><button class="cell row-last muted" style="animation-delay: 744ms;"><span class="num">4</span></button><button class="cell row-last muted" style="animation-delay: 762ms;"><span class="num">5</span></button><button class="cell row-last muted" style="animation-delay: 780ms;"><span class="num">6</span></button><button class="cell row-last muted" style="animation-delay: 798ms;"><span class="num">7</span></button><button class="cell row-first muted" style="animation-delay: 60ms;"><span class="num">27</span></button><button class="cell row-first muted" style="animation-delay: 78ms;"><span class="num">28</span></button><button class="cell row-first muted" style="animation-delay: 96ms;"><span class="num">29</span></button><button class="cell row-first muted" style="animation-delay: 114ms;"><span class="num">30</span></button><button class="cell row-first has-svc" data-day="1" style="animation-delay: 132ms;">
+      <span class="num">1</span>
+      <span class="svc-tag">Молебен</span>
+      <div class="feast">Великая Пятница (повтор воспом.)</div>
+      
+        <div class="popover">
+          <div class="popover-date">Пятница, 1 мая</div>
+          <div class="popover-title">Великая Пятница (повтор воспом.)</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Молебен</span></div>
+        </div>
+      
+    </button><button class="cell row-first" data-day="2" style="animation-delay: 150ms;">
+      <span class="num">2</span>
+      
+      
+      
+    </button><button class="cell row-first has-svc great" data-day="3" style="animation-delay: 168ms;">
+      <span class="num">3</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя о Фоме · Антипасха</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 3 мая</div>
+          <div class="popover-title">Неделя о Фоме · Антипасха</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="4" style="animation-delay: 186ms;">
+      <span class="num">4</span>
+      
+      
+      
+    </button><button class="cell" data-day="5" style="animation-delay: 204ms;">
+      <span class="num">5</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="6" style="animation-delay: 222ms;">
+      <span class="num">6</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Вмч. Георгия Победоносца</div>
+      
+        <div class="popover">
+          <div class="popover-date">Среда, 6 мая</div>
+          <div class="popover-title">Вмч. Георгия Победоносца</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Часы. Божественная Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Великая вечерня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="7" style="animation-delay: 240ms;">
+      <span class="num">7</span>
+      
+      
+      
+    </button><button class="cell" data-day="8" style="animation-delay: 258ms;">
+      <span class="num">8</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="9" style="animation-delay: 276ms;">
+      <span class="num">9</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Поминовение усопших воинов · День Победы</div>
+      
+        <div class="popover">
+          <div class="popover-date">Суббота, 9 мая</div>
+          <div class="popover-title">Поминовение усопших воинов · День Победы</div>
+          <div class="popover-svc"><span class="t">7:30</span><span class="n">Часы. Литургия</span></div><div class="popover-svc"><span class="t">10:00</span><span class="n">Великая панихида</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Заупокойная вечерня</span></div>
+        </div>
+      
+    </button><button class="cell has-svc great today selected" data-day="10" style="animation-delay: 294ms;">
+      <span class="num">10</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 10 мая</div>
+          <div class="popover-title">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Исповедь</span></div><div class="popover-svc"><span class="t">7:30</span><span class="n">Утренние молитвы. Часы</span></div><div class="popover-svc"><span class="t">8:00</span><span class="n">Ранняя Божественная Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня с акафистом</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="11" style="animation-delay: 312ms;">
+      <span class="num">11</span>
+      
+      
+      
+    </button><button class="cell" data-day="12" style="animation-delay: 330ms;">
+      <span class="num">12</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="13" style="animation-delay: 348ms;">
+      <span class="num">13</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Прп. Игнатия Брянчанинова</div>
+      
+        <div class="popover">
+          <div class="popover-date">Среда, 13 мая</div>
+          <div class="popover-title">Прп. Игнатия Брянчанинова</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня с полиелеем</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="14" style="animation-delay: 366ms;">
+      <span class="num">14</span>
+      
+      
+      
+    </button><button class="cell has-svc" data-day="15" style="animation-delay: 384ms;">
+      <span class="num">15</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Перенесение мощей блгв. кн. Бориса и Глеба</div>
+      
+        <div class="popover">
+          <div class="popover-date">Пятница, 15 мая</div>
+          <div class="popover-title">Перенесение мощей блгв. кн. Бориса и Глеба</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Часы. Литургия</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="16" style="animation-delay: 402ms;">
+      <span class="num">16</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="17" style="animation-delay: 420ms;">
+      <span class="num">17</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя 3-я по Пасхе, святых жён-мироносиц</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 17 мая</div>
+          <div class="popover-title">Неделя 3-я по Пасхе, святых жён-мироносиц</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="18" style="animation-delay: 438ms;">
+      <span class="num">18</span>
+      
+      
+      
+    </button><button class="cell" data-day="19" style="animation-delay: 456ms;">
+      <span class="num">19</span>
+      
+      
+      
+    </button><button class="cell" data-day="20" style="animation-delay: 474ms;">
+      <span class="num">20</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="21" style="animation-delay: 492ms;">
+      <span class="num">21</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Апостола и евангелиста Иоанна Богослова</div>
+      
+        <div class="popover">
+          <div class="popover-date">Четверг, 21 мая</div>
+          <div class="popover-title">Апостола и евангелиста Иоанна Богослова</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Всенощное бдение</span></div>
+        </div>
+      
+    </button><button class="cell has-svc feast-day" data-day="22" style="animation-delay: 510ms;">
+      <span class="num">22</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Перенесение мощей свт. Николая Чудотворца</div>
+      
+        <div class="popover">
+          <div class="popover-date">Пятница, 22 мая</div>
+          <div class="popover-title">Перенесение мощей свт. Николая Чудотворца</div>
+          <div class="popover-svc"><span class="t">7:30</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="23" style="animation-delay: 528ms;">
+      <span class="num">23</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="24" style="animation-delay: 546ms;">
+      <span class="num">24</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя 4-я по Пасхе, о расслабленном</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 24 мая</div>
+          <div class="popover-title">Неделя 4-я по Пасхе, о расслабленном</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="25" style="animation-delay: 564ms;">
+      <span class="num">25</span>
+      
+      
+      
+    </button><button class="cell" data-day="26" style="animation-delay: 582ms;">
+      <span class="num">26</span>
+      
+      
+      
+    </button><button class="cell has-svc feast-day" data-day="27" style="animation-delay: 600ms;">
+      <span class="num">27</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Преполовение Пятидесятницы</div>
+      
+        <div class="popover">
+          <div class="popover-date">Среда, 27 мая</div>
+          <div class="popover-title">Преполовение Пятидесятницы</div>
+          <div class="popover-svc"><span class="t">8:00</span><span class="n">Литургия с водосвятным молебном</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Великая вечерня</span></div>
+        </div>
+      
+    </button><button class="cell" data-day="28" style="animation-delay: 618ms;">
+      <span class="num">28</span>
+      
+      
+      
+    </button><button class="cell" data-day="29" style="animation-delay: 636ms;">
+      <span class="num">29</span>
+      
+      
+      
+    </button><button class="cell" data-day="30" style="animation-delay: 654ms;">
+      <span class="num">30</span>
+      
+      
+      
+    </button><button class="cell has-svc great" data-day="31" style="animation-delay: 672ms;">
+      <span class="num">31</span>
+      <span class="svc-tag">Литургия</span>
+      <div class="feast">Неделя 5-я по Пасхе, о самаряныне</div>
+      
+        <div class="popover">
+          <div class="popover-date">Воскресенье, 31 мая</div>
+          <div class="popover-title">Неделя 5-я по Пасхе, о самаряныне</div>
+          <div class="popover-svc"><span class="t">7:00</span><span class="n">Ранняя Литургия</span></div><div class="popover-svc"><span class="t">9:30</span><span class="n">Поздняя Литургия</span></div><div class="popover-svc"><span class="t">17:00</span><span class="n">Вечерня. Утреня</span></div>
+        </div>
+      
+    </button><button class="cell row-last muted" style="animation-delay: 690ms;"><span class="num">1</span></button><button class="cell row-last muted" style="animation-delay: 708ms;"><span class="num">2</span></button><button class="cell row-last muted" style="animation-delay: 726ms;"><span class="num">3</span></button><button class="cell row-last muted" style="animation-delay: 744ms;"><span class="num">4</span></button><button class="cell row-last muted" style="animation-delay: 762ms;"><span class="num">5</span></button><button class="cell row-last muted" style="animation-delay: 780ms;"><span class="num">6</span></button><button class="cell row-last muted" style="animation-delay: 798ms;"><span class="num">7</span></button></div>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item"><span class="legend-swatch svc">6</span>Богослужение</div>
+          <div class="legend-item"><span class="legend-swatch feast">21</span>Праздник</div>
+          <div class="legend-item"><span class="legend-swatch great">17</span>Воскресенье / Великий праздник</div>
+          <div class="legend-item"><span class="legend-swatch today">10</span>Сегодня</div>
+        </div>
+
+        <!-- Mobile list (hidden on desktop) -->
+        <div class="mobile-list" id="mobileList"><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">1</div>
+        <div class="mday-info">
+          <div class="mday-day">Пятница</div>
+          <div class="mday-feast">Великая Пятница (повтор воспом.)</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Молебен <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста Воскресению Христову</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">3</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя о Фоме · Антипасха</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Часы. Литургия св. Иоанна Златоуста</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Архиерейским чином, с пасхальным крестным ходом</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня <span style="color:var(--ink-soft); font-style:italic;"> — С полиелеем и помазанием освящённым елеем</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">6</div>
+        <div class="mday-info">
+          <div class="mday-day">Среда</div>
+          <div class="mday-feast">Вмч. Георгия Победоносца</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Часы. Божественная Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Молебен святому великомученику с водосвятием</span></div><div class="mday-svc"><b>17:00</b> Великая вечерня <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста вмч. Георгию</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">9</div>
+        <div class="mday-info">
+          <div class="mday-day">Суббота</div>
+          <div class="mday-feast">Поминовение усопших воинов · День Победы</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:30</b> Часы. Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Заупокойная Литургия с поминовением убиенных воинов</span></div><div class="mday-svc"><b>10:00</b> Великая панихида <span style="color:var(--ink-soft); font-style:italic;"> — У креста-памятника погибшим казакам, крестный ход к мемориалу</span></div><div class="mday-svc"><b>17:00</b> Заупокойная вечерня <span style="color:var(--ink-soft); font-style:italic;"> — С парастасом и общей панихидой</span></div>
+      </div>
+    </div><div class="mday open">
+      <div class="mday-head">
+        <div class="mday-num great">10</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье · Сегодня</div>
+          <div class="mday-feast">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Исповедь <span style="color:var(--ink-soft); font-style:italic;"> — У дежурного священника в крестильном приделе</span></div><div class="mday-svc"><b>7:30</b> Утренние молитвы. Часы <span style="color:var(--ink-soft); font-style:italic;"> — Полунощница с каноном Пасхи</span></div><div class="mday-svc"><b>8:00</b> Ранняя Божественная Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Свт. Иоанна Златоуста · глас 1, антифоны Пасхи</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Архиерейским служением. По заамвонной — крестный ход</span></div><div class="mday-svc"><b>17:00</b> Вечерня с акафистом <span style="color:var(--ink-soft); font-style:italic;"> — Акафист Воскресению Христову, помазание елеем</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">13</div>
+        <div class="mday-info">
+          <div class="mday-day">Среда</div>
+          <div class="mday-feast">Прп. Игнатия Брянчанинова</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста святителю Игнатию</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня с полиелеем</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">15</div>
+        <div class="mday-info">
+          <div class="mday-day">Пятница</div>
+          <div class="mday-feast">Перенесение мощей блгв. кн. Бориса и Глеба</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Часы. Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С молебном страстотерпцам Российским</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">17</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя 3-я по Пасхе, святых жён-мироносиц</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С чтением Евангелия о жёнах-мироносицах</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Праздничным чином с акафистом</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">21</div>
+        <div class="mday-info">
+          <div class="mday-day">Четверг</div>
+          <div class="mday-feast">Апостола и евангелиста Иоанна Богослова</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Молебен апостолу любви, освящение хлебов</span></div><div class="mday-svc"><b>17:00</b> Всенощное бдение</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">22</div>
+        <div class="mday-info">
+          <div class="mday-day">Пятница</div>
+          <div class="mday-feast">Перенесение мощей свт. Николая Чудотворца</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:30</b> Ранняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста святителю Николаю</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Архиерейским чином, освящение мира</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">24</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя 4-я по Пасхе, о расслабленном</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия</div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С праздничной проповедью</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">27</div>
+        <div class="mday-info">
+          <div class="mday-day">Среда</div>
+          <div class="mday-feast">Преполовение Пятидесятницы</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Литургия с водосвятным молебном <span style="color:var(--ink-soft); font-style:italic;"> — Малое освящение воды у Креста</span></div><div class="mday-svc"><b>17:00</b> Великая вечерня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">31</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя 5-я по Пасхе, о самаряныне</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия</div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Воскресная утреня с полиелеем</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">1</div>
+        <div class="mday-info">
+          <div class="mday-day">Пятница</div>
+          <div class="mday-feast">Великая Пятница (повтор воспом.)</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Молебен <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста Воскресению Христову</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">3</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя о Фоме · Антипасха</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Часы. Литургия св. Иоанна Златоуста</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Архиерейским чином, с пасхальным крестным ходом</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня <span style="color:var(--ink-soft); font-style:italic;"> — С полиелеем и помазанием освящённым елеем</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">6</div>
+        <div class="mday-info">
+          <div class="mday-day">Среда</div>
+          <div class="mday-feast">Вмч. Георгия Победоносца</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Часы. Божественная Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Молебен святому великомученику с водосвятием</span></div><div class="mday-svc"><b>17:00</b> Великая вечерня <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста вмч. Георгию</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">9</div>
+        <div class="mday-info">
+          <div class="mday-day">Суббота</div>
+          <div class="mday-feast">Поминовение усопших воинов · День Победы</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:30</b> Часы. Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Заупокойная Литургия с поминовением убиенных воинов</span></div><div class="mday-svc"><b>10:00</b> Великая панихида <span style="color:var(--ink-soft); font-style:italic;"> — У креста-памятника погибшим казакам, крестный ход к мемориалу</span></div><div class="mday-svc"><b>17:00</b> Заупокойная вечерня <span style="color:var(--ink-soft); font-style:italic;"> — С парастасом и общей панихидой</span></div>
+      </div>
+    </div><div class="mday open">
+      <div class="mday-head">
+        <div class="mday-num great">10</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье · Сегодня</div>
+          <div class="mday-feast">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Исповедь <span style="color:var(--ink-soft); font-style:italic;"> — У дежурного священника в крестильном приделе</span></div><div class="mday-svc"><b>7:30</b> Утренние молитвы. Часы <span style="color:var(--ink-soft); font-style:italic;"> — Полунощница с каноном Пасхи</span></div><div class="mday-svc"><b>8:00</b> Ранняя Божественная Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Свт. Иоанна Златоуста · глас 1, антифоны Пасхи</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Архиерейским служением. По заамвонной — крестный ход</span></div><div class="mday-svc"><b>17:00</b> Вечерня с акафистом <span style="color:var(--ink-soft); font-style:italic;"> — Акафист Воскресению Христову, помазание елеем</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">13</div>
+        <div class="mday-info">
+          <div class="mday-day">Среда</div>
+          <div class="mday-feast">Прп. Игнатия Брянчанинова</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста святителю Игнатию</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня с полиелеем</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">15</div>
+        <div class="mday-info">
+          <div class="mday-day">Пятница</div>
+          <div class="mday-feast">Перенесение мощей блгв. кн. Бориса и Глеба</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Часы. Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С молебном страстотерпцам Российским</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">17</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя 3-я по Пасхе, святых жён-мироносиц</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С чтением Евангелия о жёнах-мироносицах</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Праздничным чином с акафистом</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">21</div>
+        <div class="mday-info">
+          <div class="mday-day">Четверг</div>
+          <div class="mday-feast">Апостола и евангелиста Иоанна Богослова</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Молебен апостолу любви, освящение хлебов</span></div><div class="mday-svc"><b>17:00</b> Всенощное бдение</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">22</div>
+        <div class="mday-info">
+          <div class="mday-day">Пятница</div>
+          <div class="mday-feast">Перенесение мощей свт. Николая Чудотворца</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:30</b> Ранняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С чтением акафиста святителю Николаю</span></div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Архиерейским чином, освящение мира</span></div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">24</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя 4-я по Пасхе, о расслабленном</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия</div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — С праздничной проповедью</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num ">27</div>
+        <div class="mday-info">
+          <div class="mday-day">Среда</div>
+          <div class="mday-feast">Преполовение Пятидесятницы</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>8:00</b> Литургия с водосвятным молебном <span style="color:var(--ink-soft); font-style:italic;"> — Малое освящение воды у Креста</span></div><div class="mday-svc"><b>17:00</b> Великая вечерня</div>
+      </div>
+    </div><div class="mday">
+      <div class="mday-head">
+        <div class="mday-num great">31</div>
+        <div class="mday-info">
+          <div class="mday-day">Воскресенье</div>
+          <div class="mday-feast">Неделя 5-я по Пасхе, о самаряныне</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        <div class="mday-svc"><b>7:00</b> Ранняя Литургия</div><div class="mday-svc"><b>9:30</b> Поздняя Литургия <span style="color:var(--ink-soft); font-style:italic;"> — Воскресная утреня с полиелеем</span></div><div class="mday-svc"><b>17:00</b> Вечерня. Утреня</div>
+      </div>
+    </div></div>
+      </div>
+
+      <!-- ===== Services panel ===== -->
+      <aside class="svc-panel">
+        <div class="svc-panel-head">
+          <div class="label" id="svcDayLabel">Воскресенье · 10 мая</div>
+          <div class="date-big">
+            <span class="num" id="svcDayNum">10</span>
+            <span id="svcDayMonth">мая&nbsp;<span style="color:var(--ink-soft); font-style:italic;">2026</span></span>
+          </div>
+          <div class="feast-name" id="svcFeastName">Антипасха. Неделя 2-я по Пасхе, апостола Фомы</div>
+          <div class="tone" id="svcTone">Воскресный день · Глас 1</div>
+        </div>
+
+        <div id="svcList">
+        <article class="svc-card">
+          <div class="svc-time">7:00<small>Утро</small></div>
+          <div>
+            <h3 class="svc-name">Исповедь</h3>
+            <p class="svc-desc">У дежурного священника в крестильном приделе</p>
+            <div class="svc-meta"><b>Совершают</b> &nbsp; иерей Александр Колесников</div>
+            <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="svc-record">Записать имя →</a>
+          </div>
+        </article>
+      
+        <article class="svc-card">
+          <div class="svc-time">7:30<small>Утро</small></div>
+          <div>
+            <h3 class="svc-name">Утренние молитвы. Часы</h3>
+            <p class="svc-desc">Полунощница с каноном Пасхи</p>
+
+            <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="svc-record">Записать имя →</a>
+          </div>
+        </article>
+      
+        <article class="svc-card">
+          <div class="svc-time">8:00<small>Утро</small></div>
+          <div>
+            <h3 class="svc-name">Ранняя Божественная Литургия</h3>
+            <p class="svc-desc">Свт. Иоанна Златоуста · глас 1, антифоны Пасхи</p>
+            <div class="svc-meta"><b>Совершают</b> &nbsp; иерей Максим Бондарь</div>
+            <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="svc-record">Записать имя →</a>
+          </div>
+        </article>
+      
+        <article class="svc-card">
+          <div class="svc-time">9:30<small>Утро</small></div>
+          <div>
+            <h3 class="svc-name">Поздняя Литургия</h3>
+            <p class="svc-desc">Архиерейским служением. По заамвонной — крестный ход</p>
+            <div class="svc-meta"><b>Совершают</b> &nbsp; прот. Иоанн Гармаш, иер. Александр Клочков</div>
+            <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="svc-record">Записать имя →</a>
+          </div>
+        </article>
+      
+        <article class="svc-card">
+          <div class="svc-time">17:00<small>Вечер</small></div>
+          <div>
+            <h3 class="svc-name">Вечерня с акафистом</h3>
+            <p class="svc-desc">Акафист Воскресению Христову, помазание елеем</p>
+
+            <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="svc-record">Записать имя →</a>
+          </div>
+        </article>
+      </div>
+
+      </aside>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== PAMYATKI ============== -->
+<section class="pamyatki section">
+  <div class="wrap">
+    <p class="section-eyebrow">Богослужебный устав</p>
+    <h2 class="section-title">Памятки прихожанам</h2>
+    <p class="section-sub">Краткие пояснения, чтобы стояние в храме стало стоянием в молитве</p>
+
+    <div class="pam-grid">
+      <article class="pam-card">
+        <svg class="pam-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <path d="M32 6 v52"></path>
+          <path d="M22 18 h20"></path>
+          <path d="M18 28 h28"></path>
+          <path d="M22 46 l20 -16"></path>
+          <circle cx="32" cy="6" r="1.5" fill="currentColor"></circle>
+        </svg>
+        <p class="pam-eyebrow">Великий пост</p>
+        <h3 class="pam-title">Что важно знать о посте</h3>
+        <p class="pam-text">Пост — не цель, а средство. О мере воздержания, чтении Покаянного канона, особых днях Страстной седмицы и подготовке к Пасхе.</p>
+        <a href="<?php echo esc_url(home_url("/parish-life")); ?>" class="pam-link">Подробнее</a>
+      </article>
+
+      <article class="pam-card">
+        <svg class="pam-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <path d="M18 22 h28 v8 c0 8 -6 14 -14 14 s-14 -6 -14 -14 z"></path>
+          <path d="M32 44 v8"></path>
+          <path d="M22 52 h20"></path>
+          <path d="M22 18 q10 -8 20 0"></path>
+          <path d="M28 14 v4 M32 12 v6 M36 14 v4"></path>
+        </svg>
+        <p class="pam-eyebrow">Таинство Причастия</p>
+        <h3 class="pam-title">Подготовка к Святым Дарам</h3>
+        <p class="pam-text">О трёхдневном говении, последовании ко Святому Причащению, исповеди накануне и литургическом посте с полуночи.</p>
+        <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>#faq" class="pam-link">Подробнее</a>
+      </article>
+
+      <article class="pam-card">
+        <svg class="pam-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <path d="M32 8 c-2 4 -4 6 -4 9 c0 3 2 4 4 4 s4 -1 4 -4 c0 -3 -2 -5 -4 -9 z" fill="currentColor" stroke="none"></path>
+          <path d="M32 21 v8"></path>
+          <path d="M26 29 h12 v3 h-12 z"></path>
+          <path d="M28 32 v22 q0 2 4 2 q4 0 4 -2 v-22"></path>
+          <path d="M22 56 h20"></path>
+        </svg>
+        <p class="pam-eyebrow">Поминовения</p>
+        <h3 class="pam-title">Требы, записки, свечи</h3>
+        <p class="pam-text">Какие записки подаются на проскомидию, что такое сорокоуст, чем отличается «о здравии» от «о упокоении» и когда поминают неусопших.</p>
+        <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="pam-link">Подробнее</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== INFO BLOCK ============== -->
+<section class="info-block">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="label">Часы работы храма</div>
+        <p class="head">Ежедневно · 7:00 — 19:00</p>
+        <p class="body">Двери открыты для частной молитвы и подачи записок весь день. В дни великих праздников — до окончания вечернего богослужения.</p>
+      </div>
+      <div class="info-cell">
+        <div class="label">Исповедь</div>
+        <p class="head">За полчаса до Литургии</p>
+        <p class="body">И в продолжение службы — у дежурного исповедника. По воскресеньям исповедь начинается с 7:30 в крестильном приделе.</p>
+      </div>
+      <div class="info-cell">
+        <div class="label">Дежурный священник</div>
+        <p class="head">Пн — Пт · 10:00 — 17:00</p>
+        <p class="body">Для духовной беседы, благословения треб и крещения. В выходные — после Литургии или по предварительной записи в свечной лавке.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<div class="wrap">
+  <div class="cta-row">
+    <a class="btn btn-gold" href="<?php echo esc_url(home_url("/prayer-requests")); ?>">Заказать поминовение</a>
+    <button class="btn btn-out" onclick="window.print()">Распечатать расписание</button>
+  </div>
+</div>
+
+<!-- ============== FOOTER ============== -->
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+  // ---------- SSR-duplicate cleanup ----------
+  // Server-side render emitted calendar/months/mobile-list TWICE.
+  // calGrid is rebuilt by JS below, but months and mobile-list need explicit dedup.
+  (function dedupSSR(){
+    const monthsEl = document.getElementById('months');
+    if (monthsEl) monthsEl.innerHTML = '';
+    const mlist = document.getElementById('mobileList');
+    if (mlist) {
+      const days = Array.from(mlist.querySelectorAll(':scope > .mday'));
+      // We render 13 service-days in May (1,3,6,9,10,13,15,17,21,22,24,27,31).
+      // Anything beyond index 13 is a duplicate from SSR.
+      for (let i = 13; i < days.length; i++) days[i].remove();
+    }
+  })();
+
+  // ---------- Months ----------
+  const MONTHS = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+  const MONTHS_GEN = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+  const DAYS_FULL = ["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"];
+  const ACTIVE_MONTH = 4; // Май (0-based)
+
+  const monthsEl = document.getElementById('months');
+  MONTHS.forEach((m, i) => {
+    const b = document.createElement('button');
+    b.textContent = m;
+    if (i === ACTIVE_MONTH) b.classList.add('active');
+    monthsEl.appendChild(b);
+  });
+
+  // ---------- May 2026 layout ----------
+  // May 1, 2026 = Friday (1 May 2026 -> Fri). Days: 31.
+  // Grid starts on Monday. May 1 (Fri) -> position 4 (Mon=0).
+  // We'll show prev-month tail (Mon Apr 27 - Thu Apr 30 = 4 days) + 31 + next-month head.
+  // Total ≈ 6 rows × 7 = 42
+
+  // Service data — keyed by day-of-month
+  const SERVICES = {
+    1: { feast: "Великая Пятница (повтор воспом.)", great: false, services: [
+      { t: "8:00", n: "Молебен", d: "С чтением акафиста Воскресению Христову", clergy: "иерей Максим Бондарь" }
+    ]},
+    3: { feast: "Неделя о Фоме · Антипасха", great: true, sun: true, services: [
+      { t: "7:00", n: "Ранняя Литургия", d: "Часы. Литургия св. Иоанна Златоуста", clergy: "прот. Игорь Олейников" },
+      { t: "9:30", n: "Поздняя Литургия", d: "Архиерейским чином, с пасхальным крестным ходом", clergy: "митр. Григорий, прот. Сергий Овчинников" },
+      { t: "17:00", n: "Вечерня. Утреня", d: "С полиелеем и помазанием освящённым елеем" }
+    ]},
+    6: { feast: "Вмч. Георгия Победоносца", great: false, feastDay: true, services: [
+      { t: "8:00", n: "Часы. Божественная Литургия", d: "Молебен святому великомученику с водосвятием" },
+      { t: "17:00", n: "Великая вечерня", d: "С чтением акафиста вмч. Георгию" }
+    ]},
+    9: { feast: "Поминовение усопших воинов · День Победы", great: true, services: [
+      { t: "7:30", n: "Часы. Литургия", d: "Заупокойная Литургия с поминовением убиенных воинов" },
+      { t: "10:00", n: "Великая панихида", d: "У креста-памятника погибшим казакам, крестный ход к мемориалу", clergy: "весь причт" },
+      { t: "17:00", n: "Заупокойная вечерня", d: "С парастасом и общей панихидой" }
+    ]},
+    10: { feast: "Антипасха. Неделя 2-я по Пасхе, апостола Фомы", great: true, sun: true, today: true, services: [
+      { t: "7:00", n: "Исповедь", d: "У дежурного священника в крестильном приделе", clergy: "иерей Александр Колесников" },
+      { t: "7:30", n: "Утренние молитвы. Часы", d: "Полунощница с каноном Пасхи" },
+      { t: "8:00", n: "Ранняя Божественная Литургия", d: "Свт. Иоанна Златоуста · глас 1, антифоны Пасхи", clergy: "иерей Максим Бондарь" },
+      { t: "9:30", n: "Поздняя Литургия", d: "Архиерейским служением. По заамвонной — крестный ход", clergy: "митр. Григорий, прот. Игорь Олейников" },
+      { t: "17:00", n: "Вечерня с акафистом", d: "Акафист Воскресению Христову, помазание елеем" }
+    ]},
+    13: { feast: "Прп. Игнатия Брянчанинова", great: false, feastDay: true, services: [
+      { t: "8:00", n: "Литургия", d: "С чтением акафиста святителю Игнатию" },
+      { t: "17:00", n: "Вечерня. Утреня с полиелеем" }
+    ]},
+    15: { feast: "Перенесение мощей блгв. кн. Бориса и Глеба", great: false, services: [
+      { t: "8:00", n: "Часы. Литургия", d: "С молебном страстотерпцам Российским" }
+    ]},
+    17: { feast: "Неделя 3-я по Пасхе, святых жён-мироносиц", great: true, sun: true, services: [
+      { t: "7:00", n: "Ранняя Литургия", d: "С чтением Евангелия о жёнах-мироносицах" },
+      { t: "9:30", n: "Поздняя Литургия", d: "Праздничным чином с акафистом", clergy: "прот. Сергий Овчинников" },
+      { t: "17:00", n: "Вечерня. Утреня" }
+    ]},
+    21: { feast: "Апостола и евангелиста Иоанна Богослова", great: false, feastDay: true, services: [
+      { t: "8:00", n: "Литургия", d: "Молебен апостолу любви, освящение хлебов" },
+      { t: "17:00", n: "Всенощное бдение" }
+    ]},
+    22: { feast: "Перенесение мощей свт. Николая Чудотворца", great: false, feastDay: true, services: [
+      { t: "7:30", n: "Ранняя Литургия", d: "С чтением акафиста святителю Николаю" },
+      { t: "9:30", n: "Поздняя Литургия", d: "Архиерейским чином, освящение мира" }
+    ]},
+    24: { feast: "Неделя 4-я по Пасхе, о расслабленном", great: true, sun: true, services: [
+      { t: "7:00", n: "Ранняя Литургия" },
+      { t: "9:30", n: "Поздняя Литургия", d: "С праздничной проповедью" },
+      { t: "17:00", n: "Вечерня. Утреня" }
+    ]},
+    27: { feast: "Преполовение Пятидесятницы", great: false, feastDay: true, services: [
+      { t: "8:00", n: "Литургия с водосвятным молебном", d: "Малое освящение воды у Креста" },
+      { t: "17:00", n: "Великая вечерня" }
+    ]},
+    31: { feast: "Неделя 5-я по Пасхе, о самаряныне", great: true, sun: true, services: [
+      { t: "7:00", n: "Ранняя Литургия" },
+      { t: "9:30", n: "Поздняя Литургия", d: "Воскресная утреня с полиелеем" },
+      { t: "17:00", n: "Вечерня. Утреня" }
+    ]}
+  };
+
+  // ---------- Build calendar grid ----------
+  const calGrid = document.getElementById('calGrid');
+  calGrid.innerHTML = ''; // clear pre-rendered SSR cells to avoid duplicate stacking
+  // May 2026 first day = Friday (=5 in JS where Sun=0). Mon=1. We want 0..6 = Mon..Sun.
+  // Friday => slot index = 4 (since Mon=0)
+  const firstSlot = 4;
+  const daysInMay = 31;
+  const totalCells = 42; // 6 weeks
+  const prevMonthDays = 30; // April has 30 days
+
+  let cellIndex = 0;
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement('button');
+    cell.className = 'cell';
+    cell.style.animationDelay = (60 + i * 18) + 'ms';
+
+    const rowIdx = Math.floor(i / 7);
+    if (rowIdx === 0) cell.classList.add('row-first');
+    if (rowIdx === 5) cell.classList.add('row-last');
+
+    let dayNum, isMuted = false, monthOffset = 0;
+    if (i < firstSlot) {
+      dayNum = prevMonthDays - (firstSlot - 1) + i;
+      isMuted = true;
+      monthOffset = -1;
+    } else if (i >= firstSlot + daysInMay) {
+      dayNum = i - (firstSlot + daysInMay) + 1;
+      isMuted = true;
+      monthOffset = 1;
+    } else {
+      dayNum = i - firstSlot + 1;
+    }
+
+    const dow = i % 7; // 0..6 (Mon..Sun)
+    const isWeekend = (dow === 5 || dow === 6);
+
+    if (isMuted) {
+      cell.classList.add('muted');
+      cell.innerHTML = `<span class="num">${dayNum}</span>`;
+      calGrid.appendChild(cell);
+      continue;
+    }
+
+    const svc = SERVICES[dayNum];
+    let label = '';
+    if (svc) {
+      cell.classList.add('has-svc');
+      if (svc.feastDay) cell.classList.add('feast-day');
+      if (svc.great) cell.classList.add('great');
+      if (svc.today) cell.classList.add('today');
+      label = svc.feast || '';
+    }
+
+    // service tag (text label, no dots)
+    let svcTag = '';
+    if (svc) {
+      const names = svc.services.map(s => s.n.toLowerCase());
+      if (names.some(n => n.includes('литург'))) svcTag = 'Литургия';
+      else if (names.some(n => n.includes('вечерн') || n.includes('утрен') || n.includes('всенощ'))) svcTag = 'Вечерня';
+      else if (names.some(n => n.includes('молеб'))) svcTag = 'Молебен';
+      else if (names.some(n => n.includes('панихид'))) svcTag = 'Панихида';
+      else svcTag = 'Служба';
+    }
+
+    let popoverHTML = '';
+    if (svc) {
+      const dayName = DAYS_FULL[dow];
+      popoverHTML = `
+        <div class="popover">
+          <div class="popover-date">${dayName}, ${dayNum} ${MONTHS_GEN[ACTIVE_MONTH]}</div>
+          <div class="popover-title">${svc.feast || 'Богослужения'}</div>
+          ${svc.services.map(s => `<div class="popover-svc"><span class="t">${s.t}</span><span class="n">${s.n}</span></div>`).join('')}
+        </div>
+      `;
+    }
+
+    cell.dataset.day = dayNum;
+    cell.innerHTML = `
+      <span class="num">${dayNum}</span>
+      ${svcTag ? `<span class="svc-tag">${svcTag}</span>` : ''}
+      ${label ? `<div class="feast">${label}</div>` : ''}
+      ${popoverHTML}
+    `;
+    if (svc && svc.today) cell.classList.add('selected');
+
+    cell.addEventListener('click', () => selectDay(dayNum));
+
+    calGrid.appendChild(cell);
+  }
+
+  // ---------- Service panel ----------
+  const svcList = document.getElementById('svcList');
+  const svcDayLabel = document.getElementById('svcDayLabel');
+  const svcDayNum = document.getElementById('svcDayNum');
+  const svcDayMonth = document.getElementById('svcDayMonth');
+  const svcFeastName = document.getElementById('svcFeastName');
+  const svcTone = document.getElementById('svcTone');
+
+  function selectDay(day) {
+    document.querySelectorAll('.cell.selected').forEach(c => {
+      if (!c.classList.contains('today')) c.classList.remove('selected');
+    });
+    const target = [...document.querySelectorAll('.cell')].find(c => c.dataset.day == day && !c.classList.contains('muted'));
+    if (target) target.classList.add('selected');
+
+    const svc = SERVICES[day];
+    // compute dow
+    const slot = firstSlot + (day - 1);
+    const dow = slot % 7;
+    const dayName = DAYS_FULL[dow];
+
+    svcDayLabel.textContent = `${dayName} · ${day} ${MONTHS_GEN[ACTIVE_MONTH]}`;
+    svcDayNum.textContent = day;
+    svcDayMonth.innerHTML = `${MONTHS_GEN[ACTIVE_MONTH]}&nbsp;<span style="color:var(--ink-soft); font-style:italic;">2026</span>`;
+
+    if (svc) {
+      svcFeastName.textContent = svc.feast || 'Богослужения';
+      svcTone.textContent = svc.sun ? 'Воскресный день · Глас 1' : (svc.feastDay ? 'Праздничное богослужение' : 'Седмичный день');
+      svcList.innerHTML = svc.services.map(s => `
+        <article class="svc-card">
+          <div class="svc-time">${s.t}<small>${s.t.startsWith('17') || s.t.startsWith('18') ? 'Вечер' : 'Утро'}</small></div>
+          <div>
+            <h3 class="svc-name">${s.n}</h3>
+            ${s.d ? `<p class="svc-desc">${s.d}</p>` : ''}
+            ${s.clergy ? `<div class="svc-meta"><b>Совершают</b> &nbsp; ${s.clergy}</div>` : ''}
+            <a href="prayer-requests.html" class="svc-record">Записать имя →</a>
+          </div>
+        </article>
+      `).join('');
+    } else {
+      svcFeastName.textContent = 'Седмичный день';
+      svcTone.textContent = 'Богослужений нет · храм открыт';
+      svcList.innerHTML = `
+        <div style="padding:32px 0; text-align:center; font-family: var(--f-display); font-style: italic; color: var(--ink-soft); font-size: 16px; line-height: 1.5;">
+          В этот день богослужений в соборе не совершается.<br/>
+          Храм открыт для частной молитвы и подачи записок<br/>
+          с 7:00 до 19:00.
+        </div>
+      `;
+    }
+  }
+
+  // initial selection: today (10)
+  selectDay(10);
+
+  // ---------- Mobile list ----------
+  const mobileList = document.getElementById('mobileList');
+  Object.keys(SERVICES).map(Number).sort((a,b)=>a-b).forEach(day => {
+    const svc = SERVICES[day];
+    const slot = firstSlot + (day - 1);
+    const dow = slot % 7;
+    const dayName = DAYS_FULL[dow];
+    const wrap = document.createElement('div');
+    wrap.className = 'mday' + (svc.today ? ' open' : '');
+    wrap.innerHTML = `
+      <div class="mday-head">
+        <div class="mday-num ${svc.great ? 'great' : ''}">${day}</div>
+        <div class="mday-info">
+          <div class="mday-day">${dayName}${svc.today ? ' · Сегодня' : ''}</div>
+          <div class="mday-feast">${svc.feast}</div>
+        </div>
+        <div class="mday-toggle">+</div>
+      </div>
+      <div class="mday-svcs">
+        ${svc.services.map(s => `<div class="mday-svc"><b>${s.t}</b> ${s.n}${s.d ? ` <span style="color:var(--ink-soft); font-style:italic;"> — ${s.d}</span>` : ''}</div>`).join('')}
+      </div>
+    `;
+    wrap.querySelector('.mday-head').addEventListener('click', () => wrap.classList.toggle('open'));
+    mobileList.appendChild(wrap);
+  });
+
+  // ---------- Mobile quick-jump (Сегодня / Завтра / Эта неделя) ----------
+  const quickJump = document.getElementById('quickJump');
+  if (quickJump) {
+    quickJump.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-jump]');
+      if (!btn) return;
+      quickJump.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.jump;
+      let target = null;
+      if (mode === 'today') {
+        target = document.querySelector('.cell.today, .mday.today, .hours tr.today');
+      } else if (mode === 'tomorrow') {
+        const todayCell = document.querySelector('.cell.today');
+        target = todayCell?.nextElementSibling || document.querySelector('.cell.has-svc.next, .mday + .mday');
+      } else if (mode === 'week') {
+        target = document.getElementById('calGrid') || document.getElementById('mobileList');
+      }
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+</script>
+
+<?php get_footer(); ?>

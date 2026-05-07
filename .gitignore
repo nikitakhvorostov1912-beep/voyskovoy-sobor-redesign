@@ -20,3 +20,13 @@ _unify_header.py
 audit_*.png
 unified_*.png
 docs/_canonical_header*
+
+# Бэкапы и загрузки — большие, не публиковать
+backups/
+downloads/
+_archive_claude_design_attempts/
+
+# Логи и кэш Python
+__pycache__/
+*.pyc
+*.log

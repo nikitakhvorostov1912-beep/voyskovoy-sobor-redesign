@@ -1,0 +1,1434 @@
+<?php
+/**
+ * Template Name: Святыни и иконы
+ *
+ * Шаблон страницы «Святыни и иконы» — сгенерирован из docs/icons.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+  :root {
+    --parchment: #f5f0e8;
+    --parchment-2: #ede5d6;
+    --parchment-3: #e3d8c0;
+    --ink: #1a1f2e;
+    --ink-2: #232938;
+    --ink-3: #2d3445;
+    --gold: #c9a961;
+    --gold-deep: #a98a3f;
+    --gold-soft: #d9c08a;
+    --bordo: #8b2635;
+    --bordo-deep: #6f1b27;
+    --line: rgba(26, 31, 46, 0.14);
+    --line-on-dark: rgba(201, 169, 97, 0.32);
+
+    --font-display: "Cormorant Garamond", "Times New Roman", serif;
+    --font-body: "Spectral", Georgia, serif;
+    --font-ui: "PT Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Subtle parchment texture */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.04), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(139, 38, 53, 0.03), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+  }
+
+  /* ============ HEADER ============ */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ink);
+    color: var(--parchment);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.25);
+  }
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 40px;
+    padding: 18px 40px;
+    max-width: 1720px;
+    margin: 0 auto;
+  }
+  .sigil {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .sigil__mark {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .sigil__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .sigil__top {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .sigil__name {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--parchment);
+    margin-top: 2px;
+  }
+
+  .nav { display: flex; justify-content: center; }
+  .nav__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+  }
+  .nav__item a {
+    display: inline-block;
+    padding: 10px 14px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .nav__item a:hover { color: var(--parchment); }
+  .nav__item--active a { color: var(--gold); }
+  .nav__item--active a::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .donate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--bordo);
+    color: var(--parchment);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--bordo-deep);
+    transition: background 0.2s ease;
+  }
+  .donate-btn:hover { background: var(--bordo-deep); }
+  .donate-btn::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.25);
+  }
+
+  /* ============ HEADER RIBBON ============ */
+  .ribbon {
+    position: relative;
+    padding: 88px 0 64px;
+    text-align: center;
+    background:
+      linear-gradient(180deg, var(--parchment) 0%, #efe7d6 100%);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .ribbon::before, .ribbon::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.4;
+  }
+  .ribbon::before { left: 8%; }
+  .ribbon::after { right: 8%; }
+
+  .kicker {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 28px;
+  }
+  .kicker--ornamented::before, .kicker--ornamented::after {
+    content: "✦";
+    color: var(--gold);
+    margin: 0 14px;
+    font-size: 9px;
+    vertical-align: 2px;
+  }
+
+  .ribbon h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.05;
+    margin: 0 0 28px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+
+  .ribbon__quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-3);
+    max-width: 680px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+  }
+  .ribbon__quote span {
+    display: block;
+    font-style: normal;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-top: 14px;
+  }
+
+  .ribbon__line {
+    width: 84px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+    position: relative;
+  }
+  .ribbon__line::before, .ribbon__line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .ribbon__line::before { left: -16px; }
+  .ribbon__line::after  { right: -16px; }
+
+  /* ============ ICON ROW ============ */
+  .icon-row {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .icon-row__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .icon-row--reversed .icon-row__visual { order: 2; }
+  .icon-row--reversed .icon-row__text   { order: 1; }
+
+  .icon-row__visual {
+    aspect-ratio: 4/5;
+    background: var(--ink-2);
+    background-image:
+      radial-gradient(ellipse at center, rgba(201, 169, 97, 0.08) 0%, transparent 60%),
+      linear-gradient(135deg, var(--ink-2), var(--ink-3));
+    padding: 22px;
+    position: relative;
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    box-shadow:
+      0 28px 60px -28px rgba(26, 31, 46, 0.55),
+      inset 0 0 0 1px rgba(201, 169, 97, 0.08);
+  }
+  .icon-row__visual::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid var(--gold);
+    pointer-events: none;
+  }
+  .icon-row__visual::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(201, 169, 97, 0.35);
+    pointer-events: none;
+  }
+  .icon-row__visual svg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .icon-row__text { padding: 0 16px; }
+  .icon-row--reversed .icon-row__text { padding: 0 16px 0 0; }
+
+  .icon-row__text .kicker { margin-bottom: 22px; }
+  .icon-row__title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.12;
+    color: var(--ink);
+    margin: 0 0 28px;
+    letter-spacing: -0.005em;
+  }
+  .icon-row__text p {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--ink-3);
+    margin: 0 0 18px;
+    font-weight: 400;
+  }
+  .icon-row__divider {
+    width: 64px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px 0 18px;
+  }
+  .icon-row__meta {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold-deep);
+    line-height: 1.5;
+  }
+
+  /* ============ RELICS SECTION ============ */
+  .relics {
+    padding: 110px 0;
+    background: var(--parchment-2);
+    background-image:
+      radial-gradient(ellipse at top, rgba(255, 255, 255, 0.4), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(201, 169, 97, 0.05), transparent 50%);
+    border-bottom: 1px solid var(--line);
+  }
+  .relics__head {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .relics__head h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 1.1;
+    margin: 18px 0 0;
+    color: var(--ink);
+  }
+  .relics__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .relic-card {
+    background: var(--parchment);
+    border: 1px solid var(--line);
+    padding: 44px 36px 40px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .relic-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -20px rgba(26, 31, 46, 0.25);
+  }
+  .relic-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+  .relic-card__icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 28px;
+    color: var(--gold-deep);
+  }
+  .relic-card__eyebrow {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 14px;
+  }
+  .relic-card__title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+  .relic-card__rule {
+    width: 36px; height: 1px;
+    background: var(--ink);
+    opacity: 0.25;
+    margin-bottom: 18px;
+  }
+  .relic-card p {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  /* ============ CTA ============ */
+  .cta {
+    padding: 110px 0;
+    text-align: center;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--line);
+  }
+  .cta__kicker { color: var(--gold-deep); }
+  .cta__title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    margin: 18px 0 22px;
+    color: var(--ink);
+  }
+  .cta__lede {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 38px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    background: transparent;
+    transition: all 0.25s ease;
+  }
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--parchment);
+  }
+  .btn-outline::after {
+    content: "→";
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: var(--ink);
+    color: rgba(245, 240, 232, 0.78);
+    padding: 80px 0 40px;
+    font-family: var(--font-body);
+    font-size: 15px;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line-on-dark);
+  }
+  .footer__col h4 {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 22px;
+  }
+  .footer__col p { margin: 0 0 12px; line-height: 1.7; }
+  .footer__col ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    line-height: 2;
+  }
+  .footer__col a:hover { color: var(--gold); }
+
+  .footer__sigil {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .footer__sigil svg { width: 50px; height: 50px; flex-shrink: 0; }
+  .footer__sigil-text {
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--parchment);
+  }
+  .footer__sigil-text small {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  .footer__bottom {
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.5);
+  }
+
+  /* ============ MOBILE STICKY BAR ============ */
+  .mobile-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 60;
+    background: var(--ink);
+    border-top: 1px solid rgba(201, 169, 97, 0.3);
+  }
+  .mobile-bar a {
+    flex: 1;
+    text-align: center;
+    padding: 14px 6px;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    border-right: 1px solid rgba(201, 169, 97, 0.15);
+  }
+  .mobile-bar a:last-child {
+    background: var(--bordo);
+    border-right: none;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .container { padding: 0 28px; }
+    .site-header__inner { padding: 16px 24px; gap: 24px; }
+    .nav__list { flex-wrap: wrap; justify-content: center; }
+    .nav__item a { padding: 8px 10px; font-size: 11px; }
+    .ribbon h1 { font-size: 52px; }
+    .icon-row__title { font-size: 34px; }
+  }
+
+  @media (max-width: 760px) {
+    .site-header__inner {
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+    .nav { display: none; }
+    .donate-btn { padding: 10px 14px; font-size: 11px; letter-spacing: 0.14em; }
+    .sigil__name { font-size: 16px; }
+    .sigil__mark { width: 38px; height: 38px; }
+
+    .ribbon { padding: 56px 0 44px; }
+    .ribbon h1 { font-size: 38px; }
+    .ribbon__quote { font-size: 18px; padding: 0 12px; }
+
+    .icon-row { padding: 56px 0; }
+    .icon-row__grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .icon-row--reversed .icon-row__visual { order: 1; }
+    .icon-row--reversed .icon-row__text { order: 2; }
+    .icon-row__visual {
+      max-width: 360px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .icon-row__text { padding: 0; text-align: left; }
+    .icon-row__title { font-size: 30px; }
+
+    .relics { padding: 64px 0; }
+    .relics__head h2 { font-size: 36px; }
+    .relics__grid { grid-template-columns: 1fr; gap: 20px; }
+    .relic-card { padding: 32px 26px 30px; }
+
+    .cta { padding: 64px 0; }
+    .cta__title { font-size: 32px; }
+
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-bottom: 36px;
+    }
+
+    .mobile-bar { display: flex; }
+    body { padding-bottom: 56px; }
+  }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ====== Reusable SVG defs ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- SIGIL: small church/cross mark -->
+    <symbol id="sigil-mark" viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="28" fill="none" stroke="#c9a961" stroke-width="1"></circle>
+      <circle cx="30" cy="30" r="24" fill="none" stroke="#c9a961" stroke-width="0.5" opacity="0.5"></circle>
+      <!-- Orthodox cross -->
+      <g stroke="#c9a961" stroke-width="1.5" fill="none" stroke-linecap="square">
+        <line x1="30" y1="10" x2="30" y2="50"></line>
+        <line x1="22" y1="18" x2="38" y2="18"></line>
+        <line x1="20" y1="26" x2="40" y2="26"></line>
+        <line x1="22" y1="40" x2="38" y2="40" transform="rotate(-12 30 40)"></line>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- =================== HEADER =================== -->
+
+
+<!-- =================== HEADER RIBBON =================== -->
+<section class="ribbon">
+  <div class="container">
+    <div class="kicker kicker--ornamented">Иконы и реликвии</div>
+    <h1>Святыни собора</h1>
+    <blockquote class="ribbon__quote">
+      «Честь, воздаваемая образу, восходит к первообразу»
+      <span>Свт. Василий Великий · Догмат VII Вселенского Собора</span>
+    </blockquote>
+    <div class="ribbon__line"></div>
+  </div>
+</section>
+
+<!-- =================== ICON ROW 1 — АЛЕКСАНДР НЕВСКИЙ =================== -->
+<section class="icon-row">
+  <div class="container">
+    <div class="icon-row__grid">
+
+      <div class="icon-row__visual" aria-label="Икона святого князя Александра Невского">
+        <!-- ICON: ST. ALEXANDER NEVSKY -->
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="iconBgAN" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a2418"></stop>
+              <stop offset="60%" stop-color="#2a1a10"></stop>
+              <stop offset="100%" stop-color="#1f120a"></stop>
+            </linearGradient>
+            <linearGradient id="goldAN" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e8c97a"></stop>
+              <stop offset="50%" stop-color="#c9a961"></stop>
+              <stop offset="100%" stop-color="#9c7d3e"></stop>
+            </linearGradient>
+            <radialGradient id="haloAN" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5e4a8"></stop>
+              <stop offset="65%" stop-color="#c9a961"></stop>
+              <stop offset="100%" stop-color="#8a6d33"></stop>
+            </radialGradient>
+            <linearGradient id="robeAN" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9c2a3a"></stop>
+              <stop offset="100%" stop-color="#5a1620"></stop>
+            </linearGradient>
+            <linearGradient id="cloakAN" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1f3a5f"></stop>
+              <stop offset="100%" stop-color="#0e1d33"></stop>
+            </linearGradient>
+            <pattern id="hatchAN" width="3" height="3" patternUnits="userSpaceOnUse">
+              <path d="M0 3 L3 0" stroke="#c9a961" stroke-width="0.4" opacity="0.4"></path>
+            </pattern>
+          </defs>
+
+          <!-- Outer icon background -->
+          <rect width="400" height="500" fill="url(#iconBgAN)"></rect>
+
+          <!-- Outer ornamental frame -->
+          <rect x="14" y="14" width="372" height="472" fill="none" stroke="url(#goldAN)" stroke-width="2"></rect>
+          <rect x="22" y="22" width="356" height="456" fill="none" stroke="#c9a961" stroke-width="0.6" opacity="0.6"></rect>
+
+          <!-- Corner ornaments -->
+          <g fill="#c9a961" opacity="0.85">
+            <path d="M22 22 L42 22 L42 24 L24 24 L24 42 L22 42 Z"></path>
+            <path d="M378 22 L358 22 L358 24 L376 24 L376 42 L378 42 Z"></path>
+            <path d="M22 478 L42 478 L42 476 L24 476 L24 458 L22 458 Z"></path>
+            <path d="M378 478 L358 478 L358 476 L376 476 L376 458 L378 458 Z"></path>
+            <circle cx="32" cy="32" r="2"></circle>
+            <circle cx="368" cy="32" r="2"></circle>
+            <circle cx="32" cy="468" r="2"></circle>
+            <circle cx="368" cy="468" r="2"></circle>
+          </g>
+
+          <!-- Inscription top: greek-styled name -->
+          <g font-family="Cormorant Garamond, serif" fill="#c9a961" text-anchor="middle">
+            <text x="120" y="60" font-size="22" font-style="italic" letter-spacing="2">С҃ТЫЙ</text>
+            <text x="280" y="60" font-size="22" font-style="italic" letter-spacing="2">БЛГВ.</text>
+          </g>
+
+          <!-- OVAL SHIELD MANDORLA -->
+          <ellipse cx="200" cy="270" rx="135" ry="190" fill="#241409" stroke="url(#goldAN)" stroke-width="2.5"></ellipse>
+          <ellipse cx="200" cy="270" rx="128" ry="183" fill="none" stroke="#c9a961" stroke-width="0.6" opacity="0.5"></ellipse>
+
+          <!-- Halo with rays -->
+          <circle cx="200" cy="155" r="58" fill="url(#haloAN)" opacity="0.85"></circle>
+          <circle cx="200" cy="155" r="58" fill="none" stroke="#8a6d33" stroke-width="1"></circle>
+          <circle cx="200" cy="155" r="52" fill="none" stroke="#f5e4a8" stroke-width="0.4" opacity="0.6"></circle>
+          <!-- Halo cross-rays (cruciform halo) -->
+          <g stroke="#8a6d33" stroke-width="1.5" fill="none">
+            <line x1="200" y1="100" x2="200" y2="125"></line>
+            <line x1="148" y1="155" x2="172" y2="155"></line>
+            <line x1="228" y1="155" x2="252" y2="155"></line>
+          </g>
+
+          <!-- CLOAK / mantle behind body -->
+          <path d="M 110 250
+                   Q 95 360 115 460
+                   L 285 460
+                   Q 305 360 290 250
+                   Q 250 215 200 215
+                   Q 150 215 110 250 Z" fill="url(#cloakAN)" stroke="#c9a961" stroke-width="1"></path>
+          <!-- cloak fold lines -->
+          <g stroke="#c9a961" stroke-width="0.5" opacity="0.45" fill="none">
+            <path d="M130 280 Q 128 380 138 455"></path>
+            <path d="M270 280 Q 272 380 262 455"></path>
+            <path d="M155 290 Q 158 390 165 455"></path>
+            <path d="M245 290 Q 242 390 235 455"></path>
+          </g>
+          <!-- Cloak fur trim -->
+          <rect x="110" y="248" width="180" height="6" fill="#c9a961" opacity="0.7"></rect>
+
+          <!-- Princely robe (red) under cloak -->
+          <path d="M 160 270
+                   Q 158 380 170 460
+                   L 230 460
+                   Q 242 380 240 270
+                   Q 220 255 200 255
+                   Q 180 255 160 270 Z" fill="url(#robeAN)" stroke="#c9a961" stroke-width="0.8"></path>
+
+          <!-- Robe ornament band (chest) -->
+          <rect x="170" y="290" width="60" height="14" fill="url(#hatchAN)" stroke="#c9a961" stroke-width="0.6"></rect>
+          <!-- Belt -->
+          <rect x="165" y="368" width="70" height="6" fill="#c9a961" opacity="0.85"></rect>
+          <circle cx="200" cy="371" r="3" fill="#5a1620" stroke="#c9a961" stroke-width="0.6"></circle>
+
+          <!-- Robe vertical golden trim -->
+          <line x1="200" y1="304" x2="200" y2="368" stroke="#c9a961" stroke-width="1" opacity="0.7"></line>
+          <line x1="200" y1="378" x2="200" y2="455" stroke="#c9a961" stroke-width="1" opacity="0.7"></line>
+
+          <!-- HEAD / FACE -->
+          <ellipse cx="200" cy="172" rx="26" ry="34" fill="#d8a87e"></ellipse>
+          <ellipse cx="200" cy="172" rx="26" ry="34" fill="none" stroke="#7a4a28" stroke-width="0.6"></ellipse>
+          <!-- hair -->
+          <path d="M 175 162
+                   Q 175 140 200 138
+                   Q 225 140 225 162
+                   Q 220 152 200 150
+                   Q 180 152 175 162 Z" fill="#3a2418"></path>
+          <!-- princely cap / circlet -->
+          <path d="M 174 152 Q 200 142 226 152 L 226 158 L 174 158 Z" fill="url(#goldAN)" stroke="#8a6d33" stroke-width="0.6"></path>
+          <circle cx="200" cy="148" r="3" fill="#8b2635" stroke="#c9a961" stroke-width="0.6"></circle>
+          <!-- Beard -->
+          <path d="M 184 188
+                   Q 200 220 216 188
+                   Q 214 200 200 206
+                   Q 186 200 184 188 Z" fill="#3a2418"></path>
+          <!-- eyes -->
+          <ellipse cx="190" cy="172" rx="2" ry="1.2" fill="#1a1f2e"></ellipse>
+          <ellipse cx="210" cy="172" rx="2" ry="1.2" fill="#1a1f2e"></ellipse>
+          <!-- brows -->
+          <path d="M186 167 Q 190 165 195 167" stroke="#3a2418" stroke-width="0.8" fill="none"></path>
+          <path d="M205 167 Q 210 165 214 167" stroke="#3a2418" stroke-width="0.8" fill="none"></path>
+          <!-- nose -->
+          <path d="M200 174 L198 184 L202 184 Z" fill="none" stroke="#7a4a28" stroke-width="0.6"></path>
+          <!-- mouth -->
+          <path d="M196 194 Q 200 196 204 194" stroke="#5a3018" stroke-width="0.8" fill="none"></path>
+
+          <!-- NECK -->
+          <rect x="192" y="206" width="16" height="14" fill="#d8a87e"></rect>
+          <path d="M188 220 L 212 220 L 218 234 L 182 234 Z" fill="#c9a961" opacity="0.85"></path>
+
+          <!-- LEFT HAND holding cross-staff/spear -->
+          <g>
+            <!-- Staff -->
+            <line x1="138" y1="240" x2="138" y2="450" stroke="#c9a961" stroke-width="2.5"></line>
+            <line x1="138" y1="240" x2="138" y2="450" stroke="#8a6d33" stroke-width="0.6"></line>
+            <!-- Cross at top -->
+            <line x1="138" y1="225" x2="138" y2="270" stroke="url(#goldAN)" stroke-width="3"></line>
+            <line x1="124" y1="240" x2="152" y2="240" stroke="url(#goldAN)" stroke-width="3"></line>
+            <line x1="128" y1="232" x2="148" y2="232" stroke="url(#goldAN)" stroke-width="2"></line>
+            <circle cx="138" cy="225" r="3" fill="#c9a961"></circle>
+            <!-- Hand -->
+            <ellipse cx="142" cy="320" rx="9" ry="13" fill="#d8a87e" stroke="#7a4a28" stroke-width="0.5"></ellipse>
+          </g>
+
+          <!-- RIGHT HAND holding shield/scroll -->
+          <g>
+            <ellipse cx="262" cy="320" rx="9" ry="13" fill="#d8a87e" stroke="#7a4a28" stroke-width="0.5"></ellipse>
+            <!-- Round shield -->
+            <circle cx="278" cy="335" r="32" fill="#1f3a5f" stroke="url(#goldAN)" stroke-width="2"></circle>
+            <circle cx="278" cy="335" r="26" fill="none" stroke="#c9a961" stroke-width="0.5" opacity="0.6"></circle>
+            <!-- Cross on shield -->
+            <line x1="278" y1="316" x2="278" y2="354" stroke="#c9a961" stroke-width="2"></line>
+            <line x1="259" y1="335" x2="297" y2="335" stroke="#c9a961" stroke-width="2"></line>
+            <circle cx="278" cy="335" r="3" fill="#c9a961"></circle>
+          </g>
+
+          <!-- Bottom inscription -->
+          <text x="200" y="465" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" font-style="italic" fill="#c9a961" letter-spacing="3">
+            АЛЕѮАНДРЪ НЕВСКIЙ
+          </text>
+        </svg>
+      </div>
+
+      <div class="icon-row__text">
+        <div class="kicker">Главная святыня</div>
+        <h2 class="icon-row__title">Икона святого князя<br>Александра Невского</h2>
+        <p>Икона небесного покровителя собора и всего Кубанского казачьего войска. Святой Александр Невский (1221–1263) — великий князь Владимирский, защитник Русской земли, в старости принявший монашество с именем Алексий.</p>
+        <p>Перед иконой совершаются молебны о воинах, путешествующих, о защите Отечества. По благословению настоятеля для казаков совершаются особые молебны.</p>
+        <div class="icon-row__divider"></div>
+        <div class="icon-row__meta">Памяти святого: 6 декабря (преставление) и 12 сентября (перенесение мощей)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== ICON ROW 2 — КАЗАНСКАЯ =================== -->
+<section class="icon-row icon-row--reversed">
+  <div class="container">
+    <div class="icon-row__grid">
+
+      <div class="icon-row__visual" aria-label="Казанская икона Пресвятой Богородицы">
+        <!-- ICON: KAZAN MOTHER OF GOD -->
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="iconBgKZ" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a1f1c"></stop>
+              <stop offset="60%" stop-color="#2a1310"></stop>
+              <stop offset="100%" stop-color="#1d0a08"></stop>
+            </linearGradient>
+            <linearGradient id="goldKZ" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e8c97a"></stop>
+              <stop offset="50%" stop-color="#c9a961"></stop>
+              <stop offset="100%" stop-color="#9c7d3e"></stop>
+            </linearGradient>
+            <radialGradient id="haloKZ" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5e4a8"></stop>
+              <stop offset="65%" stop-color="#c9a961"></stop>
+              <stop offset="100%" stop-color="#8a6d33"></stop>
+            </radialGradient>
+            <linearGradient id="maforionKZ" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7a1620"></stop>
+              <stop offset="100%" stop-color="#3a0a10"></stop>
+            </linearGradient>
+            <linearGradient id="childRobeKZ" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d4a85a"></stop>
+              <stop offset="100%" stop-color="#8a6d33"></stop>
+            </linearGradient>
+          </defs>
+
+          <!-- Background -->
+          <rect width="400" height="500" fill="url(#iconBgKZ)"></rect>
+
+          <!-- Frame -->
+          <rect x="14" y="14" width="372" height="472" fill="none" stroke="url(#goldKZ)" stroke-width="2"></rect>
+          <rect x="22" y="22" width="356" height="456" fill="none" stroke="#c9a961" stroke-width="0.6" opacity="0.6"></rect>
+
+          <!-- Corner ornaments -->
+          <g fill="#c9a961" opacity="0.85">
+            <path d="M22 22 L42 22 L42 24 L24 24 L24 42 L22 42 Z"></path>
+            <path d="M378 22 L358 22 L358 24 L376 24 L376 42 L378 42 Z"></path>
+            <path d="M22 478 L42 478 L42 476 L24 476 L24 458 L22 458 Z"></path>
+            <path d="M378 478 L358 478 L358 476 L376 476 L376 458 L378 458 Z"></path>
+            <circle cx="32" cy="32" r="2"></circle>
+            <circle cx="368" cy="32" r="2"></circle>
+            <circle cx="32" cy="468" r="2"></circle>
+            <circle cx="368" cy="468" r="2"></circle>
+          </g>
+
+          <!-- Top inscription: МР ΘΥ (Mother of God) abbreviation -->
+          <g font-family="Cormorant Garamond, serif" fill="#c9a961" text-anchor="middle">
+            <text x="100" y="65" font-size="24" font-style="italic" letter-spacing="3">МР҃</text>
+            <text x="300" y="65" font-size="24" font-style="italic" letter-spacing="3">ѲУ҃</text>
+            <line x1="80" y1="48" x2="120" y2="48" stroke="#c9a961" stroke-width="1"></line>
+            <line x1="280" y1="48" x2="320" y2="48" stroke="#c9a961" stroke-width="1"></line>
+          </g>
+
+          <!-- KAZAN: shoulder-length composition. Mary head + bust, Child standing in front. -->
+
+          <!-- Mary's halo -->
+          <circle cx="160" cy="180" r="68" fill="url(#haloKZ)" opacity="0.9"></circle>
+          <circle cx="160" cy="180" r="68" fill="none" stroke="#8a6d33" stroke-width="1"></circle>
+          <circle cx="160" cy="180" r="62" fill="none" stroke="#f5e4a8" stroke-width="0.4" opacity="0.6"></circle>
+
+          <!-- Mary's maforion (cloak/veil) covering shoulders -->
+          <path d="M 60 460
+                   Q 50 340 80 240
+                   Q 110 180 160 165
+                   Q 210 180 230 220
+                   Q 230 280 230 360
+                   Q 240 420 245 460 Z" fill="url(#maforionKZ)" stroke="#c9a961" stroke-width="1"></path>
+
+          <!-- Veil top -->
+          <path d="M 105 220
+                   Q 100 180 160 158
+                   Q 218 178 215 220
+                   Q 215 230 200 232
+                   Q 160 220 120 232
+                   Q 105 230 105 220 Z" fill="url(#maforionKZ)" stroke="#c9a961" stroke-width="0.8"></path>
+
+          <!-- Stars on maforion (3 stars: forehead + shoulders, traditional) -->
+          <g fill="#c9a961">
+            <g transform="translate(160 178)">
+              <path d="M0 -7 L2 -2 L7 -2 L3 1 L4 6 L0 3 L-4 6 L-3 1 L-7 -2 L-2 -2 Z"></path>
+            </g>
+            <g transform="translate(118 248)">
+              <path d="M0 -6 L1.7 -1.7 L6 -1.7 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-6 -1.7 L-1.7 -1.7 Z"></path>
+            </g>
+            <g transform="translate(220 280)">
+              <path d="M0 -6 L1.7 -1.7 L6 -1.7 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-6 -1.7 L-1.7 -1.7 Z"></path>
+            </g>
+          </g>
+
+          <!-- Mary's face -->
+          <ellipse cx="160" cy="190" rx="32" ry="40" fill="#d8a87e"></ellipse>
+          <ellipse cx="160" cy="190" rx="32" ry="40" fill="none" stroke="#7a4a28" stroke-width="0.6"></ellipse>
+          <!-- Inner veil (lighter band around face) -->
+          <path d="M128 188
+                   Q 128 152 160 150
+                   Q 192 152 192 188" fill="none" stroke="#c9a961" stroke-width="1.5" opacity="0.85"></path>
+
+          <!-- Mary's facial features (long, ascetic) -->
+          <ellipse cx="148" cy="190" rx="2.2" ry="1.4" fill="#1a1f2e"></ellipse>
+          <ellipse cx="172" cy="190" rx="2.2" ry="1.4" fill="#1a1f2e"></ellipse>
+          <path d="M143 184 Q 148 182 153 184" stroke="#3a2418" stroke-width="0.9" fill="none"></path>
+          <path d="M167 184 Q 172 182 177 184" stroke="#3a2418" stroke-width="0.9" fill="none"></path>
+          <!-- nose long -->
+          <path d="M160 192 L 158 212 L 162 212" fill="none" stroke="#7a4a28" stroke-width="0.7"></path>
+          <!-- small mouth -->
+          <path d="M155 222 Q 160 224 165 222" stroke="#5a3018" stroke-width="0.8" fill="none"></path>
+
+          <!-- Cheeks shading -->
+          <ellipse cx="142" cy="208" rx="6" ry="4" fill="#c98770" opacity="0.5"></ellipse>
+          <ellipse cx="178" cy="208" rx="6" ry="4" fill="#c98770" opacity="0.5"></ellipse>
+
+          <!-- CHILD CHRIST standing in front, blessing -->
+          <!-- Child halo (cruciform) -->
+          <circle cx="280" cy="290" r="46" fill="url(#haloKZ)" opacity="0.9"></circle>
+          <circle cx="280" cy="290" r="46" fill="none" stroke="#8a6d33" stroke-width="1"></circle>
+          <g stroke="#8a6d33" stroke-width="1.6" fill="none">
+            <line x1="280" y1="248" x2="280" y2="265"></line>
+            <line x1="240" y1="290" x2="257" y2="290"></line>
+            <line x1="303" y1="290" x2="320" y2="290"></line>
+          </g>
+
+          <!-- Child body / robe (gold tunic + himation) -->
+          <path d="M 245 460
+                   Q 240 380 250 320
+                   Q 270 290 280 290
+                   Q 295 290 310 320
+                   Q 320 380 315 460 Z" fill="url(#childRobeKZ)" stroke="#8a6d33" stroke-width="0.8"></path>
+          <!-- Robe folds -->
+          <g stroke="#8a6d33" stroke-width="0.5" opacity="0.6" fill="none">
+            <path d="M260 340 Q 262 400 258 455"></path>
+            <path d="M280 340 Q 280 400 280 455"></path>
+            <path d="M300 340 Q 298 400 302 455"></path>
+          </g>
+
+          <!-- Child face -->
+          <ellipse cx="280" cy="298" rx="22" ry="26" fill="#d8a87e" stroke="#7a4a28" stroke-width="0.5"></ellipse>
+          <!-- Hair (curly) -->
+          <path d="M 260 290
+                   Q 258 275 268 270
+                   Q 280 264 292 270
+                   Q 302 275 300 290
+                   Q 296 282 288 280
+                   Q 280 282 272 280
+                   Q 264 282 260 290 Z" fill="#5a3018"></path>
+          <!-- features -->
+          <ellipse cx="272" cy="298" rx="1.5" ry="1" fill="#1a1f2e"></ellipse>
+          <ellipse cx="288" cy="298" rx="1.5" ry="1" fill="#1a1f2e"></ellipse>
+          <path d="M280 302 L 278 312 L 282 312" fill="none" stroke="#7a4a28" stroke-width="0.5"></path>
+          <path d="M276 318 Q 280 320 284 318" stroke="#5a3018" stroke-width="0.6" fill="none"></path>
+
+          <!-- Child's blessing right hand -->
+          <g>
+            <ellipse cx="305" cy="350" rx="9" ry="11" fill="#d8a87e" stroke="#7a4a28" stroke-width="0.5"></ellipse>
+            <!-- Blessing fingers -->
+            <line x1="307" y1="338" x2="309" y2="328" stroke="#7a4a28" stroke-width="0.6"></line>
+            <line x1="304" y1="338" x2="305" y2="326" stroke="#7a4a28" stroke-width="0.6"></line>
+          </g>
+
+          <!-- Child's left hand (touching mother) hidden by robe edge -->
+
+          <!-- Mary's hand pointing at Christ (Hodegetria gesture) - Kazan style: hand barely visible -->
+          <g>
+            <ellipse cx="222" cy="370" rx="8" ry="11" fill="#d8a87e" stroke="#7a4a28" stroke-width="0.5"></ellipse>
+          </g>
+
+          <!-- Bottom inscription -->
+          <text x="200" y="465" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#c9a961" letter-spacing="2.5">
+            КАЗАНСКАЯ · ЗАСТУПНИЦА УСЕРДНАЯ
+          </text>
+        </svg>
+      </div>
+
+      <div class="icon-row__text">
+        <div class="kicker">Чудотворная икона</div>
+        <h2 class="icon-row__title">Казанская икона<br>Пресвятой Богородицы</h2>
+        <p>Один из самых почитаемых на Руси образов Пресвятой Богородицы. Икона является заступницей русского воинства; перед ней молились в дни тяжёлых испытаний и народных бедствий.</p>
+        <p>В соборе пребывает список с Казанской иконы, перед которым молятся о защите семьи, помощи в недугах, о возвращении на Родину.</p>
+        <div class="icon-row__divider"></div>
+        <div class="icon-row__meta">Памяти: 21 июля (явление иконы) и 4 ноября (избавление Москвы 1612 г.)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== RELICS SECTION =================== -->
+<section class="relics">
+  <div class="container">
+    <div class="relics__head">
+      <div class="kicker kicker--ornamented">Реликвии собора</div>
+      <h2>Освящённые святыни</h2>
+    </div>
+
+    <div class="relics__grid">
+
+      <article class="relic-card">
+        <svg class="relic-card__icon" viewBox="0 0 64 64" fill="none">
+          <!-- ALTAR -->
+          <rect x="10" y="28" width="44" height="28" stroke="currentColor" stroke-width="1.5"></rect>
+          <line x1="10" y1="36" x2="54" y2="36" stroke="currentColor" stroke-width="1"></line>
+          <rect x="14" y="22" width="36" height="6" stroke="currentColor" stroke-width="1.5"></rect>
+          <!-- Cross on altar -->
+          <line x1="32" y1="6" x2="32" y2="22" stroke="currentColor" stroke-width="1.5"></line>
+          <line x1="26" y1="11" x2="38" y2="11" stroke="currentColor" stroke-width="1.5"></line>
+          <line x1="28" y1="17" x2="36" y2="17" stroke="currentColor" stroke-width="1"></line>
+          <!-- Candles -->
+          <line x1="18" y1="42" x2="18" y2="52" stroke="currentColor" stroke-width="0.8"></line>
+          <line x1="46" y1="42" x2="46" y2="52" stroke="currentColor" stroke-width="0.8"></line>
+          <circle cx="18" cy="40" r="1" fill="currentColor"></circle>
+          <circle cx="46" cy="40" r="1" fill="currentColor"></circle>
+        </svg>
+        <div class="relic-card__eyebrow">Алтарь</div>
+        <h3 class="relic-card__title">Антиминс собора</h3>
+        <div class="relic-card__rule"></div>
+        <p>Антиминс — освящённый плат с частицей мощей, на котором совершается Божественная литургия. Антиминс собора освящён в 2006 году митрополитом Кириллом при Великом освящении храма.</p>
+      </article>
+
+      <article class="relic-card">
+        <svg class="relic-card__icon" viewBox="0 0 64 64" fill="none">
+          <!-- BELLS -->
+          <path d="M32 8 L32 14" stroke="currentColor" stroke-width="1.5"></path>
+          <path d="M22 14 Q 22 32 14 46 L 50 46 Q 42 32 42 14 Q 32 11 22 14 Z" stroke="currentColor" stroke-width="1.5"></path>
+          <ellipse cx="32" cy="46" rx="18" ry="3" stroke="currentColor" stroke-width="1.5"></ellipse>
+          <line x1="32" y1="46" x2="32" y2="56" stroke="currentColor" stroke-width="1"></line>
+          <circle cx="32" cy="56" r="2" fill="currentColor"></circle>
+          <!-- Top loop -->
+          <circle cx="32" cy="11" r="2.5" stroke="currentColor" stroke-width="1.2" fill="none"></circle>
+        </svg>
+        <div class="relic-card__eyebrow">Колокольня</div>
+        <h3 class="relic-card__title">Колокола 2005 года</h3>
+        <div class="relic-card__rule"></div>
+        <p>Колокола собора были освящены 15 июня 2005 года Святейшим Патриархом Московским и всея Руси Алексием II в ходе его пребывания в Краснодаре.</p>
+      </article>
+
+      <article class="relic-card">
+        <svg class="relic-card__icon" viewBox="0 0 64 64" fill="none">
+          <!-- DOMES with crosses -->
+          <!-- Center dome (taller) -->
+          <path d="M 28 38 Q 28 22 32 16 Q 36 22 36 38 Z" stroke="currentColor" stroke-width="1.5"></path>
+          <line x1="32" y1="6" x2="32" y2="16" stroke="currentColor" stroke-width="1.5"></line>
+          <line x1="27" y1="9" x2="37" y2="9" stroke="currentColor" stroke-width="1.5"></line>
+          <line x1="29" y1="13" x2="35" y2="13" stroke="currentColor" stroke-width="1"></line>
+          <!-- Side domes -->
+          <path d="M 14 42 Q 14 30 18 26 Q 22 30 22 42 Z" stroke="currentColor" stroke-width="1.2"></path>
+          <line x1="18" y1="20" x2="18" y2="26" stroke="currentColor" stroke-width="1.2"></line>
+          <line x1="15" y1="22" x2="21" y2="22" stroke="currentColor" stroke-width="1.2"></line>
+
+          <path d="M 42 42 Q 42 30 46 26 Q 50 30 50 42 Z" stroke="currentColor" stroke-width="1.2"></path>
+          <line x1="46" y1="20" x2="46" y2="26" stroke="currentColor" stroke-width="1.2"></line>
+          <line x1="43" y1="22" x2="49" y2="22" stroke="currentColor" stroke-width="1.2"></line>
+          <!-- Base -->
+          <line x1="8" y1="46" x2="56" y2="46" stroke="currentColor" stroke-width="1.5"></line>
+          <line x1="10" y1="50" x2="54" y2="50" stroke="currentColor" stroke-width="0.8" opacity="0.6"></line>
+        </svg>
+        <div class="relic-card__eyebrow">Купола</div>
+        <h3 class="relic-card__title">Кресты собора</h3>
+        <div class="relic-card__rule"></div>
+        <p>Пять золочёных крестов, увенчивающих купола, освящены вместе с колоколами в июне 2005 года перед поднятием на возрождённый храм.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== ARCHIVE ICONS — реальные образцы из Wikimedia Commons =================== -->
+<section style="padding:80px 32px;background:linear-gradient(180deg, var(--ink) 0%, #0f1320 100%);color:var(--paper, #f5f0e8);">
+  <div class="container" style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="kicker kicker--ornamented" style="color:#c9a961;">Образцы старинного письма</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);color:#f5e9c8;margin:14px 0 6px;">Канонические образы святынь собора</h2>
+      <p style="max-width:640px;margin:14px auto 0;font-family:'Spectral',serif;font-style:italic;color:rgba(245,233,200,0.75);">Иконы XIX века из музейных собраний — образцы того канонического письма, в духе которого пишутся образа Войскового собора.</p>
+    </div>
+    <div class="site-photo-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;">
+      <figure class="site-icon-frame" style="margin:0;">
+        <div class="site-icon-frame__img-wrap">
+          <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/icon-alexander-prince.jpg"); ?>"
+               alt="Икона святого благоверного князя Александра Невского, XIX век"
+               class="site-icon-frame__img"
+               loading="lazy">
+        </div>
+        <div class="site-icon-frame__title">Святой князь Александр&nbsp;Невский</div>
+        <div class="site-icon-frame__sub">XIX век · икона</div>
+      </figure>
+      <figure class="site-icon-frame" style="margin:0;">
+        <div class="site-icon-frame__img-wrap">
+          <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/icon-kazan-moskovskaya.jpg"); ?>"
+               alt="Казанская икона Божией Матери, Елоховский собор Москвы"
+               class="site-icon-frame__img"
+               loading="lazy">
+        </div>
+        <div class="site-icon-frame__title">Казанская икона<br>Божией Матери</div>
+        <div class="site-icon-frame__sub">XVII–XVIII век · Москва</div>
+      </figure>
+      <figure class="site-icon-frame" style="margin:0;">
+        <div class="site-icon-frame__img-wrap">
+          <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/icon-kazan-1850s.jpg"); ?>"
+               alt="Казанская икона Божией Матери, репродукция середины XIX века"
+               class="site-icon-frame__img"
+               loading="lazy">
+        </div>
+        <div class="site-icon-frame__title">Казанская икона<br>Божией Матери</div>
+        <div class="site-icon-frame__sub">Середина XIX века</div>
+      </figure>
+    </div>
+    <p style="text-align:center;font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,233,200,0.4);margin-top:36px;">
+      Wikimedia&nbsp;Commons · Public&nbsp;Domain / CC&nbsp;BY-SA
+    </p>
+  </div>
+</section>
+
+<!-- =================== CTA =================== -->
+<section class="cta">
+  <div class="container">
+    <div class="kicker kicker--ornamented cta__kicker">Молитва пред святынями</div>
+    <h2 class="cta__title">Заказать молебен</h2>
+    <p class="cta__lede">Перед иконами собора совершаются молебны о здравии, о путешествующих, о воинах и о защите Отечества. Свечи и записки можно подать в свечной лавке или онлайн.</p>
+    <a href="<?php echo esc_url(home_url("/prayer-requests")); ?>" class="btn-outline">Подать прошение</a>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+
+</main>
+
+<?php get_footer(); ?>

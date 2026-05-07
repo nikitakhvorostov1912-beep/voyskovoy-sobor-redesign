@@ -1,0 +1,69 @@
+/*
+Theme Name: Войсковой Собор Александра Невского
+Theme URI: https://alexander-nevskiysobor.ru
+Author: Войсковой собор Александра Невского, Краснодар
+Author URI: https://alexander-nevskiysobor.ru
+Description: Тема для официального сайта Войскового собора святого благоверного князя Александра Невского в Краснодаре. Литургическая монументальность: пергаментная палитра, золото и бургундия, шрифты Cormorant Garamond + Spectral + PT Sans. Тема включает уникальные шаблоны для 12 страниц прихода: главная, расписание, заказ треб, духовенство, святыни, история, контакты, пожертвование, политика конфиденциальности и др.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: voiskovoy-sobor
+Tags: orthodox, church, religious, custom-menu, custom-logo, full-width-template, sticky-post, threaded-comments, translation-ready
+*/
+
+/* ============================================================
+   Базовые стили темы
+   Полный набор страничных стилей лежит в:
+   - assets/css/site-additions.css (общие компоненты сайта)
+   - per-page <style> блоки внутри page-templates/page-*.php
+   ============================================================ */
+
+/* WordPress required classes — для прохождения theme-check */
+.alignleft   { float: left;  margin-right: 1.5em; }
+.alignright  { float: right; margin-left: 1.5em; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignnone   { float: none; }
+
+.wp-caption,
+.wp-caption-text,
+.gallery-caption,
+.bypostauthor,
+.sticky,
+.screen-reader-text {
+    /* WP-compat hooks — стили подключаются через site-additions.css */
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    background-color: #f5f0e8;
+    clip: auto !important;
+    clip-path: none;
+    color: #1a1f2e;
+    display: block;
+    font-family: "PT Sans", system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}

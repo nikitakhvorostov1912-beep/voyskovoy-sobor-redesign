@@ -1,0 +1,980 @@
+<?php
+/**
+ * Template Name: О соборе
+ *
+ * Шаблон страницы «О соборе» — сгенерирован из docs/about.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+  :root{
+    --parchment:#f5f0e8;
+    --parchment-2:#ebe3d4;
+    --parchment-3:#e0d5c0;
+    --ink:#1a1f2e;
+    --ink-2:#252b3d;
+    --gold:#c9a961;
+    --gold-deep:#a88a45;
+    --burgundy:#8b2635;
+    --burgundy-deep:#6e1d2a;
+    --muted:#6b6555;
+    --rule:rgba(26,31,46,0.12);
+    --rule-gold:rgba(201,169,97,0.35);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Spectral',Georgia,serif;
+    background:var(--parchment);
+    color:var(--ink);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* === HEADER === */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);
+    color:var(--parchment);
+    border-bottom:1px solid rgba(201,169,97,0.2);
+  }
+  .site-header__inner{
+    max-width:1280px;margin:0 auto;
+    padding:18px 32px;
+    display:flex;align-items:center;gap:32px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
+  .sigil{
+    width:44px;height:44px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:grid;place-items:center;
+    flex-shrink:0;
+  }
+  .sigil svg{width:26px;height:26px}
+  .brand__text{display:flex;flex-direction:column;line-height:1.1}
+  .brand__name{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:18px;
+    letter-spacing:0.01em;
+  }
+  .brand__sub{
+    font-family:'PT Sans',sans-serif;
+    font-size:10px;letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:2px;
+  }
+  .nav{
+    display:flex;gap:28px;flex:1;justify-content:center;
+    font-family:'PT Sans',sans-serif;
+    font-size:12px;letter-spacing:0.16em;
+    text-transform:uppercase;
+  }
+  .nav a{
+    color:rgba(245,240,232,0.78);
+    padding:6px 0;
+    border-bottom:1.5px solid transparent;
+    transition:color .25s,border-color .25s;
+  }
+  .nav a:hover{color:var(--parchment)}
+  .nav a.active{
+    color:var(--gold);
+    border-bottom-color:var(--gold);
+  }
+  .btn-donate{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    background:var(--burgundy);color:var(--parchment);
+    padding:13px 22px;
+    border:none;cursor:pointer;
+    transition:background .25s, transform .25s;
+    flex-shrink:0;
+  }
+  .btn-donate:hover{background:var(--burgundy-deep);transform:translateY(-1px)}
+  .menu-toggle{display:none;background:none;border:none;color:var(--parchment);cursor:pointer;padding:8px}
+  .menu-toggle svg{width:24px;height:24px}
+
+  /* === RIBBON === */
+  .ribbon{
+    background:var(--ink);
+    color:var(--parchment);
+    padding:72px 32px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ribbon::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 15% 30%, rgba(201,169,97,0.08), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(201,169,97,0.06), transparent 50%);
+    pointer-events:none;
+  }
+  .ribbon__inner{
+    max-width:920px;margin:0 auto;
+    text-align:center;position:relative;
+  }
+  .kicker{
+    font-family:'PT Sans',sans-serif;
+    font-size:12px;letter-spacing:0.32em;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:28px;
+    display:inline-flex;align-items:center;gap:18px;
+  }
+  .kicker::before,.kicker::after{
+    content:"";display:block;width:36px;height:1px;background:var(--gold);opacity:0.6;
+  }
+  .ribbon h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:64px;line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:32px;
+  }
+  .ribbon__quote{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:400;
+    font-size:22px;line-height:1.4;
+    color:var(--gold);
+    max-width:640px;margin:0 auto;
+  }
+  .ribbon__quote::before{content:"« "}
+  .ribbon__quote::after{content:" »"}
+  .ribbon__attr{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.55);
+    margin-top:14px;
+    display:block;
+  }
+  .ribbon__rule{
+    width:80px;height:1px;background:var(--gold);
+    margin:48px auto 0;
+  }
+
+  /* === INTRO === */
+  .intro{
+    padding:96px 32px 80px;
+    background:var(--parchment);
+  }
+  .intro__inner{
+    max-width:760px;margin:0 auto;
+  }
+  .intro__eyebrow{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--burgundy);
+    text-align:center;
+    margin-bottom:24px;
+  }
+  .intro__title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:36px;
+    text-align:center;line-height:1.2;
+    margin-bottom:48px;
+  }
+  .intro p{
+    font-family:'Spectral',serif;
+    font-size:18px;line-height:1.85;
+    color:#2a2f3e;
+    margin-bottom:24px;
+    text-wrap:pretty;
+  }
+  .intro p.lead{
+    font-size:19px;line-height:1.8;
+  }
+  .dropcap::first-letter{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    color:var(--burgundy);
+    font-size:96px;
+    line-height:0.85;
+    float:left;
+    padding:8px 14px 0 0;
+    margin-top:6px;
+  }
+  .intro__details{
+    margin-top:40px;
+    padding:28px 32px;
+    background:var(--parchment-2);
+    border-left:3px solid var(--gold);
+    font-size:15px;
+    color:var(--muted);
+    font-family:'PT Sans',sans-serif;
+    line-height:1.75;
+  }
+  .intro__details strong{color:var(--ink);font-weight:700}
+
+  /* === STATS === */
+  .stats{
+    background:var(--parchment-2);
+    padding:80px 32px;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .stats__inner{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(5,1fr);
+    align-items:start;
+    position:relative;
+  }
+  .stat{
+    text-align:center;
+    padding:0 12px;
+    position:relative;
+  }
+  .stat:not(:last-child)::after{
+    content:"";position:absolute;
+    right:0;top:18%;height:64%;width:1px;
+    background:linear-gradient(to bottom,transparent,var(--gold) 20%,var(--gold) 80%,transparent);
+    opacity:0.55;
+  }
+  .stat__num{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;font-size:60px;line-height:1;
+    color:var(--burgundy);
+    letter-spacing:-0.01em;
+    display:block;
+  }
+  .stat__unit{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:32px;
+    color:var(--burgundy);
+    margin-left:4px;
+  }
+  .stat__label{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:18px;
+    display:block;
+  }
+
+  /* === CARDS === */
+  .cards-section{
+    padding:96px 32px;
+    background:var(--parchment-2);
+  }
+  .cards-section__head{
+    max-width:760px;margin:0 auto 56px;text-align:center;
+  }
+  .cards-section__kicker{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.3em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:18px;
+  }
+  .cards-section__title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:40px;line-height:1.15;
+  }
+  .cards{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  .card{
+    background:var(--parchment);
+    padding:48px 36px 40px;
+    border:1px solid var(--rule);
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    display:flex;flex-direction:column;
+    position:relative;
+  }
+  .card::before{
+    content:"";position:absolute;
+    top:0;left:36px;right:36px;height:2px;
+    background:var(--gold);
+    transform:scaleX(0.3);transform-origin:left;
+    transition:transform .4s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 40px -18px rgba(201,169,97,0.55), 0 4px 14px -8px rgba(26,31,46,0.18);
+    border-color:rgba(201,169,97,0.4);
+  }
+  .card:hover::before{transform:scaleX(1)}
+  .card__icon{
+    width:54px;height:54px;
+    display:grid;place-items:center;
+    border:1px solid var(--gold);border-radius:50%;
+    margin-bottom:28px;
+  }
+  .card__icon svg{width:28px;height:28px;stroke:var(--burgundy)}
+  .card__kicker{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--gold-deep);
+    margin-bottom:14px;
+  }
+  .card__title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:28px;line-height:1.15;
+    margin-bottom:18px;
+  }
+  .card__body{
+    font-family:'Spectral',serif;font-size:16px;line-height:1.7;
+    color:#3a3f4d;
+    margin-bottom:24px;
+    flex:1;
+  }
+  .card__link{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--burgundy);
+    border-bottom:1px solid var(--burgundy);
+    padding-bottom:3px;
+    align-self:flex-start;
+    transition:color .25s, border-color .25s;
+  }
+  .card__link:hover{color:var(--gold-deep);border-color:var(--gold-deep)}
+
+  /* === CTA === */
+  .cta{
+    padding:120px 32px;
+    background:var(--parchment);
+    text-align:center;
+    position:relative;
+  }
+  .cta__inner{max-width:680px;margin:0 auto;position:relative}
+  .cta__rule{
+    width:1px;height:48px;background:var(--gold);
+    margin:0 auto 36px;
+  }
+  .cta__kicker{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.32em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:20px;
+  }
+  .cta__title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:42px;line-height:1.2;
+    margin-bottom:18px;
+  }
+  .cta__sub{
+    font-family:'Spectral',serif;font-style:italic;
+    font-size:18px;color:var(--muted);
+    margin-bottom:40px;
+  }
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:'PT Sans',sans-serif;
+    font-size:12px;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--gold-deep);
+    border:1px solid var(--gold);
+    padding:18px 36px;
+    transition:background .3s, color .3s, transform .25s;
+    background:transparent;cursor:pointer;
+  }
+  .btn-outline:hover{
+    background:var(--gold);color:var(--ink);
+    transform:translateY(-1px);
+  }
+  .btn-outline svg{width:14px;height:14px;transition:transform .3s}
+  .btn-outline:hover svg{transform:translateX(4px)}
+
+  /* === FOOTER === */
+  .footer{
+    background:var(--ink);
+    color:rgba(245,240,232,0.72);
+    padding:80px 32px 32px;
+    font-size:14px;line-height:1.7;
+  }
+  .footer__inner{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:64px;
+  }
+  .footer__brand{display:flex;flex-direction:column;gap:18px}
+  .footer__brand-row{display:flex;align-items:center;gap:14px}
+  .footer__brand .sigil{width:48px;height:48px}
+  .footer__brand-name{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:22px;color:var(--parchment);
+    line-height:1.15;
+  }
+  .footer__brand-sub{
+    font-family:'PT Sans',sans-serif;
+    font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gold);margin-top:4px;
+  }
+  .footer__addr{
+    font-family:'Spectral',serif;font-size:14px;line-height:1.7;
+    color:rgba(245,240,232,0.65);
+  }
+  .footer__addr strong{color:var(--parchment);font-weight:500}
+  .footer h4{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.26em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;
+    margin-bottom:22px;
+  }
+  .footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer ul a{
+    font-family:'Spectral',serif;font-size:15px;
+    color:rgba(245,240,232,0.7);
+    transition:color .2s;
+  }
+  .footer ul a:hover{color:var(--gold)}
+  .footer__help p{margin-bottom:16px;font-family:'Spectral',serif}
+  .footer__bank{
+    font-family:'PT Sans',sans-serif;font-size:12px;line-height:1.7;
+    color:rgba(245,240,232,0.55);
+    background:rgba(245,240,232,0.04);
+    padding:14px 18px;
+    border-left:2px solid var(--gold);
+    margin-top:14px;
+  }
+  .footer__btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .footer__btn{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    padding:11px 16px;
+    border:1px solid rgba(201,169,97,0.4);
+    color:var(--gold);
+    transition:background .25s, color .25s;
+  }
+  .footer__btn--solid{background:var(--burgundy);border-color:var(--burgundy);color:var(--parchment)}
+  .footer__btn:hover{background:var(--gold);color:var(--ink)}
+  .footer__btn--solid:hover{background:var(--burgundy-deep);border-color:var(--burgundy-deep);color:var(--parchment)}
+  .footer__bottom{
+    max-width:1280px;margin:64px auto 0;
+    padding-top:24px;
+    border-top:1px solid rgba(245,240,232,0.1);
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.45);
+  }
+
+  /* === MOBILE BAR === */
+  .mobile-bar{
+    display:none;
+    position:fixed;left:0;right:0;bottom:0;
+    background:var(--ink);
+    border-top:1px solid rgba(201,169,97,0.25);
+    z-index:60;
+    padding:8px;
+    grid-template-columns:repeat(3,1fr);gap:6px;
+  }
+  .mobile-bar a{
+    text-align:center;
+    padding:10px 6px;
+    font-family:'PT Sans',sans-serif;
+    font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+    color:rgba(245,240,232,0.78);
+    border:1px solid transparent;
+  }
+  .mobile-bar a + a{border-left:1px solid rgba(201,169,97,0.15)}
+  .mobile-bar a.solid{
+    background:var(--burgundy);color:var(--parchment);
+  }
+
+  /* === SCROLL ANIMATIONS === */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* === RESPONSIVE === */
+  @media (max-width:980px){
+    .nav{display:none}
+    .menu-toggle{display:block}
+    .site-header__inner{padding:14px 20px;gap:12px}
+    .brand__sub{display:none}
+    .ribbon{padding:56px 24px 44px}
+    .ribbon h1{font-size:46px}
+    .ribbon__quote{font-size:19px}
+    .intro{padding:64px 24px 56px}
+    .intro__title{font-size:28px}
+    .intro p{font-size:17px}
+    .dropcap::first-letter{font-size:78px;padding:6px 10px 0 0}
+    .stats{padding:56px 20px}
+    .stats__inner{grid-template-columns:repeat(2,1fr);gap:48px 20px}
+    .stat:not(:last-child)::after{display:none}
+    .stat:nth-child(odd)::before{
+      content:"";position:absolute;right:-10px;top:18%;height:64%;width:1px;
+      background:linear-gradient(to bottom,transparent,var(--gold) 30%,var(--gold) 70%,transparent);opacity:0.5;
+    }
+    .stat__num{font-size:46px}
+    .cards-section{padding:64px 24px}
+    .cards-section__title{font-size:30px}
+    .cards{grid-template-columns:1fr;gap:20px}
+    .cta{padding:80px 24px}
+    .cta__title{font-size:32px}
+    .footer{padding:56px 24px 100px}
+    .footer__inner{grid-template-columns:1fr;gap:40px}
+    .mobile-bar{display:grid}
+  }
+  @media (max-width:520px){
+    .ribbon h1{font-size:38px}
+    .stat__num{font-size:38px}
+    .stat__unit{font-size:24px}
+  }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ============ HEADER ============ -->
+
+
+<!-- ============ RIBBON ============ -->
+<section class="ribbon">
+  <div class="ribbon__inner">
+    <div class="kicker">Кафедра Кубанского казачьего войска</div>
+    <h1>О соборе</h1>
+    <p class="ribbon__quote">Не в силе Бог, а в правде</p>
+    <span class="ribbon__attr">Святой благоверный князь Александр Невский</span>
+    <div class="ribbon__rule"></div>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="intro__inner">
+    <div class="intro__eyebrow reveal in">Войсковой собор Кубани</div>
+    <h2 class="intro__title reveal in">Сердце православного Краснодара —<br>и духовная кафедра казачества</h2>
+
+    <p class="lead dropcap reveal in">Войсковой собор святого благоверного князя Александра Невского — кафедральный храм Екатеринодарской и Кубанской епархии Русской Православной Церкви и главная духовная кафедра Кубанского казачьего войска. Здесь, на исторической Соборной площади Краснодара, соединяются воинская память и церковное предание.</p>
+
+    <p class="reveal">Собор был торжественно заложен 1 апреля 1853 года атаманом Черноморского казачьего войска генерал-майором Яковом Кухаренко. Проект храма выполнил войсковой архитектор Иван Денисович Черник — выпускник Императорской Академии художеств в Санкт-Петербурге, ученик К. А. Тона. Строительство, начатое на войсковые средства и пожертвования казаков, продолжалось девятнадцать лет и завершилось великим освящением в 1872 году.</p>
+
+    <p class="reveal">В 1930-х годах собор был закрыт и разрушен богоборческой властью; на его месте долгие десятилетия не оставалось и следа святыни. Возрождение храма стало возможным лишь в начале XXI века: в 2003–2006 годах собор был воссоздан на новом месте — на пересечении улиц Постовой и Красной — по проекту архитектора Владимира Тимофеевича Головерова.</p>
+
+    <p class="reveal">Великое освящение возрождённого собора 28 мая 2006 года совершил митрополит Смоленский и Калининградский Кирилл — ныне Святейший Патриарх Московский и всея Руси. С этого дня войсковой собор вновь стал местом главных богослужений епархии, войсковых служб казачества и духовным центром всей Кубани.</p>
+
+    <div class="intro__details reveal">
+      <strong>Полное наименование:</strong> Местная религиозная организация «Православный приход храма во имя святого благоверного князя Александра Невского г. Краснодара Екатеринодарской и Кубанской епархии Русской Православной Церкви».<br>
+      <strong>ИНН:</strong> 2309091590 &nbsp;·&nbsp; <strong>ОГРН:</strong> 1052335002521<br>
+      <strong>Адрес:</strong> 350063, г. Краснодар, ул. Постовая, 26
+    </div>
+
+    <!-- Фотографии собора (Wikimedia Commons, CC BY-SA) -->
+    <div class="site-photo-grid reveal" style="max-width:1100px;margin:48px auto 0;">
+      <figure class="site-photo-frame" style="margin:0;">
+        <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/cathedral-from-park.jpg"); ?>"
+             alt="Войсковой собор Александра Невского — вид со стороны парка"
+             class="site-photo"
+             loading="lazy">
+        <figcaption class="site-photo-frame__caption">Вид со стороны Соборной площади</figcaption>
+        <div class="site-photo-frame__attribution">Wikimedia Commons · CC&nbsp;BY-SA</div>
+      </figure>
+      <figure class="site-photo-frame" style="margin:0;">
+        <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/cathedral-domes.jpg"); ?>"
+             alt="Пять золотых куполов Войскового собора"
+             class="site-photo"
+             loading="lazy">
+        <figcaption class="site-photo-frame__caption">Пять золочёных куполов — символ Спасителя и четырёх евангелистов</figcaption>
+        <div class="site-photo-frame__attribution">Wikimedia Commons · CC&nbsp;BY-SA</div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stats__inner">
+    <div class="stat reveal"><span class="stat__num" data-count="1853">1853</span><span class="stat__label">Закладка</span></div>
+    <div class="stat reveal"><span class="stat__num" data-count="1872">1872</span><span class="stat__label">Освящение</span></div>
+    <div class="stat reveal"><span class="stat__num" data-count="43">43</span><span class="stat__unit">м</span><span class="stat__label">Высота</span></div>
+    <div class="stat reveal"><span class="stat__num" data-count="5">5</span><span class="stat__label">Куполов</span></div>
+    <div class="stat reveal"><span class="stat__num" data-count="2006">2006</span><span class="stat__label">Возрождение</span></div>
+  </div>
+</section>
+
+<!-- ============ CARDS ============ -->
+<section class="cards-section">
+  <div class="cards-section__head reveal">
+    <div class="cards-section__kicker">Внутри собора</div>
+    <h2 class="cards-section__title">Что вы увидите, переступив порог</h2>
+  </div>
+  <div class="cards">
+    <article class="card reveal">
+      <div class="card__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M16 3 L6 12 V28 H26 V12 Z" stroke-linejoin="round"></path>
+          <path d="M16 3 L16 8 M14 6 L18 6" stroke-linecap="round"></path>
+          <path d="M13 28 V20 H19 V28" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="card__kicker">Архитектура</div>
+      <h3 class="card__title">Византийский канон в камне Кубани</h3>
+      <p class="card__body">Пятикупольный храм в византийском стиле, высотой 43 метра, увенчанный позолоченными главами. Симметрия плана, арочные галереи и белокаменная отделка отсылают к древнерусским соборным традициям XII века.</p>
+      <a class="card__link" href="<?php echo esc_url(home_url("/history")); ?>">Подробнее о замысле →</a>
+    </article>
+
+    <article class="card reveal">
+      <div class="card__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M16 4 C12 4 9 7 9 12 V20 C9 24 12 28 16 28 C20 28 23 24 23 20 V12 C23 7 20 4 16 4 Z" stroke-linejoin="round"></path>
+          <path d="M16 9 V19 M13 13 H19" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="card__kicker">Святыни</div>
+      <h3 class="card__title">Икона Александра Невского и Казанский образ</h3>
+      <p class="card__body">В соборе пребывают чтимые иконы святого благоверного князя Александра Невского с частицей мощей и Казанский образ Пресвятой Богородицы — главные святыни, перед которыми ежедневно совершаются молебны.</p>
+      <a class="card__link" href="<?php echo esc_url(home_url("/icons")); ?>">Все иконы и святыни →</a>
+    </article>
+
+    <article class="card reveal">
+      <div class="card__icon">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M11 6 H21 L23 12 H9 Z" stroke-linejoin="round"></path>
+          <path d="M10 12 V22 C10 25 13 27 16 27 C19 27 22 25 22 22 V12" stroke-linejoin="round"></path>
+          <path d="M16 12 V22" stroke-linecap="round"></path>
+          <path d="M16 4 V6" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="card__kicker">Колокольня</div>
+      <h3 class="card__title">Звонница с патриаршим благословением</h3>
+      <p class="card__body">Колокола, отлитые в 2005 году, были освящены лично Святейшим Патриархом Алексием II. Их звон, разносящийся над Постовой улицей, открывает каждое богослужение и собирает прихожан со всего города.</p>
+      <a class="card__link" href="<?php echo esc_url(home_url("/schedule")); ?>">Когда звучит звон →</a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="cta__inner">
+    <div class="cta__rule reveal"></div>
+    <div class="cta__kicker reveal">Хроника двух эпох</div>
+    <h2 class="cta__title reveal">От закладки 1853 года до возрождения</h2>
+    <p class="cta__sub reveal">Подробная летопись собора, имена строителей, восстановителей и пастырей — в одном документе.</p>
+    <a href="<?php echo esc_url(home_url("/history")); ?>" class="btn-outline reveal">
+      Полная летопись собора
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M2 8 H13 M9 4 L13 8 L9 12" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Count-up
+  const countEls = document.querySelectorAll('.stat__num');
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count,10);
+      const dur = 1400;
+      const start = performance.now();
+      const initial = target > 1000 ? target - 80 : 0;
+      function tick(now){
+        const t = Math.min(1,(now-start)/dur);
+        const eased = 1 - Math.pow(1-t,3);
+        const v = Math.round(initial + (target-initial)*eased);
+        el.textContent = v;
+        if(t<1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+      cio.unobserve(el);
+    });
+  },{threshold:0.4});
+  countEls.forEach(el=>{ el.textContent = el.dataset.count > 1000 ? (parseInt(el.dataset.count,10)-80) : 0; cio.observe(el); });
+</script>
+<script>
+// Force-show count-up final values (stuck animation fix)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-count], [data-target]').forEach(function(el) {
+    var target = el.getAttribute('data-count') || el.getAttribute('data-target');
+    if (target) el.textContent = target;
+  });
+});
+</script>
+
+<?php get_footer(); ?>

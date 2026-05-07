@@ -1,0 +1,880 @@
+<?php
+/**
+ * Template Name: Приходская жизнь
+ *
+ * Шаблон страницы «Приходская жизнь» — сгенерирован из docs/parish-life.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=PT+Sans:wght@400;700&display=swap');
+
+:root{
+  --parchment:#f5f0e8;
+  --parchment-2:#ede5d6;
+  --ink:#1a1f2e;
+  --ink-2:#252b3d;
+  --gold:#c9a961;
+  --gold-soft:#a88a44;
+  --burgundy:#8b2635;
+  --burgundy-dark:#6e1d2a;
+  --rule:rgba(26,31,46,.14);
+  --serif:'Cormorant Garamond', serif;
+  --body:'Spectral', serif;
+  --sans:'PT Sans', sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--parchment);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ====== HEADER ====== */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--ink);
+  color:#e8e4d8;
+  border-bottom:1px solid rgba(201,169,97,.25);
+}
+.site-header__inner{
+  max-width: 1720px;margin:0 auto;
+  padding:18px 32px;
+  display:flex;align-items:center;gap:32px;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;flex-shrink:0}
+.sigil{
+  width:44px;height:44px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-kicker{
+  font-family:var(--sans);
+  font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);
+}
+.brand-name{
+  font-family:var(--serif);
+  font-size:20px;font-weight:500;
+  letter-spacing:.02em;color:#f0ebde;
+}
+.main-nav{
+  display:flex;gap:34px;margin-left:auto;
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+}
+.main-nav a{
+  color:#cdc7b6;text-decoration:none;
+  padding:6px 0;position:relative;
+  transition:color .2s;
+}
+.main-nav a:hover{color:#f0ebde}
+.main-nav a.active{color:var(--gold)}
+.main-nav a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;
+  height:2px;background:var(--gold);
+}
+.donate-btn{
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  background:var(--burgundy);
+  color:#f5e9c8;
+  padding:13px 22px;
+  text-decoration:none;
+  border:1px solid var(--burgundy);
+  transition:background .2s;
+  white-space:nowrap;
+}
+.donate-btn:hover{background:var(--burgundy-dark)}
+
+/* ====== RIBBON ====== */
+.ribbon{
+  background:var(--ink);
+  color:#e8e4d8;
+  padding:80px 32px 64px;
+  text-align:center;
+  position:relative;
+  border-bottom:1px solid rgba(201,169,97,.2);
+}
+.ribbon::before,.ribbon::after{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);
+  width:120px;height:1px;background:var(--gold);opacity:.5;
+}
+.ribbon::before{top:32px}
+.ribbon__kicker{
+  font-family:var(--sans);
+  font-size:13px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+}
+.ribbon__cross{
+  display:block;margin:0 auto 28px;
+}
+.ribbon__title{
+  font-family:var(--serif);
+  font-size:64px;font-weight:500;line-height:1.05;
+  letter-spacing:.01em;color:#f5ecd2;
+  margin-bottom:32px;
+}
+.ribbon__quote{
+  font-family:var(--body);
+  font-style:italic;font-size:19px;line-height:1.6;
+  max-width:640px;margin:0 auto;
+  color:#cdc7b6;
+}
+.ribbon__quote cite{
+  display:block;font-style:normal;
+  font-family:var(--sans);
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);margin-top:18px;
+}
+.ribbon__rule{
+  width:88px;height:1px;background:var(--gold);
+  margin:48px auto 0;
+}
+
+/* ====== ANCHOR NAV ====== */
+.anchors{
+  max-width:920px;margin:0 auto;
+  padding:88px 32px 72px;
+  text-align:center;
+}
+.anchors__kicker{
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:18px;
+}
+.anchors__title{
+  font-family:var(--serif);
+  font-size:34px;font-weight:500;
+  color:var(--ink);margin-bottom:40px;
+}
+.anchors__ornament{
+  display:block;margin:0 auto 40px;
+}
+.anchor-grid{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+}
+.anchor-btn{
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:700;
+  color:var(--ink);
+  background:transparent;
+  border:1px solid var(--gold);
+  padding:14px 24px;
+  text-decoration:none;
+  transition:all .25s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.anchor-btn::before{
+  content:"";width:6px;height:6px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+.anchor-btn:hover{
+  background:var(--gold);
+  color:var(--ink);
+}
+
+/* ====== SECTIONS ====== */
+.section{
+  padding:100px 32px;
+  border-top:1px solid var(--rule);
+}
+.section--alt{background:var(--parchment-2)}
+.section__inner{
+  max-width:1240px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.section--reverse .section__inner > .section__visual{order:2}
+.section--reverse .section__inner > .section__body{order:1}
+
+.section__visual{
+  aspect-ratio:4/3;
+  background:var(--ink-2);
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(201,169,97,.25);
+}
+.section__visual::before{
+  content:"";position:absolute;inset:14px;
+  border:1px solid rgba(201,169,97,.18);
+  pointer-events:none;
+}
+.section__visual svg{
+  position:absolute;inset:0;width:100%;height:100%;
+}
+
+.section__body{max-width:520px}
+.section__num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;color:var(--gold-soft);
+  letter-spacing:.05em;margin-bottom:14px;
+}
+.section__kicker{
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:18px;
+}
+.section__title{
+  font-family:var(--serif);
+  font-size:42px;font-weight:500;line-height:1.1;
+  color:var(--ink);margin-bottom:14px;
+}
+.section__rule{
+  width:60px;height:2px;background:var(--gold);
+  margin-bottom:28px;
+}
+.section__lead{
+  font-family:var(--body);
+  font-size:18px;line-height:1.7;color:#2c3245;
+  margin-bottom:18px;
+}
+.section__lead + .section__lead{margin-bottom:28px}
+
+.section__list{list-style:none;margin-bottom:32px}
+.section__list li{
+  font-family:var(--body);
+  font-size:16px;line-height:1.55;
+  padding:14px 0 14px 28px;
+  border-top:1px solid var(--rule);
+  position:relative;
+  color:#2c3245;
+}
+.section__list li:last-child{border-bottom:1px solid var(--rule)}
+.section__list li::before{
+  content:"";position:absolute;left:0;top:22px;
+  width:8px;height:8px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+
+.section__cta{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  color:#f5ecd2;
+  background:var(--burgundy);
+  padding:15px 28px;
+  text-decoration:none;
+  border:1px solid var(--burgundy);
+  transition:background .2s;
+}
+.section__cta:hover{background:var(--burgundy-dark)}
+.section__cta::after{content:"→";letter-spacing:0}
+
+/* ====== FOOTER ====== */
+.footer{
+  background:var(--ink);
+  color:#cdc7b6;
+  padding:80px 32px 32px;
+  margin-bottom:0;
+}
+.footer__grid{
+  max-width:1240px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:64px;
+}
+.footer__col h4{
+  font-family:var(--sans);
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:22px;font-weight:700;
+}
+.footer__brand{
+  display:flex;gap:16px;align-items:flex-start;margin-bottom:18px;
+}
+.footer__brand .sigil{width:52px;height:52px}
+.footer__name{
+  font-family:var(--serif);
+  font-size:22px;color:#f0ebde;line-height:1.2;font-weight:500;
+}
+.footer__motto{
+  font-family:var(--body);
+  font-style:italic;font-size:15px;color:#a8a290;line-height:1.6;
+  max-width:340px;
+}
+.footer__col p,.footer__col a{
+  font-family:var(--body);
+  font-size:15px;line-height:1.85;
+  color:#cdc7b6;text-decoration:none;display:block;
+}
+.footer__col a:hover{color:var(--gold)}
+.footer__bottom{
+  max-width:1240px;margin:64px auto 0;
+  padding-top:24px;
+  border-top:1px solid rgba(201,169,97,.18);
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--sans);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:#7d7867;
+}
+
+/* ====== MOBILE STICKY BAR ====== */
+.mobile-bar{
+  display:none;
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--ink);
+  border-top:1px solid rgba(201,169,97,.3);
+  padding:10px;
+  gap:6px;
+}
+.mobile-bar a{
+  flex:1;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:8px 4px;
+  font-family:var(--sans);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  text-decoration:none;
+  color:#e8e4d8;
+}
+.mobile-bar a.donate{
+  background:var(--burgundy);color:#f5e9c8;
+}
+.mobile-bar a svg{width:20px;height:20px}
+
+/* mobile menu toggle */
+.menu-toggle{display:none;background:none;border:none;color:#e8e4d8;cursor:pointer;margin-left:auto}
+.menu-toggle svg{width:26px;height:26px}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width:980px){
+  .main-nav{display:none}
+  .donate-btn{display:none}
+  .menu-toggle{display:block}
+  .site-header__inner{padding:14px 20px;gap:16px}
+
+  .ribbon{padding:56px 20px 48px}
+  .ribbon__title{font-size:42px}
+  .ribbon__quote{font-size:17px}
+
+  .anchors{padding:64px 20px 48px}
+  .anchors__title{font-size:26px}
+  .anchor-btn{padding:12px 18px;font-size:11px;letter-spacing:.18em}
+
+  .section{padding:64px 20px}
+  .section__inner{grid-template-columns:1fr;gap:36px}
+  .section--reverse .section__inner > .section__visual{order:1}
+  .section--reverse .section__inner > .section__body{order:2}
+  .section__title{font-size:32px}
+  .section__lead{font-size:16px}
+
+  .footer{padding:56px 20px 100px}
+  .footer__grid{grid-template-columns:1fr;gap:40px}
+  .footer__bottom{flex-direction:column;gap:12px;text-align:center}
+
+  .mobile-bar{display:flex}
+  body{padding-bottom:72px}
+  html{scroll-padding-top:72px}
+}
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ============ HEADER ============ -->
+
+
+<!-- ============ RIBBON ============ -->
+<section class="ribbon">
+  <div class="ribbon__kicker">Соборная община</div>
+  <svg class="ribbon__cross" width="22" height="32" viewBox="0 0 22 32" aria-hidden="true">
+    <path d="M11 0 L11 32 M3 9 L19 9 M1 16 L21 16 M5 25 L17 21" stroke="#c9a961" stroke-width="1.4" fill="none"></path>
+  </svg>
+  <h1 class="ribbon__title">Жизнь прихода</h1>
+  <blockquote class="ribbon__quote">
+    «Где двое или трое собраны во имя Моё, там Я посреди них»
+    <cite>— Евангелие от Матфея 18:20</cite>
+  </blockquote>
+  <div class="ribbon__rule"></div>
+</section>
+
+<!-- ============ ANCHOR NAV ============ -->
+<nav class="anchors" aria-label="Подразделения прихода">
+  <div class="anchors__kicker">Подразделения прихода</div>
+  <h2 class="anchors__title">Соборная семья — пять служений</h2>
+  <svg class="anchors__ornament" width="120" height="14" viewBox="0 0 120 14" aria-hidden="true">
+    <path d="M0 7 L48 7 M72 7 L120 7" stroke="#c9a961" stroke-width="1"></path>
+    <path d="M60 0 L60 14 M53 7 L67 7" stroke="#c9a961" stroke-width="1.2"></path>
+    <circle cx="60" cy="7" r="2.2" fill="none" stroke="#c9a961" stroke-width="1"></circle>
+  </svg>
+  <div class="anchor-grid">
+    <a href="#choir" class="anchor-btn">Соборный хор</a>
+    <a href="#school" class="anchor-btn">Воскресная школа</a>
+    <a href="#sisterhood" class="anchor-btn">Сестричество</a>
+    <a href="#youth" class="anchor-btn">Молодёжь Невского</a>
+    <a href="#cossack" class="anchor-btn">Казачество</a>
+  </div>
+</nav>
+
+<!-- ============ #choir ============ -->
+<section id="choir" class="section">
+  <div class="section__inner">
+    <div class="section__visual">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="ink-grad-1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a3043"></stop>
+            <stop offset="1" stop-color="#1c2030"></stop>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#ink-grad-1)"></rect>
+        <!-- arched apse -->
+        <path d="M60 280 L60 130 Q60 70 200 70 Q340 70 340 130 L340 280 Z" fill="none" stroke="#c9a961" stroke-width=".8" opacity=".25"></path>
+        <path d="M90 280 L90 145 Q90 100 200 100 Q310 100 310 145 L310 280" fill="none" stroke="#c9a961" stroke-width=".6" opacity=".18"></path>
+        <!-- big neume / treble symbol -->
+        <g transform="translate(200 100)" opacity=".35">
+          <path d="M0 -40 Q-22 -20 -16 0 Q-10 20 0 28 Q14 22 14 8 Q14 -8 -2 -8" fill="none" stroke="#c9a961" stroke-width="1.4"></path>
+          <line x1="0" y1="-46" x2="0" y2="46" stroke="#c9a961" stroke-width="1"></line>
+          <path d="M-30 -10 L30 -10 M-30 4 L30 4" stroke="#c9a961" stroke-width=".6" opacity=".5"></path>
+        </g>
+        <!-- choir figures (three rows) -->
+        <g fill="none" stroke="#c9a961" stroke-width="1.1" opacity=".82">
+          <!-- back row 5 figures -->
+          <g transform="translate(0 0)">
+            <g transform="translate(80 200)"><circle cx="0" cy="0" r="11"></circle><path d="M-3 -3 Q0 -1 3 -3"></path><path d="M-15 22 L-18 60 L18 60 L15 22 Q15 6 0 6 Q-15 6 -15 22 Z"></path><circle cx="0" cy="-2" r="1" fill="#c9a961"></circle></g>
+            <g transform="translate(140 195)"><circle cx="0" cy="0" r="11"></circle><path d="M-3 -2 Q0 0 3 -2"></path><path d="M-15 22 L-18 60 L18 60 L15 22 Q15 6 0 6 Q-15 6 -15 22 Z"></path><circle cx="0" cy="-1" r="1" fill="#c9a961"></circle></g>
+            <g transform="translate(200 192)"><circle cx="0" cy="0" r="12"></circle><path d="M-3 -3 Q0 -1 3 -3"></path><path d="M-16 24 L-19 62 L19 62 L16 24 Q16 6 0 6 Q-16 6 -16 24 Z"></path><circle cx="0" cy="-1" r="1.2" fill="#c9a961"></circle></g>
+            <g transform="translate(260 195)"><circle cx="0" cy="0" r="11"></circle><path d="M-3 -2 Q0 0 3 -2"></path><path d="M-15 22 L-18 60 L18 60 L15 22 Q15 6 0 6 Q-15 6 -15 22 Z"></path><circle cx="0" cy="-1" r="1" fill="#c9a961"></circle></g>
+            <g transform="translate(320 200)"><circle cx="0" cy="0" r="11"></circle><path d="M-3 -3 Q0 -1 3 -3"></path><path d="M-15 22 L-18 60 L18 60 L15 22 Q15 6 0 6 Q-15 6 -15 22 Z"></path><circle cx="0" cy="-2" r="1" fill="#c9a961"></circle></g>
+          </g>
+        </g>
+        <!-- candle flames floating -->
+        <g fill="#c9a961" opacity=".55">
+          <ellipse cx="40" cy="60" rx="2" ry="4"></ellipse>
+          <ellipse cx="360" cy="60" rx="2" ry="4"></ellipse>
+          <ellipse cx="20" cy="120" rx="1.5" ry="3"></ellipse>
+          <ellipse cx="380" cy="120" rx="1.5" ry="3"></ellipse>
+        </g>
+        <!-- floor line -->
+        <line x1="0" y1="262" x2="400" y2="262" stroke="#c9a961" stroke-width=".5" opacity=".25"></line>
+      </svg>
+    </div>
+    <div class="section__body">
+      <div class="section__num">I</div>
+      <div class="section__kicker">Регент Максим Кадуров</div>
+      <h2 class="section__title">Соборный хор</h2>
+      <div class="section__rule"></div>
+      <p class="section__lead">Хор Войскового собора — основной голос соборной молитвы. Под управлением протодиакона Максима Кадурова, выпускника Тобольской духовной семинарии и АлтГАКИ (дирижёр академического хора), исполняются богослужения в будние и праздничные дни.</p>
+      <p class="section__lead">Репертуар хора охватывает древние знаменные распевы, Синодальную школу и партесное многоголосие — традицию русской церковной музыки в её полноте.</p>
+      <ul class="section__list">
+        <li>Великие праздники и воскресные службы</li>
+        <li>Архиерейские богослужения</li>
+        <li>Концертная деятельность и запись духовной музыки</li>
+        <li>Открыт набор певчих по благословению регента</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ #school ============ -->
+<section id="school" class="section section--alt section--reverse">
+  <div class="section__inner">
+    <div class="section__visual">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="300" fill="#252b3d"></rect>
+        <!-- shield (Russian shield silhouette) -->
+        <g transform="translate(200 150)" opacity=".9">
+          <path d="M-70 -80 L70 -80 L70 0 Q70 60 0 95 Q-70 60 -70 0 Z" fill="none" stroke="#c9a961" stroke-width="1.4"></path>
+          <path d="M-58 -68 L58 -68 L58 0 Q58 50 0 80 Q-58 50 -58 0 Z" fill="none" stroke="#c9a961" stroke-width=".5" opacity=".5"></path>
+          <!-- cross inside shield -->
+          <path d="M0 -55 L0 55 M-26 -25 L26 -25 M-32 -10 L32 -10 M-18 30 L18 22" stroke="#c9a961" stroke-width="1.2" fill="none"></path>
+          <!-- crossed sabres behind -->
+          <g opacity=".55" stroke="#c9a961" stroke-width="1" fill="none">
+            <path d="M-95 -95 L-50 -50 M50 -50 L95 -95"></path>
+            <path d="M-100 -88 L-92 -98 L-86 -90 M100 -88 L92 -98 L86 -90"></path>
+          </g>
+        </g>
+        <!-- open book at base -->
+        <g transform="translate(200 252)" opacity=".7">
+          <path d="M-55 0 L-2 -8 L-2 12 L-55 18 Z" fill="none" stroke="#c9a961" stroke-width="1"></path>
+          <path d="M55 0 L2 -8 L2 12 L55 18 Z" fill="none" stroke="#c9a961" stroke-width="1"></path>
+          <line x1="-40" y1="2" x2="-10" y2="-2" stroke="#c9a961" stroke-width=".5"></line>
+          <line x1="-40" y1="6" x2="-10" y2="2" stroke="#c9a961" stroke-width=".5"></line>
+          <line x1="-40" y1="10" x2="-10" y2="6" stroke="#c9a961" stroke-width=".5"></line>
+          <line x1="40" y1="2" x2="10" y2="-2" stroke="#c9a961" stroke-width=".5"></line>
+          <line x1="40" y1="6" x2="10" y2="2" stroke="#c9a961" stroke-width=".5"></line>
+          <line x1="40" y1="10" x2="10" y2="6" stroke="#c9a961" stroke-width=".5"></line>
+        </g>
+        <!-- frame ornaments corners -->
+        <g stroke="#c9a961" stroke-width=".8" fill="none" opacity=".4">
+          <path d="M30 30 L30 50 M30 30 L50 30"></path>
+          <path d="M370 30 L370 50 M370 30 L350 30"></path>
+          <path d="M30 270 L30 250 M30 270 L50 270"></path>
+          <path d="M370 270 L370 250 M370 270 L350 270"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="section__body">
+      <div class="section__num">II</div>
+      <div class="section__kicker">Русский щит · Дети 7–14 лет</div>
+      <h2 class="section__title">Воскресная школа</h2>
+      <div class="section__rule"></div>
+      <p class="section__lead">Воскресная школа «Русский щит» — место, где дети прихожан укореняются в православной вере и казачьей традиции. Занятия проводятся по воскресеньям после Божественной литургии в учебном корпусе при соборе.</p>
+      <p class="section__lead">Преподают священнослужители прихода, регенты, иконописцы и педагоги-казаки. Учебный год открывается молебном на начало учения.</p>
+      <ul class="section__list">
+        <li>Закон Божий, Священное Писание, основы православной культуры</li>
+        <li>История Кубани и Кубанского казачьего войска</li>
+        <li>Церковное пение и иконопись</li>
+        <li>Подготовка к первому причастию</li>
+      </ul>
+      <a href="<?php echo esc_url(home_url("/contacts")); ?>" class="section__cta">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ #sisterhood ============ -->
+<section id="sisterhood" class="section">
+  <div class="section__inner">
+    <div class="section__visual">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="300" fill="#252b3d"></rect>
+        <!-- arched window with veil -->
+        <path d="M120 280 L120 140 Q120 70 200 70 Q280 70 280 140 L280 280" fill="none" stroke="#c9a961" stroke-width="1" opacity=".3"></path>
+        <!-- three sisters in covering -->
+        <g fill="none" stroke="#c9a961" stroke-width="1.1" opacity=".88">
+          <g transform="translate(140 175)">
+            <!-- head + veil -->
+            <path d="M-22 -8 Q-22 -32 0 -32 Q22 -32 22 -8 L22 50 L-22 50 Z"></path>
+            <circle cx="0" cy="-12" r="11"></circle>
+            <!-- praying hands -->
+            <path d="M-6 18 L-6 32 L0 38 L6 32 L6 18 Q6 14 0 14 Q-6 14 -6 18 Z"></path>
+          </g>
+          <g transform="translate(200 165)">
+            <path d="M-24 -8 Q-24 -34 0 -34 Q24 -34 24 -8 L24 60 L-24 60 Z"></path>
+            <circle cx="0" cy="-13" r="12"></circle>
+            <!-- small cross on chest -->
+            <path d="M0 8 L0 22 M-5 13 L5 13" stroke-width="1"></path>
+            <path d="M-7 24 L-7 38 L0 44 L7 38 L7 24 Q7 20 0 20 Q-7 20 -7 24 Z"></path>
+          </g>
+          <g transform="translate(260 175)">
+            <path d="M-22 -8 Q-22 -32 0 -32 Q22 -32 22 -8 L22 50 L-22 50 Z"></path>
+            <circle cx="0" cy="-12" r="11"></circle>
+            <path d="M-6 18 L-6 32 L0 38 L6 32 L6 18 Q6 14 0 14 Q-6 14 -6 18 Z"></path>
+          </g>
+        </g>
+        <!-- Bogoroditsa-style halo above center -->
+        <circle cx="200" cy="152" r="22" fill="none" stroke="#c9a961" stroke-width=".6" opacity=".4"></circle>
+        <!-- bread / loaf below -->
+        <g transform="translate(200 252)" opacity=".55" fill="none" stroke="#c9a961" stroke-width="1">
+          <ellipse cx="0" cy="0" rx="46" ry="10"></ellipse>
+          <path d="M-30 -2 L-22 -8 L-14 -2 L-6 -10 L0 -2 L6 -10 L14 -2 L22 -8 L30 -2"></path>
+        </g>
+        <!-- side ornaments -->
+        <g stroke="#c9a961" stroke-width=".6" opacity=".3" fill="none">
+          <path d="M40 100 Q60 80 60 60 Q60 80 80 100 Q60 80 60 100"></path>
+          <path d="M360 100 Q340 80 340 60 Q340 80 320 100 Q340 80 340 100"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="section__body">
+      <div class="section__num">III</div>
+      <div class="section__kicker">Социальное служение</div>
+      <h2 class="section__title">Сестричество прихода</h2>
+      <div class="section__rule"></div>
+      <p class="section__lead">Сестричество во имя святой блаженной Ксении Петербургской объединяет прихожанок собора, посвятивших время и силы делам милосердия. Начатое по благословению настоятеля в 2019 году, сегодня сестричество — одна из самых живых общин прихода.</p>
+      <p class="section__lead">Сёстры несут служение и в храме, и за его стенами: в больницах, в семьях нуждающихся, у постелей одиноких стариков.</p>
+      <ul class="section__list">
+        <li>Помощь семьям воинов и многодетным</li>
+        <li>Уход за болящими прихожанами</li>
+        <li>Чтение псалтыри по усопшим</li>
+        <li>Сбор гуманитарной помощи</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ #youth ============ -->
+<section id="youth" class="section section--alt section--reverse">
+  <div class="section__inner">
+    <div class="section__visual">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="300" fill="#252b3d"></rect>
+        <!-- horizon and mountain silhouette (paломничество) -->
+        <path d="M0 200 L70 160 L130 195 L200 140 L260 185 L320 150 L400 200 L400 300 L0 300 Z" fill="none" stroke="#c9a961" stroke-width=".8" opacity=".35"></path>
+        <!-- pilgrim with staff and processional cross -->
+        <g fill="none" stroke="#c9a961" stroke-width="1.1" opacity=".9">
+          <!-- processional cross -->
+          <g transform="translate(200 60)">
+            <line x1="0" y1="0" x2="0" y2="180" stroke-width="1.4"></line>
+            <path d="M-14 22 L14 22 M-18 38 L18 38 M-10 56 L10 50" stroke-width="1.4"></path>
+            <circle cx="0" cy="-4" r="6"></circle>
+          </g>
+          <!-- three figures walking -->
+          <g transform="translate(140 220)">
+            <circle cx="0" cy="-30" r="10"></circle>
+            <path d="M-12 -16 L-14 24 L14 24 L12 -16 Q12 -22 0 -22 Q-12 -22 -12 -16 Z"></path>
+            <path d="M-14 24 L-18 56 M14 24 L18 56" stroke-width="1.1"></path>
+            <path d="M22 -10 L22 30" stroke-width="1"></path>
+          </g>
+          <g transform="translate(260 220)">
+            <circle cx="0" cy="-30" r="10"></circle>
+            <path d="M-12 -16 L-14 24 L14 24 L12 -16 Q12 -22 0 -22 Q-12 -22 -12 -16 Z"></path>
+            <path d="M-14 24 L-18 56 M14 24 L18 56" stroke-width="1.1"></path>
+            <path d="M-22 -10 L-22 30" stroke-width="1"></path>
+          </g>
+          <g transform="translate(80 235)">
+            <circle cx="0" cy="-26" r="8"></circle>
+            <path d="M-10 -14 L-12 18 L12 18 L10 -14 Q10 -18 0 -18 Q-10 -18 -10 -14 Z"></path>
+            <path d="M-12 18 L-15 42 M12 18 L15 42"></path>
+          </g>
+          <g transform="translate(330 235)">
+            <circle cx="0" cy="-26" r="8"></circle>
+            <path d="M-10 -14 L-12 18 L12 18 L10 -14 Q10 -18 0 -18 Q-10 -18 -10 -14 Z"></path>
+            <path d="M-12 18 L-15 42 M12 18 L15 42"></path>
+          </g>
+        </g>
+        <!-- sun/star above -->
+        <g transform="translate(200 50)" opacity=".55">
+          <circle cx="0" cy="0" r="14" fill="none" stroke="#c9a961" stroke-width=".8"></circle>
+          <g stroke="#c9a961" stroke-width=".6">
+            <line x1="0" y1="-22" x2="0" y2="-30"></line>
+            <line x1="0" y1="22" x2="0" y2="30"></line>
+            <line x1="-22" y1="0" x2="-30" y2="0"></line>
+            <line x1="22" y1="0" x2="30" y2="0"></line>
+            <line x1="-16" y1="-16" x2="-22" y2="-22"></line>
+            <line x1="16" y1="-16" x2="22" y2="-22"></line>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="section__body">
+      <div class="section__num">IV</div>
+      <div class="section__kicker">Молодёжь 16–35 лет</div>
+      <h2 class="section__title">Молодёжь Невского</h2>
+      <div class="section__rule"></div>
+      <p class="section__lead">Молодёжный клуб «Молодёжь Невского» — пространство для тех, кто ищет в Церкви не только воскресную службу, но и братство. Встречи проходят в трапезной собора по четвергам, после вечернего богослужения.</p>
+      <p class="section__lead">Духовником молодёжного движения служит иерей Андрей Сухоруков. Программа года включает паломничества, лекции, встречи с гостями и практические послушания.</p>
+      <ul class="section__list">
+        <li>Еженедельные встречи с духовником</li>
+        <li>Паломнические поездки по Кубани и России</li>
+        <li>Волонтёрское участие в соборных мероприятиях</li>
+        <li>Спортивные турниры и духовно-просветительские лагеря</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ #cossack ============ -->
+<section id="cossack" class="section">
+  <div class="section__inner">
+    <div class="section__visual">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="300" fill="#252b3d"></rect>
+        <!-- khorugv (banner) center -->
+        <g fill="none" stroke="#c9a961" stroke-width="1.2" opacity=".9">
+          <!-- pole -->
+          <line x1="200" y1="40" x2="200" y2="280"></line>
+          <!-- top finial cross -->
+          <g transform="translate(200 30)">
+            <path d="M0 -20 L0 16 M-8 -8 L8 -8 M-10 0 L10 0 M-6 10 L6 6"></path>
+            <circle cx="0" cy="20" r="3"></circle>
+          </g>
+          <!-- banner cloth -->
+          <path d="M200 60 L290 60 L270 100 L290 140 L200 140 Z"></path>
+          <path d="M200 60 L110 60 L130 100 L110 140 L200 140 Z"></path>
+          <!-- cross on banner -->
+          <g transform="translate(200 100)">
+            <path d="M0 -22 L0 22 M-12 -8 L12 -8 M-16 0 L16 0 M-9 12 L9 8"></path>
+          </g>
+          <!-- tassels -->
+          <line x1="160" y1="148" x2="160" y2="160"></line>
+          <line x1="180" y1="148" x2="180" y2="162"></line>
+          <line x1="220" y1="148" x2="220" y2="162"></line>
+          <line x1="240" y1="148" x2="240" y2="160"></line>
+        </g>
+        <!-- crossed shashka sabres at base -->
+        <g transform="translate(200 240)" stroke="#c9a961" stroke-width="1.2" fill="none" opacity=".75">
+          <path d="M-90 30 L60 -30"></path>
+          <path d="M-100 24 L-86 38 M-94 18 L-80 32"></path>
+          <path d="M64 -34 L72 -22" stroke-width="1.4"></path>
+          <path d="M90 30 L-60 -30"></path>
+          <path d="M100 24 L86 38 M94 18 L80 32"></path>
+          <path d="M-64 -34 L-72 -22" stroke-width="1.4"></path>
+        </g>
+        <!-- two cossack figures flanking -->
+        <g fill="none" stroke="#c9a961" stroke-width="1" opacity=".7">
+          <g transform="translate(60 200)">
+            <circle cx="0" cy="-20" r="9"></circle>
+            <path d="M-3 -28 Q0 -32 3 -28"></path>
+            <path d="M-12 -8 L-14 30 L14 30 L12 -8 Q12 -12 0 -12 Q-12 -12 -12 -8 Z"></path>
+            <path d="M-14 30 L-18 70 M14 30 L18 70"></path>
+          </g>
+          <g transform="translate(340 200)">
+            <circle cx="0" cy="-20" r="9"></circle>
+            <path d="M-3 -28 Q0 -32 3 -28"></path>
+            <path d="M-12 -8 L-14 30 L14 30 L12 -8 Q12 -12 0 -12 Q-12 -12 -12 -8 Z"></path>
+            <path d="M-14 30 L-18 70 M14 30 L18 70"></path>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="section__body">
+      <div class="section__num">V</div>
+      <div class="section__kicker">Кубанское казачье войско</div>
+      <h2 class="section__title">Войсковое окормление казачества</h2>
+      <div class="section__rule"></div>
+      <p class="section__lead">Войсковой собор Александра Невского — главный храм Кубанского казачьего войска. Здесь совершается духовное окормление казаков всех станиц и хуторов края, освящаются войсковые святыни и хоругви.</p>
+      <p class="section__lead">При соборе действует казачий наставнический совет. Настоятель собора — войсковой священник Кубанского казачьего войска.</p>
+      <ul class="section__list">
+        <li>Присяга казаков и благословение хоругвей</li>
+        <li>Молебны в дни памяти казачьих святых</li>
+        <li>Совместные паломничества и крестные ходы</li>
+        <li>Духовное окормление казачьих кадетских корпусов</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+</main>
+
+<?php get_footer(); ?>

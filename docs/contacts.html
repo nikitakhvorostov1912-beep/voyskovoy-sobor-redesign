@@ -808,6 +808,41 @@ body .uheader__cta:hover {
     body .uheader__inner { height: 70px; gap: 16px; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/site-additions.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "Войсковой собор святого благоверного князя Александра Невского",
+  "alternateName": "Войсковой Собор Александра Невского",
+  "url": "https://alexander-nevskiysobor.ru",
+  "telephone": "+7 (861) 262-00-20",
+  "email": "nevskiy-sobor@mail.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Постовая, 26",
+    "addressLocality": "Краснодар",
+    "postalCode": "350063",
+    "addressRegion": "Краснодарский край",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.014800,
+    "longitude": 38.971200
+  },
+  "foundingDate": "1853",
+  "openingHours": "Mo-Su 07:00-19:00",
+  "sameAs": [
+    "https://vk.com/voyskovoysoborkrasnodar",
+    "https://t.me/alexnewsobor"
+  ],
+  "parentOrganization": {
+    "@type": "ReligiousOrganization",
+    "name": "Екатеринодарская и Кубанская епархия Русской Православной Церкви"
+  }
+}
+</script>
 </head>
 <body>
 <header class="uheader" role="banner">
@@ -829,14 +864,23 @@ body .uheader__cta:hover {
     </a>
     <nav class="uheader__nav" aria-label="Главная навигация">
       <a href="index.html">Главная</a>
+      <a href="about.html">О соборе</a>
       <a href="history.html">История</a>
       <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
       <a href="clergy.html">Духовенство</a>
       <a href="parish-life.html">Приход</a>
       <a href="icons.html">Святыни</a>
       <a href="news.html">Новости</a>
       <a href="contacts.html" class="is-active" aria-current="page">Контакты</a>
     </nav>
+        <button class="menu-trigger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
     <a href="donate.html" class="uheader__cta">Пожертвовать</a>
   </div>
 </header>
@@ -979,12 +1023,6 @@ body .uheader__cta:hover {
 
       <!-- MAP -->
       <div class="map-col">
-        <div class="map-tabs" role="tablist">
-          <button class="tab active" data-mode="map">Схема</button>
-          <button class="tab" data-mode="sat">Спутник</button>
-          <button class="tab" data-mode="hyb">Гибрид</button>
-        </div>
-
         <div class="map" id="map">
           <div class="map-canvas"></div>
           <div class="map-overlay"></div>
@@ -998,12 +1036,6 @@ body .uheader__cta:hover {
 
           <!-- coords -->
           <div class="map-coord num">45.014800° N · 38.971200° E</div>
-
-          <!-- zoom -->
-          <div class="map-zoom">
-            <button>+</button>
-            <button>−</button>
-          </div>
 
           <!-- pin -->
           <div class="pin">
@@ -1030,18 +1062,18 @@ body .uheader__cta:hover {
         </div>
 
         <div class="map-actions">
-          <button class="btn primary">
+          <a class="btn primary" href="https://yandex.ru/maps/?rtext=~45.014800%2C38.971200&rtt=auto" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 22l8-4 8 4z"></path></svg>
             Построить маршрут
-          </button>
+          </a>
           <button class="btn" id="copyCoord">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="12" height="12" rx="1"></rect><rect x="4" y="4" width="12" height="12" rx="1"></rect></svg>
             <span id="copyLabel">Скопировать координаты</span>
           </button>
-          <button class="btn">
+          <a class="btn" href="https://yandex.ru/maps/?text=350063%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B4%D0%B0%D1%80%20%D0%9F%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D0%B0%D1%8F%2026" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-8 9 8v10H3z"></path><path d="M9 21v-6h6v6"></path></svg>
             Открыть в Яндекс.Картах
-          </button>
+          </a>
         </div>
       </div>
 
@@ -1163,7 +1195,7 @@ body .uheader__cta:hover {
         <h3>Беседа с настоятелем</h3>
         <p>Прот.&nbsp;Иоанн Гармаш принимает <strong>по предварительной записи</strong>: вторник и четверг, <span class="num">16:00&nbsp;—&nbsp;18:00</span>. Просим заранее обозначить тему встречи — это поможет батюшке подготовиться.</p>
       </div>
-      <button class="btn primary" style="white-space:nowrap">Записаться</button>
+      <button class="btn primary" id="apptScheduleBtn" type="button" style="white-space:nowrap">Записаться</button>
     </div>
   </div>
 </section>
@@ -1185,10 +1217,10 @@ body .uheader__cta:hover {
         Если у вас есть вопрос, на который не удалось найти ответ на сайте — напишите нам. Мы внимательно прочитаем ваше письмо.
       </p>
 
-      <form>
+      <form action="mailto:nevskiy-sobor@mail.ru" method="post" enctype="text/plain">
         <div class="field">
-          <label>Тема обращения</label>
-          <select>
+          <label for="form-subject">Тема обращения</label>
+          <select id="form-subject" name="Тема">
             <option>Общий вопрос</option>
             <option>Запись на встречу с настоятелем</option>
             <option>Запись венчания</option>
@@ -1202,29 +1234,29 @@ body .uheader__cta:hover {
 
         <div class="row2">
           <div class="field">
-            <label>Ваше имя</label>
-            <input type="text" placeholder="Как к вам обращаться">
+            <label for="form-name">Ваше имя</label>
+            <input id="form-name" name="Имя" type="text" placeholder="Как к вам обращаться" required>
           </div>
           <div class="field">
-            <label>Email или телефон</label>
-            <input type="text" placeholder="чтобы мы могли ответить">
+            <label for="form-contact">Email или телефон</label>
+            <input id="form-contact" name="Контакт" type="text" placeholder="чтобы мы могли ответить" required>
           </div>
         </div>
 
         <div class="field">
-          <label>Сообщение</label>
-          <textarea rows="4" placeholder="Опишите вопрос — несколько предложений достаточно"></textarea>
+          <label for="form-message">Сообщение</label>
+          <textarea id="form-message" name="Сообщение" rows="4" placeholder="Опишите вопрос — несколько предложений достаточно" required></textarea>
         </div>
 
         <label class="check">
-          <input type="checkbox" checked="">
+          <input type="checkbox" name="Согласие" value="да" checked required>
           <span class="box">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-6"></path></svg>
           </span>
-          <span class="t">Согласен(на) на обработку персональных данных в соответствии с <a href="history.html" style="color:var(--gold-deep);border-bottom:1px solid var(--rule)">политикой</a> прихода.</span>
+          <span class="t">Согласен(на) на обработку персональных данных в соответствии с <a href="privacy.html" style="color:var(--gold-deep);border-bottom:1px solid var(--rule)">политикой</a> прихода.</span>
         </label>
 
-        <button type="button" class="submit">Отправить письмо</button>
+        <button type="submit" class="submit">Отправить письмо</button>
       </form>
 
       <div class="form-foot">
@@ -1236,42 +1268,71 @@ body .uheader__cta:hover {
 </section>
 
 <!-- ============== FOOTER ============== -->
-<footer>
-  <div class="foot">
-    <div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <svg class="sigil-mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="32" cy="32" r="30" stroke-opacity=".5"></circle>
-          <path d="M32 8v48M22 18h20M16 28h32M22 44l20-12M42 44 22 32"></path>
+<footer class="usite-footer" role="contentinfo">
+  <div class="usite-footer__inner">
+    <div class="usite-footer__brand">
+      <div class="usite-footer__brand-row">
+        <svg class="usite-footer__sigil" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 2 L42 9 V25 C42 36 34 43 24 46 C14 43 6 36 6 25 V9 Z" stroke="#c9a961" stroke-width="1.2" fill="rgba(201,169,97,.06)"/>
+          <g stroke="#c9a961" stroke-width="1.4" stroke-linecap="square">
+            <line x1="24" y1="11" x2="24" y2="38"/>
+            <line x1="18" y1="17" x2="30" y2="17"/>
+            <line x1="16" y1="22" x2="32" y2="22"/>
+            <line x1="18" y1="32" x2="30" y2="29"/>
+          </g>
         </svg>
         <div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#f0e7cf">Войсковой Собор</div>
-          <div style="font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase">св. блгв. кн. Александра Невского</div>
+          <div class="usite-footer__name">Войсковой Собор</div>
+          <div class="usite-footer__sub">Александра Невского · Краснодар</div>
         </div>
       </div>
-      <div class="legal-foot">
-        Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г. Краснодара Екатеринодарской и Кубанской епархии Русской Православной Церкви.
-      </div>
+      <p class="usite-footer__addr">
+        ул. Постовая, 26 · Краснодар, 350063<br>
+        <a href="tel:+78612620020">+7&nbsp;(861)&nbsp;262-00-20</a><br>
+        <a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a>
+      </p>
+      <p class="usite-footer__quote">«Дом мой домом молитвы наречётся»<span>Евангелие от Матфея 21:13</span></p>
     </div>
-    <div>
+
+    <nav class="usite-footer__col" aria-label="Приход">
       <h5>Приход</h5>
       <a href="about.html">О соборе</a>
       <a href="history.html">История</a>
       <a href="clergy.html">Духовенство</a>
-      <a href="contacts.html">Социальное служение</a>
-      <a href="contacts.html">Воскресная школа</a>
-    </div>
-    <div>
-      <h5>Связаться</h5>
-      <a href="tel:+78612620020" class="num">+7 (861) 262-00-20</a>
-      <a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a>
-      <a href="tel:+78612620020">350063, Краснодар, Постовая, 26</a>
-      <a href="mailto:nevskiy-sobor@mail.ru">Карта проезда</a>
+      <a href="parish-life.html">Приходская жизнь</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+
+    <nav class="usite-footer__col" aria-label="Богослужение">
+      <h5>Богослужение</h5>
+      <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
+      <a href="icons.html">Святыни</a>
+      <a href="news.html">Новости</a>
+    </nav>
+
+    <nav class="usite-footer__col" aria-label="Помощь храму">
+      <h5>Помощь храму</h5>
+      <a href="donate.html">Пожертвовать</a>
+      <a href="donate.html#requisites">Реквизиты для перевода</a>
+      <a href="parish-life.html#school">Воскресная школа</a>
+      <a href="parish-life.html#sisterhood">Социальное служение</a>
+    </nav>
+
+    <div class="usite-footer__social" aria-label="Социальные сети">
+      <a href="https://vk.com/voyskovoysoborkrasnodar" aria-label="ВКонтакте" rel="noopener" target="_blank">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.426.131-.426s-.019-1.31.586-1.502c.598-.19 1.367 1.262 2.181 1.821.616.422 1.084.33 1.084.33l2.176-.03s1.139-.071.599-.97c-.044-.073-.314-.665-1.617-1.881-1.366-1.272-1.183-1.066.461-3.296 1.001-1.359 1.401-2.187 1.276-2.541-.119-.34-.873-.25-.873-.25l-2.45.015s-.182-.025-.317.057c-.131.08-.215.265-.215.265s-.388 1.046-.905 1.937c-1.092 1.879-1.529 1.978-1.708 1.86-.416-.273-.312-1.097-.312-1.683 0-1.83.275-2.594-.529-2.794-.267-.066-.464-.111-1.146-.118-.875-.009-1.616.003-2.035.21-.279.139-.494.45-.363.467.162.022.529.099.724.366.252.345.243 1.117.243 1.117s.144 2.13-.336 2.395c-.329.181-.78-.189-1.754-1.894-.499-.872-.876-1.838-.876-1.838s-.072-.179-.201-.275c-.156-.116-.374-.153-.374-.153l-2.328.015s-.349.01-.477.163c-.114.136-.009.418-.009.418s1.823 4.286 3.887 6.444c1.892 1.978 4.04 1.847 4.04 1.847h.973z"/></svg>
+      </a>
+      <a href="https://t.me/alexnewsobor" aria-label="Telegram" rel="noopener" target="_blank">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="m22.05 2.077-2.16 18.96c-.16 1.4-.99 1.74-2 1.08l-5.68-4.18-2.74 2.64c-.3.3-.56.56-1.14.56l.41-5.78 10.55-9.53c.46-.41-.1-.64-.71-.23L5.55 12.06l-5.6-1.75c-1.22-.38-1.24-1.22.26-1.81L20.49.39c1.01-.38 1.9.23 1.56 1.69z"/></svg>
+      </a>
     </div>
   </div>
-  <div class="foot-bottom">
-    <span>© 2026 · Войсковой собор Александра Невского</span>
-    <span>Краснодар · Екатеринодарская и Кубанская епархия</span>
+
+  <div class="usite-footer__bottom">
+    <span>© 1872–2026 МПРПО Войсковой Собор Александра Невского. Екатеринодарская и Кубанская епархия Русской Православной Церкви.</span>
+    <span>ИНН 2309091590 · ОГРН 1052335002521</span>
+    <a href="privacy.html">Положение о персональных данных</a>
   </div>
 </footer>
 
@@ -1297,18 +1358,20 @@ body .uheader__cta:hover {
     document.getElementById('legalDetail').classList.toggle('open');
   });
 
-  // Map tabs
-  document.querySelectorAll('.map-tabs .tab').forEach(t=>{
-    t.addEventListener('click', ()=>{
-      document.querySelectorAll('.map-tabs .tab').forEach(x=>x.classList.remove('active'));
-      t.classList.add('active');
-      const m = document.getElementById('map').querySelector('.map-canvas');
-      const mode = t.dataset.mode;
-      if(mode==='sat'){ m.style.filter='saturate(1.1) brightness(.85) hue-rotate(-10deg)'; m.style.background='linear-gradient(160deg,#3a3a2a,#262418 60%,#15140d)'; }
-      else if(mode==='hyb'){ m.style.filter='saturate(.9)'; m.style.background='linear-gradient(160deg,#2f3a3a,#1a2222 60%,#101414)'; }
-      else { m.style.filter=''; m.style.background=''; }
+  // Appointment "Записаться" — scroll к форме + preselect темы + focus
+  const apptBtn = document.getElementById('apptScheduleBtn');
+  if (apptBtn) {
+    apptBtn.addEventListener('click', () => {
+      const subj = document.getElementById('form-subject');
+      if (subj) {
+        const opt = Array.from(subj.options).find(o => o.value === 'Запись на встречу с настоятелем' || o.text.includes('настоятел'));
+        if (opt) subj.value = opt.value;
+      }
+      const form = document.querySelector('form[action^="mailto:"]');
+      if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => document.getElementById('form-name')?.focus(), 600);
     });
-  });
+  }
 
   // Copy coords
   const copyBtn = document.getElementById('copyCoord');
@@ -1322,4 +1385,39 @@ body .uheader__cta:hover {
 </script>
 
 
+
+<div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Главное меню" aria-hidden="true">
+  <div class="mobile-drawer__head">
+    <a href="index.html" class="mobile-drawer__brand">
+      Войсковой Собор<br>Александра Невского
+      <small>Краснодар · 1872</small>
+    </a>
+    <button class="close" aria-label="Закрыть меню">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="6" y1="18" x2="18" y2="6"></line>
+      </svg>
+    </button>
+  </div>
+  <nav class="mobile-drawer__nav" aria-label="Главная навигация (мобильная)">
+      <a href="index.html">Главная</a>
+      <a href="about.html">О соборе</a>
+      <a href="history.html">История</a>
+      <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
+      <a href="clergy.html">Духовенство</a>
+      <a href="parish-life.html">Приход</a>
+      <a href="icons.html">Святыни</a>
+      <a href="news.html">Новости</a>
+      <a href="contacts.html" class="is-active" aria-current="page">Контакты</a>
+  </nav>
+  <a href="donate.html" class="mobile-drawer__cta">Пожертвовать</a>
+  <div class="mobile-drawer__contact">
+    <p>ул. Постовая, 26 · Краснодар</p>
+    <p><a href="tel:+78612620020">+7 (861) 262-00-20</a></p>
+    <p><a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a></p>
+  </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
 </body></html>

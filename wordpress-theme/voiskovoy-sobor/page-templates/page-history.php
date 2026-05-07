@@ -1,0 +1,1037 @@
+<?php
+/**
+ * Template Name: История
+ *
+ * Шаблон страницы «История» — сгенерирован из docs/history.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>
+  :root{
+    --parchment:#f5f0e8;
+    --parchment-2:#ede5d6;
+    --parchment-3:#e3d8c2;
+    --ink:#1a1f2e;
+    --ink-soft:#3a4358;
+    --gold:#c9a961;
+    --gold-deep:#a98a45;
+    --gold-soft:#e0c98a;
+    --bordo:#8b2635;
+    --bordo-deep:#6b1d29;
+    --rule:rgba(26,31,46,.18);
+    --rule-soft:rgba(26,31,46,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--parchment);color:var(--ink);}
+  body{
+    font-family:'Spectral', Georgia, serif;
+    font-weight:400;font-size:18px;line-height:1.8;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--gold);color:var(--ink);}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:
+      radial-gradient(rgba(26,31,46,.025) 1px, transparent 1px),
+      radial-gradient(rgba(201,169,97,.03) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode:multiply;
+  }
+
+  /* progress */
+  .progress-track{
+    position:fixed;left:0;right:0;top:60px;height:2px;background:transparent;z-index:60;
+  }
+  .progress-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold),var(--gold-soft));
+    box-shadow:0 0 8px rgba(201,169,97,.5);
+    transition:width .12s linear;
+  }
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);color:var(--parchment);
+    height:60px;border-bottom:1px solid rgba(201,169,97,.25);
+  }
+  .hwrap{
+    max-width:1280px;margin:0 auto;height:100%;
+    padding:0 32px;display:flex;align-items:center;gap:36px;
+  }
+  .sigil{display:flex;align-items:center;gap:12px;color:var(--parchment);text-decoration:none;}
+  .sigil-mark{
+    width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;
+    display:grid;place-items:center;color:var(--gold);
+  }
+  .sigil-name{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;font-size:17px;letter-spacing:.04em;line-height:1;
+  }
+  .sigil-sub{
+    font-family:'PT Sans', sans-serif;
+    font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);
+    margin-top:3px;
+  }
+  nav.primary{display:flex;gap:32px;margin-left:8px;flex:1;}
+  nav.primary a{
+    font-family:'PT Sans', sans-serif;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--parchment);text-decoration:none;opacity:.78;
+    padding:6px 0;position:relative;transition:opacity .2s;
+  }
+  nav.primary a:hover{opacity:1;}
+  nav.primary a.active{color:var(--gold);opacity:1;}
+  nav.primary a.active::before{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--gold);
+  }
+  .breadcrumb-trail{
+    font-family:'PT Sans', sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-soft);opacity:.7;margin-left:4px;
+  }
+  .breadcrumb-trail .arr{color:var(--gold);margin:0 8px;}
+  .donate{
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+    color:var(--ink);background:var(--gold);
+    padding:9px 18px;border:1px solid var(--gold);
+    text-decoration:none;transition:background .2s;
+  }
+  .donate:hover{background:var(--gold-soft);}
+
+  /* cover */
+  .cover{
+    position:relative;height:60vh;min-height:520px;
+    overflow:hidden;
+    background:#15121a;
+  }
+  .cover-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 50% 35%, #2a2030 0%, #1a1525 45%, #0e0b14 100%);
+    transform:scale(1);
+    animation:kenburns 18s ease-out forwards;
+  }
+  /* engraved cathedral silhouette as decorative SVG behind title */
+  .cover-svg{
+    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;
+    opacity:.18;pointer-events:none;
+  }
+  .cover-svg svg{width:min(880px, 86%);height:auto;}
+  @keyframes kenburns{from{transform:scale(1)} to{transform:scale(1.06)}}
+  .cover-vignette{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at center, rgba(0,0,0,.0) 30%, rgba(0,0,0,.55) 78%, rgba(0,0,0,.85) 100%),
+      linear-gradient(180deg, rgba(201,169,97,.10) 0%, transparent 30%, rgba(0,0,0,.55) 100%);
+  }
+  .cover-grain{
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg, rgba(255,240,200,.02) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;pointer-events:none;
+  }
+  .cover-inner{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;color:var(--parchment);padding:0 32px;
+  }
+  .kicker{
+    font-family:'PT Sans', sans-serif;
+    font-size:12px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:28px;
+  }
+  h1.cover-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(44px, 7vw, 92px);
+    line-height:1.05;letter-spacing:-.005em;
+    margin:0 0 22px;color:#f5ecd5;
+    text-shadow:0 2px 30px rgba(0,0,0,.5);
+  }
+  .cover-sub{
+    font-family:'Spectral', serif;font-style:italic;font-weight:300;
+    font-size:clamp(18px, 1.6vw, 22px);
+    color:rgba(245,236,213,.88);
+    max-width:680px;margin:0 auto;letter-spacing:.01em;
+  }
+  .cover-meta{
+    position:absolute;left:0;right:0;bottom:28px;
+    display:flex;justify-content:center;gap:0;
+    color:var(--gold);
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  }
+  .cover-meta span{padding:0 18px;border-right:1px solid rgba(201,169,97,.4);}
+  .cover-meta span:last-child{border-right:none;}
+
+  /* article */
+  .article-shell{position:relative;background:var(--parchment);padding:96px 0 80px;}
+  .article-shell::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:90px;
+    background:linear-gradient(180deg, rgba(26,31,46,.06), transparent);pointer-events:none;
+  }
+  .article-grid{
+    max-width:780px;margin:0 auto;padding:0 32px;
+  }
+  .article-grid p{margin:0 0 1.5em;text-wrap:pretty;hyphens:auto;}
+  .article-grid p.lead{font-size:21px;line-height:1.75;}
+  .article-grid h2{
+    font-family:'Cormorant Garamond', serif;font-weight:700;
+    font-size:36px;line-height:1.15;letter-spacing:-.005em;
+    margin:0 0 .35em;color:var(--ink);
+  }
+  .h2-line{width:60px;height:1.5px;background:var(--gold);margin-bottom:1.4em;}
+  .h2-eyebrow{
+    font-family:'PT Sans', sans-serif;
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:14px;display:flex;align-items:baseline;gap:14px;
+  }
+  .h2-eyebrow .num{
+    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-size:14px;letter-spacing:0;text-transform:none;color:var(--bordo);
+  }
+  .dropcap::first-letter{
+    font-family:'Cormorant Garamond', serif;font-weight:700;color:var(--gold-deep);
+    font-size:6em;line-height:.85;float:left;
+    padding:.06em .12em 0 0;margin-top:.05em;
+    text-shadow:0 2px 0 rgba(201,169,97,.18);
+  }
+  .smallcaps{font-variant:all-small-caps;letter-spacing:.08em;font-weight:500;}
+
+  /* pull-quote */
+  .pullquote{
+    max-width:880px;margin:48px -50px 56px;
+    text-align:center;position:relative;
+  }
+  @media (max-width:900px){.pullquote{margin:36px 0;}}
+  .pullquote .qmarks{
+    font-family:'Cormorant Garamond', serif;color:var(--gold);
+    font-size:54px;line-height:1;margin-bottom:8px;letter-spacing:.1em;
+  }
+  .pullquote blockquote{
+    margin:0;font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-size:28px;line-height:1.45;color:var(--ink);letter-spacing:.005em;
+  }
+  .pullquote cite{
+    display:block;margin-top:22px;
+    font-family:'PT Sans', sans-serif;font-style:normal;
+    font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--bordo);
+  }
+  .pullquote cite::before{
+    content:"";display:inline-block;width:28px;height:1px;background:var(--gold);
+    vertical-align:middle;margin-right:14px;
+  }
+
+  /* memorial */
+  .memorial{
+    max-width:880px;margin:40px -50px;
+    padding:32px 36px 36px;
+    background:linear-gradient(180deg, rgba(139,38,53,.05), rgba(139,38,53,.02));
+    border-left:3px solid var(--bordo);
+    border-top:1px solid rgba(139,38,53,.15);
+    border-bottom:1px solid rgba(139,38,53,.15);
+    position:relative;
+  }
+  @media (max-width:900px){.memorial{margin:32px 0;padding:24px 22px;}}
+  .memorial::before{
+    content:"†";position:absolute;top:18px;right:24px;
+    font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--bordo);opacity:.55;
+  }
+  .memorial-eyebrow{
+    font-family:'PT Sans',sans-serif;
+    font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--bordo);margin-bottom:6px;
+  }
+  .memorial h3{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:24px;line-height:1.2;margin:0 0 16px;color:var(--bordo-deep);max-width:560px;
+  }
+  .memorial ul{margin:0;padding:0;list-style:none;columns:2;column-gap:42px;}
+  @media (max-width:700px){.memorial ul{columns:1;}}
+  .memorial li{
+    font-family:'Spectral',serif;font-size:15px;line-height:1.7;
+    break-inside:avoid;padding:4px 0;
+    border-bottom:1px dotted rgba(139,38,53,.2);
+    display:flex;justify-content:space-between;gap:12px;
+  }
+  .memorial li .yr{
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.16em;
+    color:var(--bordo);align-self:center;white-space:nowrap;
+  }
+  .memorial-foot{
+    margin-top:18px;font-family:'Spectral',serif;font-style:italic;font-size:13.5px;color:var(--ink-soft);
+  }
+
+  /* divider — single SVG cross+vine */
+  .divider{
+    display:flex;justify-content:center;align-items:center;
+    margin:64px 0;color:var(--gold);
+  }
+
+  /* CTA */
+  .schedule-cta{margin:36px 0 12px;display:flex;justify-content:center;}
+  .schedule-cta a{
+    font-family:'PT Sans',sans-serif;
+    font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;
+    color:var(--ink);background:var(--gold);
+    padding:16px 34px;text-decoration:none;
+    border:1px solid var(--gold-deep);transition:background .2s;
+  }
+  .schedule-cta a:hover{background:var(--gold-soft);}
+  .schedule-cta a::after{content:" →";color:var(--ink);}
+
+  /* timeline */
+  .timeline-section{
+    background:var(--ink);color:var(--parchment);
+    padding:110px 32px 130px;position:relative;overflow:hidden;
+  }
+  .timeline-section::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at top, rgba(201,169,97,.06), transparent 60%);pointer-events:none;
+  }
+  .ts-head{text-align:center;max-width:760px;margin:0 auto 80px;position:relative;}
+  .ts-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:64px;line-height:1.05;margin:0 0 14px;color:#f5ecd5;
+  }
+  .ts-head p{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:18px;color:rgba(245,236,213,.7);margin:0;
+  }
+  .ts-wrap{max-width:1080px;margin:0 auto;position:relative;}
+  .ts-axis{
+    position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(180deg, transparent, var(--gold) 6%, var(--gold) 94%, transparent);
+    transform:translateX(-.5px);
+  }
+  .ts-event{
+    display:grid;grid-template-columns:1fr 64px 1fr;align-items:start;
+    margin-bottom:64px;position:relative;
+  }
+  .ts-event:last-child{margin-bottom:0;}
+  .ts-event .ts-card{grid-column:1;text-align:right;padding-right:18px;}
+  .ts-event:nth-child(even) .ts-card{grid-column:3;text-align:left;padding-right:0;padding-left:18px;}
+  .ts-node{
+    grid-column:2;width:48px;height:48px;border-radius:50%;
+    border:1px solid var(--gold);background:var(--ink);
+    display:grid;place-items:center;color:var(--gold);
+    margin:6px auto 0;position:relative;z-index:2;
+    box-shadow:0 0 0 6px var(--ink), 0 0 28px rgba(201,169,97,.18);
+  }
+  .ts-node.epoch-loss{color:var(--bordo);border-color:var(--bordo);}
+  .ts-node.epoch-revival{background:var(--gold);color:var(--ink);}
+  .ts-year{
+    font-family:'Spectral',serif;font-weight:700;
+    font-size:36px;line-height:1;letter-spacing:.01em;color:var(--gold);
+    margin-bottom:8px;display:block;
+  }
+  .ts-title{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:20px;line-height:1.35;color:#f5ecd5;margin:0 0 6px;
+  }
+  .ts-desc{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:14.5px;line-height:1.6;color:rgba(245,236,213,.65);margin:0;
+  }
+  .ts-event.is-loss .ts-year{color:#d76b78;}
+  .ts-event.is-jubilee .ts-year{color:var(--gold-soft);}
+
+  /* sources */
+  .sources-section{background:var(--parchment);padding:120px 32px 100px;position:relative;}
+  .sources-section::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule-soft);}
+  .sources-wrap{max-width:920px;margin:0 auto;}
+  .sources-section h2{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:48px;line-height:1.05;margin:18px 0 12px;color:var(--ink);
+  }
+  .sources-section .sub{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:17px;line-height:1.6;color:var(--ink-soft);
+    max-width:560px;margin:0 0 50px;
+  }
+  ol.sources{margin:0;padding:0;list-style:none;counter-reset:src;}
+  ol.sources li{
+    counter-increment:src;
+    display:grid;grid-template-columns:48px 1fr;gap:24px;
+    padding:22px 0;border-bottom:1px dashed var(--gold);align-items:baseline;
+  }
+  ol.sources li::before{
+    content:counter(src,decimal-leading-zero);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+    font-size:24px;color:var(--gold-deep);
+  }
+  .src-title{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:20px;line-height:1.3;color:var(--ink);margin:0 0 4px;
+  }
+  .src-meta{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0;
+  }
+  .src-meta .archive-tag{
+    font-family:'PT Sans',sans-serif;font-style:normal;
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--bordo);margin-left:8px;
+  }
+
+  /* related */
+  .related-section{
+    background:var(--parchment-3);padding:100px 32px;
+    border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);
+  }
+  .related-wrap{max-width:1180px;margin:0 auto;}
+  .related-head{text-align:center;margin-bottom:56px;}
+  .related-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:44px;margin:14px 0 0;color:var(--ink);
+  }
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .rcard{
+    background:var(--parchment);border:1px solid var(--rule);
+    text-decoration:none;color:inherit;display:flex;flex-direction:column;
+    transition:transform .25s, box-shadow .25s;
+    padding:34px 30px 32px;
+  }
+  .rcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,31,46,.12);}
+  .rcard-eyebrow{
+    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .rcard-eyebrow::before{
+    content:"";width:24px;height:1px;background:var(--gold);
+  }
+  .rcard h3{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:26px;line-height:1.25;margin:0 0 12px;color:var(--ink);
+  }
+  .rcard p{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0 0 22px;flex:1;
+  }
+  .rcard .read-more{
+    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--bordo);font-weight:700;
+  }
+  .rcard .read-more::after{content:" →";color:var(--gold-deep);}
+
+  /* footer */
+  footer.site{background:var(--ink);color:rgba(245,236,213,.72);padding:80px 32px 40px;}
+  .fwrap{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:64px;
+  }
+  .f-brand .sigil{margin-bottom:18px;}
+  .f-brand p{
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:15px;line-height:1.7;max-width:340px;margin:0 0 18px;
+  }
+  .f-col h4{
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 22px;font-weight:700;
+  }
+  .f-col ul{list-style:none;margin:0;padding:0;}
+  .f-col li{margin-bottom:12px;}
+  .f-col a{
+    font-family:'Spectral',serif;font-size:15px;color:rgba(245,236,213,.78);
+    text-decoration:none;transition:color .2s;
+  }
+  .f-col a:hover{color:var(--gold);}
+  .f-bottom{
+    max-width:1280px;margin:60px auto 0;padding-top:26px;
+    border-top:1px solid rgba(201,169,97,.18);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(245,236,213,.45);
+  }
+
+  /* float CTA */
+  .float-cta{
+    display:none;position:fixed;right:18px;bottom:18px;z-index:55;
+    background:var(--gold);color:var(--ink);padding:14px 18px;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    text-decoration:none;box-shadow:0 10px 28px rgba(0,0,0,.3);border-radius:2px;
+  }
+
+  /* fade-in */
+  .fade-in{opacity:0;transform:translateY(14px);transition:opacity .9s ease, transform .9s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  .ts-event{opacity:0;transform:translateX(-30px);transition:opacity .8s, transform .8s;}
+  .ts-event:nth-child(even){transform:translateX(30px);}
+  .ts-event.visible{opacity:1;transform:translateX(0);}
+
+  /* mobile */
+  @media (max-width:980px){
+    nav.primary{display:none;}
+    .breadcrumb-trail{display:none;}
+    .hwrap{padding:0 18px;gap:16px;justify-content:space-between;}
+    .donate{padding:8px 14px;font-size:10px;letter-spacing:.22em;}
+    .cover{height:50vh;min-height:380px;}
+    h1.cover-title{font-size:42px;}
+    .cover-sub{font-size:16px;padding:0 12px;}
+    .cover-meta{flex-wrap:wrap;justify-content:center;font-size:10px;letter-spacing:.2em;}
+    .cover-meta span{padding:4px 10px;border-right:none;}
+    .article-shell{padding:56px 0 40px;}
+    .article-grid{padding:0 22px;}
+    .article-grid h2{font-size:28px;}
+    .timeline-section{padding:70px 20px 80px;}
+    .ts-head h2{font-size:42px;}
+    .ts-axis{left:24px;}
+    .ts-event{grid-template-columns:48px 1fr;align-items:start;margin-bottom:42px;}
+    .ts-event .ts-card,
+    .ts-event:nth-child(even) .ts-card{
+      grid-column:2;text-align:left;padding:0 0 0 18px;
+    }
+    .ts-node{grid-column:1;margin:6px 0 0;width:40px;height:40px;}
+    .ts-event{transform:translateX(-12px);}
+    .ts-event:nth-child(even){transform:translateX(-12px);}
+    .sources-section{padding:70px 20px;}
+    .sources-section h2{font-size:34px;}
+    ol.sources li{grid-template-columns:36px 1fr;gap:14px;}
+    .related-section{padding:60px 20px;}
+    .related-grid{grid-template-columns:1fr;}
+    .related-head h2{font-size:32px;}
+    .fwrap{grid-template-columns:1fr;gap:40px;}
+    .float-cta{display:inline-block;}
+  }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
+
+<!-- COVER -->
+<section class="cover" aria-label="Обложка">
+  <div class="cover-bg"></div>
+  <div class="cover-svg" aria-hidden="true">
+    <!-- Engraved silhouette of a five-domed cathedral with bell tower; placeholder until photo asset is provided -->
+    <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg">
+      <title>Силуэт собора</title>
+      <defs>
+        <linearGradient id="goldFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e0c98a" stop-opacity=".9"></stop>
+          <stop offset="100%" stop-color="#a98a45" stop-opacity=".4"></stop>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#goldFade)" stroke-width="1.4" stroke-linecap="square">
+        <!-- main body -->
+        <path d="M260 300 L260 200 L300 200 L300 160 L580 160 L580 200 L620 200 L620 300 Z"></path>
+        <!-- arches lower -->
+        <path d="M310 300 L310 240 Q330 220 350 240 L350 300"></path>
+        <path d="M360 300 L360 240 Q380 220 400 240 L400 300"></path>
+        <path d="M480 300 L480 240 Q500 220 520 240 L520 300"></path>
+        <path d="M530 300 L530 240 Q550 220 570 240 L570 300"></path>
+        <!-- center main dome with cross -->
+        <path d="M380 160 L380 100 Q380 60 440 50 Q500 60 500 100 L500 160"></path>
+        <path d="M440 50 L440 28 M430 36 L450 36 M433 22 L447 22"></path>
+        <!-- four side domes -->
+        <path d="M310 160 L310 130 Q310 105 340 100 Q370 105 370 130 L370 160"></path>
+        <path d="M340 100 L340 86 M333 92 L347 92"></path>
+        <path d="M510 160 L510 130 Q510 105 540 100 Q570 105 570 130 L570 160"></path>
+        <path d="M540 100 L540 86 M533 92 L547 92"></path>
+        <!-- bell tower right -->
+        <path d="M650 300 L650 130 L720 130 L720 300 Z"></path>
+        <path d="M650 130 L685 80 L720 130"></path>
+        <path d="M685 80 L685 56 M676 64 L694 64 M680 50 L690 50"></path>
+        <path d="M670 220 L700 220 M670 250 L700 250"></path>
+        <!-- left chapel -->
+        <path d="M180 300 L180 210 L240 210 L240 300 Z"></path>
+        <path d="M180 210 L210 175 L240 210"></path>
+        <path d="M210 175 L210 158 M204 165 L216 165"></path>
+        <!-- ground line -->
+        <path d="M40 302 L840 302" stroke-width="1"></path>
+        <!-- hatching ground -->
+        <path d="M40 308 L120 308 M150 308 L260 308 M620 308 L740 308 M780 308 L840 308" stroke-width=".7" opacity=".7"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="cover-vignette"></div>
+  <div class="cover-grain"></div>
+  <div class="cover-inner">
+    <div class="kicker">Летопись прихода</div>
+    <h1 class="cover-title">История Войскового Собора</h1>
+    <div class="cover-sub">От первого камня в 1853 году до возрождения в&nbsp;2006-м — путь главного храма Кубанского казачества длиною в&nbsp;174 года.</div>
+  </div>
+  <div class="cover-meta">
+    <span>12 минут чтения</span>
+    <span>Опубликовано в летописи храма</span>
+    <span>Автор: иерей А. Кравченко</span>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<main class="article-shell">
+  <div class="article-grid">
+
+    <p class="lead dropcap fade-in visible">
+      В <span class="smallcaps">истории русской церковной архитектуры</span> Войсковой собор святого благоверного князя Александра Невского занимает особое место — как духовный центр Кубанского казачьего войска и&nbsp;как храм, прошедший через все испытания XX&nbsp;века: от&nbsp;имперского расцвета через богоборческое разрушение к&nbsp;медленному, кропотливому возрождению на&nbsp;рубеже тысячелетий.
+    </p>
+    <p class="fade-in">
+      Эта летопись составлена по&nbsp;материалам епархиального архива, документов Государственного архива Краснодарского края и&nbsp;воспоминаний прихожан. Многие из&nbsp;приведённых здесь свидетельств публикуются впервые в&nbsp;общедоступном формате — мы благодарим архивный отдел Кубанской митрополии за&nbsp;предоставленные источники.
+    </p>
+
+    <div class="divider" aria-hidden="true">
+      <svg width="120" height="44" viewBox="0 0 120 44" fill="none">
+        <path d="M0 22 H44" stroke="currentColor" stroke-width="1"></path>
+        <path d="M76 22 H120" stroke="currentColor" stroke-width="1"></path>
+        <path d="M60 6 V38 M50 14 H70 M52 22 H68 M54 30 H66" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"></path>
+        <path d="M44 22 C 48 16, 52 16, 56 22" stroke="currentColor" stroke-width=".8" fill="none"></path>
+        <path d="M64 22 C 68 28, 72 28, 76 22" stroke="currentColor" stroke-width=".8" fill="none"></path>
+        <circle cx="46" cy="20" r="1.2" fill="currentColor"></circle>
+        <circle cx="50" cy="18" r="1.2" fill="currentColor"></circle>
+        <circle cx="54" cy="20" r="1.2" fill="currentColor"></circle>
+        <circle cx="66" cy="24" r="1.2" fill="currentColor"></circle>
+        <circle cx="70" cy="26" r="1.2" fill="currentColor"></circle>
+        <circle cx="74" cy="24" r="1.2" fill="currentColor"></circle>
+      </svg>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава первая <span class="num">i. 1842 — 1853</span></div>
+      <h2>Идея храма для Кубанского войска</h2>
+      <div class="h2-line"></div>
+      <p>К&nbsp;началу 1840-х&nbsp;годов Черноморское казачье войско, охранявшее южные рубежи империи, не&nbsp;имело собственного войскового собора. Походные церкви, разбросанные по&nbsp;станицам, не&nbsp;могли заменить главного духовного центра — храма, в&nbsp;котором венчались бы знамёна, провожались на&nbsp;службу новобранцы и&nbsp;поминались павшие в&nbsp;кавказских кампаниях.</p>
+      <p>Мысль о&nbsp;строительстве войскового собора впервые была озвучена наказным атаманом генерал-майором Г.&nbsp;А.&nbsp;Рашпилем в&nbsp;рапорте на&nbsp;имя Военного министра в&nbsp;1842&nbsp;году. К&nbsp;нему присоединились старшины войска и&nbsp;духовенство Кавказской епархии. Дело продвигалось медленно — войско собирало пожертвования по&nbsp;копейке, и&nbsp;только к&nbsp;1851&nbsp;году необходимая сумма была изыскана из&nbsp;трёх источников: казённого пособия, доходов войсковой казны и&nbsp;частных приношений.</p>
+    </div>
+
+    <div class="pullquote fade-in">
+      <div class="qmarks">«&nbsp;&nbsp;»</div>
+      <blockquote>Сей храм да&nbsp;будет не&nbsp;токмо домом молитвы, но&nbsp;и&nbsp;знамением верности казачества Престолу и&nbsp;Отечеству, а&nbsp;паче того — Господу нашему Иисусу Христу.</blockquote>
+      <cite>Митрополит Иннокентий (Борисов), напутственное слово, 1851&nbsp;г.</cite>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава вторая <span class="num">ii. 1853</span></div>
+      <h2>Закладка первого камня</h2>
+      <div class="h2-line"></div>
+      <p><span class="smallcaps">29 апреля 1853 года</span>, в&nbsp;день памяти девяти мучеников Кизических, при&nbsp;стечении всего войскового правления, духовенства Ставропольской епархии и&nbsp;множества прихожан был торжественно заложен первый камень. Чин закладки совершил епископ Кавказский и&nbsp;Черноморский Иеремия (Соловьёв).</p>
+      <p>Проект собора принадлежал войсковому архитектору Ивану&nbsp;Денисовичу Чернику — выпускнику Императорской Академии художеств, ученику К.&nbsp;А.&nbsp;Тона. Зодчий выполнил храм в&nbsp;«русско-византийском стиле»: пятиглавый четверик с&nbsp;шатровой колокольней, в&nbsp;духе московского ампира с&nbsp;элементами древнерусских церквей XV–XVI&nbsp;веков. Центральная глава возвышалась на&nbsp;42&nbsp;метра — собор задумывался как самое высокое здание Екатеринодара.</p>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава третья <span class="num">iii. 1872</span></div>
+      <h2>Освящение собора</h2>
+      <div class="h2-line"></div>
+      <p>Строительство, начавшееся при&nbsp;Николае&nbsp;I, продолжалось почти двадцать лет — Крымская война, неурожаи и&nbsp;внутренние реформы империи неоднократно прерывали работы. К&nbsp;началу 1872&nbsp;года собор был полностью завершён: главы покрыты медным золочением, освящён иконостас работы петербургских мастеров, расписаны стены — артелью художника М.&nbsp;Н.&nbsp;Гилярова.</p>
+      <p><span class="smallcaps">8 ноября 1872 года</span>, в&nbsp;день Архистратига Михаила, состоялось великое освящение храма. Чин совершил архиепископ Кавказский и&nbsp;Екатеринодарский Герман&nbsp;(Осецкий). На&nbsp;торжествах присутствовал наследник цесаревич Александр Александрович (будущий император Александр&nbsp;III), специально прибывший из&nbsp;Петербурга. Войсковой хор пел литургию по&nbsp;древним напевам Юго-Западной Руси.</p>
+    </div>
+
+    <div class="pullquote fade-in">
+      <div class="qmarks">«&nbsp;&nbsp;»</div>
+      <blockquote>И&nbsp;воссиял храм яко солнце над Кубанью; и&nbsp;звон его был слышен за&nbsp;двадцать вёрст в&nbsp;окрестных станицах. Народ плакал от&nbsp;радости.</blockquote>
+      <cite>«Кавказские епархиальные ведомости», № 23 за 1872&nbsp;г.</cite>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава четвёртая <span class="num">iv. 1872 — 1932</span></div>
+      <h2>Век служения</h2>
+      <div class="h2-line"></div>
+      <p>Шестьдесят лет, отпущенные собору в&nbsp;имперский и&nbsp;ранне-советский периоды, стали временем расцвета. Войсковой собор был не&nbsp;только местом богослужений: при&nbsp;нём действовали церковно-приходская школа на&nbsp;120&nbsp;учеников, библиотека духовной литературы, попечительство о&nbsp;вдовах казаков и&nbsp;общество трезвости святого князя Александра Невского.</p>
+      <p>Особую роль в&nbsp;жизни прихода сыграл протоиерей <strong>Иоанн&nbsp;Александрович Карташевский</strong>&nbsp;(1864–1928), настоятель собора в&nbsp;1898–1922&nbsp;годах. Богослов, выпускник Киевской духовной академии, он&nbsp;собрал вокруг себя кружок казачьих интеллигентов, ввёл регулярное проповедничество, основал журнал «Кубанский благовестник». В&nbsp;1898&nbsp;году к&nbsp;собору были пристроены два&nbsp;приставных предела — святых равноапостольных Кирилла и&nbsp;Мефодия.</p>
+      <p>Среди известных прихожан-жертвователей собора — атаман М.&nbsp;П.&nbsp;Бабыч, городской голова Екатеринодара В.&nbsp;С.&nbsp;Климов, купеческие династии Тарасовых и&nbsp;Дицманов. Их&nbsp;именные вкладные надписи сохранились на&nbsp;утвари, переданной впоследствии в&nbsp;Историко-археологический музей.</p>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow" style="color:var(--bordo);">Глава пятая <span class="num" style="color:var(--bordo);">v. 1932</span></div>
+      <h2 style="color:var(--bordo-deep);">Время гонений: разрушение собора</h2>
+      <div class="h2-line" style="background:var(--bordo);"></div>
+      <p>Решение о&nbsp;сносе Войскового собора было принято Президиумом Краснодарского горсовета 14&nbsp;марта 1932&nbsp;года. В&nbsp;официальной формулировке — «в&nbsp;связи с&nbsp;реконструкцией центра города и&nbsp;невозможностью использования здания в&nbsp;хозяйственных целях». Подлинной же причиной была программа «безбожной пятилетки», предписывавшая уничтожение крупных храмов в&nbsp;центрах краевых столиц.</p>
+      <p>Демонтаж занял почти год. Сначала были сняты колокола — самый большой, весом 532&nbsp;пуда, отправили на&nbsp;завод имени Седина и&nbsp;переплавили на&nbsp;тракторные детали. Затем разобрали иконостас; иконы, по&nbsp;свидетельству очевидцев, частично передали в&nbsp;краеведческий музей, частично сожгли на&nbsp;площади. Наконец, в&nbsp;августе 1932&nbsp;года, динамитом был обрушен главный купол.</p>
+    </div>
+
+    <div class="pullquote fade-in">
+      <div class="qmarks">«&nbsp;&nbsp;»</div>
+      <blockquote>Я&nbsp;стояла на&nbsp;Красной и&nbsp;слышала, как падал колокол. Звон его был последний — но&nbsp;тот звон я&nbsp;помню до&nbsp;сих пор, восемьдесят лет.</blockquote>
+      <cite>Анна Васильевна Перепёлкина (1922–2014), запись 2009&nbsp;г.</cite>
+    </div>
+
+    <div class="memorial fade-in">
+      <div class="memorial-eyebrow">Помянник усопших</div>
+      <h3>Клирики Войскового собора, расстрелянные и&nbsp;умученные в&nbsp;годы безбожия</h3>
+      <ul>
+        <li><span>прот.&nbsp;Иоанн Карташевский</span><span class="yr">† 1928</span></li>
+        <li><span>прот.&nbsp;Митрофан Воскресенский</span><span class="yr">† 1930</span></li>
+        <li><span>прот.&nbsp;Никандр Беляев</span><span class="yr">† 1932</span></li>
+        <li><span>иерей Александр Поспелов</span><span class="yr">† 1933</span></li>
+        <li><span>иерей Сергий Карташевский</span><span class="yr">† 1937</span></li>
+        <li><span>иерей Петр Сосновский</span><span class="yr">† 1937</span></li>
+        <li><span>диакон Феодор Вышегородский</span><span class="yr">† 1937</span></li>
+        <li><span>псаломщик Михаил Линников</span><span class="yr">† 1938</span></li>
+      </ul>
+      <div class="memorial-foot">Имена внесены в&nbsp;синодик собора. Поминовение совершается в&nbsp;Дни новомучеников Российских и&nbsp;ежегодно 14&nbsp;марта — в&nbsp;день решения о&nbsp;сносе храма.</div>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава шестая <span class="num">vi. 1991 — 2006</span></div>
+      <h2>Возрождение храма</h2>
+      <div class="h2-line"></div>
+      <p>В&nbsp;1991&nbsp;году, после возвращения Кубанскому казачеству статуса юридически оформленного войска, возникла идея восстановить главный войсковой собор. Историческое место — нынешний сквер имени Жукова — было занято; решением митрополита Екатеринодарского и&nbsp;Кубанского Исидора&nbsp;(Кириченко) и&nbsp;администрации края для нового собора была отведена площадь у&nbsp;пересечения улиц Красной и&nbsp;Постовой, в&nbsp;двух кварталах от&nbsp;первоначального места.</p>
+      <p>Закладка краеугольного камня состоялась 28&nbsp;мая 2003&nbsp;года, в&nbsp;день памяти святого благоверного князя Александра Невского. Чин совершил митрополит Исидор в&nbsp;сослужении духовенства епархии и&nbsp;при&nbsp;участии атамана Кубанского казачьего войска. Строительство велось три года&nbsp;— на&nbsp;средства войска, краевой администрации и&nbsp;частных жертвователей.</p>
+      <p><span class="smallcaps">28 мая 2006 года</span> великое освящение возрождённого собора совершил Святейший Патриарх Московский и&nbsp;всея Руси Алексий&nbsp;II в&nbsp;сослужении митрополита Исидора, представителей Священного Синода и&nbsp;казачьего духовенства семи епархий. На&nbsp;богослужении присутствовало более десяти тысяч человек.</p>
+    </div>
+
+    <div class="fade-in">
+      <div class="h2-eyebrow">Глава седьмая <span class="num">vii. 2006 — наст. время</span></div>
+      <h2>Сегодня</h2>
+      <div class="h2-line"></div>
+      <p>За&nbsp;двадцать лет, прошедших с&nbsp;освящения, Войсковой собор стал не&nbsp;только главным храмом Кубанского казачьего войска, но&nbsp;и&nbsp;духовным центром Краснодара. При&nbsp;соборе действуют воскресная школа на&nbsp;200&nbsp;учеников, молодёжный клуб «Александровцы», общество милосердия имени великомученицы Елисаветы, школа церковного пения и&nbsp;иконописная мастерская.</p>
+      <p>Социальное служение прихода включает окормление двух детских домов и&nbsp;Краснодарского хосписа, регулярные сборы помощи многодетным семьям, ежемесячные обеды для бездомных. Хор собора — лауреат международных конкурсов церковного пения; запись литургии 2018&nbsp;года вошла в&nbsp;программу Дней русской культуры в&nbsp;Сербии.</p>
+      <p>В&nbsp;2026&nbsp;году собор отмечает 20-летие возрождения и&nbsp;174 года со&nbsp;дня закладки исторического храма. К&nbsp;юбилейным торжествам готовится издание полного летописного сборника прихода — книги, частью предисловия к&nbsp;которой служит и&nbsp;этот очерк.</p>
+
+      <!-- Современное фото возрождённого собора (Wikimedia Commons, CC BY-SA) -->
+      <figure class="site-photo-frame fade-in" style="max-width:920px;margin:48px auto 24px;">
+        <img src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/photos/cathedral-evening.jpg"); ?>"
+             alt="Войсковой собор Александра Невского — современный вид в вечернем освещении"
+             class="site-photo"
+             loading="lazy">
+        <figcaption class="site-photo-frame__caption">Возрождённый собор сегодня — на пересечении улиц Постовой и Красной</figcaption>
+        <div class="site-photo-frame__attribution">Wikimedia Commons · CC&nbsp;BY-SA</div>
+      </figure>
+    </div>
+
+    <div class="schedule-cta fade-in">
+      <a href="<?php echo esc_url(home_url("/schedule")); ?>">Расписание богослужений</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- TIMELINE -->
+<section class="timeline-section" data-screen-label="Ключевые даты">
+  <div class="ts-head fade-in">
+    <div class="kicker">Хронология</div>
+    <h2>Ключевые даты</h2>
+    <p>Сто семьдесят четыре года в&nbsp;десяти событиях — от&nbsp;первого прошения атамана Рашпиля до&nbsp;юбилейных торжеств 2026&nbsp;года.</p>
+  </div>
+
+  <div class="ts-wrap">
+    <div class="ts-axis" aria-hidden="true"></div>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1842</span>
+        <h3 class="ts-title">Первое прошение о&nbsp;строительстве собора</h3>
+        <p class="ts-desc">Наказной атаман Г.&nbsp;А.&nbsp;Рашпиль направляет рапорт Военному министру.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4 V20 M4 12 H20" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1853</span>
+        <h3 class="ts-title">Закладка первого камня</h3>
+        <p class="ts-desc">29&nbsp;апреля. Чин совершён епископом Иеремией. Архитектор — И.&nbsp;Д.&nbsp;Черник.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="9" width="14" height="11" stroke="currentColor" stroke-width="1.5"></rect><path d="M3 9 L12 3 L21 9" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1872</span>
+        <h3 class="ts-title">Великое освящение</h3>
+        <p class="ts-desc">8&nbsp;ноября в&nbsp;присутствии цесаревича Александра Александровича.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 V21 M7 8 H17 M8 13 H16 M9 18 H15" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1898</span>
+        <h3 class="ts-title">Расширение храма</h3>
+        <p class="ts-desc">Пристройка двух&nbsp;приделов — святых равноапостольных Кирилла и&nbsp;Мефодия.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12 H20 M9 7 V17 M15 7 V17" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1917</span>
+        <h3 class="ts-title">Революционные потрясения</h3>
+        <p class="ts-desc">Конец имперского периода. Конфискация церковных ценностей.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 5 L19 19 M19 5 L5 19" stroke="currentColor" stroke-width="1.5"></path></svg></div>
+    </article>
+
+    <article class="ts-event is-loss">
+      <div class="ts-card">
+        <span class="ts-year">1932</span>
+        <h3 class="ts-title">Снос собора</h3>
+        <p class="ts-desc">Решение Краснодарского горсовета. Демонтаж в&nbsp;течение года.</p>
+      </div>
+      <div class="ts-node epoch-loss"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19 L19 19 M7 19 L7 11 M17 19 L17 11 M5 11 L19 11 L12 5 Z" stroke="currentColor" stroke-width="1.5" fill="none"></path><path d="M3 21 L21 21" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">1991</span>
+        <h3 class="ts-title">Возрождение Кубанского войска</h3>
+        <p class="ts-desc">Возникает идея восстановить войсковой собор на&nbsp;новом месте.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4 V20 M5 12 C 8 9, 16 9, 19 12" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">2003</span>
+        <h3 class="ts-title">Закладка нового собора</h3>
+        <p class="ts-desc">28&nbsp;мая. Митрополит Исидор закладывает краеугольный камень.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="9" width="14" height="11" stroke="currentColor" stroke-width="1.5"></rect><path d="M3 9 L12 3 L21 9" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+
+    <article class="ts-event">
+      <div class="ts-card">
+        <span class="ts-year">2006</span>
+        <h3 class="ts-title">Освящение Святейшим Патриархом</h3>
+        <p class="ts-desc">Алексий&nbsp;II совершает великое освящение возрождённого собора.</p>
+      </div>
+      <div class="ts-node epoch-revival"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 V21 M7 8 H17 M8 13 H16 M9 18 H15" stroke="currentColor" stroke-width="1.6"></path></svg></div>
+    </article>
+
+    <article class="ts-event is-jubilee">
+      <div class="ts-card">
+        <span class="ts-year">2026</span>
+        <h3 class="ts-title">Юбилей возрождения</h3>
+        <p class="ts-desc">20&nbsp;лет со&nbsp;дня великого освящения. Издание летописного сборника.</p>
+      </div>
+      <div class="ts-node"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"></circle><path d="M12 8 V12 L15 14" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></div>
+    </article>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="sources-section" data-screen-label="Источники">
+  <div class="sources-wrap fade-in">
+    <div class="kicker">Apparatus criticus</div>
+    <h2>Источники и литература</h2>
+    <p class="sub">Перечень опубликованных и&nbsp;архивных материалов, использованных при&nbsp;составлении настоящей летописи. Цитаты приводятся по&nbsp;первым изданиям с&nbsp;сохранением орфографии.</p>
+
+    <ol class="sources">
+      <li><div>
+        <h3 class="src-title">Кавказские епархиальные ведомости</h3>
+        <p class="src-meta">Официальный орган Ставропольской и&nbsp;Кавказской епархии. Ставрополь, 1872–1917. <span class="archive-tag">№№ 18–24 за 1872 г.</span></p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Архивы ГА Краснодарского края</h3>
+        <p class="src-meta">Фонд Р-411 «Кубанская епархия», описи 1–3; фонд 470 «Войсковое правление Черноморского казачьего войска». <span class="archive-tag">ГАКК, Краснодар</span></p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Розенберг М.&nbsp;А. Кубанское казачество и&nbsp;его храмы</h3>
+        <p class="src-meta">Историко-архитектурный очерк. — Краснодар: Изд-во Кубанского ун-та, 2008. — 384&nbsp;с.</p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Черник И.&nbsp;Д. Альбом проектов церквей и&nbsp;часовен</h3>
+        <p class="src-meta">Литографическое издание. — СПб.: Типография Императорской Академии художеств, 1869.</p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Памятная книжка Кубанской области</h3>
+        <p class="src-meta">Издания за 1873, 1898, 1907 гг. Очерки общественной и&nbsp;церковной жизни Екатеринодара.</p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">«Кубанский благовестник», журнал прихода</h3>
+        <p class="src-meta">Под&nbsp;ред. прот.&nbsp;И.&nbsp;А.&nbsp;Карташевского. — Екатеринодар, 1908–1918. <span class="archive-tag">Подшивка ГПИБ России</span></p>
+      </div></li>
+      <li><div>
+        <h3 class="src-title">Перепёлкина А.&nbsp;В. Воспоминания о&nbsp;старом Екатеринодаре</h3>
+        <p class="src-meta">Машинопись с&nbsp;правками. Запись и&nbsp;комментарии прот.&nbsp;Г.&nbsp;Зайцева, 2009. <span class="archive-tag">Архив прихода</span></p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related-section">
+  <div class="related-wrap">
+    <div class="related-head fade-in">
+      <div class="kicker">Читайте также</div>
+      <h2>Соседние материалы</h2>
+    </div>
+    <div class="related-grid">
+      <a class="rcard fade-in" href="<?php echo esc_url(home_url("/parish-life")); ?>">
+        <div class="rcard-eyebrow">Жития</div>
+        <h3>Житие святого Александра Невского</h3>
+        <p>Небесный покровитель собора — князь, воин, монах. Очерк его&nbsp;жизни и&nbsp;значения для русской истории.</p>
+        <span class="read-more">Читать</span>
+      </a>
+      <a class="rcard fade-in" href="<?php echo esc_url(home_url("/parish-life")); ?>#choir">
+        <div class="rcard-eyebrow">Музыка</div>
+        <h3>Хор Войскового собора</h3>
+        <p>История клиросного и&nbsp;концертного хора, его&nbsp;регенты, репертуар, лауреатские записи и&nbsp;архивные пластинки.</p>
+        <span class="read-more">Читать</span>
+      </a>
+      <a class="rcard fade-in" href="<?php echo esc_url(home_url("/clergy")); ?>">
+        <div class="rcard-eyebrow">Прихожанам</div>
+        <h3>Духовенство собора</h3>
+        <p>Настоятель, штатные клирики, диаконат и&nbsp;алтарничество — лица и&nbsp;послушания современного клира.</p>
+        <span class="read-more">Читать</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+  const progressFill = document.getElementById('progressFill');
+  function updateProgress(){
+    const article = document.querySelector('.article-shell');
+    if (!article) return;
+    const rect = article.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    const passed = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+    const pct = total > 0 ? (passed / total) * 100 : 0;
+    progressFill.style.width = pct + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in, .ts-event').forEach(el => io.observe(el));
+</script>
+<script type="application/json" id="__om_srcmap">{"gen":"74da742a","entries":[{"id":"74da742a:0","tag":"html","openStart":16,"attrEnd":31,"openEnd":32,"closeStart":57665,"closeEnd":57672,"textRuns":[[32,33],[19910,19911],[57664,57665]],"parentId":null,"childIds":["74da742a:1","74da742a:7"]},{"id":"74da742a:1","tag":"head","openStart":33,"attrEnd":38,"openEnd":39,"closeStart":19903,"closeEnd":19910,"textRuns":[[39,40],[64,65],[135,136],[250,251],[312,313],[383,384],[657,658],[19902,19903]],"parentId":"74da742a:0","childIds":["74da742a:2","74da742a:3","74da742a:4","74da742a:5","74da742a:6"]},{"id":"74da742a:2","tag":"meta","openStart":40,"attrEnd":61,"openEnd":64,"closeEnd":64,"textRuns":[],"parentId":"74da742a:1","childIds":[]},{"id":"74da742a:3","tag":"meta","openStart":65,"attrEnd":132,"openEnd":135,"closeEnd":135,"textRuns":[],"parentId":"74da742a:1","childIds":[]},{"id":"74da742a:4","tag":"link","openStart":251,"attrEnd":309,"openEnd":312,"closeEnd":312,"textRuns":[],"parentId":"74da742a:1","childIds":[]},{"id":"74da742a:5","tag":"link","openStart":313,"attrEnd":380,"openEnd":383,"closeEnd":383,"textRuns":[],"parentId":"74da742a:1","childIds":[]},{"id":"74da742a:6","tag":"link","openStart":384,"attrEnd":654,"openEnd":657,"closeEnd":657,"textRuns":[],"parentId":"74da742a:1","childIds":[]},{"id":"74da742a:7","tag":"body","openStart":19911,"attrEnd":19964,"openEnd":19965,"closeStart":57657,"closeEnd":57664,"textRuns":[[19965,19967],[21055,21057],[21161,21163],[21177,21178],[24228,24230],[24246,24247],[43244,43246],[43263,43264],[49689,49691],[49707,49708],[52884,52886],[52902,52903],[54481,54483],[56740,56742],[56796,56798],[57656,57657]],"parentId":"74da742a:0","childIds":["74da742a:8","74da742a:26","74da742a:28","74da742a:67","74da742a:184","74da742a:275","74da742a:313","74da742a:334","74da742a:377"]},{"id":"74da742a:8","tag":"header","openStart":19967,"attrEnd":19987,"openEnd":19988,"closeStart":21046,"closeEnd":21055,"textRuns":[[19988,19991],[21045,21046]],"parentId":"74da742a:7","childIds":["74da742a:9"]},{"id":"74da742a:9","tag":"div","openStart":19991,"attrEnd":20009,"openEnd":20010,"closeStart":21039,"closeEnd":21045,"textRuns":[[20010,20015],[20557,20562],[20862,20867],[20976,20981],[21036,21039]],"parentId":"74da742a:8","childIds":["74da742a:10","74da742a:17","74da742a:23","74da742a:25"]},{"id":"74da742a:10","tag":"a","openStart":20015,"attrEnd":20083,"openEnd":20084,"closeStart":20553,"closeEnd":20557,"textRuns":[[20084,20091],[20370,20377],[20548,20553]],"parentId":"74da742a:9","childIds":["74da742a:11","74da742a:14"]},{"id":"74da742a:11","tag":"span","openStart":20091,"attrEnd":20134,"openEnd":20135,"closeStart":20363,"closeEnd":20370,"textRuns":[[20135,20144],[20356,20363]],"parentId":"74da742a:10","childIds":["74da742a:12"]},{"id":"74da742a:12","tag":"svg","openStart":20144,"attrEnd":20203,"openEnd":20204,"closeStart":20350,"closeEnd":20356,"textRuns":[[20204,20215]],"parentId":"74da742a:11","childIds":["74da742a:13"]},{"id":"74da742a:13","tag":"path","openStart":20215,"attrEnd":20339,"openEnd":20341,"textRuns":[[20341,20350]],"parentId":"74da742a:12","childIds":[]},{"id":"74da742a:14","tag":"span","openStart":20377,"attrEnd":20382,"openEnd":20383,"closeStart":20541,"closeEnd":20548,"textRuns":[[20383,20392],[20451,20460],[20534,20541]],"parentId":"74da742a:10","childIds":["74da742a:15","74da742a:16"]},{"id":"74da742a:15","tag":"div","openStart":20392,"attrEnd":20415,"openEnd":20416,"closeStart":20445,"closeEnd":20451,"textRuns":[[20416,20445]],"parentId":"74da742a:14","childIds":[]},{"id":"74da742a:16","tag":"div","openStart":20460,"attrEnd":20482,"openEnd":20483,"closeStart":20528,"closeEnd":20534,"textRuns":[[20483,20528]],"parentId":"74da742a:14","childIds":[]},{"id":"74da742a:17","tag":"nav","openStart":20562,"attrEnd":20631,"openEnd":20632,"closeStart":20856,"closeEnd":20862,"textRuns":[[20632,20639],[20665,20672],[20712,20719],[20749,20756],[20812,20819],[20851,20856]],"parentId":"74da742a:9","childIds":["74da742a:18","74da742a:19","74da742a:20","74da742a:21","74da742a:22"]},{"id":"74da742a:18","tag":"a","openStart":20639,"attrEnd":20650,"openEnd":20651,"closeStart":20661,"closeEnd":20665,"textRuns":[[20651,20661]],"parentId":"74da742a:17","childIds":[]},{"id":"74da742a:19","tag":"a","openStart":20672,"attrEnd":20683,"openEnd":20684,"closeStart":20708,"closeEnd":20712,"textRuns":[[20684,20708]],"parentId":"74da742a:17","childIds":[]},{"id":"74da742a:20","tag":"a","openStart":20719,"attrEnd":20730,"openEnd":20731,"closeStart":20745,"closeEnd":20749,"textRuns":[[20731,20745]],"parentId":"74da742a:17","childIds":[]},{"id":"74da742a:21","tag":"a","openStart":20756,"attrEnd":20782,"openEnd":20783,"closeStart":20808,"closeEnd":20812,"textRuns":[[20783,20808]],"parentId":"74da742a:17","childIds":[]},{"id":"74da742a:22","tag":"a","openStart":20819,"attrEnd":20830,"openEnd":20831,"closeStart":20847,"closeEnd":20851,"textRuns":[[20831,20847]],"parentId":"74da742a:17","childIds":[]},{"id":"74da742a:23","tag":"span","openStart":20867,"attrEnd":20897,"openEnd":20898,"closeStart":20969,"closeEnd":20976,"textRuns":[[20898,20924],[20952,20969]],"parentId":"74da742a:9","childIds":["74da742a:24"]},{"id":"74da742a:24","tag":"span","openStart":20924,"attrEnd":20941,"openEnd":20942,"closeStart":20945,"closeEnd":20952,"textRuns":[[20942,20945]],"parentId":"74da742a:23","childIds":[]},{"id":"74da742a:25","tag":"a","openStart":20981,"attrEnd":21007,"openEnd":21008,"closeStart":21032,"closeEnd":21036,"textRuns":[[21008,21032]],"parentId":"74da742a:9","childIds":[]},{"id":"74da742a:26","tag":"div","openStart":21057,"attrEnd":21103,"openEnd":21104,"closeStart":21155,"closeEnd":21161,"textRuns":[],"parentId":"74da742a:7","childIds":["74da742a:27"]},{"id":"74da742a:27","tag":"div","openStart":21104,"attrEnd":21148,"openEnd":21149,"closeStart":21149,"closeEnd":21155,"textRuns":[],"parentId":"74da742a:26","childIds":[]},{"id":"74da742a:28","tag":"section","openStart":21178,"attrEnd":21228,"openEnd":21229,"closeStart":24218,"closeEnd":24228,"textRuns":[[21229,21232],[21260,21263],[23506,23509],[23543,23546],[23577,23580],[24001,24004],[24217,24218]],"parentId":"74da742a:7","childIds":["74da742a:29","74da742a:30","74da742a:57","74da742a:58","74da742a:59","74da742a:63"]},{"id":"74da742a:29","tag":"div","openStart":21232,"attrEnd":21253,"openEnd":21254,"closeStart":21254,"closeEnd":21260,"textRuns":[],"parentId":"74da742a:28","childIds":[]},{"id":"74da742a:30","tag":"div","openStart":21263,"attrEnd":21304,"openEnd":21305,"closeStart":23500,"closeEnd":23506,"textRuns":[[21305,21310],[21423,21428],[23497,23500]],"parentId":"74da742a:28","childIds":["74da742a:31"]},{"id":"74da742a:31","tag":"svg","openStart":21428,"attrEnd":21489,"openEnd":21490,"closeStart":23491,"closeEnd":23497,"textRuns":[[21490,21497],[21537,21544],[21797,21804],[23486,23491]],"parentId":"74da742a:30","childIds":["74da742a:32","74da742a:36"]},{"id":"74da742a:32","tag":"defs","openStart":21544,"attrEnd":21549,"openEnd":21550,"closeStart":21790,"closeEnd":21797,"textRuns":[[21550,21559],[21783,21790]],"parentId":"74da742a:31","childIds":["74da742a:33"]},{"id":"74da742a:33","tag":"lineargradient","openStart":21559,"attrEnd":21616,"openEnd":21617,"closeStart":21766,"closeEnd":21783,"textRuns":[[21617,21628]],"parentId":"74da742a:32","childIds":["74da742a:34"]},{"id":"74da742a:34","tag":"stop","openStart":21628,"attrEnd":21684,"openEnd":21686,"textRuns":[[21686,21697]],"parentId":"74da742a:33","childIds":["74da742a:35"]},{"id":"74da742a:35","tag":"stop","openStart":21697,"attrEnd":21755,"openEnd":21757,"textRuns":[[21757,21766]],"parentId":"74da742a:34","childIds":[]},{"id":"74da742a:36","tag":"g","openStart":21804,"attrEnd":21885,"openEnd":21886,"closeStart":23482,"closeEnd":23486,"textRuns":[[21886,21895],[21913,21922]],"parentId":"74da742a:31","childIds":["74da742a:37"]},{"id":"74da742a:37","tag":"path","openStart":21922,"attrEnd":22005,"openEnd":22007,"textRuns":[[22007,22016],[22037,22046]],"parentId":"74da742a:36","childIds":["74da742a:38"]},{"id":"74da742a:38","tag":"path","openStart":22046,"attrEnd":22099,"openEnd":22101,"textRuns":[[22101,22110]],"parentId":"74da742a:37","childIds":["74da742a:39"]},{"id":"74da742a:39","tag":"path","openStart":22110,"attrEnd":22163,"openEnd":22165,"textRuns":[[22165,22174]],"parentId":"74da742a:38","childIds":["74da742a:40"]},{"id":"74da742a:40","tag":"path","openStart":22174,"attrEnd":22227,"openEnd":22229,"textRuns":[[22229,22238]],"parentId":"74da742a:39","childIds":["74da742a:41"]},{"id":"74da742a:41","tag":"path","openStart":22238,"attrEnd":22291,"openEnd":22293,"textRuns":[[22293,22302],[22338,22347]],"parentId":"74da742a:40","childIds":["74da742a:42"]},{"id":"74da742a:42","tag":"path","openStart":22347,"attrEnd":22414,"openEnd":22416,"textRuns":[[22416,22425]],"parentId":"74da742a:41","childIds":["74da742a:43"]},{"id":"74da742a:43","tag":"path","openStart":22425,"attrEnd":22482,"openEnd":22484,"textRuns":[[22484,22493],[22517,22526]],"parentId":"74da742a:42","childIds":["74da742a:44"]},{"id":"74da742a:44","tag":"path","openStart":22526,"attrEnd":22596,"openEnd":22598,"textRuns":[[22598,22607]],"parentId":"74da742a:43","childIds":["74da742a:45"]},{"id":"74da742a:45","tag":"path","openStart":22607,"attrEnd":22649,"openEnd":22651,"textRuns":[[22651,22660]],"parentId":"74da742a:44","childIds":["74da742a:46"]},{"id":"74da742a:46","tag":"path","openStart":22660,"attrEnd":22730,"openEnd":22732,"textRuns":[[22732,22741]],"parentId":"74da742a:45","childIds":["74da742a:47"]},{"id":"74da742a:47","tag":"path","openStart":22741,"attrEnd":22783,"openEnd":22785,"textRuns":[[22785,22794],[22819,22828]],"parentId":"74da742a:46","childIds":["74da742a:48"]},{"id":"74da742a:48","tag":"path","openStart":22828,"attrEnd":22875,"openEnd":22877,"textRuns":[[22877,22886]],"parentId":"74da742a:47","childIds":["74da742a:49"]},{"id":"74da742a:49","tag":"path","openStart":22886,"attrEnd":22921,"openEnd":22923,"textRuns":[[22923,22932]],"parentId":"74da742a:48","childIds":["74da742a:50"]},{"id":"74da742a:50","tag":"path","openStart":22932,"attrEnd":22989,"openEnd":22991,"textRuns":[[22991,23000]],"parentId":"74da742a:49","childIds":["74da742a:51"]},{"id":"74da742a:51","tag":"path","openStart":23000,"attrEnd":23045,"openEnd":23047,"textRuns":[[23047,23056],[23076,23085]],"parentId":"74da742a:50","childIds":["74da742a:52"]},{"id":"74da742a:52","tag":"path","openStart":23085,"attrEnd":23132,"openEnd":23134,"textRuns":[[23134,23143]],"parentId":"74da742a:51","childIds":["74da742a:53"]},{"id":"74da742a:53","tag":"path","openStart":23143,"attrEnd":23179,"openEnd":23181,"textRuns":[[23181,23190]],"parentId":"74da742a:52","childIds":["74da742a:54"]},{"id":"74da742a:54","tag":"path","openStart":23190,"attrEnd":23235,"openEnd":23237,"textRuns":[[23237,23246],[23266,23275]],"parentId":"74da742a:53","childIds":["74da742a:55"]},{"id":"74da742a:55","tag":"path","openStart":23275,"attrEnd":23318,"openEnd":23320,"textRuns":[[23320,23329],[23353,23362]],"parentId":"74da742a:54","childIds":["74da742a:56"]},{"id":"74da742a:56","tag":"path","openStart":23362,"attrEnd":23473,"openEnd":23475,"textRuns":[[23475,23482]],"parentId":"74da742a:55","childIds":[]},{"id":"74da742a:57","tag":"div","openStart":23509,"attrEnd":23536,"openEnd":23537,"closeStart":23537,"closeEnd":23543,"textRuns":[],"parentId":"74da742a:28","childIds":[]},{"id":"74da742a:58","tag":"div","openStart":23546,"attrEnd":23570,"openEnd":23571,"closeStart":23571,"closeEnd":23577,"textRuns":[],"parentId":"74da742a:28","childIds":[]},{"id":"74da742a:59","tag":"div","openStart":23580,"attrEnd":23604,"openEnd":23605,"closeStart":23995,"closeEnd":24001,"textRuns":[[23605,23610],[23667,23672],[23749,23754],[23992,23995]],"parentId":"74da742a:28","childIds":["74da742a:60","74da742a:61","74da742a:62"]},{"id":"74da742a:60","tag":"div","openStart":23610,"attrEnd":23629,"openEnd":23630,"closeStart":23661,"closeEnd":23667,"textRuns":[[23630,23661]],"parentId":"74da742a:59","childIds":[]},{"id":"74da742a:61","tag":"h1","openStart":23672,"attrEnd":23695,"openEnd":23696,"closeStart":23744,"closeEnd":23749,"textRuns":[[23696,23744]],"parentId":"74da742a:59","childIds":[]},{"id":"74da742a:62","tag":"div","openStart":23754,"attrEnd":23776,"openEnd":23777,"closeStart":23986,"closeEnd":23992,"textRuns":[[23777,23986]],"parentId":"74da742a:59","childIds":[]},{"id":"74da742a:63","tag":"div","openStart":24004,"attrEnd":24027,"openEnd":24028,"closeStart":24211,"closeEnd":24217,"textRuns":[[24028,24033],[24072,24077],[24145,24150],[24208,24211]],"parentId":"74da742a:28","childIds":["74da742a:64","74da742a:65","74da742a:66"]},{"id":"74da742a:64","tag":"span","openStart":24033,"attrEnd":24038,"openEnd":24039,"closeStart":24065,"closeEnd":24072,"textRuns":[[24039,24065]],"parentId":"74da742a:63","childIds":[]},{"id":"74da742a:65","tag":"span","openStart":24077,"attrEnd":24082,"openEnd":24083,"closeStart":24138,"closeEnd":24145,"textRuns":[[24083,24138]],"parentId":"74da742a:63","childIds":[]},{"id":"74da742a:66","tag":"span","openStart":24150,"attrEnd":24155,"openEnd":24156,"closeStart":24201,"closeEnd":24208,"textRuns":[[24156,24201]],"parentId":"74da742a:63","childIds":[]},{"id":"74da742a:67","tag":"main","openStart":24247,"attrEnd":24274,"openEnd":24275,"closeStart":43237,"closeEnd":43244,"textRuns":[[24275,24278],[43236,43237]],"parentId":"74da742a:7","childIds":["74da742a:68"]},{"id":"74da742a:68","tag":"div","openStart":24278,"attrEnd":24303,"openEnd":24304,"closeStart":43230,"closeEnd":43236,"textRuns":[[24304,24310],[25046,25051],[25687,25693],[26668,26674],[28471,28477],[29021,29027],[30641,30647],[32278,32284],[32773,32779],[35023,35029],[36809,36815],[37302,37308],[38809,38815],[41132,41138],[43107,43113],[43226,43230]],"parentId":"74da742a:67","childIds":["74da742a:69","74da742a:71","74da742a:72","74da742a:85","74da742a:92","74da742a:96","74da742a:104","74da742a:112","74da742a:116","74da742a:125","74da742a:132","74da742a:136","74da742a:165","74da742a:174","74da742a:182"]},{"id":"74da742a:69","tag":"p","openStart":24310,"attrEnd":24341,"openEnd":24342,"closeStart":25042,"closeEnd":25046,"textRuns":[[24342,24352],[24454,25042]],"parentId":"74da742a:68","childIds":["74da742a:70"]},{"id":"74da742a:70","tag":"span","openStart":24352,"attrEnd":24375,"openEnd":24376,"closeStart":24447,"closeEnd":24454,"textRuns":[[24376,24447]],"parentId":"74da742a:69","childIds":[]},{"id":"74da742a:71","tag":"p","openStart":25051,"attrEnd":25069,"openEnd":25070,"closeStart":25683,"closeEnd":25687,"textRuns":[[25070,25683]],"parentId":"74da742a:68","childIds":[]},{"id":"74da742a:72","tag":"div","openStart":25693,"attrEnd":25732,"openEnd":25733,"closeStart":26662,"closeEnd":26668,"textRuns":[[25733,25740],[26657,26662]],"parentId":"74da742a:68","childIds":["74da742a:73"]},{"id":"74da742a:73","tag":"svg","openStart":25740,"attrEnd":25801,"openEnd":25802,"closeStart":26651,"closeEnd":26657,"textRuns":[[25802,25811]],"parentId":"74da742a:72","childIds":["74da742a:74"]},{"id":"74da742a:74","tag":"path","openStart":25811,"attrEnd":25869,"openEnd":25871,"textRuns":[[25871,25880]],"parentId":"74da742a:73","childIds":["74da742a:75"]},{"id":"74da742a:75","tag":"path","openStart":25880,"attrEnd":25940,"openEnd":25942,"textRuns":[[25942,25951]],"parentId":"74da742a:74","childIds":["74da742a:76"]},{"id":"74da742a:76","tag":"path","openStart":25951,"attrEnd":26068,"openEnd":26070,"textRuns":[[26070,26079]],"parentId":"74da742a:75","childIds":["74da742a:77"]},{"id":"74da742a:77","tag":"path","openStart":26079,"attrEnd":26169,"openEnd":26171,"textRuns":[[26171,26180]],"parentId":"74da742a:76","childIds":["74da742a:78"]},{"id":"74da742a:78","tag":"path","openStart":26180,"attrEnd":26270,"openEnd":26272,"textRuns":[[26272,26281]],"parentId":"74da742a:77","childIds":["74da742a:79"]},{"id":"74da742a:79","tag":"circle","openStart":26281,"attrEnd":26332,"openEnd":26334,"textRuns":[[26334,26343]],"parentId":"74da742a:78","childIds":["74da742a:80"]},{"id":"74da742a:80","tag":"circle","openStart":26343,"attrEnd":26394,"openEnd":26396,"textRuns":[[26396,26405]],"parentId":"74da742a:79","childIds":["74da742a:81"]},{"id":"74da742a:81","tag":"circle","openStart":26405,"attrEnd":26456,"openEnd":26458,"textRuns":[[26458,26467]],"parentId":"74da742a:80","childIds":["74da742a:82"]},{"id":"74da742a:82","tag":"circle","openStart":26467,"attrEnd":26518,"openEnd":26520,"textRuns":[[26520,26529]],"parentId":"74da742a:81","childIds":["74da742a:83"]},{"id":"74da742a:83","tag":"circle","openStart":26529,"attrEnd":26580,"openEnd":26582,"textRuns":[[26582,26591]],"parentId":"74da742a:82","childIds":["74da742a:84"]},{"id":"74da742a:84","tag":"circle","openStart":26591,"attrEnd":26642,"openEnd":26644,"textRuns":[[26644,26651]],"parentId":"74da742a:83","childIds":[]},{"id":"74da742a:85","tag":"div","openStart":26674,"attrEnd":26694,"openEnd":26695,"closeStart":28465,"closeEnd":28471,"textRuns":[[26695,26702],[26797,26804],[26873,26880],[26907,26914],[27569,27576],[28460,28465]],"parentId":"74da742a:68","childIds":["74da742a:86","74da742a:88","74da742a:89","74da742a:90","74da742a:91"]},{"id":"74da742a:86","tag":"div","openStart":26702,"attrEnd":26725,"openEnd":26726,"closeStart":26791,"closeEnd":26797,"textRuns":[[26726,26750]],"parentId":"74da742a:85","childIds":["74da742a:87"]},{"id":"74da742a:87","tag":"span","openStart":26750,"attrEnd":26767,"openEnd":26768,"closeStart":26784,"closeEnd":26791,"textRuns":[[26768,26784]],"parentId":"74da742a:86","childIds":[]},{"id":"74da742a:88","tag":"h2","openStart":26804,"attrEnd":26807,"openEnd":26808,"closeStart":26868,"closeEnd":26873,"textRuns":[[26808,26868]],"parentId":"74da742a:85","childIds":[]},{"id":"74da742a:89","tag":"div","openStart":26880,"attrEnd":26900,"openEnd":26901,"closeStart":26901,"closeEnd":26907,"textRuns":[],"parentId":"74da742a:85","childIds":[]},{"id":"74da742a:90","tag":"p","openStart":26914,"attrEnd":26916,"openEnd":26917,"closeStart":27565,"closeEnd":27569,"textRuns":[[26917,27565]],"parentId":"74da742a:85","childIds":[]},{"id":"74da742a:91","tag":"p","openStart":27576,"attrEnd":27578,"openEnd":27579,"closeStart":28456,"closeEnd":28460,"textRuns":[[27579,28456]],"parentId":"74da742a:85","childIds":[]},{"id":"74da742a:92","tag":"div","openStart":28477,"attrEnd":28507,"openEnd":28508,"closeStart":29015,"closeEnd":29021,"textRuns":[[28508,28515],[28557,28564],[28878,28885],[29010,29015]],"parentId":"74da742a:68","childIds":["74da742a:93","74da742a:94","74da742a:95"]},{"id":"74da742a:93","tag":"div","openStart":28515,"attrEnd":28534,"openEnd":28535,"closeStart":28551,"closeEnd":28557,"textRuns":[[28535,28551]],"parentId":"74da742a:92","childIds":[]},{"id":"74da742a:94","tag":"blockquote","openStart":28564,"attrEnd":28575,"openEnd":28576,"closeStart":28865,"closeEnd":28878,"textRuns":[[28576,28865]],"parentId":"74da742a:92","childIds":[]},{"id":"74da742a:95","tag":"cite","openStart":28885,"attrEnd":28890,"openEnd":28891,"closeStart":29003,"closeEnd":29010,"textRuns":[[28891,29003]],"parentId":"74da742a:92","childIds":[]},{"id":"74da742a:96","tag":"div","openStart":29027,"attrEnd":29047,"openEnd":29048,"closeStart":30635,"closeEnd":30641,"textRuns":[[29048,29055],[29142,29149],[29200,29207],[29234,29241],[29804,29811],[30630,30635]],"parentId":"74da742a:68","childIds":["74da742a:97","74da742a:99","74da742a:100","74da742a:101","74da742a:103"]},{"id":"74da742a:97","tag":"div","openStart":29055,"attrEnd":29078,"openEnd":29079,"closeStart":29136,"closeEnd":29142,"textRuns":[[29079,29103]],"parentId":"74da742a:96","childIds":["74da742a:98"]},{"id":"74da742a:98","tag":"span","openStart":29103,"attrEnd":29120,"openEnd":29121,"closeStart":29129,"closeEnd":29136,"textRuns":[[29121,29129]],"parentId":"74da742a:97","childIds":[]},{"id":"74da742a:99","tag":"h2","openStart":29149,"attrEnd":29152,"openEnd":29153,"closeStart":29195,"closeEnd":29200,"textRuns":[[29153,29195]],"parentId":"74da742a:96","childIds":[]},{"id":"74da742a:100","tag":"div","openStart":29207,"attrEnd":29227,"openEnd":29228,"closeStart":29228,"closeEnd":29234,"textRuns":[],"parentId":"74da742a:96","childIds":[]},{"id":"74da742a:101","tag":"p","openStart":29241,"attrEnd":29243,"openEnd":29244,"closeStart":29800,"closeEnd":29804,"textRuns":[[29304,29800]],"parentId":"74da742a:96","childIds":["74da742a:102"]},{"id":"74da742a:102","tag":"span","openStart":29244,"attrEnd":29267,"openEnd":29268,"closeStart":29297,"closeEnd":29304,"textRuns":[[29268,29297]],"parentId":"74da742a:101","childIds":[]},{"id":"74da742a:103","tag":"p","openStart":29811,"attrEnd":29813,"openEnd":29814,"closeStart":30626,"closeEnd":30630,"textRuns":[[29814,30626]],"parentId":"74da742a:96","childIds":[]},{"id":"74da742a:104","tag":"div","openStart":30647,"attrEnd":30667,"openEnd":30668,"closeStart":32272,"closeEnd":32278,"textRuns":[[30668,30675],[30763,30770],[30810,30817],[30844,30851],[31520,31527],[32267,32272]],"parentId":"74da742a:68","childIds":["74da742a:105","74da742a:107","74da742a:108","74da742a:109","74da742a:110"]},{"id":"74da742a:105","tag":"div","openStart":30675,"attrEnd":30698,"openEnd":30699,"closeStart":30757,"closeEnd":30763,"textRuns":[[30699,30723]],"parentId":"74da742a:104","childIds":["74da742a:106"]},{"id":"74da742a:106","tag":"span","openStart":30723,"attrEnd":30740,"openEnd":30741,"closeStart":30750,"closeEnd":30757,"textRuns":[[30741,30750]],"parentId":"74da742a:105","childIds":[]},{"id":"74da742a:107","tag":"h2","openStart":30770,"attrEnd":30773,"openEnd":30774,"closeStart":30805,"closeEnd":30810,"textRuns":[[30774,30805]],"parentId":"74da742a:104","childIds":[]},{"id":"74da742a:108","tag":"div","openStart":30817,"attrEnd":30837,"openEnd":30838,"closeStart":30838,"closeEnd":30844,"textRuns":[],"parentId":"74da742a:104","childIds":[]},{"id":"74da742a:109","tag":"p","openStart":30851,"attrEnd":30853,"openEnd":30854,"closeStart":31516,"closeEnd":31520,"textRuns":[[30854,31516]],"parentId":"74da742a:104","childIds":[]},{"id":"74da742a:110","tag":"p","openStart":31527,"attrEnd":31529,"openEnd":31530,"closeStart":32263,"closeEnd":32267,"textRuns":[[31589,32263]],"parentId":"74da742a:104","childIds":["74da742a:111"]},{"id":"74da742a:111","tag":"span","openStart":31530,"attrEnd":31553,"openEnd":31554,"closeStart":31582,"closeEnd":31589,"textRuns":[[31554,31582]],"parentId":"74da742a:110","childIds":[]},{"id":"74da742a:112","tag":"div","openStart":32284,"attrEnd":32314,"openEnd":32315,"closeStart":32767,"closeEnd":32773,"textRuns":[[32315,32322],[32364,32371],[32647,32654],[32762,32767]],"parentId":"74da742a:68","childIds":["74da742a:113","74da742a:114","74da742a:115"]},{"id":"74da742a:113","tag":"div","openStart":32322,"attrEnd":32341,"openEnd":32342,"closeStart":32358,"closeEnd":32364,"textRuns":[[32342,32358]],"parentId":"74da742a:112","childIds":[]},{"id":"74da742a:114","tag":"blockquote","openStart":32371,"attrEnd":32382,"openEnd":32383,"closeStart":32634,"closeEnd":32647,"textRuns":[[32383,32634]],"parentId":"74da742a:112","childIds":[]},{"id":"74da742a:115","tag":"cite","openStart":32654,"attrEnd":32659,"openEnd":32660,"closeStart":32755,"closeEnd":32762,"textRuns":[[32660,32755]],"parentId":"74da742a:112","childIds":[]},{"id":"74da742a:116","tag":"div","openStart":32779,"attrEnd":32799,"openEnd":32800,"closeStart":35017,"closeEnd":35023,"textRuns":[[32800,32807],[32909,32916],[32948,32955],[32982,32989],[33646,33653],[34473,34480],[35012,35017]],"parentId":"74da742a:68","childIds":["74da742a:117","74da742a:119","74da742a:120","74da742a:121","74da742a:122","74da742a:124"]},{"id":"74da742a:117","tag":"div","openStart":32807,"attrEnd":32830,"openEnd":32831,"closeStart":32903,"closeEnd":32909,"textRuns":[[32831,32861]],"parentId":"74da742a:116","childIds":["74da742a:118"]},{"id":"74da742a:118","tag":"span","openStart":32861,"attrEnd":32878,"openEnd":32879,"closeStart":32896,"closeEnd":32903,"textRuns":[[32879,32896]],"parentId":"74da742a:117","childIds":[]},{"id":"74da742a:119","tag":"h2","openStart":32916,"attrEnd":32919,"openEnd":32920,"closeStart":32943,"closeEnd":32948,"textRuns":[[32920,32943]],"parentId":"74da742a:116","childIds":[]},{"id":"74da742a:120","tag":"div","openStart":32955,"attrEnd":32975,"openEnd":32976,"closeStart":32976,"closeEnd":32982,"textRuns":[],"parentId":"74da742a:116","childIds":[]},{"id":"74da742a:121","tag":"p","openStart":32989,"attrEnd":32991,"openEnd":32992,"closeStart":33642,"closeEnd":33646,"textRuns":[[32992,33642]],"parentId":"74da742a:116","childIds":[]},{"id":"74da742a:122","tag":"p","openStart":33653,"attrEnd":33655,"openEnd":33656,"closeStart":34469,"closeEnd":34473,"textRuns":[[33656,33746],[33830,34469]],"parentId":"74da742a:116","childIds":["74da742a:123"]},{"id":"74da742a:123","tag":"strong","openStart":33746,"attrEnd":33753,"openEnd":33754,"closeStart":33821,"closeEnd":33830,"textRuns":[[33754,33821]],"parentId":"74da742a:122","childIds":[]},{"id":"74da742a:124","tag":"p","openStart":34480,"attrEnd":34482,"openEnd":34483,"closeStart":35008,"closeEnd":35012,"textRuns":[[34483,35008]],"parentId":"74da742a:116","childIds":[]},{"id":"74da742a:125","tag":"div","openStart":35029,"attrEnd":35049,"openEnd":35050,"closeStart":36803,"closeEnd":36809,"textRuns":[[35050,35057],[35197,35204],[35306,35313],[35373,35380],[36102,36109],[36798,36803]],"parentId":"74da742a:68","childIds":["74da742a:126","74da742a:128","74da742a:129","74da742a:130","74da742a:131"]},{"id":"74da742a:126","tag":"div","openStart":35057,"attrEnd":35108,"openEnd":35109,"closeStart":35191,"closeEnd":35197,"styleAttr":[35088,35107],"textRuns":[[35109,35131]],"parentId":"74da742a:125","childIds":["74da742a:127"]},{"id":"74da742a:127","tag":"span","openStart":35131,"attrEnd":35176,"openEnd":35177,"closeStart":35184,"closeEnd":35191,"styleAttr":[35156,35175],"textRuns":[[35177,35184]],"parentId":"74da742a:126","childIds":[]},{"id":"74da742a:128","tag":"h2","openStart":35204,"attrEnd":35240,"openEnd":35241,"closeStart":35301,"closeEnd":35306,"styleAttr":[35215,35239],"textRuns":[[35241,35301]],"parentId":"74da742a:125","childIds":[]},{"id":"74da742a:129","tag":"div","openStart":35313,"attrEnd":35366,"openEnd":35367,"closeStart":35367,"closeEnd":35373,"styleAttr":[35341,35365],"textRuns":[],"parentId":"74da742a:125","childIds":[]},{"id":"74da742a:130","tag":"p","openStart":35380,"attrEnd":35382,"openEnd":35383,"closeStart":36098,"closeEnd":36102,"textRuns":[[35383,36098]],"parentId":"74da742a:125","childIds":[]},{"id":"74da742a:131","tag":"p","openStart":36109,"attrEnd":36111,"openEnd":36112,"closeStart":36794,"closeEnd":36798,"textRuns":[[36112,36794]],"parentId":"74da742a:125","childIds":[]},{"id":"74da742a:132","tag":"div","openStart":36815,"attrEnd":36845,"openEnd":36846,"closeStart":37296,"closeEnd":37302,"textRuns":[[36846,36853],[36895,36902],[37177,37184],[37291,37296]],"parentId":"74da742a:68","childIds":["74da742a:133","74da742a:134","74da742a:135"]},{"id":"74da742a:133","tag":"div","openStart":36853,"attrEnd":36872,"openEnd":36873,"closeStart":36889,"closeEnd":36895,"textRuns":[[36873,36889]],"parentId":"74da742a:132","childIds":[]},{"id":"74da742a:134","tag":"blockquote","openStart":36902,"attrEnd":36913,"openEnd":36914,"closeStart":37164,"closeEnd":37177,"textRuns":[[36914,37164]],"parentId":"74da742a:132","childIds":[]},{"id":"74da742a:135","tag":"cite","openStart":37184,"attrEnd":37189,"openEnd":37190,"closeStart":37284,"closeEnd":37291,"textRuns":[[37190,37284]],"parentId":"74da742a:132","childIds":[]},{"id":"74da742a:136","tag":"div","openStart":37308,"attrEnd":37337,"openEnd":37338,"closeStart":38803,"closeEnd":38809,"textRuns":[[37338,37345],[37412,37419],[37565,37572],[38476,38483],[38798,38803]],"parentId":"74da742a:68","childIds":["74da742a:137","74da742a:138","74da742a:139","74da742a:164"]},{"id":"74da742a:137","tag":"div","openStart":37345,"attrEnd":37374,"openEnd":37375,"closeStart":37406,"closeEnd":37412,"textRuns":[[37375,37406]],"parentId":"74da742a:136","childIds":[]},{"id":"74da742a:138","tag":"h3","openStart":37419,"attrEnd":37422,"openEnd":37423,"closeStart":37560,"closeEnd":37565,"textRuns":[[37423,37560]],"parentId":"74da742a:136","childIds":[]},{"id":"74da742a:139","tag":"ul","openStart":37572,"attrEnd":37575,"openEnd":37576,"closeStart":38471,"closeEnd":38476,"textRuns":[[37576,37585],[37689,37698],[37810,37819],[37915,37924],[38024,38033],[38135,38144],[38238,38247],[38353,38362],[38464,38471]],"parentId":"74da742a:136","childIds":["74da742a:140","74da742a:143","74da742a:146","74da742a:149","74da742a:152","74da742a:155","74da742a:158","74da742a:161"]},{"id":"74da742a:140","tag":"li","openStart":37585,"attrEnd":37588,"openEnd":37589,"closeStart":37684,"closeEnd":37689,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:141","74da742a:142"]},{"id":"74da742a:141","tag":"span","openStart":37589,"attrEnd":37594,"openEnd":37595,"closeStart":37645,"closeEnd":37652,"textRuns":[[37595,37645]],"parentId":"74da742a:140","childIds":[]},{"id":"74da742a:142","tag":"span","openStart":37652,"attrEnd":37668,"openEnd":37669,"closeStart":37677,"closeEnd":37684,"textRuns":[[37669,37677]],"parentId":"74da742a:140","childIds":[]},{"id":"74da742a:143","tag":"li","openStart":37698,"attrEnd":37701,"openEnd":37702,"closeStart":37805,"closeEnd":37810,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:144","74da742a:145"]},{"id":"74da742a:144","tag":"span","openStart":37702,"attrEnd":37707,"openEnd":37708,"closeStart":37766,"closeEnd":37773,"textRuns":[[37708,37766]],"parentId":"74da742a:143","childIds":[]},{"id":"74da742a:145","tag":"span","openStart":37773,"attrEnd":37789,"openEnd":37790,"closeStart":37798,"closeEnd":37805,"textRuns":[[37790,37798]],"parentId":"74da742a:143","childIds":[]},{"id":"74da742a:146","tag":"li","openStart":37819,"attrEnd":37822,"openEnd":37823,"closeStart":37910,"closeEnd":37915,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:147","74da742a:148"]},{"id":"74da742a:147","tag":"span","openStart":37823,"attrEnd":37828,"openEnd":37829,"closeStart":37871,"closeEnd":37878,"textRuns":[[37829,37871]],"parentId":"74da742a:146","childIds":[]},{"id":"74da742a:148","tag":"span","openStart":37878,"attrEnd":37894,"openEnd":37895,"closeStart":37903,"closeEnd":37910,"textRuns":[[37895,37903]],"parentId":"74da742a:146","childIds":[]},{"id":"74da742a:149","tag":"li","openStart":37924,"attrEnd":37927,"openEnd":37928,"closeStart":38019,"closeEnd":38024,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:150","74da742a:151"]},{"id":"74da742a:150","tag":"span","openStart":37928,"attrEnd":37933,"openEnd":37934,"closeStart":37980,"closeEnd":37987,"textRuns":[[37934,37980]],"parentId":"74da742a:149","childIds":[]},{"id":"74da742a:151","tag":"span","openStart":37987,"attrEnd":38003,"openEnd":38004,"closeStart":38012,"closeEnd":38019,"textRuns":[[38004,38012]],"parentId":"74da742a:149","childIds":[]},{"id":"74da742a:152","tag":"li","openStart":38033,"attrEnd":38036,"openEnd":38037,"closeStart":38130,"closeEnd":38135,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:153","74da742a:154"]},{"id":"74da742a:153","tag":"span","openStart":38037,"attrEnd":38042,"openEnd":38043,"closeStart":38091,"closeEnd":38098,"textRuns":[[38043,38091]],"parentId":"74da742a:152","childIds":[]},{"id":"74da742a:154","tag":"span","openStart":38098,"attrEnd":38114,"openEnd":38115,"closeStart":38123,"closeEnd":38130,"textRuns":[[38115,38123]],"parentId":"74da742a:152","childIds":[]},{"id":"74da742a:155","tag":"li","openStart":38144,"attrEnd":38147,"openEnd":38148,"closeStart":38233,"closeEnd":38238,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:156","74da742a:157"]},{"id":"74da742a:156","tag":"span","openStart":38148,"attrEnd":38153,"openEnd":38154,"closeStart":38194,"closeEnd":38201,"textRuns":[[38154,38194]],"parentId":"74da742a:155","childIds":[]},{"id":"74da742a:157","tag":"span","openStart":38201,"attrEnd":38217,"openEnd":38218,"closeStart":38226,"closeEnd":38233,"textRuns":[[38218,38226]],"parentId":"74da742a:155","childIds":[]},{"id":"74da742a:158","tag":"li","openStart":38247,"attrEnd":38250,"openEnd":38251,"closeStart":38348,"closeEnd":38353,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:159","74da742a:160"]},{"id":"74da742a:159","tag":"span","openStart":38251,"attrEnd":38256,"openEnd":38257,"closeStart":38309,"closeEnd":38316,"textRuns":[[38257,38309]],"parentId":"74da742a:158","childIds":[]},{"id":"74da742a:160","tag":"span","openStart":38316,"attrEnd":38332,"openEnd":38333,"closeStart":38341,"closeEnd":38348,"textRuns":[[38333,38341]],"parentId":"74da742a:158","childIds":[]},{"id":"74da742a:161","tag":"li","openStart":38362,"attrEnd":38365,"openEnd":38366,"closeStart":38459,"closeEnd":38464,"textRuns":[],"parentId":"74da742a:139","childIds":["74da742a:162","74da742a:163"]},{"id":"74da742a:162","tag":"span","openStart":38366,"attrEnd":38371,"openEnd":38372,"closeStart":38420,"closeEnd":38427,"textRuns":[[38372,38420]],"parentId":"74da742a:161","childIds":[]},{"id":"74da742a:163","tag":"span","openStart":38427,"attrEnd":38443,"openEnd":38444,"closeStart":38452,"closeEnd":38459,"textRuns":[[38444,38452]],"parentId":"74da742a:161","childIds":[]},{"id":"74da742a:164","tag":"div","openStart":38483,"attrEnd":38509,"openEnd":38510,"closeStart":38792,"closeEnd":38798,"textRuns":[[38510,38792]],"parentId":"74da742a:136","childIds":[]},{"id":"74da742a:165","tag":"div","openStart":38815,"attrEnd":38835,"openEnd":38836,"closeStart":41126,"closeEnd":41132,"textRuns":[[38836,38843],[38939,38946],[38988,38995],[39022,39029],[39863,39870],[40535,40542],[41121,41126]],"parentId":"74da742a:68","childIds":["74da742a:166","74da742a:168","74da742a:169","74da742a:170","74da742a:171","74da742a:172"]},{"id":"74da742a:166","tag":"div","openStart":38843,"attrEnd":38866,"openEnd":38867,"closeStart":38933,"closeEnd":38939,"textRuns":[[38867,38891]],"parentId":"74da742a:165","childIds":["74da742a:167"]},{"id":"74da742a:167","tag":"span","openStart":38891,"attrEnd":38908,"openEnd":38909,"closeStart":38926,"closeEnd":38933,"textRuns":[[38909,38926]],"parentId":"74da742a:166","childIds":[]},{"id":"74da742a:168","tag":"h2","openStart":38946,"attrEnd":38949,"openEnd":38950,"closeStart":38983,"closeEnd":38988,"textRuns":[[38950,38983]],"parentId":"74da742a:165","childIds":[]},{"id":"74da742a:169","tag":"div","openStart":38995,"attrEnd":39015,"openEnd":39016,"closeStart":39016,"closeEnd":39022,"textRuns":[],"parentId":"74da742a:165","childIds":[]},{"id":"74da742a:170","tag":"p","openStart":39029,"attrEnd":39031,"openEnd":39032,"closeStart":39859,"closeEnd":39863,"textRuns":[[39032,39859]],"parentId":"74da742a:165","childIds":[]},{"id":"74da742a:171","tag":"p","openStart":39870,"attrEnd":39872,"openEnd":39873,"closeStart":40531,"closeEnd":40535,"textRuns":[[39873,40531]],"parentId":"74da742a:165","childIds":[]},{"id":"74da742a:172","tag":"p","openStart":40542,"attrEnd":40544,"openEnd":40545,"closeStart":41117,"closeEnd":41121,"textRuns":[[40599,41117]],"parentId":"74da742a:165","childIds":["74da742a:173"]},{"id":"74da742a:173","tag":"span","openStart":40545,"attrEnd":40568,"openEnd":40569,"closeStart":40592,"closeEnd":40599,"textRuns":[[40569,40592]],"parentId":"74da742a:172","childIds":[]},{"id":"74da742a:174","tag":"div","openStart":41138,"attrEnd":41158,"openEnd":41159,"closeStart":43101,"closeEnd":43107,"textRuns":[[41159,41166],[41281,41288],[41311,41318],[41345,41352],[42025,42032],[42628,42635],[43096,43101]],"parentId":"74da742a:68","childIds":["74da742a:175","74da742a:177","74da742a:178","74da742a:179","74da742a:180","74da742a:181"]},{"id":"74da742a:175","tag":"div","openStart":41166,"attrEnd":41189,"openEnd":41190,"closeStart":41275,"closeEnd":41281,"textRuns":[[41190,41216]],"parentId":"74da742a:174","childIds":["74da742a:176"]},{"id":"74da742a:176","tag":"span","openStart":41216,"attrEnd":41233,"openEnd":41234,"closeStart":41268,"closeEnd":41275,"textRuns":[[41234,41268]],"parentId":"74da742a:175","childIds":[]},{"id":"74da742a:177","tag":"h2","openStart":41288,"attrEnd":41291,"openEnd":41292,"closeStart":41306,"closeEnd":41311,"textRuns":[[41292,41306]],"parentId":"74da742a:174","childIds":[]},{"id":"74da742a:178","tag":"div","openStart":41318,"attrEnd":41338,"openEnd":41339,"closeStart":41339,"closeEnd":41345,"textRuns":[],"parentId":"74da742a:174","childIds":[]},{"id":"74da742a:179","tag":"p","openStart":41352,"attrEnd":41354,"openEnd":41355,"closeStart":42021,"closeEnd":42025,"textRuns":[[41355,42021]],"parentId":"74da742a:174","childIds":[]},{"id":"74da742a:180","tag":"p","openStart":42032,"attrEnd":42034,"openEnd":42035,"closeStart":42624,"closeEnd":42628,"textRuns":[[42035,42624]],"parentId":"74da742a:174","childIds":[]},{"id":"74da742a:181","tag":"p","openStart":42635,"attrEnd":42637,"openEnd":42638,"closeStart":43092,"closeEnd":43096,"textRuns":[[42638,43092]],"parentId":"74da742a:174","childIds":[]},{"id":"74da742a:182","tag":"div","openStart":43113,"attrEnd":43146,"openEnd":43147,"closeStart":43220,"closeEnd":43226,"textRuns":[[43147,43154],[43215,43220]],"parentId":"74da742a:68","childIds":["74da742a:183"]},{"id":"74da742a:183","tag":"a","openStart":43154,"attrEnd":43165,"openEnd":43166,"closeStart":43211,"closeEnd":43215,"textRuns":[[43166,43211]],"parentId":"74da742a:182","childIds":[]},{"id":"74da742a:184","tag":"section","openStart":43264,"attrEnd":43343,"openEnd":43344,"closeStart":49679,"closeEnd":49689,"textRuns":[[43344,43347],[43714,43718],[49678,49679]],"parentId":"74da742a:7","childIds":["74da742a:185","74da742a:189"]},{"id":"74da742a:185","tag":"div","openStart":43347,"attrEnd":43375,"openEnd":43376,"closeStart":43708,"closeEnd":43714,"textRuns":[[43376,43381],[43427,43432],[43466,43471],[43705,43708]],"parentId":"74da742a:184","childIds":["74da742a:186","74da742a:187","74da742a:188"]},{"id":"74da742a:186","tag":"div","openStart":43381,"attrEnd":43400,"openEnd":43401,"closeStart":43421,"closeEnd":43427,"textRuns":[[43401,43421]],"parentId":"74da742a:185","childIds":[]},{"id":"74da742a:187","tag":"h2","openStart":43432,"attrEnd":43435,"openEnd":43436,"closeStart":43461,"closeEnd":43466,"textRuns":[[43436,43461]],"parentId":"74da742a:185","childIds":[]},{"id":"74da742a:188","tag":"p","openStart":43471,"attrEnd":43473,"openEnd":43474,"closeStart":43701,"closeEnd":43705,"textRuns":[[43474,43701]],"parentId":"74da742a:185","childIds":[]},{"id":"74da742a:189","tag":"div","openStart":43718,"attrEnd":43738,"openEnd":43739,"closeStart":49672,"closeEnd":49678,"textRuns":[[43739,43744],[43790,43796],[44367,44373],[45009,45015],[45552,45558],[46101,46107],[46630,46636],[47292,47298],[47859,47865],[48473,48479],[49049,49055],[49669,49672]],"parentId":"74da742a:184","childIds":["74da742a:190","74da742a:191","74da742a:199","74da742a:208","74da742a:216","74da742a:224","74da742a:232","74da742a:241","74da742a:249","74da742a:258","74da742a:266"]},{"id":"74da742a:190","tag":"div","openStart":43744,"attrEnd":43783,"openEnd":43784,"closeStart":43784,"closeEnd":43790,"textRuns":[],"parentId":"74da742a:189","childIds":[]},{"id":"74da742a:191","tag":"article","openStart":43796,"attrEnd":43821,"openEnd":43822,"closeStart":44357,"closeEnd":44367,"textRuns":[[43822,43829],[44180,44187],[44352,44357]],"parentId":"74da742a:189","childIds":["74da742a:192","74da742a:196"]},{"id":"74da742a:192","tag":"div","openStart":43829,"attrEnd":43849,"openEnd":43850,"closeStart":44174,"closeEnd":44180,"textRuns":[[43850,43859],[43892,43901],[44004,44013],[44167,44174]],"parentId":"74da742a:191","childIds":["74da742a:193","74da742a:194","74da742a:195"]},{"id":"74da742a:193","tag":"span","openStart":43859,"attrEnd":43880,"openEnd":43881,"closeStart":43885,"closeEnd":43892,"textRuns":[[43881,43885]],"parentId":"74da742a:192","childIds":[]},{"id":"74da742a:194","tag":"h3","openStart":43901,"attrEnd":43921,"openEnd":43922,"closeStart":43999,"closeEnd":44004,"textRuns":[[43922,43999]],"parentId":"74da742a:192","childIds":[]},{"id":"74da742a:195","tag":"p","openStart":44013,"attrEnd":44031,"openEnd":44032,"closeStart":44163,"closeEnd":44167,"textRuns":[[44032,44163]],"parentId":"74da742a:192","childIds":[]},{"id":"74da742a:196","tag":"div","openStart":44187,"attrEnd":44207,"openEnd":44208,"closeStart":44346,"closeEnd":44352,"textRuns":[],"parentId":"74da742a:191","childIds":["74da742a:197"]},{"id":"74da742a:197","tag":"svg","openStart":44208,"attrEnd":44267,"openEnd":44268,"closeStart":44340,"closeEnd":44346,"textRuns":[],"parentId":"74da742a:196","childIds":["74da742a:198"]},{"id":"74da742a:198","tag":"path","openStart":44268,"attrEnd":44338,"openEnd":44340,"textRuns":[],"parentId":"74da742a:197","childIds":[]},{"id":"74da742a:199","tag":"article","openStart":44373,"attrEnd":44398,"openEnd":44399,"closeStart":44999,"closeEnd":45009,"textRuns":[[44399,44406],[44730,44737],[44994,44999]],"parentId":"74da742a:189","childIds":["74da742a:200","74da742a:204"]},{"id":"74da742a:200","tag":"div","openStart":44406,"attrEnd":44426,"openEnd":44427,"closeStart":44724,"closeEnd":44730,"textRuns":[[44427,44436],[44469,44478],[44546,44555],[44717,44724]],"parentId":"74da742a:199","childIds":["74da742a:201","74da742a:202","74da742a:203"]},{"id":"74da742a:201","tag":"span","openStart":44436,"attrEnd":44457,"openEnd":44458,"closeStart":44462,"closeEnd":44469,"textRuns":[[44458,44462]],"parentId":"74da742a:200","childIds":[]},{"id":"74da742a:202","tag":"h3","openStart":44478,"attrEnd":44498,"openEnd":44499,"closeStart":44541,"closeEnd":44546,"textRuns":[[44499,44541]],"parentId":"74da742a:200","childIds":[]},{"id":"74da742a:203","tag":"p","openStart":44555,"attrEnd":44573,"openEnd":44574,"closeStart":44713,"closeEnd":44717,"textRuns":[[44574,44713]],"parentId":"74da742a:200","childIds":[]},{"id":"74da742a:204","tag":"div","openStart":44737,"attrEnd":44757,"openEnd":44758,"closeStart":44988,"closeEnd":44994,"textRuns":[],"parentId":"74da742a:199","childIds":["74da742a:205"]},{"id":"74da742a:205","tag":"svg","openStart":44758,"attrEnd":44817,"openEnd":44818,"closeStart":44982,"closeEnd":44988,"textRuns":[],"parentId":"74da742a:204","childIds":["74da742a:206"]},{"id":"74da742a:206","tag":"rect","openStart":44818,"attrEnd":44899,"openEnd":44901,"textRuns":[],"parentId":"74da742a:205","childIds":["74da742a:207"]},{"id":"74da742a:207","tag":"path","openStart":44901,"attrEnd":44980,"openEnd":44982,"textRuns":[],"parentId":"74da742a:206","childIds":[]},{"id":"74da742a:208","tag":"article","openStart":45015,"attrEnd":45040,"openEnd":45041,"closeStart":45542,"closeEnd":45552,"textRuns":[[45041,45048],[45346,45353],[45537,45542]],"parentId":"74da742a:189","childIds":["74da742a:209","74da742a:213"]},{"id":"74da742a:209","tag":"div","openStart":45048,"attrEnd":45068,"openEnd":45069,"closeStart":45340,"closeEnd":45346,"textRuns":[[45069,45078],[45111,45120],[45179,45188],[45333,45340]],"parentId":"74da742a:208","childIds":["74da742a:210","74da742a:211","74da742a:212"]},{"id":"74da742a:210","tag":"span","openStart":45078,"attrEnd":45099,"openEnd":45100,"closeStart":45104,"closeEnd":45111,"textRuns":[[45100,45104]],"parentId":"74da742a:209","childIds":[]},{"id":"74da742a:211","tag":"h3","openStart":45120,"attrEnd":45140,"openEnd":45141,"closeStart":45174,"closeEnd":45179,"textRuns":[[45141,45174]],"parentId":"74da742a:209","childIds":[]},{"id":"74da742a:212","tag":"p","openStart":45188,"attrEnd":45206,"openEnd":45207,"closeStart":45329,"closeEnd":45333,"textRuns":[[45207,45329]],"parentId":"74da742a:209","childIds":[]},{"id":"74da742a:213","tag":"div","openStart":45353,"attrEnd":45373,"openEnd":45374,"closeStart":45531,"closeEnd":45537,"textRuns":[],"parentId":"74da742a:208","childIds":["74da742a:214"]},{"id":"74da742a:214","tag":"svg","openStart":45374,"attrEnd":45433,"openEnd":45434,"closeStart":45525,"closeEnd":45531,"textRuns":[],"parentId":"74da742a:213","childIds":["74da742a:215"]},{"id":"74da742a:215","tag":"path","openStart":45434,"attrEnd":45523,"openEnd":45525,"textRuns":[],"parentId":"74da742a:214","childIds":[]},{"id":"74da742a:216","tag":"article","openStart":45558,"attrEnd":45583,"openEnd":45584,"closeStart":46091,"closeEnd":46101,"textRuns":[[45584,45591],[45905,45912],[46086,46091]],"parentId":"74da742a:189","childIds":["74da742a:217","74da742a:221"]},{"id":"74da742a:217","tag":"div","openStart":45591,"attrEnd":45611,"openEnd":45612,"closeStart":45899,"closeEnd":45905,"textRuns":[[45612,45621],[45654,45663],[45720,45729],[45892,45899]],"parentId":"74da742a:216","childIds":["74da742a:218","74da742a:219","74da742a:220"]},{"id":"74da742a:218","tag":"span","openStart":45621,"attrEnd":45642,"openEnd":45643,"closeStart":45647,"closeEnd":45654,"textRuns":[[45643,45647]],"parentId":"74da742a:217","childIds":[]},{"id":"74da742a:219","tag":"h3","openStart":45663,"attrEnd":45683,"openEnd":45684,"closeStart":45715,"closeEnd":45720,"textRuns":[[45684,45715]],"parentId":"74da742a:217","childIds":[]},{"id":"74da742a:220","tag":"p","openStart":45729,"attrEnd":45747,"openEnd":45748,"closeStart":45888,"closeEnd":45892,"textRuns":[[45748,45888]],"parentId":"74da742a:217","childIds":[]},{"id":"74da742a:221","tag":"div","openStart":45912,"attrEnd":45932,"openEnd":45933,"closeStart":46080,"closeEnd":46086,"textRuns":[],"parentId":"74da742a:216","childIds":["74da742a:222"]},{"id":"74da742a:222","tag":"svg","openStart":45933,"attrEnd":45992,"openEnd":45993,"closeStart":46074,"closeEnd":46080,"textRuns":[],"parentId":"74da742a:221","childIds":["74da742a:223"]},{"id":"74da742a:223","tag":"path","openStart":45993,"attrEnd":46072,"openEnd":46074,"textRuns":[],"parentId":"74da742a:222","childIds":[]},{"id":"74da742a:224","tag":"article","openStart":46107,"attrEnd":46132,"openEnd":46133,"closeStart":46620,"closeEnd":46630,"textRuns":[[46133,46140],[46439,46446],[46615,46620]],"parentId":"74da742a:189","childIds":["74da742a:225","74da742a:229"]},{"id":"74da742a:225","tag":"div","openStart":46140,"attrEnd":46160,"openEnd":46161,"closeStart":46433,"closeEnd":46439,"textRuns":[[46161,46170],[46203,46212],[46285,46294],[46426,46433]],"parentId":"74da742a:224","childIds":["74da742a:226","74da742a:227","74da742a:228"]},{"id":"74da742a:226","tag":"span","openStart":46170,"attrEnd":46191,"openEnd":46192,"closeStart":46196,"closeEnd":46203,"textRuns":[[46192,46196]],"parentId":"74da742a:225","childIds":[]},{"id":"74da742a:227","tag":"h3","openStart":46212,"attrEnd":46232,"openEnd":46233,"closeStart":46280,"closeEnd":46285,"textRuns":[[46233,46280]],"parentId":"74da742a:225","childIds":[]},{"id":"74da742a:228","tag":"p","openStart":46294,"attrEnd":46312,"openEnd":46313,"closeStart":46422,"closeEnd":46426,"textRuns":[[46313,46422]],"parentId":"74da742a:225","childIds":[]},{"id":"74da742a:229","tag":"div","openStart":46446,"attrEnd":46466,"openEnd":46467,"closeStart":46609,"closeEnd":46615,"textRuns":[],"parentId":"74da742a:224","childIds":["74da742a:230"]},{"id":"74da742a:230","tag":"svg","openStart":46467,"attrEnd":46526,"openEnd":46527,"closeStart":46603,"closeEnd":46609,"textRuns":[],"parentId":"74da742a:229","childIds":["74da742a:231"]},{"id":"74da742a:231","tag":"path","openStart":46527,"attrEnd":46601,"openEnd":46603,"textRuns":[],"parentId":"74da742a:230","childIds":[]},{"id":"74da742a:232","tag":"article","openStart":46636,"attrEnd":46669,"openEnd":46670,"closeStart":47282,"closeEnd":47292,"textRuns":[[46670,46677],[46954,46961],[47277,47282]],"parentId":"74da742a:189","childIds":["74da742a:233","74da742a:237"]},{"id":"74da742a:233","tag":"div","openStart":46677,"attrEnd":46697,"openEnd":46698,"closeStart":46948,"closeEnd":46954,"textRuns":[[46698,46707],[46740,46749],[46796,46805],[46941,46948]],"parentId":"74da742a:232","childIds":["74da742a:234","74da742a:235","74da742a:236"]},{"id":"74da742a:234","tag":"span","openStart":46707,"attrEnd":46728,"openEnd":46729,"closeStart":46733,"closeEnd":46740,"textRuns":[[46729,46733]],"parentId":"74da742a:233","childIds":[]},{"id":"74da742a:235","tag":"h3","openStart":46749,"attrEnd":46769,"openEnd":46770,"closeStart":46791,"closeEnd":46796,"textRuns":[[46770,46791]],"parentId":"74da742a:233","childIds":[]},{"id":"74da742a:236","tag":"p","openStart":46805,"attrEnd":46823,"openEnd":46824,"closeStart":46937,"closeEnd":46941,"textRuns":[[46824,46937]],"parentId":"74da742a:233","childIds":[]},{"id":"74da742a:237","tag":"div","openStart":46961,"attrEnd":46992,"openEnd":46993,"closeStart":47271,"closeEnd":47277,"textRuns":[],"parentId":"74da742a:232","childIds":["74da742a:238"]},{"id":"74da742a:238","tag":"svg","openStart":46993,"attrEnd":47052,"openEnd":47053,"closeStart":47265,"closeEnd":47271,"textRuns":[],"parentId":"74da742a:237","childIds":["74da742a:239"]},{"id":"74da742a:239","tag":"path","openStart":47053,"attrEnd":47175,"openEnd":47177,"textRuns":[],"parentId":"74da742a:238","childIds":["74da742a:240"]},{"id":"74da742a:240","tag":"path","openStart":47177,"attrEnd":47263,"openEnd":47265,"textRuns":[],"parentId":"74da742a:239","childIds":[]},{"id":"74da742a:241","tag":"article","openStart":47298,"attrEnd":47323,"openEnd":47324,"closeStart":47849,"closeEnd":47859,"textRuns":[[47324,47331],[47645,47652],[47844,47849]],"parentId":"74da742a:189","childIds":["74da742a:242","74da742a:246"]},{"id":"74da742a:242","tag":"div","openStart":47331,"attrEnd":47351,"openEnd":47352,"closeStart":47639,"closeEnd":47645,"textRuns":[[47352,47361],[47394,47403],[47485,47494],[47632,47639]],"parentId":"74da742a:241","childIds":["74da742a:243","74da742a:244","74da742a:245"]},{"id":"74da742a:243","tag":"span","openStart":47361,"attrEnd":47382,"openEnd":47383,"closeStart":47387,"closeEnd":47394,"textRuns":[[47383,47387]],"parentId":"74da742a:242","childIds":[]},{"id":"74da742a:244","tag":"h3","openStart":47403,"attrEnd":47423,"openEnd":47424,"closeStart":47480,"closeEnd":47485,"textRuns":[[47424,47480]],"parentId":"74da742a:242","childIds":[]},{"id":"74da742a:245","tag":"p","openStart":47494,"attrEnd":47512,"openEnd":47513,"closeStart":47628,"closeEnd":47632,"textRuns":[[47513,47628]],"parentId":"74da742a:242","childIds":[]},{"id":"74da742a:246","tag":"div","openStart":47652,"attrEnd":47672,"openEnd":47673,"closeStart":47838,"closeEnd":47844,"textRuns":[],"parentId":"74da742a:241","childIds":["74da742a:247"]},{"id":"74da742a:247","tag":"svg","openStart":47673,"attrEnd":47732,"openEnd":47733,"closeStart":47832,"closeEnd":47838,"textRuns":[],"parentId":"74da742a:246","childIds":["74da742a:248"]},{"id":"74da742a:248","tag":"path","openStart":47733,"attrEnd":47830,"openEnd":47832,"textRuns":[],"parentId":"74da742a:247","childIds":[]},{"id":"74da742a:249","tag":"article","openStart":47865,"attrEnd":47890,"openEnd":47891,"closeStart":48463,"closeEnd":48473,"textRuns":[[47891,47898],[48194,48201],[48458,48463]],"parentId":"74da742a:189","childIds":["74da742a:250","74da742a:254"]},{"id":"74da742a:250","tag":"div","openStart":47898,"attrEnd":47918,"openEnd":47919,"closeStart":48188,"closeEnd":48194,"textRuns":[[47919,47928],[47961,47970],[48038,48047],[48181,48188]],"parentId":"74da742a:249","childIds":["74da742a:251","74da742a:252","74da742a:253"]},{"id":"74da742a:251","tag":"span","openStart":47928,"attrEnd":47949,"openEnd":47950,"closeStart":47954,"closeEnd":47961,"textRuns":[[47950,47954]],"parentId":"74da742a:250","childIds":[]},{"id":"74da742a:252","tag":"h3","openStart":47970,"attrEnd":47990,"openEnd":47991,"closeStart":48033,"closeEnd":48038,"textRuns":[[47991,48033]],"parentId":"74da742a:250","childIds":[]},{"id":"74da742a:253","tag":"p","openStart":48047,"attrEnd":48065,"openEnd":48066,"closeStart":48177,"closeEnd":48181,"textRuns":[[48066,48177]],"parentId":"74da742a:250","childIds":[]},{"id":"74da742a:254","tag":"div","openStart":48201,"attrEnd":48221,"openEnd":48222,"closeStart":48452,"closeEnd":48458,"textRuns":[],"parentId":"74da742a:249","childIds":["74da742a:255"]},{"id":"74da742a:255","tag":"svg","openStart":48222,"attrEnd":48281,"openEnd":48282,"closeStart":48446,"closeEnd":48452,"textRuns":[],"parentId":"74da742a:254","childIds":["74da742a:256"]},{"id":"74da742a:256","tag":"rect","openStart":48282,"attrEnd":48363,"openEnd":48365,"textRuns":[],"parentId":"74da742a:255","childIds":["74da742a:257"]},{"id":"74da742a:257","tag":"path","openStart":48365,"attrEnd":48444,"openEnd":48446,"textRuns":[],"parentId":"74da742a:256","childIds":[]},{"id":"74da742a:258","tag":"article","openStart":48479,"attrEnd":48504,"openEnd":48505,"closeStart":49039,"closeEnd":49049,"textRuns":[[48505,48512],[48829,48836],[49034,49039]],"parentId":"74da742a:189","childIds":["74da742a:259","74da742a:263"]},{"id":"74da742a:259","tag":"div","openStart":48512,"attrEnd":48532,"openEnd":48533,"closeStart":48823,"closeEnd":48829,"textRuns":[[48533,48542],[48575,48584],[48668,48677],[48816,48823]],"parentId":"74da742a:258","childIds":["74da742a:260","74da742a:261","74da742a:262"]},{"id":"74da742a:260","tag":"span","openStart":48542,"attrEnd":48563,"openEnd":48564,"closeStart":48568,"closeEnd":48575,"textRuns":[[48564,48568]],"parentId":"74da742a:259","childIds":[]},{"id":"74da742a:261","tag":"h3","openStart":48584,"attrEnd":48604,"openEnd":48605,"closeStart":48663,"closeEnd":48668,"textRuns":[[48605,48663]],"parentId":"74da742a:259","childIds":[]},{"id":"74da742a:262","tag":"p","openStart":48677,"attrEnd":48695,"openEnd":48696,"closeStart":48812,"closeEnd":48816,"textRuns":[[48696,48812]],"parentId":"74da742a:259","childIds":[]},{"id":"74da742a:263","tag":"div","openStart":48836,"attrEnd":48870,"openEnd":48871,"closeStart":49028,"closeEnd":49034,"textRuns":[],"parentId":"74da742a:258","childIds":["74da742a:264"]},{"id":"74da742a:264","tag":"svg","openStart":48871,"attrEnd":48930,"openEnd":48931,"closeStart":49022,"closeEnd":49028,"textRuns":[],"parentId":"74da742a:263","childIds":["74da742a:265"]},{"id":"74da742a:265","tag":"path","openStart":48931,"attrEnd":49020,"openEnd":49022,"textRuns":[],"parentId":"74da742a:264","childIds":[]},{"id":"74da742a:266","tag":"article","openStart":49055,"attrEnd":49091,"openEnd":49092,"closeStart":49659,"closeEnd":49669,"textRuns":[[49092,49099],[49401,49408],[49654,49659]],"parentId":"74da742a:189","childIds":["74da742a:267","74da742a:271"]},{"id":"74da742a:267","tag":"div","openStart":49099,"attrEnd":49119,"openEnd":49120,"closeStart":49395,"closeEnd":49401,"textRuns":[[49120,49129],[49162,49171],[49232,49241],[49388,49395]],"parentId":"74da742a:266","childIds":["74da742a:268","74da742a:269","74da742a:270"]},{"id":"74da742a:268","tag":"span","openStart":49129,"attrEnd":49150,"openEnd":49151,"closeStart":49155,"closeEnd":49162,"textRuns":[[49151,49155]],"parentId":"74da742a:267","childIds":[]},{"id":"74da742a:269","tag":"h3","openStart":49171,"attrEnd":49191,"openEnd":49192,"closeStart":49227,"closeEnd":49232,"textRuns":[[49192,49227]],"parentId":"74da742a:267","childIds":[]},{"id":"74da742a:270","tag":"p","openStart":49241,"attrEnd":49259,"openEnd":49260,"closeStart":49384,"closeEnd":49388,"textRuns":[[49260,49384]],"parentId":"74da742a:267","childIds":[]},{"id":"74da742a:271","tag":"div","openStart":49408,"attrEnd":49428,"openEnd":49429,"closeStart":49648,"closeEnd":49654,"textRuns":[],"parentId":"74da742a:266","childIds":["74da742a:272"]},{"id":"74da742a:272","tag":"svg","openStart":49429,"attrEnd":49488,"openEnd":49489,"closeStart":49642,"closeEnd":49648,"textRuns":[],"parentId":"74da742a:271","childIds":["74da742a:273"]},{"id":"74da742a:273","tag":"circle","openStart":49489,"attrEnd":49559,"openEnd":49561,"textRuns":[],"parentId":"74da742a:272","childIds":["74da742a:274"]},{"id":"74da742a:274","tag":"path","openStart":49561,"attrEnd":49640,"openEnd":49642,"textRuns":[],"parentId":"74da742a:273","childIds":[]},{"id":"74da742a:275","tag":"section","openStart":49708,"attrEnd":49779,"openEnd":49780,"closeStart":52874,"closeEnd":52884,"textRuns":[[49780,49783],[52873,52874]],"parentId":"74da742a:7","childIds":["74da742a:276"]},{"id":"74da742a:276","tag":"div","openStart":49783,"attrEnd":49816,"openEnd":49817,"closeStart":52867,"closeEnd":52873,"textRuns":[[49817,49822],[49866,49871],[49922,49927],[50266,50272],[52864,52867]],"parentId":"74da742a:275","childIds":["74da742a:277","74da742a:278","74da742a:279","74da742a:280"]},{"id":"74da742a:277","tag":"div","openStart":49822,"attrEnd":49841,"openEnd":49842,"closeStart":49860,"closeEnd":49866,"textRuns":[[49842,49860]],"parentId":"74da742a:276","childIds":[]},{"id":"74da742a:278","tag":"h2","openStart":49871,"attrEnd":49874,"openEnd":49875,"closeStart":49917,"closeEnd":49922,"textRuns":[[49875,49917]],"parentId":"74da742a:276","childIds":[]},{"id":"74da742a:279","tag":"p","openStart":49927,"attrEnd":49941,"openEnd":49942,"closeStart":50262,"closeEnd":50266,"textRuns":[[49942,50262]],"parentId":"74da742a:276","childIds":[]},{"id":"74da742a:280","tag":"ol","openStart":50272,"attrEnd":50291,"openEnd":50292,"closeStart":52859,"closeEnd":52864,"textRuns":[[50292,50299],[50663,50670],[51070,51077],[51416,51423],[51762,51769],[52074,52081],[52448,52455],[52854,52859]],"parentId":"74da742a:276","childIds":["74da742a:281","74da742a:286","74da742a:291","74da742a:295","74da742a:299","74da742a:303","74da742a:308"]},{"id":"74da742a:281","tag":"li","openStart":50299,"attrEnd":50302,"openEnd":50303,"closeStart":50658,"closeEnd":50663,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:282"]},{"id":"74da742a:282","tag":"div","openStart":50303,"attrEnd":50307,"openEnd":50308,"closeStart":50652,"closeEnd":50658,"textRuns":[[50308,50317],[50408,50417],[50645,50652]],"parentId":"74da742a:281","childIds":["74da742a:283","74da742a:284"]},{"id":"74da742a:283","tag":"h3","openStart":50317,"attrEnd":50338,"openEnd":50339,"closeStart":50403,"closeEnd":50408,"textRuns":[[50339,50403]],"parentId":"74da742a:282","childIds":[]},{"id":"74da742a:284","tag":"p","openStart":50417,"attrEnd":50436,"openEnd":50437,"closeStart":50641,"closeEnd":50645,"textRuns":[[50437,50580]],"parentId":"74da742a:282","childIds":["74da742a:285"]},{"id":"74da742a:285","tag":"span","openStart":50580,"attrEnd":50605,"openEnd":50606,"closeStart":50634,"closeEnd":50641,"textRuns":[[50606,50634]],"parentId":"74da742a:284","childIds":[]},{"id":"74da742a:286","tag":"li","openStart":50670,"attrEnd":50673,"openEnd":50674,"closeStart":51065,"closeEnd":51070,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:287"]},{"id":"74da742a:287","tag":"div","openStart":50674,"attrEnd":50678,"openEnd":50679,"closeStart":51059,"closeEnd":51065,"textRuns":[[50679,50688],[50770,50779],[51052,51059]],"parentId":"74da742a:286","childIds":["74da742a:288","74da742a:289"]},{"id":"74da742a:288","tag":"h3","openStart":50688,"attrEnd":50709,"openEnd":50710,"closeStart":50765,"closeEnd":50770,"textRuns":[[50710,50765]],"parentId":"74da742a:287","childIds":[]},{"id":"74da742a:289","tag":"p","openStart":50779,"attrEnd":50798,"openEnd":50799,"closeStart":51048,"closeEnd":51052,"textRuns":[[50799,50987]],"parentId":"74da742a:287","childIds":["74da742a:290"]},{"id":"74da742a:290","tag":"span","openStart":50987,"attrEnd":51012,"openEnd":51013,"closeStart":51041,"closeEnd":51048,"textRuns":[[51013,51041]],"parentId":"74da742a:289","childIds":[]},{"id":"74da742a:291","tag":"li","openStart":51077,"attrEnd":51080,"openEnd":51081,"closeStart":51411,"closeEnd":51416,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:292"]},{"id":"74da742a:292","tag":"div","openStart":51081,"attrEnd":51085,"openEnd":51086,"closeStart":51405,"closeEnd":51411,"textRuns":[[51086,51095],[51219,51228],[51398,51405]],"parentId":"74da742a:291","childIds":["74da742a:293","74da742a:294"]},{"id":"74da742a:293","tag":"h3","openStart":51095,"attrEnd":51116,"openEnd":51117,"closeStart":51214,"closeEnd":51219,"textRuns":[[51117,51214]],"parentId":"74da742a:292","childIds":[]},{"id":"74da742a:294","tag":"p","openStart":51228,"attrEnd":51247,"openEnd":51248,"closeStart":51394,"closeEnd":51398,"textRuns":[[51248,51394]],"parentId":"74da742a:292","childIds":[]},{"id":"74da742a:295","tag":"li","openStart":51423,"attrEnd":51426,"openEnd":51427,"closeStart":51757,"closeEnd":51762,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:296"]},{"id":"74da742a:296","tag":"div","openStart":51427,"attrEnd":51431,"openEnd":51432,"closeStart":51751,"closeEnd":51757,"textRuns":[[51432,51441],[51561,51570],[51744,51751]],"parentId":"74da742a:295","childIds":["74da742a:297","74da742a:298"]},{"id":"74da742a:297","tag":"h3","openStart":51441,"attrEnd":51462,"openEnd":51463,"closeStart":51556,"closeEnd":51561,"textRuns":[[51463,51556]],"parentId":"74da742a:296","childIds":[]},{"id":"74da742a:298","tag":"p","openStart":51570,"attrEnd":51589,"openEnd":51590,"closeStart":51740,"closeEnd":51744,"textRuns":[[51590,51740]],"parentId":"74da742a:296","childIds":[]},{"id":"74da742a:299","tag":"li","openStart":51769,"attrEnd":51772,"openEnd":51773,"closeStart":52069,"closeEnd":52074,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:300"]},{"id":"74da742a:300","tag":"div","openStart":51773,"attrEnd":51777,"openEnd":51778,"closeStart":52063,"closeEnd":52069,"textRuns":[[51778,51787],[51877,51886],[52056,52063]],"parentId":"74da742a:299","childIds":["74da742a:301","74da742a:302"]},{"id":"74da742a:301","tag":"h3","openStart":51787,"attrEnd":51808,"openEnd":51809,"closeStart":51872,"closeEnd":51877,"textRuns":[[51809,51872]],"parentId":"74da742a:300","childIds":[]},{"id":"74da742a:302","tag":"p","openStart":51886,"attrEnd":51905,"openEnd":51906,"closeStart":52052,"closeEnd":52056,"textRuns":[[51906,52052]],"parentId":"74da742a:300","childIds":[]},{"id":"74da742a:303","tag":"li","openStart":52081,"attrEnd":52084,"openEnd":52085,"closeStart":52443,"closeEnd":52448,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:304"]},{"id":"74da742a:304","tag":"div","openStart":52085,"attrEnd":52089,"openEnd":52090,"closeStart":52437,"closeEnd":52443,"textRuns":[[52090,52099],[52202,52211],[52430,52437]],"parentId":"74da742a:303","childIds":["74da742a:305","74da742a:306"]},{"id":"74da742a:305","tag":"h3","openStart":52099,"attrEnd":52120,"openEnd":52121,"closeStart":52197,"closeEnd":52202,"textRuns":[[52121,52197]],"parentId":"74da742a:304","childIds":[]},{"id":"74da742a:306","tag":"p","openStart":52211,"attrEnd":52230,"openEnd":52231,"closeStart":52426,"closeEnd":52430,"textRuns":[[52231,52355]],"parentId":"74da742a:304","childIds":["74da742a:307"]},{"id":"74da742a:307","tag":"span","openStart":52355,"attrEnd":52380,"openEnd":52381,"closeStart":52419,"closeEnd":52426,"textRuns":[[52381,52419]],"parentId":"74da742a:306","childIds":[]},{"id":"74da742a:308","tag":"li","openStart":52455,"attrEnd":52458,"openEnd":52459,"closeStart":52849,"closeEnd":52854,"textRuns":[],"parentId":"74da742a:280","childIds":["74da742a:309"]},{"id":"74da742a:309","tag":"div","openStart":52459,"attrEnd":52463,"openEnd":52464,"closeStart":52843,"closeEnd":52849,"textRuns":[[52464,52473],[52608,52617],[52836,52843]],"parentId":"74da742a:308","childIds":["74da742a:310","74da742a:311"]},{"id":"74da742a:310","tag":"h3","openStart":52473,"attrEnd":52494,"openEnd":52495,"closeStart":52603,"closeEnd":52608,"textRuns":[[52495,52603]],"parentId":"74da742a:309","childIds":[]},{"id":"74da742a:311","tag":"p","openStart":52617,"attrEnd":52636,"openEnd":52637,"closeStart":52832,"closeEnd":52836,"textRuns":[[52637,52774]],"parentId":"74da742a:309","childIds":["74da742a:312"]},{"id":"74da742a:312","tag":"span","openStart":52774,"attrEnd":52799,"openEnd":52800,"closeStart":52825,"closeEnd":52832,"textRuns":[[52800,52825]],"parentId":"74da742a:311","childIds":[]},{"id":"74da742a:313","tag":"section","openStart":52903,"attrEnd":52935,"openEnd":52936,"closeStart":54471,"closeEnd":54481,"textRuns":[[52936,52939],[54470,54471]],"parentId":"74da742a:7","childIds":["74da742a:314"]},{"id":"74da742a:314","tag":"div","openStart":52939,"attrEnd":52964,"openEnd":52965,"closeStart":54464,"closeEnd":54470,"textRuns":[[52965,52970],[53124,53129],[54461,54464]],"parentId":"74da742a:313","childIds":["74da742a:315","74da742a:318"]},{"id":"74da742a:315","tag":"div","openStart":52970,"attrEnd":53003,"openEnd":53004,"closeStart":53118,"closeEnd":53124,"textRuns":[[53004,53011],[53062,53069],[53113,53118]],"parentId":"74da742a:314","childIds":["74da742a:316","74da742a:317"]},{"id":"74da742a:316","tag":"div","openStart":53011,"attrEnd":53030,"openEnd":53031,"closeStart":53056,"closeEnd":53062,"textRuns":[[53031,53056]],"parentId":"74da742a:315","childIds":[]},{"id":"74da742a:317","tag":"h2","openStart":53069,"attrEnd":53072,"openEnd":53073,"closeStart":53108,"closeEnd":53113,"textRuns":[[53073,53108]],"parentId":"74da742a:315","childIds":[]},{"id":"74da742a:318","tag":"div","openStart":53129,"attrEnd":53154,"openEnd":53155,"closeStart":54455,"closeEnd":54461,"textRuns":[[53155,53162],[53595,53602],[54032,54039],[54450,54455]],"parentId":"74da742a:314","childIds":["74da742a:319","74da742a:324","74da742a:329"]},{"id":"74da742a:319","tag":"a","openStart":53162,"attrEnd":53195,"openEnd":53196,"closeStart":53591,"closeEnd":53595,"textRuns":[[53196,53205],[53248,53257],[53329,53338],[53532,53541],[53584,53591]],"parentId":"74da742a:318","childIds":["74da742a:320","74da742a:321","74da742a:322","74da742a:323"]},{"id":"74da742a:320","tag":"div","openStart":53205,"attrEnd":53231,"openEnd":53232,"closeStart":53242,"closeEnd":53248,"textRuns":[[53232,53242]],"parentId":"74da742a:319","childIds":[]},{"id":"74da742a:321","tag":"h3","openStart":53257,"attrEnd":53260,"openEnd":53261,"closeStart":53324,"closeEnd":53329,"textRuns":[[53261,53324]],"parentId":"74da742a:319","childIds":[]},{"id":"74da742a:322","tag":"p","openStart":53338,"attrEnd":53340,"openEnd":53341,"closeStart":53528,"closeEnd":53532,"textRuns":[[53341,53528]],"parentId":"74da742a:319","childIds":[]},{"id":"74da742a:323","tag":"span","openStart":53541,"attrEnd":53564,"openEnd":53565,"closeStart":53577,"closeEnd":53584,"textRuns":[[53565,53577]],"parentId":"74da742a:319","childIds":[]},{"id":"74da742a:324","tag":"a","openStart":53602,"attrEnd":53635,"openEnd":53636,"closeStart":54028,"closeEnd":54032,"textRuns":[[53636,53645],[53690,53699],[53748,53757],[53969,53978],[54021,54028]],"parentId":"74da742a:318","childIds":["74da742a:325","74da742a:326","74da742a:327","74da742a:328"]},{"id":"74da742a:325","tag":"div","openStart":53645,"attrEnd":53671,"openEnd":53672,"closeStart":53684,"closeEnd":53690,"textRuns":[[53672,53684]],"parentId":"74da742a:324","childIds":[]},{"id":"74da742a:326","tag":"h3","openStart":53699,"attrEnd":53702,"openEnd":53703,"closeStart":53743,"closeEnd":53748,"textRuns":[[53703,53743]],"parentId":"74da742a:324","childIds":[]},{"id":"74da742a:327","tag":"p","openStart":53757,"attrEnd":53759,"openEnd":53760,"closeStart":53965,"closeEnd":53969,"textRuns":[[53760,53965]],"parentId":"74da742a:324","childIds":[]},{"id":"74da742a:328","tag":"span","openStart":53978,"attrEnd":54001,"openEnd":54002,"closeStart":54014,"closeEnd":54021,"textRuns":[[54002,54014]],"parentId":"74da742a:324","childIds":[]},{"id":"74da742a:329","tag":"a","openStart":54039,"attrEnd":54072,"openEnd":54073,"closeStart":54446,"closeEnd":54450,"textRuns":[[54073,54082],[54135,54144],[54188,54197],[54387,54396],[54439,54446]],"parentId":"74da742a:318","childIds":["74da742a:330","74da742a:331","74da742a:332","74da742a:333"]},{"id":"74da742a:330","tag":"div","openStart":54082,"attrEnd":54108,"openEnd":54109,"closeStart":54129,"closeEnd":54135,"textRuns":[[54109,54129]],"parentId":"74da742a:329","childIds":[]},{"id":"74da742a:331","tag":"h3","openStart":54144,"attrEnd":54147,"openEnd":54148,"closeStart":54183,"closeEnd":54188,"textRuns":[[54148,54183]],"parentId":"74da742a:329","childIds":[]},{"id":"74da742a:332","tag":"p","openStart":54197,"attrEnd":54199,"openEnd":54200,"closeStart":54383,"closeEnd":54387,"textRuns":[[54200,54383]],"parentId":"74da742a:329","childIds":[]},{"id":"74da742a:333","tag":"span","openStart":54396,"attrEnd":54419,"openEnd":54420,"closeStart":54432,"closeEnd":54439,"textRuns":[[54420,54432]],"parentId":"74da742a:329","childIds":[]},{"id":"74da742a:334","tag":"footer","openStart":54483,"attrEnd":54503,"openEnd":54504,"closeStart":56731,"closeEnd":56740,"textRuns":[[54504,54507],[56485,56488],[56730,56731]],"parentId":"74da742a:7","childIds":["74da742a:335","74da742a:374"]},{"id":"74da742a:335","tag":"div","openStart":54507,"attrEnd":54525,"openEnd":54526,"closeStart":56479,"closeEnd":56485,"textRuns":[[54526,54531],[55592,55597],[56091,56096],[56476,56479]],"parentId":"74da742a:334","childIds":["74da742a:336","74da742a:346","74da742a:361"]},{"id":"74da742a:336","tag":"div","openStart":54531,"attrEnd":54551,"openEnd":54552,"closeStart":55586,"closeEnd":55592,"textRuns":[[54552,54559],[55054,55061],[55368,55375],[55581,55586]],"parentId":"74da742a:335","childIds":["74da742a:337","74da742a:344","74da742a:345"]},{"id":"74da742a:337","tag":"a","openStart":54559,"attrEnd":54584,"openEnd":54585,"closeStart":55050,"closeEnd":55054,"textRuns":[[54585,54594],[54857,54866],[55043,55050]],"parentId":"74da742a:336","childIds":["74da742a:338","74da742a:341"]},{"id":"74da742a:338","tag":"span","openStart":54594,"attrEnd":54637,"openEnd":54638,"closeStart":54850,"closeEnd":54857,"textRuns":[[54638,54649],[54841,54850]],"parentId":"74da742a:337","childIds":["74da742a:339"]},{"id":"74da742a:339","tag":"svg","openStart":54649,"attrEnd":54708,"openEnd":54709,"closeStart":54835,"closeEnd":54841,"textRuns":[],"parentId":"74da742a:338","childIds":["74da742a:340"]},{"id":"74da742a:340","tag":"path","openStart":54709,"attrEnd":54833,"openEnd":54835,"textRuns":[],"parentId":"74da742a:339","childIds":[]},{"id":"74da742a:341","tag":"span","openStart":54866,"attrEnd":54871,"openEnd":54872,"closeStart":55036,"closeEnd":55043,"textRuns":[[54872,54883],[54942,54953],[55027,55036]],"parentId":"74da742a:337","childIds":["74da742a:342","74da742a:343"]},{"id":"74da742a:342","tag":"div","openStart":54883,"attrEnd":54906,"openEnd":54907,"closeStart":54936,"closeEnd":54942,"textRuns":[[54907,54936]],"parentId":"74da742a:341","childIds":[]},{"id":"74da742a:343","tag":"div","openStart":54953,"attrEnd":54975,"openEnd":54976,"closeStart":55021,"closeEnd":55027,"textRuns":[[54976,55021]],"parentId":"74da742a:341","childIds":[]},{"id":"74da742a:344","tag":"p","openStart":55061,"attrEnd":55063,"openEnd":55064,"closeStart":55364,"closeEnd":55368,"textRuns":[[55064,55364]],"parentId":"74da742a:336","childIds":[]},{"id":"74da742a:345","tag":"p","openStart":55375,"attrEnd":55516,"openEnd":55517,"closeStart":55577,"closeEnd":55581,"styleAttr":[55385,55515],"textRuns":[[55517,55577]],"parentId":"74da742a:336","childIds":[]},{"id":"74da742a:346","tag":"div","openStart":55597,"attrEnd":55615,"openEnd":55616,"closeStart":56085,"closeEnd":56091,"textRuns":[[55616,55623],[55657,55664],[56080,56085]],"parentId":"74da742a:335","childIds":["74da742a:347","74da742a:348"]},{"id":"74da742a:347","tag":"h4","openStart":55623,"attrEnd":55626,"openEnd":55627,"closeStart":55652,"closeEnd":55657,"textRuns":[[55627,55652]],"parentId":"74da742a:346","childIds":[]},{"id":"74da742a:348","tag":"ul","openStart":55664,"attrEnd":55667,"openEnd":55668,"closeStart":56075,"closeEnd":56080,"textRuns":[[55668,55677],[55747,55756],[55812,55821],[55865,55874],[55936,55945],[55999,56008],[56068,56075]],"parentId":"74da742a:346","childIds":["74da742a:349","74da742a:351","74da742a:353","74da742a:355","74da742a:357","74da742a:359"]},{"id":"74da742a:349","tag":"li","openStart":55677,"attrEnd":55680,"openEnd":55681,"closeStart":55742,"closeEnd":55747,"textRuns":[],"parentId":"74da742a:348","childIds":["74da742a:350"]},{"id":"74da742a:350","tag":"a","openStart":55681,"attrEnd":55692,"openEnd":55693,"closeStart":55738,"closeEnd":55742,"textRuns":[[55693,55738]],"parentId":"74da742a:349","childIds":[]},{"id":"74da742a:351","tag":"li","openStart":55756,"attrEnd":55759,"openEnd":55760,"closeStart":55807,"closeEnd":55812,"textRuns":[],"parentId":"74da742a:348","childIds":["74da742a:352"]},{"id":"74da742a:352","tag":"a","openStart":55760,"attrEnd":55771,"openEnd":55772,"closeStart":55803,"closeEnd":55807,"textRuns":[[55772,55803]],"parentId":"74da742a:351","childIds":[]},{"id":"74da742a:353","tag":"li","openStart":55821,"attrEnd":55824,"openEnd":55825,"closeStart":55860,"closeEnd":55865,"textRuns":[],"parentId":"74da742a:348","childIds":["74da742a:354"]},{"id":"74da742a:354","tag":"a","openStart":55825,"attrEnd":55836,"openEnd":55837,"closeStart":55856,"closeEnd":55860,"textRuns":[[55837,55856]],"parentId":"74da742a:353","childIds":[]},{"id":"74da742a:355","tag":"li","openStart":55874,"attrEnd":55877,"openEnd":55878,"closeStart":55931,"closeEnd":55936,"textRuns":[],"parentId":"74da742a:348","childIds":["74da742a:356"]},{"id":"74da742a:356","tag":"a","openStart":55878,"attrEnd":55889,"openEnd":55890,"closeStart":55927,"closeEnd":55931,"textRuns":[[55890,55927]],"parentId":"74da742a:355","childIds":[]},{"id":"74da742a:357","tag":"li","openStart":55945,"attrEnd":55948,"openEnd":55949,"closeStart":55994,"closeEnd":55999,"textRuns":[],"parentId":"74da742a:348","childIds":["74da742a:358"]},{"id":"74da742a:358","tag":"a","openStart":55949,"attrEnd":55960,"openEnd":55961,"closeStart":55990,"closeEnd":55994,"textRuns":[[55961,55990]],"parentId":"74da742a:357","childIds":[]},{"id":"74da742a:359","tag":"li","openStart":56008,"attrEnd":56011,"openEnd":56012,"closeStart":56063,"closeEnd":56068,"textRuns":[],"parentId":"74da742a:348","childIds":["74da742a:360"]},{"id":"74da742a:360","tag":"a","openStart":56012,"attrEnd":56023,"openEnd":56024,"closeStart":56059,"closeEnd":56063,"textRuns":[[56024,56059]],"parentId":"74da742a:359","childIds":[]},{"id":"74da742a:361","tag":"div","openStart":56096,"attrEnd":56114,"openEnd":56115,"closeStart":56470,"closeEnd":56476,"textRuns":[[56115,56122],[56147,56154],[56465,56470]],"parentId":"74da742a:335","childIds":["74da742a:362","74da742a:363"]},{"id":"74da742a:362","tag":"h4","openStart":56122,"attrEnd":56125,"openEnd":56126,"closeStart":56142,"closeEnd":56147,"textRuns":[[56126,56142]],"parentId":"74da742a:361","childIds":[]},{"id":"74da742a:363","tag":"ul","openStart":56154,"attrEnd":56157,"openEnd":56158,"closeStart":56460,"closeEnd":56465,"textRuns":[[56158,56167],[56210,56219],[56262,56271],[56329,56338],[56396,56405],[56453,56460]],"parentId":"74da742a:361","childIds":["74da742a:364","74da742a:366","74da742a:368","74da742a:370","74da742a:372"]},{"id":"74da742a:364","tag":"li","openStart":56167,"attrEnd":56170,"openEnd":56171,"closeStart":56205,"closeEnd":56210,"textRuns":[],"parentId":"74da742a:363","childIds":["74da742a:365"]},{"id":"74da742a:365","tag":"a","openStart":56171,"attrEnd":56182,"openEnd":56183,"closeStart":56201,"closeEnd":56205,"textRuns":[[56183,56201]],"parentId":"74da742a:364","childIds":[]},{"id":"74da742a:366","tag":"li","openStart":56219,"attrEnd":56222,"openEnd":56223,"closeStart":56257,"closeEnd":56262,"textRuns":[],"parentId":"74da742a:363","childIds":["74da742a:367"]},{"id":"74da742a:367","tag":"a","openStart":56223,"attrEnd":56234,"openEnd":56235,"closeStart":56253,"closeEnd":56257,"textRuns":[[56235,56253]],"parentId":"74da742a:366","childIds":[]},{"id":"74da742a:368","tag":"li","openStart":56271,"attrEnd":56274,"openEnd":56275,"closeStart":56324,"closeEnd":56329,"textRuns":[],"parentId":"74da742a:363","childIds":["74da742a:369"]},{"id":"74da742a:369","tag":"a","openStart":56275,"attrEnd":56286,"openEnd":56287,"closeStart":56320,"closeEnd":56324,"textRuns":[[56287,56320]],"parentId":"74da742a:368","childIds":[]},{"id":"74da742a:370","tag":"li","openStart":56338,"attrEnd":56341,"openEnd":56342,"closeStart":56391,"closeEnd":56396,"textRuns":[],"parentId":"74da742a:363","childIds":["74da742a:371"]},{"id":"74da742a:371","tag":"a","openStart":56342,"attrEnd":56353,"openEnd":56354,"closeStart":56387,"closeEnd":56391,"textRuns":[[56354,56387]],"parentId":"74da742a:370","childIds":[]},{"id":"74da742a:372","tag":"li","openStart":56405,"attrEnd":56408,"openEnd":56409,"closeStart":56448,"closeEnd":56453,"textRuns":[],"parentId":"74da742a:363","childIds":["74da742a:373"]},{"id":"74da742a:373","tag":"a","openStart":56409,"attrEnd":56420,"openEnd":56421,"closeStart":56444,"closeEnd":56448,"textRuns":[[56421,56444]],"parentId":"74da742a:372","childIds":[]},{"id":"74da742a:374","tag":"div","openStart":56488,"attrEnd":56509,"openEnd":56510,"closeStart":56724,"closeEnd":56730,"textRuns":[[56510,56515],[56613,56618],[56721,56724]],"parentId":"74da742a:334","childIds":["74da742a:375","74da742a:376"]},{"id":"74da742a:375","tag":"div","openStart":56515,"attrEnd":56519,"openEnd":56520,"closeStart":56607,"closeEnd":56613,"textRuns":[[56520,56607]],"parentId":"74da742a:374","childIds":[]},{"id":"74da742a:376","tag":"div","openStart":56618,"attrEnd":56622,"openEnd":56623,"closeStart":56715,"closeEnd":56721,"textRuns":[[56623,56715]],"parentId":"74da742a:374","childIds":[]},{"id":"74da742a:377","tag":"a","openStart":56742,"attrEnd":56771,"openEnd":56772,"closeStart":56792,"closeEnd":56796,"textRuns":[[56772,56792]],"parentId":"74da742a:7","childIds":[]}],"literals":[[56855,56867],[56944,56958],[57257,57258],[57294,57300],[57493,57500],[57594,57613]]}</script>
+
+<?php get_footer(); ?>

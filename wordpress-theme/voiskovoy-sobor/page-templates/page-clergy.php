@@ -1,0 +1,856 @@
+<?php
+/**
+ * Template Name: Духовенство
+ *
+ * Шаблон страницы «Духовенство» — сгенерирован из docs/clergy.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+:root{
+  --parchment:#f5f0e8;
+  --parchment-2:#ede6d8;
+  --parchment-3:#e3dac7;
+  --ink:#1a1f2e;
+  --ink-2:#252b3d;
+  --ink-soft:#3a4054;
+  --gold:#c9a961;
+  --gold-deep:#a88a3f;
+  --burgundy:#8b2635;
+  --burgundy-deep:#6f1d2a;
+  --muted:#6b6558;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Spectral',Georgia,serif;
+  background:var(--parchment);
+  color:var(--ink);
+  line-height:1.6;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ============ HEADER ============ */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--ink);
+  border-bottom:1px solid rgba(201,169,97,0.25);
+}
+.site-header__inner{
+  max-width: 1720px;margin:0 auto;
+  padding:18px 40px;
+  display:flex;align-items:center;gap:32px;
+}
+.sigil{display:flex;align-items:center;gap:14px;color:var(--parchment)}
+.sigil__mark{
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  flex:0 0 42px;
+}
+.sigil__mark svg{width:24px;height:24px}
+.sigil__title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:500;line-height:1.15;
+  letter-spacing:0.01em;
+}
+.sigil__sub{
+  font-family:'PT Sans',sans-serif;
+  font-size:10px;letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-top:2px;
+}
+.nav{
+  display:flex;gap:28px;align-items:center;
+  margin-left:auto;
+}
+.nav a{
+  font-family:'PT Sans',sans-serif;
+  font-size:12px;letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(245,240,232,0.78);
+  padding:8px 0;
+  position:relative;
+  transition:color .2s;
+}
+.nav a:hover{color:var(--parchment)}
+.nav a.active{color:var(--parchment)}
+.nav a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;
+  height:2px;background:var(--gold);
+}
+.btn-donate{
+  font-family:'PT Sans',sans-serif;
+  font-size:12px;letter-spacing:0.18em;
+  text-transform:uppercase;
+  background:var(--burgundy);
+  color:var(--parchment);
+  padding:12px 22px;
+  border:1px solid var(--burgundy);
+  transition:background .2s,border-color .2s;
+}
+.btn-donate:hover{background:var(--burgundy-deep);border-color:var(--burgundy-deep)}
+
+/* ============ HEADER RIBBON ============ */
+.ribbon{
+  background:var(--ink);
+  color:var(--parchment);
+  padding:88px 40px 72px;
+  position:relative;
+  overflow:hidden;
+}
+.ribbon::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(201,169,97,0.08),transparent 50%),
+    radial-gradient(circle at 80% 70%,rgba(139,38,53,0.10),transparent 55%);
+  pointer-events:none;
+}
+.ribbon__inner{
+  max-width:1080px;margin:0 auto;
+  position:relative;text-align:center;
+}
+.kicker{
+  font-family:'PT Sans',sans-serif;
+  font-size:12px;letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.kicker--soft{color:var(--gold-deep)}
+.ribbon h1{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:88px;
+  line-height:1;
+  letter-spacing:-0.01em;
+  margin:24px 0 28px;
+}
+.ribbon__quote{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:24px;
+  line-height:1.5;
+  color:rgba(245,240,232,0.82);
+  max-width:720px;margin:0 auto;
+  font-weight:400;
+}
+.ribbon__rule{
+  width:120px;height:1px;
+  background:var(--gold);
+  margin:48px auto 0;
+}
+
+/* ============ FEATURED CARD ============ */
+.section{padding:96px 40px}
+.section--alt{background:var(--parchment-2)}
+.container{max-width:1200px;margin:0 auto}
+
+.featured{
+  background:var(--parchment);
+  border:1px solid var(--gold);
+  position:relative;
+  padding:48px;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:56px;
+  box-shadow:0 1px 0 rgba(201,169,97,0.15) inset;
+}
+.featured::before{
+  content:"";position:absolute;inset:8px;
+  border:1px solid rgba(201,169,97,0.3);
+  pointer-events:none;
+}
+.featured__photo{
+  width:320px;height:320px;
+  position:relative;
+  background:var(--ink);
+  overflow:hidden;
+}
+.photo-placeholder{
+  width:100%;height:100%;
+  background:
+    linear-gradient(135deg,#2a2f42 0%,#1a1f2e 100%);
+  color:rgba(201,169,97,0.5);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:14px;
+  font-family:'PT Sans',sans-serif;
+  font-size:10px;letter-spacing:0.18em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:20px;
+  position:relative;
+}
+.photo-real{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.featured__photo .photo-real{
+  filter:contrast(1.02) saturate(0.92);
+}
+.photo-initials{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#2a2f42 0%,#1a1f2e 100%);
+  color:rgba(201,169,97,0.85);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:48px;
+  letter-spacing:0.04em;
+  position:relative;
+}
+.photo-initials::after{
+  content:"";position:absolute;inset:12px;
+  border:1px solid rgba(201,169,97,0.25);
+}
+.featured__photo .photo-initials{font-size:120px}
+.photo-placeholder::after{
+  content:"";position:absolute;inset:12px;
+  border:1px solid rgba(201,169,97,0.2);
+}
+.photo-placeholder svg{width:48px;height:48px;opacity:0.55}
+.photo-placeholder__path{
+  font-family:'Spectral',serif;
+  font-style:italic;
+  font-size:11px;
+  letter-spacing:0.02em;
+  text-transform:none;
+  color:rgba(245,240,232,0.45);
+  word-break:break-all;
+  line-height:1.3;
+  max-width:240px;
+}
+
+.featured__body{display:flex;flex-direction:column;justify-content:center}
+.featured__name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:36px;
+  line-height:1.15;
+  margin:14px 0 8px;
+}
+.featured__sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:19px;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+.featured__bio{
+  font-family:'Spectral',serif;
+  font-size:16.5px;
+  line-height:1.75;
+  color:var(--ink-soft);
+  text-wrap:pretty;
+}
+.contact-block{
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px solid var(--gold);
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.btn-outline{
+  font-family:'PT Sans',sans-serif;
+  font-size:13px;letter-spacing:0.14em;
+  text-transform:uppercase;
+  border:1px solid var(--ink);
+  color:var(--ink);
+  padding:14px 24px;
+  background:transparent;
+  cursor:pointer;
+  transition:background .2s,color .2s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-outline:hover{background:var(--ink);color:var(--parchment)}
+.btn-outline svg{width:14px;height:14px}
+.contact-note{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:17px;
+  color:var(--muted);
+}
+
+/* ============ CLERGY GRID ============ */
+.section-head{
+  text-align:center;
+  margin-bottom:64px;
+}
+.section-head h2{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:54px;
+  line-height:1.1;
+  margin-top:18px;
+}
+.section-head__rule{
+  width:80px;height:1px;
+  background:var(--gold);
+  margin:24px auto 0;
+}
+
+.clergy-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+}
+.clergy-card{
+  background:var(--parchment);
+  border:1px solid rgba(201,169,97,0.4);
+  padding:32px;
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:28px;
+  align-items:flex-start;
+  transition:border-color .2s,transform .2s;
+}
+.clergy-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.clergy-card__photo{
+  width:140px;height:140px;
+  background:var(--ink);
+  overflow:hidden;
+}
+.clergy-card__photo .photo-placeholder svg{width:32px;height:32px}
+.clergy-card__photo .photo-placeholder__path{font-size:9px;max-width:120px}
+.clergy-card__photo .photo-placeholder::after{inset:8px}
+.clergy-card__role{
+  font-family:'PT Sans',sans-serif;
+  font-size:11px;letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.clergy-card__name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:24px;
+  line-height:1.2;
+  margin:10px 0 14px;
+}
+.clergy-card__bio{
+  font-family:'Spectral',serif;
+  font-size:14.5px;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+
+/* ============ CTA ============ */
+.cta{
+  text-align:center;
+  padding:80px 40px;
+  background:var(--ink);
+  color:var(--parchment);
+  position:relative;
+}
+.cta::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(201,169,97,0.10),transparent 60%);
+}
+.cta__inner{position:relative;max-width:780px;margin:0 auto}
+.cta h3{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:46px;
+  line-height:1.15;
+  margin:18px 0 20px;
+}
+.cta__sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:20px;
+  line-height:1.55;
+  color:rgba(245,240,232,0.78);
+  margin-bottom:36px;
+  max-width:640px;
+  margin-left:auto;margin-right:auto;
+}
+.btn-outline--light{
+  border-color:var(--gold);
+  color:var(--parchment);
+}
+.btn-outline--light:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* ============ FOOTER ============ */
+.footer{
+  background:#13172a;
+  color:rgba(245,240,232,0.7);
+  padding:72px 40px 32px;
+}
+.footer__grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:56px;
+}
+.footer__brand{display:flex;flex-direction:column;gap:14px}
+.footer__brand .sigil{color:var(--parchment)}
+.footer__about{
+  font-family:'Spectral',serif;
+  font-size:14.5px;
+  line-height:1.7;
+  color:rgba(245,240,232,0.6);
+  font-style:italic;
+  max-width:340px;
+}
+.footer__col h4{
+  font-family:'PT Sans',sans-serif;
+  font-size:11px;letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+  font-weight:700;
+}
+.footer__col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer__col a{
+  font-family:'Spectral',serif;
+  font-size:15px;
+  color:rgba(245,240,232,0.7);
+  transition:color .2s;
+}
+.footer__col a:hover{color:var(--gold)}
+.footer__col p{
+  font-family:'Spectral',serif;
+  font-size:14.5px;
+  line-height:1.7;
+  color:rgba(245,240,232,0.6);
+  margin-bottom:8px;
+}
+.footer__bottom{
+  max-width:1200px;margin:48px auto 0;
+  padding-top:24px;
+  border-top:1px solid rgba(201,169,97,0.15);
+  font-family:'PT Sans',sans-serif;
+  font-size:11px;letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(245,240,232,0.4);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+
+/* ============ MOBILE STICKY BAR ============ */
+.mobile-bar{display:none}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .site-header__inner{padding:14px 20px;flex-wrap:wrap;gap:16px}
+  .nav{display:none}
+  .btn-donate{margin-left:auto;padding:10px 16px;font-size:11px}
+  .ribbon{padding:64px 20px 56px}
+  .ribbon h1{font-size:56px}
+  .ribbon__quote{font-size:19px}
+  .section{padding:64px 20px}
+  .featured{
+    grid-template-columns:1fr;
+    padding:32px 24px;
+    gap:32px;
+    text-align:center;
+  }
+  .featured__photo{width:280px;height:280px;margin:0 auto}
+  .featured__body{text-align:left}
+  .contact-block{justify-content:flex-start}
+  .clergy-grid{grid-template-columns:1fr;gap:20px}
+  .clergy-card{grid-template-columns:120px 1fr;padding:24px;gap:20px}
+  .clergy-card__photo{width:120px;height:120px}
+  .section-head h2{font-size:38px}
+  .cta{padding:64px 24px 120px}
+  .cta h3{font-size:32px}
+  .cta__sub{font-size:17px}
+  .footer{padding:56px 20px 96px}
+  .footer__grid{grid-template-columns:1fr;gap:36px}
+  .footer__bottom{flex-direction:column;align-items:flex-start;font-size:10px}
+
+  .mobile-bar{
+    display:grid;
+    position:fixed;left:0;right:0;bottom:0;z-index:90;
+    grid-template-columns:1fr 1fr 1fr;
+    background:var(--ink);
+    border-top:1px solid rgba(201,169,97,0.3);
+  }
+  .mobile-bar a{
+    text-align:center;
+    padding:14px 6px;
+    font-family:'PT Sans',sans-serif;
+    font-size:10px;letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.78);
+    border-right:1px solid rgba(201,169,97,0.15);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+  }
+  .mobile-bar a:last-child{border-right:0;background:var(--burgundy);color:var(--parchment)}
+  .mobile-bar svg{width:16px;height:16px}
+}
+@media (max-width:480px){
+  .ribbon h1{font-size:44px}
+  .featured__name{font-size:28px}
+  .clergy-card{grid-template-columns:1fr;text-align:center}
+  .clergy-card__photo{margin:0 auto}
+}
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ============ STICKY HEADER ============ -->
+
+
+<!-- ============ HEADER RIBBON ============ -->
+<section class="ribbon">
+  <div class="ribbon__inner">
+    <div class="kicker">Священство собора</div>
+    <h1>Духовенство</h1>
+    <p class="ribbon__quote">«Пастырь добрый полагает жизнь свою за овец»<br>— Ин 10:11</p>
+    <div class="ribbon__rule"></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED CARD ============ -->
+<section class="section">
+  <div class="container">
+    <article class="featured">
+      <div class="featured__photo">
+        <img class="photo-real" src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/clergy/garmash.jpg"); ?>" alt="Протоиерей Иоанн Гармаш — настоятель Войскового собора Александра Невского">
+      </div>
+      <div class="featured__body">
+        <div class="kicker kicker--soft">Настоятель собора</div>
+        <h2 class="featured__name">Протоиерей Иоанн Гармаш</h2>
+        <div class="featured__sub">Гармаш Иван Васильевич · 8 февраля 1965 года</div>
+        <p class="featured__bio">Закончил Кубанскую духовную семинарию (1997–2000), затем Киевскую духовную академию (2003). С момента возрождения собора несёт служение настоятеля, духовно окормляя приход и казачество Кубани. Под его руководством развиваются воскресная школа «Русский щит», молодёжное объединение, сестричество и соборный хор.</p>
+        <div class="contact-block">
+          <a href="tel:+79183159413" class="btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            +7 (918) 315‑94‑13
+          </a>
+          <span class="contact-note">для вопросов о&nbsp;Таинствах</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CLERGY GRID ============ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker kicker--soft">Соборное духовенство</div>
+      <h2>Клир собора</h2>
+      <div class="section-head__rule"></div>
+    </div>
+    <div class="clergy-grid">
+
+      <!-- Card 1 -->
+      <article class="clergy-card">
+        <div class="clergy-card__photo">
+          <div class="photo-initials" aria-label="Протодиакон Максим Кадуров">МК</div>
+        </div>
+        <div>
+          <div class="clergy-card__role">Протодиакон · Регент хора</div>
+          <h3 class="clergy-card__name">Протодиакон<br>Максим Кадуров</h3>
+          <p class="clergy-card__bio">18 апреля 1982 г. Тобольская духовная семинария, АлтГАКИ (дирижёр академического хора). Хиротония диаконская — 15 февраля 2006 года.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="clergy-card">
+        <div class="clergy-card__photo">
+          <img class="photo-real" src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/clergy/feer.jpg"); ?>" alt="Иерей Вячеслав Феер">
+        </div>
+        <div>
+          <div class="clergy-card__role">Иерей</div>
+          <h3 class="clergy-card__name">Иерей<br>Вячеслав Феер</h3>
+          <p class="clergy-card__bio">17 апреля 1989 г. Екатеринодарская духовная семинария. Диаконская хиротония — 31.08.2011, иерейская — 01.05.2012. Награды: набедренник, камилавка, наперсный крест.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="clergy-card">
+        <div class="clergy-card__photo">
+          <img class="photo-real" src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/clergy/popov.jpg"); ?>" alt="Иерей Олег Попов">
+        </div>
+        <div>
+          <div class="clergy-card__role">Иерей</div>
+          <h3 class="clergy-card__name">Иерей<br>Олег Попов</h3>
+          <p class="clergy-card__bio">Попов Олег Александрович. Окончил КубГАУ (2001). Хиротонии: диаконская — 06.08.2023, иерейская — 03.03.2024.</p>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="clergy-card">
+        <div class="clergy-card__photo">
+          <img class="photo-real" src="<?php echo esc_url(get_template_directory_uri() . "/assets/images/clergy/klochkov.jpg"); ?>" alt="Иерей Александр Клочков">
+        </div>
+        <div>
+          <div class="clergy-card__role">Иерей</div>
+          <h3 class="clergy-card__name">Иерей<br>Александр Клочков</h3>
+          <p class="clergy-card__bio">Клочков Александр Владимирович. Николо-Угрешская духовная семинария, Московская духовная академия. Диаконская хиротония — 06.08.2009, священническая — 16.08.2009. Награды: набедренник, камилавка, наперсный крест.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="cta__inner">
+    <div class="kicker">Связаться с собором</div>
+    <h3>Свеча, поставленная за родных,<br>зажигается рукой пастыря</h3>
+    <p class="cta__sub">Все вопросы относительно Крещения, Венчания, Соборования и других Таинств — через свечной киоск собора или настоятеля.</p>
+    <a href="<?php echo esc_url(home_url("/contacts")); ?>" class="btn-outline btn-outline--light">
+      Перейти к контактам
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+
+</main>
+
+<?php get_footer(); ?>

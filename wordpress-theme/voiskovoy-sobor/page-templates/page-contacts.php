@@ -1,0 +1,1230 @@
+<?php
+/**
+ * Template Name: Контакты
+ *
+ * Шаблон страницы «Контакты» — сгенерирован из docs/contacts.html.
+ *
+ * @package VoiskovoySobor
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+?>
+
+<!-- Page-specific styles (из исходного HTML) -->
+
+<style>/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
+<style>
+  :root{
+    --parchment:#f5f0e8;
+    --parchment-2:#efe7d8;
+    --parchment-3:#e8dec9;
+    --ink:#1a1f2e;
+    --ink-2:#0f1320;
+    --ink-soft:#2a3145;
+    --gold:#c9a961;
+    --gold-deep:#a8893f;
+    --gold-soft:#e7d6a6;
+    --bord:#8b2635;
+    --bord-deep:#6e1c29;
+    --rule:rgba(201,169,97,.35);
+    --muted:#5a5346;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Spectral',Georgia,serif;
+    font-weight:400;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond','Cormorant',serif;font-weight:500;letter-spacing:.005em;margin:0}
+  .ui{font-family:'PT Sans',system-ui,sans-serif}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+  a{color:inherit;text-decoration:none}
+
+  /* parchment texture (subtle) */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(201,169,97,.06), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(139,38,53,.05), transparent 60%);
+  }
+  main{position:relative;z-index:1}
+
+  /* ===================== HEADER ===================== */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);
+    color:#e9e3d4;
+    border-bottom:1px solid rgba(201,169,97,.25);
+  }
+  .nav-inner{
+    max-width: 1720px;margin:0 auto;padding:18px 40px;
+    display:flex;align-items:center;gap:32px;
+  }
+  .sigil{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+  .sigil-mark{width:42px;height:42px;color:var(--gold)}
+  .sigil-text{line-height:1.05}
+  .sigil-text .l1{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.04em}
+  .sigil-text .l2{font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);opacity:.8}
+  nav.menu{display:flex;gap:34px;margin-left:auto;align-items:center}
+  nav.menu a{
+    font-family:'PT Sans',sans-serif;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:#d9d2bf;opacity:.85;padding:6px 0;position:relative;transition:opacity .2s,color .2s;
+  }
+  nav.menu a:hover{opacity:1;color:#fff}
+  nav.menu a.active{color:var(--gold);opacity:1}
+  nav.menu a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--gold);
+  }
+  .donate{
+    margin-left:8px;
+    border:1px solid var(--gold);color:var(--gold);
+    background:transparent;
+    font-family:'PT Sans',sans-serif;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    padding:11px 22px;cursor:pointer;transition:all .25s;
+  }
+  .donate:hover{background:var(--gold);color:var(--ink)}
+
+  /* ===================== HERO ===================== */
+  .hero{
+    background:var(--ink);
+    color:#efe7d2;
+    height:40vh;min-height:340px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;text-align:center;padding:0 24px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(800px 400px at 50% 30%, rgba(201,169,97,.10), transparent 70%);
+    pointer-events:none;
+  }
+  .hero .crumb{
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.36em;text-transform:uppercase;
+    color:var(--gold);opacity:0;animation:fadeUp .9s .1s forwards;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(48px,6.4vw,86px);font-weight:400;letter-spacing:.01em;
+    color:#f3ead4;opacity:0;animation:fadeUp 1s .25s forwards;
+  }
+  .hero .quote{
+    margin-top:22px;max-width:680px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:clamp(18px,1.45vw,22px);color:var(--gold-soft);opacity:0;animation:fadeUp 1.1s .55s forwards;
+    line-height:1.5;
+  }
+  .hero .quote .src{display:block;margin-top:8px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-style:normal;color:var(--gold);opacity:.85;font-family:'PT Sans',sans-serif}
+  .hero .gold-rule{
+    position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+    width:min(720px,80%);height:1px;background:linear-gradient(90deg,transparent, var(--gold), transparent);
+    opacity:.85;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  /* ===================== SECTION SHELL ===================== */
+  section{padding:96px 40px;position:relative}
+  .wrap{max-width: 1720px;margin:0 auto}
+  .section-title{
+    text-align:center;font-size:48px;font-weight:400;letter-spacing:.005em;
+  }
+  .eyebrow{
+    text-align:center;font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-deep);
+    margin-bottom:14px;
+  }
+
+  /* gold mini-cross divider */
+  .divider{display:flex;align-items:center;justify-content:center;gap:18px;margin:22px auto;color:var(--gold);width:100%}
+  .divider .ln{flex:1;height:1px;background:var(--rule);max-width:160px}
+  .divider svg{width:22px;height:22px;flex:0 0 auto}
+
+  /* ===================== SPLIT LAYOUT ===================== */
+  .split{
+    display:grid;grid-template-columns:minmax(0,40fr) minmax(0,60fr);gap:36px;
+    min-height:80vh;
+  }
+  .contact-card{
+    background:var(--parchment);
+    border:1px solid var(--gold);
+    padding:50px;
+    box-shadow:
+      0 1px 0 rgba(201,169,97,.5) inset,
+      0 0 0 6px var(--parchment),
+      0 0 0 7px rgba(201,169,97,.25);
+    position:relative;
+  }
+  .contact-card .corner{position:absolute;width:22px;height:22px;color:var(--gold);opacity:.7}
+  .corner.tl{top:10px;left:10px}.corner.tr{top:10px;right:10px;transform:scaleX(-1)}
+  .corner.bl{bottom:10px;left:10px;transform:scaleY(-1)}.corner.br{bottom:10px;right:10px;transform:scale(-1,-1)}
+
+  .cc-title{font-size:42px;line-height:1.05;margin-bottom:6px}
+  .cc-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink-soft);font-weight:400;line-height:1.25}
+  .legal{
+    margin-top:18px;
+    font-family:'Spectral',serif;font-style:italic;font-size:13.5px;color:var(--muted);line-height:1.55;
+    letter-spacing:.005em;
+  }
+  .contact-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px}
+  .contact-list li{display:flex;gap:16px;align-items:flex-start}
+  .ic{
+    flex:0 0 auto;width:24px;height:24px;display:grid;place-items:center;
+    color:var(--gold);
+    margin-top:2px;
+  }
+  .ic svg{width:22px;height:22px;stroke-width:1.3}
+  .c-body{flex:1;min-width:0}
+  .c-label{font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:3px}
+  .c-main{font-family:'Spectral',serif;font-size:16.5px;color:var(--ink);line-height:1.4}
+  .c-main a{border-bottom:1px solid transparent;transition:border-color .2s}
+  .c-main a:hover{border-color:var(--gold)}
+  .c-meta{font-family:'PT Sans',sans-serif;font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:3px}
+
+  .legal-toggle{
+    margin-top:6px;display:inline-flex;align-items:center;gap:6px;
+    font-family:'PT Sans',sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);
+    cursor:pointer;border-bottom:1px dotted var(--rule);padding-bottom:2px;
+  }
+  .legal-toggle:hover{color:var(--bord)}
+  .legal-detail{
+    overflow:hidden;max-height:0;transition:max-height .35s ease;
+    font-family:'Spectral',serif;font-style:italic;font-size:13.5px;color:var(--muted);
+  }
+  .legal-detail.open{max-height:80px;margin-top:6px}
+
+  .socials{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .soc{
+    position:relative;overflow:hidden;
+    border:1px solid var(--gold);
+    padding:14px 10px;text-align:center;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);
+    cursor:pointer;transition:color .35s;
+    background:transparent;
+  }
+  .soc::before{
+    content:"";position:absolute;inset:0;background:var(--gold);
+    transform:translateX(-101%);transition:transform .45s cubic-bezier(.2,.7,.2,1);
+    z-index:0;
+  }
+  .soc>*{position:relative;z-index:1}
+  .soc:hover{color:var(--ink)}
+  .soc:hover::before{transform:translateX(0)}
+  .soc .name{display:block;font-size:13px;letter-spacing:.24em}
+  .soc .handle{display:block;margin-top:6px;font-size:10px;letter-spacing:.18em;opacity:.85;text-transform:lowercase;font-family:'Spectral',serif;font-style:italic}
+
+  /* ===================== MAP ===================== */
+  .map-col{display:flex;flex-direction:column;gap:14px;min-height:600px}
+  .map-tabs{
+    display:flex;gap:0;border:1px solid var(--rule);background:var(--parchment-2);
+    align-self:flex-start;
+  }
+  .tab{
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);
+    padding:11px 20px;cursor:pointer;border:0;background:transparent;
+    border-right:1px solid var(--rule);transition:all .2s;
+  }
+  .tab:last-child{border-right:0}
+  .tab.active{background:var(--gold);color:var(--ink)}
+  .tab:hover:not(.active){background:rgba(201,169,97,.12)}
+
+  .map{
+    position:relative;flex:1;min-height:520px;
+    border:1px solid var(--gold);
+    background:#1f2638;
+    overflow:hidden;
+  }
+  .map .ripple{
+    position:absolute;left:60%;top:54%;width:0;height:0;border-radius:50%;
+    border:2px solid var(--gold);opacity:0;transform:translate(-50%,-50%);
+    animation:ripple 2.6s 1 .6s ease-out forwards;
+  }
+  @keyframes ripple{
+    0%{width:0;height:0;opacity:.9}
+    100%{width:1100px;height:1100px;opacity:0}
+  }
+  /* faux yandex map */
+  .map-canvas{
+    position:absolute;inset:0;
+    background:
+      /* river */
+      linear-gradient(110deg, transparent 64%, #2a4a64 64.4%, #2f5570 70%, #243f56 70.5%, transparent 71%),
+      /* park blocks */
+      radial-gradient(circle at 22% 30%, #2a4a3a 0 50px, transparent 51px),
+      radial-gradient(circle at 78% 22%, #2a4a3a 0 38px, transparent 39px),
+      /* grid streets */
+      repeating-linear-gradient(20deg, transparent 0 78px, rgba(255,255,255,.045) 78px 79px),
+      repeating-linear-gradient(110deg, transparent 0 64px, rgba(255,255,255,.045) 64px 65px),
+      /* base */
+      linear-gradient(160deg,#2a3145,#1a1f2e 60%,#13182a);
+  }
+  .map-canvas::after{
+    /* main road */
+    content:"";position:absolute;left:0;right:0;top:54%;height:6px;
+    background:linear-gradient(90deg, rgba(201,169,97,.5), rgba(201,169,97,.7), rgba(201,169,97,.5));
+    transform:rotate(-4deg);transform-origin:center;
+    box-shadow:0 0 18px rgba(201,169,97,.25);
+  }
+  .map-overlay{
+    position:absolute;inset:0;background:radial-gradient(600px 400px at 60% 54%, transparent, rgba(15,19,32,.55) 80%);
+    pointer-events:none;
+  }
+  /* church pin */
+  .pin{
+    position:absolute;left:60%;top:54%;transform:translate(-50%,-100%);
+    color:var(--gold);filter:drop-shadow(0 6px 12px rgba(0,0,0,.5));
+    animation:pinDrop 1s .9s cubic-bezier(.2,1.4,.4,1) backwards;
+  }
+  @keyframes pinDrop{from{opacity:0;transform:translate(-50%,-160%)}to{opacity:1;transform:translate(-50%,-100%)}}
+  .pin svg{width:54px;height:54px}
+  .pin-label{
+    position:absolute;left:50%;top:100%;transform:translate(-50%,8px);
+    background:var(--ink);color:var(--gold);
+    font-family:'PT Sans',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    padding:6px 10px;white-space:nowrap;border:1px solid var(--gold);
+  }
+  .map-attrib{
+    position:absolute;right:10px;bottom:8px;
+    font-family:'PT Sans',sans-serif;font-size:10px;letter-spacing:.16em;color:rgba(231,214,166,.6);text-transform:uppercase;
+  }
+  .map-zoom{
+    position:absolute;right:14px;top:14px;display:flex;flex-direction:column;background:var(--ink);border:1px solid var(--rule);
+  }
+  .map-zoom button{width:32px;height:32px;background:transparent;border:0;color:var(--gold);font-size:18px;cursor:pointer;font-family:'PT Sans',sans-serif}
+  .map-zoom button+button{border-top:1px solid var(--rule)}
+  .map-coord{
+    position:absolute;left:14px;top:14px;background:rgba(26,31,46,.85);border:1px solid var(--rule);
+    font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.18em;color:var(--gold-soft);
+    padding:6px 10px;
+  }
+
+  .map-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    font-family:'PT Sans',sans-serif;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
+    padding:13px 22px;cursor:pointer;border:1px solid var(--gold);background:transparent;color:var(--ink);
+    transition:all .25s;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn:hover{background:var(--gold);color:var(--ink)}
+  .btn.primary{background:var(--gold);color:var(--ink)}
+  .btn.primary:hover{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff}
+  .btn svg{width:14px;height:14px}
+
+  /* ===================== HOURS ===================== */
+  .hours-wrap{max-width:780px;margin:0 auto}
+  .hours{
+    width:100%;border-collapse:collapse;margin-top:28px;
+    font-family:'Spectral',serif;
+  }
+  .hours tr{border-top:1px solid var(--rule)}
+  .hours tr:last-child{border-bottom:1px solid var(--rule)}
+  .hours td{padding:18px 14px;vertical-align:middle}
+  .day{
+    width:170px;
+    font-family:'PT Sans',sans-serif;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .hours-time{
+    width:160px;font-size:18px;color:var(--ink);font-feature-settings:"tnum";font-variant-numeric:tabular-nums;
+  }
+  .hours-svc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--muted)}
+  .hours tr.today{
+    background:rgba(201,169,97,.22);
+    position:relative;
+  }
+  .hours tr.today td{font-weight:500}
+  .hours tr.today .day{color:var(--gold-deep);font-weight:700}
+  .hours tr.today .hours-time{color:var(--ink-2);font-weight:600}
+  .hours tr.today .hours-svc{color:var(--ink-soft);font-weight:500}
+  .hours tr.today::before{
+    content:"СЕГОДНЯ";position:absolute;left:-92px;top:50%;transform:translateY(-50%);
+    font-family:'PT Sans',sans-serif;font-size:10px;letter-spacing:.32em;color:var(--gold-deep);
+  }
+
+  /* ===================== TRANSPORT ===================== */
+  .transport-bg{background:var(--parchment-2)}
+  .transport{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:38px}
+  .tcard{
+    border-top:1px solid var(--gold);
+    padding:28px 4px 8px;display:flex;flex-direction:column;gap:14px;
+  }
+  .thead{display:flex;align-items:center;gap:14px}
+  .thead svg{width:30px;height:30px;color:var(--gold);stroke-width:1.3;flex:0 0 auto}
+  .tlabel{font-family:'PT Sans',sans-serif;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .troutes{
+    display:flex;flex-wrap:wrap;gap:18px;align-items:baseline;
+    font-family:'Spectral',serif;font-weight:700;color:var(--gold-deep);
+    font-size:34px;line-height:1;
+    font-feature-settings:"tnum";font-variant-numeric:tabular-nums;
+  }
+  .troutes .alt{font-size:18px;color:var(--muted);font-weight:400;font-style:italic;margin-left:-12px}
+  .tstop{
+    font-family:'Spectral',serif;font-style:italic;font-size:15px;color:var(--ink-soft);line-height:1.45;
+  }
+  .tstop em{font-style:normal;color:var(--ink);font-weight:500}
+
+  /* ===================== PARKING ===================== */
+  .parking{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch;
+    max-width:1080px;margin:0 auto;
+  }
+  .park-item{
+    border-top:1px solid var(--gold);padding:28px 4px 4px;
+  }
+  .park-label{font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:10px}
+  .park-label.free{color:var(--bord)}
+  .park-h{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;margin-bottom:10px;line-height:1.15}
+  .park-d{font-family:'Spectral',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.55}
+  .park-d strong{font-weight:500;color:var(--ink)}
+
+
+  /* ===================== FORM ===================== */
+  .form-card{
+    max-width:760px;margin:38px auto 0;
+    background:var(--parchment);border:1px solid var(--gold);padding:54px 60px;position:relative;
+    box-shadow:0 0 0 6px var(--parchment),0 0 0 7px rgba(201,169,97,.22);
+  }
+  .form-card .corner{position:absolute;width:22px;height:22px;color:var(--gold);opacity:.7}
+  .form-intro{
+    text-align:center;font-family:'Spectral',serif;font-style:italic;font-size:16px;color:var(--ink-soft);
+    max-width:520px;margin:14px auto 32px;line-height:1.55;
+  }
+  .field{margin-bottom:22px;display:flex;flex-direction:column;gap:8px}
+  .field label{font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep)}
+  .field input,.field select,.field textarea{
+    font-family:'Spectral',serif;font-size:16px;color:var(--ink);
+    background:transparent;border:0;border-bottom:1px solid var(--rule);
+    padding:10px 2px;outline:none;transition:border-color .25s;
+    border-radius:0;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:var(--muted);font-style:italic}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+  .field textarea{resize:vertical;min-height:96px;font-family:'Spectral',serif}
+  .field select{
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='%23a8893f'><path d='M6 8 0 0h12z'/></svg>");
+    background-repeat:no-repeat;background-position:right 4px center;background-size:10px;
+    padding-right:24px;
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .row2 .field{margin-bottom:22px}
+  .check{display:flex;align-items:flex-start;gap:12px;margin:6px 0 18px;cursor:pointer}
+  .check input{position:absolute;opacity:0;pointer-events:none}
+  .check .box{
+    flex:0 0 auto;width:18px;height:18px;border:1px solid var(--gold);background:var(--parchment);
+    margin-top:2px;display:grid;place-items:center;color:var(--gold);
+  }
+  .check .box svg{width:12px;height:12px;opacity:0;transition:opacity .15s}
+  .check input:checked+.box svg{opacity:1}
+  .check span.t{font-family:'Spectral',serif;font-size:14px;color:var(--ink-soft);line-height:1.4;font-style:italic}
+  .submit{
+    display:block;margin:8px auto 0;
+    background:var(--gold);color:var(--ink);
+    border:0;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.18em;text-transform:uppercase;
+    padding:16px 40px;cursor:pointer;transition:all .25s;
+  }
+  .submit:hover{background:var(--gold-deep);color:#fff}
+  .form-foot{
+    text-align:center;margin-top:22px;font-family:'Spectral',serif;font-style:italic;font-size:14px;color:var(--muted);line-height:1.55;
+  }
+  .form-foot a{color:var(--gold-deep);border-bottom:1px solid var(--rule)}
+
+  /* ===================== APPOINTMENT CTA ===================== */
+  .appt{
+    background:linear-gradient(180deg,var(--bord),var(--bord-deep));color:#f5ecd6;
+    padding:66px 60px;border:1px solid var(--gold);position:relative;overflow:hidden;
+    display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;
+    max-width:1180px;margin:0 auto;
+  }
+  .appt::before{
+    content:"";position:absolute;inset:6px;border:1px solid rgba(201,169,97,.25);pointer-events:none;
+  }
+  .appt-mark{color:var(--gold);width:74px;height:74px}
+  .appt h3{font-size:38px;color:#f7eed6;font-weight:500;line-height:1.1;margin-bottom:6px}
+  .appt p{font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#e7d6a6;max-width:520px;margin:0;line-height:1.55}
+  .appt p strong{font-style:normal;font-weight:500;color:#fff}
+
+  /* ===================== FOOTER ===================== */
+  footer{background:var(--ink-2);color:#cfc6ad;padding:64px 40px 28px;margin-top:0}
+  .foot{max-width: 1720px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:60px}
+  .foot h5{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#f0e7cf;margin-bottom:18px}
+  .foot a{display:block;color:#bdb39a;font-family:'Spectral',serif;font-size:14.5px;padding:5px 0;transition:color .2s}
+  .foot a:hover{color:var(--gold)}
+  .foot .sigil-mark{width:34px;height:34px;color:var(--gold)}
+  .foot .legal-foot{font-family:'Spectral',serif;font-style:italic;font-size:13px;color:#7a7160;line-height:1.55;margin-top:14px}
+  .foot-bottom{
+    max-width: 1720px;margin:48px auto 0;padding-top:22px;border-top:1px solid rgba(201,169,97,.18);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#7a7160;
+  }
+
+  /* ===================== MOBILE STICKY BAR ===================== */
+  .mobile-bar{display:none}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1080px){
+    .split{grid-template-columns:1fr;min-height:auto}
+    .map-col{min-height:auto}
+    .map{min-height:360px}
+    .transport{grid-template-columns:1fr}
+    .parking{grid-template-columns:1fr}
+    .nav-inner{padding:14px 20px;gap:18px}
+    nav.menu{display:none}
+    section{padding:64px 22px}
+    .hero h1{font-size:46px}
+    .contact-card,.form-card{padding:32px 26px}
+    .appt{grid-template-columns:1fr;text-align:center;padding:46px 26px}
+    .appt-mark{margin:0 auto}
+    .row2{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr;gap:32px}
+    .hours tr.today::before{display:none}
+    .day{width:auto}
+    .hours-time{width:auto}
+    .hours-svc{display:none}
+    .mobile-bar{
+      display:grid;grid-template-columns:1fr 1fr 1fr;
+      position:fixed;bottom:0;left:0;right:0;z-index:60;
+      background:var(--bord);color:#f7eed6;
+      border-top:1px solid var(--gold);
+    }
+    .mobile-bar a{
+      padding:16px 6px;text-align:center;
+      font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+      border-right:1px solid rgba(201,169,97,.3);display:flex;flex-direction:column;align-items:center;gap:4px;
+    }
+    .mobile-bar a:last-child{border-right:0}
+    .mobile-bar svg{width:18px;height:18px;color:var(--gold)}
+    body{padding-bottom:64px}
+  }
+</style>
+<style>
+/* Force-show all scroll-reveal elements (JS-dependent animations are gone) */
+.reveal, [class*="reveal"], .fade-in, .ts-event, .animate-on-scroll, [class*="-fade"], [class*="appear"] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+<style id="unified-header-css">
+/* === Unified site header (overrides any per-page header CSS) === */
+body header:not(.uheader) {
+    display: none !important;
+}
+body .uheader,
+body .uheader * {
+    box-sizing: border-box;
+}
+body .uheader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1a1f2e;
+    color: #f5f0e8;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    font-family: 'PT Sans', sans-serif;
+}
+body .uheader__inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+body .uheader__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__brand:hover { color: #f5f0e8; }
+body .uheader__sigil {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+body .uheader__name {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.01em !important;
+    color: #f5f0e8 !important;
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+body .uheader__name small {
+    display: block !important;
+    font-family: 'PT Sans', 'Arial', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #c9a961 !important;
+    margin-top: 4px !important;
+}
+body .uheader__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+body .uheader__nav a {
+    color: rgba(245,240,232,0.82);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+body .uheader__nav a:hover {
+    color: #f5f0e8;
+    text-decoration: none;
+}
+body .uheader__nav a.is-active {
+    color: #c9a961;
+    border-bottom-color: #c9a961;
+}
+body .uheader__cta {
+    flex-shrink: 0;
+    background: #8b2635;
+    color: #f5f0e8;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    border: 1px solid #8b2635;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+body .uheader__cta:hover {
+    background: #6b1d29;
+    border-color: #6b1d29;
+    color: #f5f0e8;
+    text-decoration: none;
+}
+@media (max-width: 1100px) {
+    body .uheader__nav { gap: 20px; font-size: 11px; letter-spacing: 0.14em; }
+    body .uheader__inner { padding: 0 20px; gap: 24px; }
+    body .uheader__name { font-size: 17px; }
+    body .uheader__name small { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 860px) {
+    body .uheader__nav { display: none; }
+    body .uheader__inner { height: 70px; gap: 16px; }
+}
+</style>
+
+<main id="main">
+
+<!-- ============== HEADER ============== -->
+
+
+<main>
+
+<!-- ============== HERO ============== -->
+<section class="hero" style="padding:0">
+  <div class="crumb">Главная · Контакты</div>
+  <h1>Как нас найти</h1>
+  <div class="quote">
+    «Где двое или трое собраны во имя Моё, там Я посреди них»
+    <span class="src">Евангелие от Матфея · 18:20</span>
+  </div>
+  <div class="gold-rule"></div>
+</section>
+
+<!-- ============== SPLIT: CONTACTS + MAP ============== -->
+<section>
+  <div class="wrap">
+    <div class="split">
+
+      <!-- CONTACT CARD -->
+      <aside class="contact-card">
+        <svg class="corner tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path><path d="M1 1l6 6" opacity=".5"></path></svg>
+        <svg class="corner tr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path><path d="M1 1l6 6" opacity=".5"></path></svg>
+        <svg class="corner bl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path><path d="M1 1l6 6" opacity=".5"></path></svg>
+        <svg class="corner br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path><path d="M1 1l6 6" opacity=".5"></path></svg>
+
+        <h2 class="cc-title">Войсковой Собор</h2>
+        <div class="cc-sub">святого благоверного князя Александра&nbsp;Невского</div>
+
+        <div class="divider" style="margin:26px 0 18px">
+          <div class="ln"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 2v20M7 7h10M4 12h16M9 17l6-4M15 17l-6-4"></path>
+          </svg>
+          <div class="ln"></div>
+        </div>
+
+        <p class="legal" style="margin:0 0 28px">
+          Местная религиозная организация православный приход войскового собора святого благоверного князя Александра Невского г. Краснодара Екатеринодарской и Кубанской епархии Русской Православной Церкви
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+            </span>
+            <div class="c-body">
+              <div class="c-label">Адрес собора</div>
+              <div class="c-main">350063, г. Краснодар, ул.&nbsp;Постовая,&nbsp;26</div>
+              <button class="legal-toggle" id="legalToggle" type="button">
+                Юридический адрес отличается
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5l3 3 3-3"></path></svg>
+              </button>
+              <div class="legal-detail" id="legalDetail">Юридический адрес: г. Краснодар, ул.&nbsp;Красная,&nbsp;1.</div>
+            </div>
+          </li>
+
+          <li>
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-3 2a14 14 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>
+            </span>
+            <div class="c-body">
+              <div class="c-label">Канцелярия</div>
+              <div class="c-main"><a href="tel:+78612620020" class="num">+7 (861) 262-00-20</a></div>
+              <div class="c-meta num">Пн–Вс · 9:00 — 18:00</div>
+            </div>
+          </li>
+
+          <li>
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-3 2a14 14 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>
+            </span>
+            <div class="c-body">
+              <div class="c-label">Настоятель · Прот. Иоанн&nbsp;Гармаш</div>
+              <div class="c-main"><a href="tel:+79183159413" class="num">+7 918 315-94-13</a></div>
+              <div class="c-meta">По вопросам пастырского окормления</div>
+            </div>
+          </li>
+
+          <li>
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-3 2a14 14 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>
+            </span>
+            <div class="c-body">
+              <div class="c-label">Свечной киоск</div>
+              <div class="c-main"><a href="tel:+79530807672" class="num">+7 953 080-76-72</a></div>
+              <div class="c-meta num">Ежедневно · 7:00 — 19:00</div>
+            </div>
+          </li>
+
+          <li>
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14"></rect><path d="M3 7l9 7 9-7"></path></svg>
+            </span>
+            <div class="c-body">
+              <div class="c-label">Электронная почта</div>
+              <div class="c-main"><a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a></div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="divider" style="margin:30px 0 20px">
+          <div class="ln"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 2v20M7 7h10M4 12h16M9 17l6-4M15 17l-6-4"></path>
+          </svg>
+          <div class="ln"></div>
+        </div>
+
+        <div class="socials">
+          <a class="soc" href="https://vk.com/voyskovoysoborkrasnodar" target="_blank" rel="noopener">
+            <span class="name">VK</span>
+            <span class="handle">/voyskovoysoborkrasnodar</span>
+          </a>
+          <a class="soc" href="https://t.me/alexnewsobor" target="_blank" rel="noopener">
+            <span class="name">Telegram</span>
+            <span class="handle">@alexnewsobor</span>
+          </a>
+          <a class="soc" href="<?php echo esc_url(home_url("/prayer-requests")); ?>" target="_blank" rel="noopener">
+            <span class="name">YouTube</span>
+            <span class="handle">собор краснодар</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- MAP -->
+      <div class="map-col">
+        <div class="map" id="map">
+          <div class="map-canvas"></div>
+          <div class="map-overlay"></div>
+          <div class="ripple"></div>
+
+          <!-- street labels -->
+          <div style="position:absolute;left:14%;top:30%;font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.18em;color:rgba(231,214,166,.55);text-transform:uppercase;transform:rotate(-12deg)">ул. Постовая</div>
+          <div style="position:absolute;left:36%;top:74%;font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.18em;color:rgba(231,214,166,.55);text-transform:uppercase;transform:rotate(20deg)">ул. Кубанская Набережная</div>
+          <div style="position:absolute;right:12%;top:18%;font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:.18em;color:rgba(231,214,166,.55);text-transform:uppercase">ул. Красная</div>
+          <div style="position:absolute;left:6%;bottom:20%;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(231,214,166,.45)">р. Кубань</div>
+
+          <!-- coords -->
+          <div class="map-coord num">45.014800° N · 38.971200° E</div>
+
+          <!-- pin -->
+          <div class="pin">
+            <svg viewBox="0 0 64 80" fill="none">
+              <!-- teardrop background -->
+              <path d="M32 78s24-26 24-46a24 24 0 1 0-48 0c0 20 24 46 24 46z" fill="#1a1f2e" stroke="#c9a961" stroke-width="2"></path>
+              <!-- church silhouette -->
+              <g fill="#c9a961">
+                <rect x="22" y="32" width="20" height="14"></rect>
+                <path d="M20 32h24v-2H20z"></path>
+                <!-- onion dome -->
+                <path d="M32 12c-3 2-4 5-4 8 0 4 2 6 4 6s4-2 4-6c0-3-1-6-4-8z"></path>
+                <rect x="31" y="26" width="2" height="6"></rect>
+                <!-- cross -->
+                <rect x="31.4" y="6" width="1.2" height="8"></rect>
+                <rect x="29" y="9" width="6" height="1.2"></rect>
+                <rect x="29.5" y="11.5" width="5" height="1"></rect>
+              </g>
+            </svg>
+            <div class="pin-label">Войсковой собор</div>
+          </div>
+
+          <div class="map-attrib">© Яндекс.Карты</div>
+        </div>
+
+        <div class="map-actions">
+          <a class="btn primary" href="https://yandex.ru/maps/?rtext=~45.014800%2C38.971200&rtt=auto" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 22l8-4 8 4z"></path></svg>
+            Построить маршрут
+          </a>
+          <button class="btn" id="copyCoord">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="12" height="12" rx="1"></rect><rect x="4" y="4" width="12" height="12" rx="1"></rect></svg>
+            <span id="copyLabel">Скопировать координаты</span>
+          </button>
+          <a class="btn" href="https://yandex.ru/maps/?text=350063%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B4%D0%B0%D1%80%20%D0%9F%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D0%B0%D1%8F%2026" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-8 9 8v10H3z"></path><path d="M9 21v-6h6v6"></path></svg>
+            Открыть в Яндекс.Картах
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== HOURS ============== -->
+<section style="padding-top:40px">
+  <div class="wrap hours-wrap">
+    <div class="eyebrow">Расписание дверей</div>
+    <h2 class="section-title">Когда нас можно найти</h2>
+    <div class="divider" style="margin:18px auto 6px;max-width:340px">
+      <div class="ln"></div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M12 2v20M7 7h10M4 12h16M9 17l6-4M15 17l-6-4"></path>
+      </svg>
+      <div class="ln"></div>
+    </div>
+
+    <table class="hours">
+      <tbody id="hoursBody">
+        <tr data-day="1"><td class="day">Понедельник</td><td class="hours-time num">7:00 — 19:00</td><td class="hours-svc">литургия 8:00 · вечерня 17:00</td></tr>
+        <tr data-day="2"><td class="day">Вторник</td><td class="hours-time num">7:00 — 19:00</td><td class="hours-svc">литургия 8:00 · вечерня 17:00</td></tr>
+        <tr data-day="3" class="today"><td class="day">Среда</td><td class="hours-time num">7:00 — 19:00</td><td class="hours-svc">литургия 8:00 · вечерня 17:00</td></tr>
+        <tr data-day="4"><td class="day">Четверг</td><td class="hours-time num">7:00 — 19:00</td><td class="hours-svc">литургия 8:00 · вечерня 17:00</td></tr>
+        <tr data-day="5"><td class="day">Пятница</td><td class="hours-time num">7:00 — 19:00</td><td class="hours-svc">литургия 8:00 · вечерня 17:00</td></tr>
+        <tr data-day="6"><td class="day">Суббота</td><td class="hours-time num">6:30 — 21:00</td><td class="hours-svc">всенощное бдение 17:00</td></tr>
+        <tr data-day="0"><td class="day">Воскресенье</td><td class="hours-time num">6:30 — 21:00</td><td class="hours-svc">две литургии: 7:00 ранняя, 9:00 поздняя</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============== TRANSPORT ============== -->
+<section class="transport-bg">
+  <div class="wrap">
+    <div class="eyebrow">Городской транспорт</div>
+    <h2 class="section-title">Как добраться</h2>
+    <div class="divider" style="margin:18px auto 0;max-width:340px">
+      <div class="ln"></div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M12 2v20M7 7h10M4 12h16M9 17l6-4M15 17l-6-4"></path>
+      </svg>
+      <div class="ln"></div>
+    </div>
+
+    <div class="transport">
+      <article class="tcard">
+        <div class="thead">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="3" width="14" height="15" rx="1"></rect><path d="M5 9h14M9 18l-2 3M15 18l2 3"></path><circle cx="9" cy="13" r=".8" fill="currentColor"></circle><circle cx="15" cy="13" r=".8" fill="currentColor"></circle></svg>
+          <div class="tlabel">Трамвай</div>
+        </div>
+        <div class="troutes num">2 &nbsp; 4</div>
+        <div class="tstop">До ост. «Городской сад» — <em>2 минуты пешком</em>.</div>
+      </article>
+
+      <article class="tcard">
+        <div class="thead">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="5" width="14" height="12" rx="1"></rect><path d="M5 11h14M9 17l-2 4M15 17l2 4M9 2v3M15 2v3M2 5h2M20 5h2"></path></svg>
+          <div class="tlabel">Троллейбус</div>
+        </div>
+        <div class="troutes num">7 &nbsp; 12 &nbsp; 20</div>
+        <div class="tstop">До ост. ул. Советская — <em>3–5 минут пешком</em>.</div>
+        <div class="troutes num" style="margin-top:6px">9 &nbsp; 10</div>
+        <div class="tstop">До ост. ул. Постовая — <em>1–2 минуты пешком</em>.</div>
+      </article>
+
+      <article class="tcard">
+        <div class="thead">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 17V8a2 2 0 0 1 2-2h11l4 4v7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle><path d="M9 18h6M3 17h2M19 17h2M16 6v4h4"></path></svg>
+          <div class="tlabel">Маршрутное такси</div>
+        </div>
+        <div class="troutes num">3 &nbsp; 19Б <span class="alt">(49)</span> &nbsp; 26А &nbsp; 44</div>
+        <div class="tstop">Все маршруты останавливаются в <em>1–3 минутах пешком</em> от собора.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PARKING ============== -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Парковка</div>
+    <h2 class="section-title">Где оставить автомобиль</h2>
+    <div class="divider" style="margin:18px auto 38px;max-width:340px">
+      <div class="ln"></div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M12 2v20M7 7h10M4 12h16M9 17l6-4M15 17l-6-4"></path>
+      </svg>
+      <div class="ln"></div>
+    </div>
+
+    <div class="parking">
+      <div class="park-item">
+        <div class="park-label">Платная парковка</div>
+        <h3 class="park-h">вдоль ул. Постовой</h3>
+        <p class="park-d">Городская парковка PaytheParking. Тариф <strong class="num">30&nbsp;₽ / час</strong>. Оплата через приложение или СМС. Рядом с собором — <em>0–50&nbsp;метров</em>.</p>
+      </div>
+      <div class="park-item">
+        <div class="park-label free">Бесплатная парковка</div>
+        <h3 class="park-h">ул. Кубанская Набережная</h3>
+        <p class="park-d">Свободные места почти всегда. От набережной — <em>5&nbsp;минут пешком</em> вдоль реки Кубани.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== APPOINTMENT CTA ============== -->
+<section style="background:var(--parchment-2);padding-bottom:60px">
+  <div class="wrap">
+    <div class="appt">
+      <svg class="appt-mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="32" cy="32" r="28" stroke-opacity=".5"></circle>
+        <path d="M32 14v36M22 22h20M16 30h32M22 46l20-12M42 46 22 34"></path>
+      </svg>
+      <div>
+        <div style="font-family:'PT Sans',sans-serif;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Личная встреча</div>
+        <h3>Беседа с настоятелем</h3>
+        <p>Прот.&nbsp;Иоанн Гармаш принимает <strong>по предварительной записи</strong>: вторник и четверг, <span class="num">16:00&nbsp;—&nbsp;18:00</span>. Просим заранее обозначить тему встречи — это поможет батюшке подготовиться.</p>
+      </div>
+      <button class="btn primary" id="apptScheduleBtn" type="button" style="white-space:nowrap">Записаться</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FORM ============== -->
+<section style="padding-top:60px">
+  <div class="wrap">
+    <div class="eyebrow">Письмо в храм</div>
+    <h2 class="section-title">Связаться с приходом</h2>
+
+    <div class="form-card">
+      <svg class="corner tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path></svg>
+      <svg class="corner tr" style="transform:scaleX(-1)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path></svg>
+      <svg class="corner bl" style="transform:scaleY(-1)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path></svg>
+      <svg class="corner br" style="transform:scale(-1,-1)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 10V1h9"></path></svg>
+
+      <h3 style="text-align:center;font-size:36px;font-weight:500">Написать в храм</h3>
+      <p class="form-intro">
+        Если у вас есть вопрос, на который не удалось найти ответ на сайте — напишите нам. Мы внимательно прочитаем ваше письмо.
+      </p>
+
+      <form action="mailto:nevskiy-sobor@mail.ru" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="form-subject">Тема обращения</label>
+          <select id="form-subject" name="Тема">
+            <option>Общий вопрос</option>
+            <option>Запись на встречу с настоятелем</option>
+            <option>Запись венчания</option>
+            <option>Запись крещения</option>
+            <option>Заказ требы</option>
+            <option>Сотрудничество</option>
+            <option>Жалоба</option>
+            <option>Другое</option>
+          </select>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="form-name">Ваше имя</label>
+            <input id="form-name" name="Имя" type="text" placeholder="Как к вам обращаться" required>
+          </div>
+          <div class="field">
+            <label for="form-contact">Email или телефон</label>
+            <input id="form-contact" name="Контакт" type="text" placeholder="чтобы мы могли ответить" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="form-message">Сообщение</label>
+          <textarea id="form-message" name="Сообщение" rows="4" placeholder="Опишите вопрос — несколько предложений достаточно" required></textarea>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="Согласие" value="да" checked required>
+          <span class="box">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-6"></path></svg>
+          </span>
+          <span class="t">Согласен(на) на обработку персональных данных в соответствии с <a href="<?php echo esc_url(home_url("/privacy")); ?>" style="color:var(--gold-deep);border-bottom:1px solid var(--rule)">политикой</a> прихода.</span>
+        </label>
+
+        <button type="submit" class="submit">Отправить письмо</button>
+      </form>
+
+      <div class="form-foot">
+        Мы отвечаем в течение <strong style="font-style:normal">1–2&nbsp;рабочих&nbsp;дней</strong>.<br>
+        По срочным вопросам звоните <a href="tel:+78612620020" class="num">+7&nbsp;(861)&nbsp;262-00-20</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+
+</main>
+
+<!-- Page-specific inline scripts -->
+
+<script>
+  // Highlight today + pulse-glow once
+  (function(){
+    const today = new Date().getDay(); // 0..6, 0=Sun
+    const row = document.querySelector(`#hoursBody tr[data-day="${today}"]`);
+    if(row){ row.classList.add('today'); }
+  })();
+
+  // Legal address toggle
+  document.getElementById('legalToggle').addEventListener('click', function(){
+    document.getElementById('legalDetail').classList.toggle('open');
+  });
+
+  // Appointment "Записаться" — scroll к форме + preselect темы + focus
+  const apptBtn = document.getElementById('apptScheduleBtn');
+  if (apptBtn) {
+    apptBtn.addEventListener('click', () => {
+      const subj = document.getElementById('form-subject');
+      if (subj) {
+        const opt = Array.from(subj.options).find(o => o.value === 'Запись на встречу с настоятелем' || o.text.includes('настоятел'));
+        if (opt) subj.value = opt.value;
+      }
+      const form = document.querySelector('form[action^="mailto:"]');
+      if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => document.getElementById('form-name')?.focus(), 600);
+    });
+  }
+
+  // Copy coords
+  const copyBtn = document.getElementById('copyCoord');
+  const copyLabel = document.getElementById('copyLabel');
+  copyBtn.addEventListener('click', ()=>{
+    const coords = '45.014800, 38.971200';
+    navigator.clipboard?.writeText(coords);
+    copyLabel.textContent = 'Скопировано ✓';
+    setTimeout(()=>copyLabel.textContent='Скопировать координаты', 1800);
+  });
+</script>
+
+<?php get_footer(); ?>

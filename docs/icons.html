@@ -877,6 +877,41 @@ body .uheader__cta:hover {
     body .uheader__inner { height: 70px; gap: 16px; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/site-additions.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "Войсковой собор святого благоверного князя Александра Невского",
+  "alternateName": "Войсковой Собор Александра Невского",
+  "url": "https://alexander-nevskiysobor.ru",
+  "telephone": "+7 (861) 262-00-20",
+  "email": "nevskiy-sobor@mail.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Постовая, 26",
+    "addressLocality": "Краснодар",
+    "postalCode": "350063",
+    "addressRegion": "Краснодарский край",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.014800,
+    "longitude": 38.971200
+  },
+  "foundingDate": "1853",
+  "openingHours": "Mo-Su 07:00-19:00",
+  "sameAs": [
+    "https://vk.com/voyskovoysoborkrasnodar",
+    "https://t.me/alexnewsobor"
+  ],
+  "parentOrganization": {
+    "@type": "ReligiousOrganization",
+    "name": "Екатеринодарская и Кубанская епархия Русской Православной Церкви"
+  }
+}
+</script>
 </head>
 
 <body>
@@ -899,14 +934,23 @@ body .uheader__cta:hover {
     </a>
     <nav class="uheader__nav" aria-label="Главная навигация">
       <a href="index.html">Главная</a>
+      <a href="about.html">О соборе</a>
       <a href="history.html">История</a>
       <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
       <a href="clergy.html">Духовенство</a>
       <a href="parish-life.html">Приход</a>
       <a href="icons.html" class="is-active" aria-current="page">Святыни</a>
       <a href="news.html">Новости</a>
       <a href="contacts.html">Контакты</a>
     </nav>
+        <button class="menu-trigger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
     <a href="donate.html" class="uheader__cta">Пожертвовать</a>
   </div>
 </header>
@@ -947,8 +991,8 @@ body .uheader__cta:hover {
     <div class="kicker kicker--ornamented">Иконы и реликвии</div>
     <h1>Святыни собора</h1>
     <blockquote class="ribbon__quote">
-      «Чти отца твоего и матерь твою, чтобы продлились дни твои на земле»
-      <span>Книга Исход 20:12</span>
+      «Честь, воздаваемая образу, восходит к первообразу»
+      <span>Свт. Василий Великий · Догмат VII Вселенского Собора</span>
     </blockquote>
     <div class="ribbon__line"></div>
   </div>
@@ -1416,6 +1460,52 @@ body .uheader__cta:hover {
   </div>
 </section>
 
+<!-- =================== ARCHIVE ICONS — реальные образцы из Wikimedia Commons =================== -->
+<section style="padding:80px 32px;background:linear-gradient(180deg, var(--ink) 0%, #0f1320 100%);color:var(--paper, #f5f0e8);">
+  <div class="container" style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="kicker kicker--ornamented" style="color:#c9a961;">Образцы старинного письма</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);color:#f5e9c8;margin:14px 0 6px;">Канонические образы святынь собора</h2>
+      <p style="max-width:640px;margin:14px auto 0;font-family:'Spectral',serif;font-style:italic;color:rgba(245,233,200,0.75);">Иконы XIX века из музейных собраний — образцы того канонического письма, в духе которого пишутся образа Войскового собора.</p>
+    </div>
+    <div class="site-photo-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;">
+      <figure class="site-icon-frame" style="margin:0;">
+        <div class="site-icon-frame__img-wrap">
+          <img src="assets/images/photos/icon-alexander-prince.jpg"
+               alt="Икона святого благоверного князя Александра Невского, XIX век"
+               class="site-icon-frame__img"
+               loading="lazy">
+        </div>
+        <div class="site-icon-frame__title">Святой князь Александр&nbsp;Невский</div>
+        <div class="site-icon-frame__sub">XIX век · икона</div>
+      </figure>
+      <figure class="site-icon-frame" style="margin:0;">
+        <div class="site-icon-frame__img-wrap">
+          <img src="assets/images/photos/icon-kazan-moskovskaya.jpg"
+               alt="Казанская икона Божией Матери, Елоховский собор Москвы"
+               class="site-icon-frame__img"
+               loading="lazy">
+        </div>
+        <div class="site-icon-frame__title">Казанская икона<br>Божией Матери</div>
+        <div class="site-icon-frame__sub">XVII–XVIII век · Москва</div>
+      </figure>
+      <figure class="site-icon-frame" style="margin:0;">
+        <div class="site-icon-frame__img-wrap">
+          <img src="assets/images/photos/icon-kazan-1850s.jpg"
+               alt="Казанская икона Божией Матери, репродукция середины XIX века"
+               class="site-icon-frame__img"
+               loading="lazy">
+        </div>
+        <div class="site-icon-frame__title">Казанская икона<br>Божией Матери</div>
+        <div class="site-icon-frame__sub">Середина XIX века</div>
+      </figure>
+    </div>
+    <p style="text-align:center;font-family:'PT Sans',sans-serif;font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(245,233,200,0.4);margin-top:36px;">
+      Wikimedia&nbsp;Commons · Public&nbsp;Domain / CC&nbsp;BY-SA
+    </p>
+  </div>
+</section>
+
 <!-- =================== CTA =================== -->
 <section class="cta">
   <div class="container">
@@ -1427,51 +1517,71 @@ body .uheader__cta:hover {
 </section>
 
 <!-- =================== FOOTER =================== -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer__grid">
-
-      <div class="footer__col">
-        <div class="footer__sigil">
-          <svg aria-hidden="true"><use href="#sigil-mark"></use></svg>
-          <div class="footer__sigil-text">
-            Войсковой Собор<br>св. кн. Александра Невского
-            <small>Краснодар · 1872 / 2006</small>
-          </div>
+<footer class="usite-footer" role="contentinfo">
+  <div class="usite-footer__inner">
+    <div class="usite-footer__brand">
+      <div class="usite-footer__brand-row">
+        <svg class="usite-footer__sigil" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 2 L42 9 V25 C42 36 34 43 24 46 C14 43 6 36 6 25 V9 Z" stroke="#c9a961" stroke-width="1.2" fill="rgba(201,169,97,.06)"/>
+          <g stroke="#c9a961" stroke-width="1.4" stroke-linecap="square">
+            <line x1="24" y1="11" x2="24" y2="38"/>
+            <line x1="18" y1="17" x2="30" y2="17"/>
+            <line x1="16" y1="22" x2="32" y2="22"/>
+            <line x1="18" y1="32" x2="30" y2="29"/>
+          </g>
+        </svg>
+        <div>
+          <div class="usite-footer__name">Войсковой Собор</div>
+          <div class="usite-footer__sub">Александра Невского · Краснодар</div>
         </div>
-        <p style="font-family: var(--font-display); font-style: italic; font-size: 17px; color: rgba(245,240,232,0.7); margin-top: 8px;">«Не в силе Бог, а в правде»</p>
-        <p style="font-size: 13px; color: rgba(245,240,232,0.55); margin-top: 18px;">350063, Краснодар,<br>ул. Постовая, 26</p>
       </div>
-
-      <div class="footer__col">
-        <h4>Разделы</h4>
-        <ul>
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="history.html">История собора</a></li>
-          <li><a href="clergy.html">Духовенство</a></li>
-          <li><a href="icons.html">Святыни</a></li>
-          <li><a href="parish-life.html">Приходская жизнь</a></li>
-          <li><a href="news.html">Новости</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__col">
-        <h4>Богослужения и требы</h4>
-        <ul>
-          <li><a href="schedule.html">Расписание служб</a></li>
-          <li><a href="prayer-requests.html">Заказать требы</a></li>
-          <li><a href="donate.html">Пожертвовать</a></li>
-          <li><a href="contacts.html">Контакты</a></li>
-        </ul>
-        <h4 style="margin-top: 28px;">Контакты</h4>
-        <p style="font-size: 13px; color: rgba(245,240,232,0.7);">+7 (861) 262-00-20<br>nevskiy-sobor@mail.ru</p>
-      </div>
-
+      <p class="usite-footer__addr">
+        ул. Постовая, 26 · Краснодар, 350063<br>
+        <a href="tel:+78612620020">+7&nbsp;(861)&nbsp;262-00-20</a><br>
+        <a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a>
+      </p>
+      <p class="usite-footer__quote">«Дом мой домом молитвы наречётся»<span>Евангелие от Матфея 21:13</span></p>
     </div>
-    <div class="footer__bottom">
-      <span>© 2006–2026 · Войсковой Собор св. кн. Александра Невского</span>
-      <span>Кубанская митрополия Русской Православной Церкви</span>
+
+    <nav class="usite-footer__col" aria-label="Приход">
+      <h5>Приход</h5>
+      <a href="about.html">О соборе</a>
+      <a href="history.html">История</a>
+      <a href="clergy.html">Духовенство</a>
+      <a href="parish-life.html">Приходская жизнь</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+
+    <nav class="usite-footer__col" aria-label="Богослужение">
+      <h5>Богослужение</h5>
+      <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
+      <a href="icons.html">Святыни</a>
+      <a href="news.html">Новости</a>
+    </nav>
+
+    <nav class="usite-footer__col" aria-label="Помощь храму">
+      <h5>Помощь храму</h5>
+      <a href="donate.html">Пожертвовать</a>
+      <a href="donate.html#requisites">Реквизиты для перевода</a>
+      <a href="parish-life.html#school">Воскресная школа</a>
+      <a href="parish-life.html#sisterhood">Социальное служение</a>
+    </nav>
+
+    <div class="usite-footer__social" aria-label="Социальные сети">
+      <a href="https://vk.com/voyskovoysoborkrasnodar" aria-label="ВКонтакте" rel="noopener" target="_blank">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.426.131-.426s-.019-1.31.586-1.502c.598-.19 1.367 1.262 2.181 1.821.616.422 1.084.33 1.084.33l2.176-.03s1.139-.071.599-.97c-.044-.073-.314-.665-1.617-1.881-1.366-1.272-1.183-1.066.461-3.296 1.001-1.359 1.401-2.187 1.276-2.541-.119-.34-.873-.25-.873-.25l-2.45.015s-.182-.025-.317.057c-.131.08-.215.265-.215.265s-.388 1.046-.905 1.937c-1.092 1.879-1.529 1.978-1.708 1.86-.416-.273-.312-1.097-.312-1.683 0-1.83.275-2.594-.529-2.794-.267-.066-.464-.111-1.146-.118-.875-.009-1.616.003-2.035.21-.279.139-.494.45-.363.467.162.022.529.099.724.366.252.345.243 1.117.243 1.117s.144 2.13-.336 2.395c-.329.181-.78-.189-1.754-1.894-.499-.872-.876-1.838-.876-1.838s-.072-.179-.201-.275c-.156-.116-.374-.153-.374-.153l-2.328.015s-.349.01-.477.163c-.114.136-.009.418-.009.418s1.823 4.286 3.887 6.444c1.892 1.978 4.04 1.847 4.04 1.847h.973z"/></svg>
+      </a>
+      <a href="https://t.me/alexnewsobor" aria-label="Telegram" rel="noopener" target="_blank">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="m22.05 2.077-2.16 18.96c-.16 1.4-.99 1.74-2 1.08l-5.68-4.18-2.74 2.64c-.3.3-.56.56-1.14.56l.41-5.78 10.55-9.53c.46-.41-.1-.64-.71-.23L5.55 12.06l-5.6-1.75c-1.22-.38-1.24-1.22.26-1.81L20.49.39c1.01-.38 1.9.23 1.56 1.69z"/></svg>
+      </a>
     </div>
+  </div>
+
+  <div class="usite-footer__bottom">
+    <span>© 1872–2026 МПРПО Войсковой Собор Александра Невского. Екатеринодарская и Кубанская епархия Русской Православной Церкви.</span>
+    <span>ИНН 2309091590 · ОГРН 1052335002521</span>
+    <a href="privacy.html">Положение о персональных данных</a>
   </div>
 </footer>
 
@@ -1484,4 +1594,39 @@ body .uheader__cta:hover {
 
 
 
+
+<div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Главное меню" aria-hidden="true">
+  <div class="mobile-drawer__head">
+    <a href="index.html" class="mobile-drawer__brand">
+      Войсковой Собор<br>Александра Невского
+      <small>Краснодар · 1872</small>
+    </a>
+    <button class="close" aria-label="Закрыть меню">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="6" y1="18" x2="18" y2="6"></line>
+      </svg>
+    </button>
+  </div>
+  <nav class="mobile-drawer__nav" aria-label="Главная навигация (мобильная)">
+      <a href="index.html">Главная</a>
+      <a href="about.html">О соборе</a>
+      <a href="history.html">История</a>
+      <a href="schedule.html">Расписание</a>
+      <a href="prayer-requests.html">Заказ треб</a>
+      <a href="clergy.html">Духовенство</a>
+      <a href="parish-life.html">Приход</a>
+      <a href="icons.html" class="is-active" aria-current="page">Святыни</a>
+      <a href="news.html">Новости</a>
+      <a href="contacts.html">Контакты</a>
+  </nav>
+  <a href="donate.html" class="mobile-drawer__cta">Пожертвовать</a>
+  <div class="mobile-drawer__contact">
+    <p>ул. Постовая, 26 · Краснодар</p>
+    <p><a href="tel:+78612620020">+7 (861) 262-00-20</a></p>
+    <p><a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a></p>
+  </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
 </body></html>

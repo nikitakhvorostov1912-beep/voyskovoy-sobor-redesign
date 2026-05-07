@@ -1,0 +1,584 @@
+/* ============================================================
+   Войсковой Собор Александра Невского
+   Дополнения к существующим inline-стилям 12 HTML.
+   Подключается в <head> после собственных <style> страницы.
+   ============================================================ */
+
+/* ------------ Header navigation: prevent multi-word wrapping ------------ */
+.uheader__nav a,
+.uheader__cta {
+  white-space: nowrap;
+}
+/* Header layout safety: don't lock height (button might overflow), don't wrap. */
+.uheader__inner {
+  flex-wrap: nowrap !important;
+  height: auto !important;
+  min-height: 84px !important;
+  align-items: center !important;
+}
+.uheader__cta {
+  align-self: center !important;
+  flex-shrink: 0 !important;
+  padding: 10px 14px !important;
+  font-size: 11px !important;
+  letter-spacing: 0.16em !important;
+  line-height: 1.2 !important;
+  margin-right: 8px !important; /* keep some breathing room from page edge */
+}
+.uheader__brand { flex-shrink: 0 !important; }
+.menu-trigger { flex-shrink: 0 !important; }
+
+/* Squeeze sizes for wide-but-not-huge screens (e.g. 1366/1440 laptops) */
+@media (max-width: 1500px) and (min-width: 1181px) {
+  .uheader__nav { gap: 16px !important; font-size: 10.5px !important; letter-spacing: 0.14em !important; }
+  .uheader__inner { padding: 0 20px !important; gap: 16px !important; }
+  .uheader__cta { padding: 11px 14px !important; font-size: 10.5px !important; letter-spacing: 0.16em !important; }
+  .uheader__name { font-size: 15.5px !important; }
+  .uheader__name small { font-size: 9px !important; letter-spacing: 0.18em !important; }
+}
+
+/* ------------ Mobile hamburger toggle (desktop hidden) ------------ */
+.menu-trigger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(201, 169, 97, 0.32);
+  color: #f5f0e8;
+  cursor: pointer;
+  border-radius: 0;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.menu-trigger:hover { background: rgba(201, 169, 97, 0.12); }
+.menu-trigger:focus-visible { outline: 2px solid #c9a961; outline-offset: 2px; }
+.menu-trigger svg { width: 20px; height: 20px; display: block; }
+
+@media (max-width: 1180px) {
+  /* Hide horizontal nav and right-side CTA, show hamburger */
+  .uheader__nav { display: none !important; }
+  .uheader__cta { display: none !important; }
+  .menu-trigger { display: inline-flex; }
+}
+
+/* ------------ Mobile drawer (overlay) ------------ */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  background: #1a1f2e;
+  color: #f5f0e8;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px 32px;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  visibility: hidden;
+}
+.mobile-drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+.mobile-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.22);
+}
+.mobile-drawer__brand {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #f5f0e8;
+  line-height: 1.05;
+  text-decoration: none;
+}
+.mobile-drawer__brand small {
+  display: block;
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a961;
+  margin-top: 4px;
+}
+.mobile-drawer .close {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(201, 169, 97, 0.32);
+  color: #f5f0e8;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 0;
+}
+.mobile-drawer .close:hover { background: rgba(201, 169, 97, 0.12); }
+.mobile-drawer .close:focus-visible { outline: 2px solid #c9a961; outline-offset: 2px; }
+.mobile-drawer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-drawer__nav a {
+  display: block;
+  padding: 14px 4px;
+  color: rgba(245, 240, 232, 0.92);
+  text-decoration: none;
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.12);
+  transition: color 0.2s;
+}
+.mobile-drawer__nav a:hover,
+.mobile-drawer__nav a:focus-visible { color: #c9a961; outline: none; }
+.mobile-drawer__nav a.is-active {
+  color: #c9a961;
+  border-bottom-color: rgba(201, 169, 97, 0.36);
+}
+.mobile-drawer__cta {
+  margin-top: 22px;
+  display: block;
+  text-align: center;
+  background: #8b2635;
+  color: #f5f0e8;
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 16px 22px;
+  text-decoration: none;
+  border: 1px solid #8b2635;
+  transition: background 0.2s, border-color 0.2s;
+}
+.mobile-drawer__cta:hover {
+  background: #6b1d29;
+  border-color: #6b1d29;
+}
+.mobile-drawer__contact {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201, 169, 97, 0.22);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.7);
+  line-height: 1.6;
+}
+.mobile-drawer__contact a {
+  color: #c9a961;
+  text-decoration: none;
+}
+
+/* Lock body scroll while drawer is open */
+body.has-mobile-drawer { overflow: hidden; }
+
+/* ------------ Reduced-motion ------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mobile-drawer { transition: none !important; }
+}
+
+/* ------------ Focus-visible for all interactive ------------ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid #c9a961;
+  outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  background: #1a1f2e;
+  color: #f5f0e8;
+  padding: 12px 20px;
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid #c9a961;
+}
+
+/* ============================================================
+   UNIFIED FOOTER (одинаковый на всех 13 страницах)
+   ============================================================ */
+.usite-footer {
+  background: #1a1f2e;
+  color: rgba(245, 240, 232, 0.78);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  border-top: 1px solid rgba(201, 169, 97, 0.18);
+  margin-top: 0;
+}
+.usite-footer * { box-sizing: border-box; }
+.usite-footer__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 32px 32px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr auto;
+  gap: 40px;
+}
+.usite-footer__brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.usite-footer__sigil { width: 42px; height: 42px; flex-shrink: 0; }
+.usite-footer__name {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #f5f0e8;
+  line-height: 1.05;
+}
+.usite-footer__sub {
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a961;
+  margin-top: 6px;
+}
+.usite-footer__addr {
+  margin: 0 0 18px;
+  font-family: "Spectral", Georgia, serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.72);
+}
+.usite-footer__addr a {
+  color: #c9a961;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.usite-footer__addr a:hover { color: #f5f0e8; border-bottom-color: #f5f0e8; }
+.usite-footer__quote {
+  margin: 18px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(245, 240, 232, 0.55);
+  line-height: 1.4;
+}
+.usite-footer__quote span {
+  display: block;
+  font-style: normal;
+  font-family: "PT Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #c9a961;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+.usite-footer__col h5 {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #f5f0e8;
+  margin: 0 0 16px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.usite-footer__col a {
+  display: block;
+  color: rgba(245, 240, 232, 0.72);
+  text-decoration: none;
+  padding: 5px 0;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.usite-footer__col a:hover { color: #c9a961; }
+.usite-footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.usite-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  color: rgba(245, 240, 232, 0.72);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.usite-footer__social a:hover {
+  color: #c9a961;
+  border-color: #c9a961;
+  background: rgba(201, 169, 97, 0.08);
+}
+.usite-footer__bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 32px 32px;
+  border-top: 1px solid rgba(201, 169, 97, 0.18);
+  font-size: 12px;
+  color: rgba(245, 240, 232, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: space-between;
+  align-items: center;
+}
+.usite-footer__bottom a {
+  color: rgba(245, 240, 232, 0.6);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.usite-footer__bottom a:hover { color: #c9a961; border-bottom-color: #c9a961; }
+
+/* Tablet 720-1180 */
+@media (max-width: 1180px) {
+  .usite-footer__inner {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  }
+  .usite-footer__social {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 4px;
+  }
+}
+
+/* Mobile <=720 */
+@media (max-width: 720px) {
+  .usite-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    padding: 36px 24px 24px;
+    gap: 28px;
+  }
+  .usite-footer__brand {
+    grid-column: 1 / -1;
+  }
+  .usite-footer__bottom {
+    padding: 22px 24px 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* На privacy.html в hero темный фон — footer не должен сливаться */
+.usite-footer { box-shadow: 0 -1px 0 rgba(255,255,255,0.04) inset; }
+
+/* ============================================================
+   PHOTO STYLING — реальные фото в стиле «литургической монументальности»
+   ============================================================ */
+.site-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* лёгкий warm-тон + чуть прижатые тени, без перенасыщения */
+  filter: contrast(1.02) saturate(0.92) sepia(0.06);
+}
+
+/* Контейнер с золотой рамкой и подписью (для about/history/icons) */
+.site-photo-frame {
+  position: relative;
+  background: #1a1f2e;
+  padding: 14px;
+  margin: 36px 0;
+  box-shadow: 0 18px 40px -18px rgba(26, 31, 46, 0.45);
+}
+.site-photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(201, 169, 97, 0.42);
+  pointer-events: none;
+  z-index: 2;
+}
+.site-photo-frame .site-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.site-photo-frame__caption {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(245, 240, 232, 0.78);
+  text-align: center;
+  margin: 14px 0 4px;
+  line-height: 1.4;
+}
+.site-photo-frame__attribution {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(245, 240, 232, 0.4);
+  margin-top: 4px;
+}
+.site-photo-frame__attribution a {
+  color: rgba(201, 169, 97, 0.65);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(201, 169, 97, 0.3);
+}
+.site-photo-frame__attribution a:hover { color: #c9a961; }
+
+/* Hero-фото на index/donate — full-bleed с тёмным overlay */
+.site-photo-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.site-photo-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.62) contrast(1.04) saturate(0.85);
+}
+.site-photo-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 31, 46, 0.35) 0%,
+    rgba(26, 31, 46, 0.15) 35%,
+    rgba(26, 31, 46, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* Иконы (Александр Невский, Казанская) — карточка в иконостасном стиле */
+.site-icon-frame {
+  position: relative;
+  background: linear-gradient(180deg, #2a2410 0%, #1c1809 100%);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:
+    inset 0 0 0 1px rgba(201, 169, 97, 0.28),
+    0 22px 50px -20px rgba(26, 31, 46, 0.55);
+}
+.site-icon-frame::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201, 169, 97, 0.5);
+  pointer-events: none;
+}
+.site-icon-frame__img-wrap {
+  position: relative;
+  width: 100%;
+  background: #f5f0e8;
+  padding: 8px;
+}
+.site-icon-frame__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* canonical icon look: чуть более сатурированный gold-tone */
+  filter: contrast(1.05) saturate(1.05);
+}
+.site-icon-frame__title {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #f5e9c8;
+  text-align: center;
+  margin: 18px 0 6px;
+}
+.site-icon-frame__sub {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a961;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* Photo grid (2-3 colonki) для about / history / parish */
+.site-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 36px 0;
+}
+@media (max-width: 720px) {
+  .site-photo-grid { gap: 18px; margin: 24px 0; }
+  .site-photo-frame { padding: 10px; margin: 24px 0; }
+  .site-icon-frame { padding: 14px; }
+}
+
+/* ============================================================
+   TOAST (уведомления — пожертвования, форма, и т.д.)
+   ============================================================ */
+.site-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%) translateY(20px);
+  max-width: 480px;
+  width: calc(100% - 32px);
+  background: #1a1f2e;
+  color: #f5f0e8;
+  border: 1px solid #c9a961;
+  padding: 16px 22px;
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 14px 40px -10px rgba(0,0,0,0.5);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.site-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+.site-toast strong {
+  color: #c9a961;
+  font-weight: 700;
+}
+
+/* Pulse highlight для блока на который скроллим (реквизиты) */
+@keyframes attentionGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 97, 0); }
+  50%      { box-shadow: 0 0 0 6px rgba(201, 169, 97, 0.35); }
+}
+.attention-glow {
+  animation: attentionGlow 1.4s ease-in-out 2;
+}
