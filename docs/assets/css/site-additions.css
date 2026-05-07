@@ -631,3 +631,138 @@ section.thanks-cite,
   html, body { overflow-x: clip; }
   .wrap, main, section { max-width: 100vw; }
 }
+
+/* ============================================================
+   COMPREHENSIVE MOBILE AUDIT 2026-05-07 — touch targets, forms,
+   image sizing, horizontal overflow, iOS zoom prevention.
+   Applies on all mobile widths (≤ 720px).
+   ============================================================ */
+
+@media (max-width: 720px) {
+  /* 1. Universal image safety: never overflow viewport */
+  img, picture, video, iframe, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 2. Prevent horizontal scroll: clip + box-sizing on layout containers */
+  html, body { overflow-x: clip; max-width: 100vw; }
+  body { width: 100%; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* 3. WCAG 2.2 + iOS HIG: touch targets ≥ 44×44 CSS px (was 24px) */
+  .news-more,
+  .usite-footer__addr a,
+  .usite-footer__legal a,
+  .usite-footer__bottom a,
+  .usite-footer__col a,
+  .footer__col a,
+  .footer-col a,
+  .foot-col a,
+  .mobile-drawer__contact a,
+  .mobile-drawer__contact p a,
+  .privacy a.back,
+  .privacy-doc a,
+  .footer-link-policy {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 0;
+  }
+
+  /* Drawer close button + social icons: 44×44 (were 40) */
+  .mobile-drawer .close,
+  .usite-footer__social a,
+  .footer-social a,
+  a[href*="vk.com"],
+  a[href*="t.me"] {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 4. Form inputs: min-height 44px + font-size 16px (prevents iOS auto-zoom) */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="url"],
+  input[type="date"],
+  input[type="time"],
+  input[type="password"],
+  textarea,
+  select {
+    min-height: 44px;
+    font-size: 16px !important;
+    padding: 10px 14px;
+  }
+
+  /* 5. Submit/cta buttons: min-height 44px on mobile */
+  button[type="submit"],
+  .btn,
+  .btn-outline,
+  .btn-priest,
+  .treba-cta,
+  .intro-cta,
+  .schedule-cta,
+  .cta__btn,
+  a[class*="btn"] {
+    min-height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  /* 6. Form-row checkboxes/radios: 44px tap area but keep visual size */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 22px;
+    height: 22px;
+    margin: 11px 8px 11px 0;
+  }
+
+  /* 7. Padding-symmetry safety (asymmetric padding is the #1 cause of mobile scroll) */
+  .about, .about-body, .hero-inner, .container, .wrap,
+  .news__inner, .footer__inner, .usite-footer__inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* 8. Long words / URLs / phone numbers — break gracefully */
+  body, p, h1, h2, h3, h4, h5, .lead, .featured__bio, .clergy-card__bio,
+  .news__text, .quote, .blockquote {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  /* 9. Tables / data-grids: horizontal scroll inside container, not whole page */
+  .schedule-table, .hours-table, .reqs-table, table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 10. Sticky header: shrink on mobile to give content more space */
+  .uheader, .site-header { padding: 0; }
+  .uheader__inner, .site-header__inner { height: 64px; padding: 0 16px; }
+
+  /* 11. Drawer trigger: ensure 44×44 tap area */
+  .menu-trigger {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+}
+
+/* Tablet portrait (≤ 480px) — ultra-narrow refinements */
+@media (max-width: 480px) {
+  h1, .hero-title, .ribbon h1, .ribbon__title {
+    font-size: clamp(32px, 8vw, 48px) !important;
+    line-height: 1.1;
+  }
+  h2, .section-title, .featured__name {
+    font-size: clamp(24px, 6vw, 36px) !important;
+  }
+}
