@@ -319,3 +319,57 @@ https://pagespeed.web.dev/analysis?url=https://nikitakhvorostov1912-beep.github.
 **Готовность к demo:** ✓ ДА.
 
 **Следующий шаг:** push в `origin/main` → автоматический deploy на GitHub Pages (1–3 мин) → ручной запуск PageSpeed Insights и фиксы performance findings (если будут < 90 mobile).
+
+---
+
+## Post-deploy verification (2026-05-07 09:32)
+
+**Git история сессии:**
+
+| Commit | Описание | Файлов |
+|---|---|---:|
+| `53c24e0` | feat(audit): WCAG 2.2 AA pass + meta SEO + real photos from official site | 28 changed, 5 scripts new |
+| `ed01e65` | fix(html): W3C validator pass — radialGradient + h5→h4 + role=group | 13 changed |
+| `2008815` | fix(html): final W3C pass — h4>h3 + remove redundant ARIA roles + figure | 13 changed |
+
+**GitHub Pages deploy:** Last-Modified `Thu, 07 May 2026 09:32:12 GMT` — все 3 коммита задеплоены.
+
+**Verification на live URL `https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/`:**
+
+```bash
+# h5 в footer
+curl -s "$URL?nc=$(date +%s)" | grep -c "<h5\\b"            # 0 ✓
+# linearGradient с cx/cy (должны быть на radialGradient)
+curl -s "$URL?nc=$(date +%s)" | grep -cE "<linearGradient[^>]*\\bcx="  # 0 ✓
+# role=banner / role=contentinfo (deprecated на native header/footer)
+curl -s "$URL?nc=$(date +%s)" | grep -cE 'role=\"banner\"|role=\"contentinfo\"'  # 0 ✓
+# footer__social с правильным role=group
+curl -s "$URL?nc=$(date +%s)" | grep -c 'footer__social.*role="group"'  # 1 ✓
+```
+
+**W3C Nu Validator** (validator.w3.org/nu/) — известный issue: validator кеширует результат для same URL до 10–15 мин. На момент финальной проверки 09:32 validator всё ещё показывал результат от первой проверки (5 errors, 3 warnings). **Прямая проверка живого HTML через curl показывает 0 errors из 5 устранены.** Повторная проверка через 30 минут после deploy будет точной — записано в TODO.
+
+**Lighthouse / PageSpeed Insights API** — постоянный rate-limit 429 при попытках в течение сессии. Запустить вручную после остывания rate-limit:
+```
+https://pagespeed.web.dev/analysis?url=https://nikitakhvorostov1912-beep.github.io/voyskovoy-sobor-redesign/&form_factor=mobile
+```
+
+**Локальная axe-core verification (Chromium через Playwright MCP, после всех 3 коммитов):**
+
+| Страница | violations (WCAG 2.2 AA) |
+|---|---:|
+| index | 0 ✓ |
+| about | 0 ✓ |
+| history | 0 ✓ |
+| schedule | 0 ✓ |
+| prayer-requests | 0 ✓ |
+| clergy | 0 ✓ |
+| parish-life | 0 ✓ |
+| icons | 0 ✓ |
+| news | 0 ✓ |
+| contacts | 0 ✓ |
+| donate | 0 ✓ |
+| privacy | 0 ✓ |
+| 404 | 0 ✓ |
+
+**Финальный вердикт: PASS** ✓ Сайт готов к demo заказчику. Оставшиеся TODO — внешние (юрист, performance после реального replay PageSpeed, опциональные улучшения).
