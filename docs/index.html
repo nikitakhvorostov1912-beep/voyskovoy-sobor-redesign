@@ -559,10 +559,11 @@ body::before{
 }
 .about-photo::before{
   content:""; position:absolute; inset:0; z-index:1;
-  background: linear-gradient(140deg, rgba(232,200,138,.12), rgba(40,28,18,.55));
-  mix-blend-mode: multiply;
+  background: linear-gradient(140deg, rgba(232,200,138,.05), rgba(40,28,18,.10));
+  pointer-events: none;
 }
 .about-photo svg{ width: 100%; height: 100%; display:block; filter: sepia(.55) contrast(1.05) brightness(.92); }
+.about-photo img{ width: 100%; height: 100%; object-fit: cover; display:block; position: relative; z-index: 0; }
 
 .about-body p{
   font-size: 18px; line-height: 1.75;
