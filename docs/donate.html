@@ -1601,19 +1601,19 @@ body .uheader__cta:hover {
     </div>
     <div class="faq-list" id="faqList">
       <div class="faq-item open">
-        <button class="faq-q">Можно ли получить квитанцию для налогового вычета?<span class="faq-icon"></span></button>
+        <button type="button" class="faq-q">Можно ли получить квитанцию для налогового вычета?<span class="faq-icon"></span></button>
         <div class="faq-a"><div class="faq-a-inner">Да. После пожертвования через сайт вы получите электронную квитанцию на указанную почту. Для налогового вычета по ст. 219 НК РФ мы можем выдать справку с реквизитами прихода — напишите на <a href="donate.html" style="color:var(--burgundy);text-decoration:underline;">nevskiy-sobor@mail.ru</a>, мы подготовим документы в течение трёх рабочих дней.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Как отменить ежемесячное пожертвование?<span class="faq-icon"></span></button>
+        <button type="button" class="faq-q">Как отменить ежемесячное пожертвование?<span class="faq-icon"></span></button>
         <div class="faq-a"><div class="faq-a-inner">В каждом письме о списании есть прямая ссылка для отмены подписки. Также вы можете написать нам или позвонить в канцелярию — отмена производится в тот же день, никакие комиссии и удержания не предусмотрены.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Куда обратиться, если перевод не дошёл?<span class="faq-icon"></span></button>
+        <button type="button" class="faq-q">Куда обратиться, если перевод не дошёл?<span class="faq-icon"></span></button>
         <div class="faq-a"><div class="faq-a-inner">Сообщите дату, сумму и последние четыре цифры карты на почту канцелярии или по телефону +7 (861) 262-00-20. Мы сверим выписку и поможем найти платёж — обычно вопрос решается за 1–2 дня.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Можно ли пожертвовать иконы, утварь или книги?<span class="faq-icon"></span></button>
+        <button type="button" class="faq-q">Можно ли пожертвовать иконы, утварь или книги?<span class="faq-icon"></span></button>
         <div class="faq-a"><div class="faq-a-inner">Будем благодарны за любое приношение. Просьба предварительно согласовать: некоторые предметы требуют чина освящения, некоторые — экспертизы. Свяжитесь с канцелярией, и мы договоримся об удобном времени.</div></div>
       </div>
     </div>
@@ -1888,5 +1888,14 @@ body .uheader__cta:hover {
   </div>
 </div>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=20260507" defer></script>
+<script>
+// FAQ accordion (inline fallback — guaranteed to bind even if main.js fails)
+document.addEventListener('click', function(e) {
+  var q = e.target && e.target.closest && e.target.closest('.faq-q');
+  if (!q) return;
+  var item = q.closest('.faq-item');
+  if (item) item.classList.toggle('open');
+});
+</script>
 </body></html>

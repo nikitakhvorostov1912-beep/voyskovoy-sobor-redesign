@@ -71,13 +71,14 @@
     });
   });
 
-  // ─── 3. FAQ ACCORDION ──────────────────────────────────────
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.closest('.faq-item');
-      if (!item) return;
-      item.classList.toggle('open');
-    });
+  // ─── 3. FAQ ACCORDION (event delegation — works even on dynamic / late-bound nodes) ─
+  document.addEventListener('click', e => {
+    const q = e.target.closest && e.target.closest('.faq-q');
+    if (!q) return;
+    const item = q.closest('.faq-item');
+    if (!item) return;
+    e.preventDefault();
+    item.classList.toggle('open');
   });
 
   // ─── 4. TABS (data-tab → data-tab-panel) ───────────────────
