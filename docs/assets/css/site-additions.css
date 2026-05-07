@@ -443,7 +443,7 @@ textarea:focus-visible,
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: center;
-  color: rgba(245, 240, 232, 0.4);
+  color: rgba(245, 240, 232, 0.78);
   margin-top: 4px;
 }
 .site-photo-frame__attribution a {
@@ -581,4 +581,52 @@ textarea:focus-visible,
 }
 .attention-glow {
   animation: attentionGlow 1.4s ease-in-out 2;
+}
+
+/* ============================================================
+   WCAG 2.2 AA Accessibility Overrides (audit 2026-05-07)
+   Reason: see design-brief/AUDIT-FINAL-2026-05.md
+   ============================================================ */
+
+/* Gold #c9a961 on paper #f5f0e8 has contrast 1.98 — fails AA 4.5.
+   Override .kicker / .sub on light backgrounds to use gold-deep #735923 (5.48). */
+.sources-wrap .kicker,
+.related-head .kicker,
+main > .wrap > .sub,
+.privacy-doc .sub,
+section.how-card .how-name,
+section.thanks-cite,
+.priest-cta .priest-text p[style*="--gold-deep"] {
+  color: var(--gold-deep);
+}
+
+/* Gold-deep #735923 on ink #1a1f2e has contrast 2.59 — fails AA-large 3.0.
+   Restore lighter gold for em/strong on dark sections. */
+.how-section h2 em,
+.how-section h2 strong,
+.priest-cta h3 em,
+.priest-cta h3 strong {
+  color: var(--gold);
+}
+
+/* WCAG 2.2 (2.5.8) target-size: inline links must be ≥ 24×24 CSS px.
+   Padding adds tap area without visual change. */
+.usite-footer__addr a,
+.usite-footer__legal a,
+.usite-footer__bottom a,
+.news-more,
+.privacy a.back,
+.privacy-doc a {
+  display: inline-block;
+  min-height: 24px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+}
+
+/* Mobile responsive safety: prevent horizontal scroll caused by
+   asymmetric paddings or off-canvas decorative SVG elements. */
+@media (max-width: 480px) {
+  html, body { overflow-x: clip; }
+  .wrap, main, section { max-width: 100vw; }
 }
