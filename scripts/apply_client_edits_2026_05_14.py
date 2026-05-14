@@ -119,9 +119,9 @@ def _build_dropdown_nav(opening: str, body: str, closing: str, current_file: str
     # Целевые href для свёртки в dropdown
     SUBITEMS = {"about.html", "history.html", "icons.html"}
 
-    # Подзаголовки выпадашки (явный порядок, как просил клиент)
+    # Подзаголовки выпадашки — без дубля главного пункта «О соборе»,
+    # т.к. сам триггер уже ведёт на about.html
     sub_meta = [
-        ("about.html", "О соборе"),
         ("history.html", "История"),
         ("icons.html", "Святыни"),
     ]
@@ -161,20 +161,20 @@ def _build_dropdown_nav(opening: str, body: str, closing: str, current_file: str
 
 
 def _dropdown_html(items: list[tuple[str, str]], current_file: str, active: bool) -> str:
-    """Возвращает HTML выпадающего пункта меню «О соборе»."""
+    """Возвращает HTML выпадающего пункта меню «О соборе».
+    Триггер — обычная ссылка <a href="about.html">: клик ведёт на about.html,
+    hover/focus открывает подменю с дочерними страницами."""
     active_cls = " is-active" if active else ""
-    aria_current = ' aria-current="page"' if active else ""
+    trigger_active_attrs = ' class="uheader__nav-trigger is-active" aria-current="page"' if active else ' class="uheader__nav-trigger"'
     li_items: list[str] = []
     for href, label in items:
         item_active = ' class="is-active" aria-current="page"' if href == current_file else ""
         li_items.append(f'<li><a href="{href}"{item_active}>{label}</a></li>')
     submenu = "\n          ".join(li_items)
-    # role="button" + aria-haspopup для accessibility; tabindex=0 чтобы клавиатура работала
     return (
         f'<div class="uheader__nav-group has-submenu{active_cls}">\n'
-        f'        <button type="button" class="uheader__nav-trigger{active_cls}" '
-        f'aria-haspopup="true" aria-expanded="false"{aria_current}>'
-        f'О соборе<span class="uheader__caret" aria-hidden="true">▾</span></button>\n'
+        f'        <a href="about.html"{trigger_active_attrs} '
+        f'aria-haspopup="true" aria-expanded="false">О соборе</a>\n'
         f'        <ul class="uheader__submenu" role="menu">\n'
         f'          {submenu}\n'
         f'        </ul>\n'
@@ -209,83 +209,54 @@ DROPDOWN_CSS = f"""
   position: relative;
   display: inline-block;
 }}
-.uheader__nav-trigger {{
-  background: none;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: inherit;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}}
-.uheader__nav-trigger:hover,
-.uheader__nav-trigger:focus-visible {{
-  color: var(--gold-pale, #d9c69a);
-  outline: none;
-}}
-.uheader__nav-trigger.is-active {{
-  color: var(--gold, #c9a961);
-}}
-.uheader__caret {{
-  font-size: 0.7em;
-  line-height: 1;
-  margin-left: 2px;
-  transition: transform 0.2s ease;
-}}
-.uheader__nav-group:hover .uheader__caret,
-.uheader__nav-group:focus-within .uheader__caret,
-.uheader__nav-trigger[aria-expanded="true"] .uheader__caret {{
-  transform: rotate(180deg);
-}}
+/* Триггер — обычная ссылка, наследует стили nav a (цвет, padding, underline на is-active) */
+
 .uheader__submenu {{
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translate(-50%, 8px);
-  min-width: 220px;
+  min-width: 200px;
   margin: 0;
-  padding: 8px 0;
+  padding: 6px 0;
   list-style: none;
   background: rgba(26, 31, 46, 0.96);
   border: 1px solid rgba(201, 169, 97, 0.36);
   box-shadow: 0 16px 40px -16px rgba(26, 31, 46, 0.6);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
   z-index: 50;
 }}
 .uheader__nav-group:hover .uheader__submenu,
-.uheader__nav-group:focus-within .uheader__submenu,
-.uheader__nav-trigger[aria-expanded="true"] + .uheader__submenu {{
+.uheader__nav-group:focus-within .uheader__submenu {{
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translate(-50%, 0);
   transition: opacity 0.18s ease, transform 0.18s ease;
 }}
-.uheader__submenu li {{ margin: 0; }}
+.uheader__submenu li {{ margin: 0; list-style: none; }}
 .uheader__submenu a {{
   display: block;
-  padding: 10px 22px;
-  color: rgba(245, 240, 232, 0.86);
+  padding: 9px 22px;
+  color: rgba(245, 240, 232, 0.86) !important;
   text-decoration: none;
   font-family: "PT Sans", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  border-bottom: 0 !important;
   transition: background-color 0.15s ease, color 0.15s ease;
 }}
 .uheader__submenu a:hover,
 .uheader__submenu a:focus-visible {{
   background: rgba(201, 169, 97, 0.12);
-  color: var(--gold, #c9a961);
+  color: var(--gold, #c9a961) !important;
   outline: none;
 }}
-.uheader__submenu a.is-active {{ color: var(--gold, #c9a961); }}
+.uheader__submenu a.is-active {{ color: var(--gold, #c9a961) !important; }}
 
 /* На мобильных <= 980px шапка скрывается, dropdown тоже не нужен */
 @media (max-width: 980px) {{
