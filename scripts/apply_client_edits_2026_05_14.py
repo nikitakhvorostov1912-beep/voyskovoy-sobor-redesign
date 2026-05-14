@@ -205,27 +205,40 @@ DROPDOWN_CSS_MARKER_END = "/* === /DROPDOWN === */"
 
 DROPDOWN_CSS = f"""
 {DROPDOWN_CSS_MARKER_START}
-.uheader__nav-group {{
+/* Группа «О соборе» — flex-item уровня <a> в .uheader__nav.
+   Триггер внутри ведёт себя ровно как <a>-сосед: тот же padding, тот же baseline. */
+body .uheader__nav .uheader__nav-group {{
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
 }}
-/* Триггер — обычная ссылка, наследует стили nav a (цвет, padding, underline на is-active) */
+body .uheader__nav .uheader__nav-trigger {{
+  display: inline-block;
+  padding: 8px 0;
+  line-height: inherit;
+  vertical-align: baseline;
+}}
 
+/* Подменю — слева под триггером, без translateX (чтобы не съезжало) */
 .uheader__submenu {{
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 8px);
+  top: calc(100% + 4px);
+  left: 0;
   min-width: 200px;
   margin: 0;
-  padding: 6px 0;
+  padding: 4px 0;
   list-style: none;
-  background: rgba(26, 31, 46, 0.96);
-  border: 1px solid rgba(201, 169, 97, 0.36);
-  box-shadow: 0 16px 40px -16px rgba(26, 31, 46, 0.6);
+  background: #1a1f2e;
+  border: 1px solid rgba(201, 169, 97, 0.4);
+  border-top: 2px solid #c9a961;
+  box-shadow: 0 18px 44px -18px rgba(26, 31, 46, 0.7);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateY(6px);
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
   z-index: 50;
 }}
@@ -234,29 +247,33 @@ DROPDOWN_CSS = f"""
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate(-50%, 0);
+  transform: translateY(0);
   transition: opacity 0.18s ease, transform 0.18s ease;
 }}
-.uheader__submenu li {{ margin: 0; list-style: none; }}
-.uheader__submenu a {{
+.uheader__submenu li {{ margin: 0; list-style: none; padding: 0; }}
+body .uheader__submenu a {{
   display: block;
-  padding: 9px 22px;
-  color: rgba(245, 240, 232, 0.86) !important;
+  padding: 12px 24px;
+  color: rgba(245, 240, 232, 0.85) !important;
   text-decoration: none;
   font-family: "PT Sans", system-ui, sans-serif;
   font-size: 11.5px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  border: 0 !important;
   border-bottom: 0 !important;
   transition: background-color 0.15s ease, color 0.15s ease;
 }}
-.uheader__submenu a:hover,
-.uheader__submenu a:focus-visible {{
+body .uheader__submenu a:hover,
+body .uheader__submenu a:focus-visible {{
   background: rgba(201, 169, 97, 0.12);
-  color: var(--gold, #c9a961) !important;
+  color: #c9a961 !important;
   outline: none;
 }}
-.uheader__submenu a.is-active {{ color: var(--gold, #c9a961) !important; }}
+body .uheader__submenu a.is-active {{
+  color: #c9a961 !important;
+  background: rgba(201, 169, 97, 0.08);
+}}
 
 /* На мобильных <= 980px шапка скрывается, dropdown тоже не нужен */
 @media (max-width: 980px) {{
