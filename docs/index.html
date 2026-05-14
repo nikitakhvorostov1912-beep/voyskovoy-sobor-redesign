@@ -175,10 +175,10 @@
   --shadow-card:  0 1px 0 rgba(201,169,97,0.18), 0 6px 28px rgba(42,38,32,0.07);
   --shadow-deep:  0 18px 60px rgba(26,31,46,0.18);
 
-  --f-display: "Cormorant Garamond", "Times New Roman", serif;
+  --f-display: "Cormorant Infant", "Times New Roman", serif;
   --f-body:    "Spectral", "Times New Roman", serif;
   --f-ui:      "PT Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-decor:   "Cormorant Garamond", serif; /* Ruslan Display fallback - using Cormorant 700 italic */
+  --f-decor:   "Monomakh", "Cormorant Infant", serif; /* Old-Slavonic accents */
 }
 
 /* ============ RESET ============ */
@@ -939,7 +939,7 @@ footer.foot::before{
 
 
 
-<link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap">
+<link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Monomakh&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&display=swap">
 <style id="unified-header-css">
 /* === Unified site header (overrides any per-page header CSS) === */
 body header:not(.uheader) {
@@ -986,7 +986,7 @@ body .uheader__sigil {
     flex-shrink: 0;
 }
 body .uheader__name {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-family: 'Cormorant Infant', 'Times New Roman', serif !important;
     font-weight: 500 !important;
     font-style: normal !important;
     font-size: 19px !important;
@@ -1120,13 +1120,18 @@ body .uheader__cta:hover {
     </a>
     <nav class="uheader__nav" aria-label="Главная навигация">
       <a href="index.html" class="is-active" aria-current="page">Главная</a>
-      <a href="about.html">О соборе</a>
-      <a href="history.html">История</a>
+      <div class="uheader__nav-group has-submenu">
+        <button type="button" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false">О соборе<span class="uheader__caret" aria-hidden="true">▾</span></button>
+        <ul class="uheader__submenu" role="menu">
+          <li><a href="about.html">О соборе</a></li>
+          <li><a href="history.html">История</a></li>
+          <li><a href="icons.html">Святыни</a></li>
+        </ul>
+      </div>
       <a href="schedule.html">Расписание</a>
       <a href="prayer-requests.html">Заказ треб</a>
       <a href="clergy.html">Духовенство</a>
       <a href="parish-life.html">Приход</a>
-      <a href="icons.html">Святыни</a>
       <a href="news.html">Новости</a>
       <a href="contacts.html">Контакты</a>
     </nav>

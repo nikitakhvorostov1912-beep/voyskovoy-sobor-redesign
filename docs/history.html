@@ -26,7 +26,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&amp;family=PT+Sans:wght@400;700&amp;display=swap">
+<link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Monomakh&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&display=swap">
 <style>
   :root{
     --parchment:#f5f0e8;
@@ -87,7 +87,7 @@
     display:grid;place-items:center;color:var(--gold);
   }
   .sigil-name{
-    font-family:'Cormorant Garamond', serif;
+    font-family:'Cormorant Infant', serif;
     font-weight:600;font-size:17px;letter-spacing:.04em;line-height:1;
   }
   .sigil-sub{
@@ -163,7 +163,7 @@
     color:var(--gold);margin-bottom:28px;
   }
   h1.cover-title{
-    font-family:'Cormorant Garamond', serif;
+    font-family:'Cormorant Infant', serif;
     font-weight:700;
     font-size:clamp(44px, 7vw, 92px);
     line-height:1.05;letter-spacing:-.005em;
@@ -198,7 +198,7 @@
   .article-grid p{margin:0 0 1.5em;text-wrap:pretty;hyphens:auto;}
   .article-grid p.lead{font-size:21px;line-height:1.75;}
   .article-grid h2{
-    font-family:'Cormorant Garamond', serif;font-weight:700;
+    font-family:'Cormorant Infant', serif;font-weight:700;
     font-size:36px;line-height:1.15;letter-spacing:-.005em;
     margin:0 0 .35em;color:var(--ink);
   }
@@ -209,11 +209,11 @@
     color:var(--gold-deep);margin-bottom:14px;display:flex;align-items:baseline;gap:14px;
   }
   .h2-eyebrow .num{
-    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-family:'Cormorant Infant', serif;font-style:italic;font-weight:500;
     font-size:14px;letter-spacing:0;text-transform:none;color:var(--bordo);
   }
   .dropcap::first-letter{
-    font-family:'Cormorant Garamond', serif;font-weight:700;color:var(--gold-deep);
+    font-family:'Cormorant Infant', serif;font-weight:700;color:var(--gold-deep);
     font-size:6em;line-height:.85;float:left;
     padding:.06em .12em 0 0;margin-top:.05em;
     text-shadow:0 2px 0 rgba(201,169,97,.18);
@@ -227,11 +227,11 @@
   }
   @media (max-width:900px){.pullquote{margin:36px 0;}}
   .pullquote .qmarks{
-    font-family:'Cormorant Garamond', serif;color:var(--gold);
+    font-family:'Cormorant Infant', serif;color:var(--gold);
     font-size:54px;line-height:1;margin-bottom:8px;letter-spacing:.1em;
   }
   .pullquote blockquote{
-    margin:0;font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    margin:0;font-family:'Cormorant Infant', serif;font-style:italic;font-weight:500;
     font-size:28px;line-height:1.45;color:var(--ink);letter-spacing:.005em;
   }
   .pullquote cite{
@@ -257,7 +257,7 @@
   @media (max-width:900px){.memorial{margin:32px 0;padding:24px 22px;}}
   .memorial::before{
     content:"†";position:absolute;top:18px;right:24px;
-    font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--bordo);opacity:.55;
+    font-family:'Cormorant Infant',serif;font-size:32px;color:var(--bordo);opacity:.55;
   }
   .memorial-eyebrow{
     font-family:'PT Sans',sans-serif;
@@ -265,7 +265,7 @@
     color:var(--bordo);margin-bottom:6px;
   }
   .memorial h3{
-    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-family:'Cormorant Infant',serif;font-weight:600;
     font-size:24px;line-height:1.2;margin:0 0 16px;color:var(--bordo-deep);max-width:560px;
   }
   .memorial ul{margin:0;padding:0;list-style:none;columns:2;column-gap:42px;}
@@ -313,7 +313,7 @@
   }
   .ts-head{text-align:center;max-width:760px;margin:0 auto 80px;position:relative;}
   .ts-head h2{
-    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-family:'Cormorant Infant',serif;font-weight:700;
     font-size:64px;line-height:1.05;margin:0 0 14px;color:#f5ecd5;
   }
   .ts-head p{
@@ -348,7 +348,7 @@
     margin-bottom:8px;display:block;
   }
   .ts-title{
-    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-family:'Cormorant Infant',serif;font-style:italic;font-weight:500;
     font-size:20px;line-height:1.35;color:#f5ecd5;margin:0 0 6px;
   }
   .ts-desc{
@@ -363,7 +363,7 @@
   .sources-section::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--rule-soft);}
   .sources-wrap{max-width:920px;margin:0 auto;}
   .sources-section h2{
-    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-family:'Cormorant Infant',serif;font-weight:700;
     font-size:48px;line-height:1.05;margin:18px 0 12px;color:var(--ink);
   }
   .sources-section .sub{
@@ -379,11 +379,11 @@
   }
   ol.sources li::before{
     content:counter(src,decimal-leading-zero);
-    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+    font-family:'Cormorant Infant',serif;font-style:italic;font-weight:600;
     font-size:24px;color:var(--gold-deep);
   }
   .src-title{
-    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-family:'Cormorant Infant',serif;font-weight:600;
     font-size:20px;line-height:1.3;color:var(--ink);margin:0 0 4px;
   }
   .src-meta{
@@ -403,7 +403,7 @@
   .related-wrap{max-width:1180px;margin:0 auto;}
   .related-head{text-align:center;margin-bottom:56px;}
   .related-head h2{
-    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-family:'Cormorant Infant',serif;font-weight:700;
     font-size:44px;margin:14px 0 0;color:var(--ink);
   }
   .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -423,7 +423,7 @@
     content:"";width:24px;height:1px;background:var(--gold);
   }
   .rcard h3{
-    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-family:'Cormorant Infant',serif;font-weight:600;
     font-size:26px;line-height:1.25;margin:0 0 12px;color:var(--ink);
   }
   .rcard p{
@@ -530,7 +530,7 @@
 
 
 
-<link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap">
+
 <style id="unified-header-css">
 /* === Unified site header (overrides any per-page header CSS) === */
 body header:not(.uheader) {
@@ -577,7 +577,7 @@ body .uheader__sigil {
     flex-shrink: 0;
 }
 body .uheader__name {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+    font-family: 'Cormorant Infant', 'Times New Roman', serif !important;
     font-weight: 500 !important;
     font-style: normal !important;
     font-size: 19px !important;
@@ -710,13 +710,18 @@ body .uheader__cta:hover {
     </a>
     <nav class="uheader__nav" aria-label="Главная навигация">
       <a href="index.html">Главная</a>
-      <a href="about.html">О соборе</a>
-      <a href="history.html" class="is-active" aria-current="page">История</a>
+      <div class="uheader__nav-group has-submenu is-active">
+        <button type="button" class="uheader__nav-trigger is-active" aria-haspopup="true" aria-expanded="false" aria-current="page">О соборе<span class="uheader__caret" aria-hidden="true">▾</span></button>
+        <ul class="uheader__submenu" role="menu">
+          <li><a href="about.html">О соборе</a></li>
+          <li><a href="history.html" class="is-active" aria-current="page">История</a></li>
+          <li><a href="icons.html">Святыни</a></li>
+        </ul>
+      </div>
       <a href="schedule.html">Расписание</a>
       <a href="prayer-requests.html">Заказ треб</a>
       <a href="clergy.html">Духовенство</a>
       <a href="parish-life.html">Приход</a>
-      <a href="icons.html">Святыни</a>
       <a href="news.html">Новости</a>
       <a href="contacts.html">Контакты</a>
     </nav>

@@ -25,14 +25,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link id="unified-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Monomakh&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=PT+Sans:wght@400;700&display=swap">
 <style>
   :root{
     --paper:#f5f0e8; --paper-2:#efe8dc;
     --ink:#1a1f2e; --ink-soft:#2a3144; --text-mute:#5b5345;
     --gold:#c9a961; --burgundy:#8b2635; --burgundy-dark:#6b1d29;
     --line:rgba(26,31,46,.12);
-    --f-display:"Cormorant Garamond","Times New Roman",serif;
+    --f-display:"Cormorant Infant","Times New Roman",serif;
     --f-body:"Spectral",Georgia,serif;
     --f-ui:"PT Sans",system-ui,sans-serif;
   }
@@ -192,13 +192,18 @@
     </a>
     <nav class="uheader__nav" aria-label="Главная навигация">
       <a href="index.html">Главная</a>
-      <a href="about.html">О соборе</a>
-      <a href="history.html">История</a>
+      <div class="uheader__nav-group has-submenu">
+        <button type="button" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false">О соборе<span class="uheader__caret" aria-hidden="true">▾</span></button>
+        <ul class="uheader__submenu" role="menu">
+          <li><a href="about.html">О соборе</a></li>
+          <li><a href="history.html">История</a></li>
+          <li><a href="icons.html">Святыни</a></li>
+        </ul>
+      </div>
       <a href="schedule.html">Расписание</a>
       <a href="prayer-requests.html">Заказ треб</a>
       <a href="clergy.html">Духовенство</a>
       <a href="parish-life.html">Приход</a>
-      <a href="icons.html">Святыни</a>
       <a href="news.html">Новости</a>
       <a href="contacts.html">Контакты</a>
     </nav>
