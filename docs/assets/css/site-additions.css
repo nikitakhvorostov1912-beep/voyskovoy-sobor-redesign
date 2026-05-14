@@ -768,41 +768,51 @@ section.thanks-cite,
 }
 
 /* === DROPDOWN О СОБОРЕ — 2026-05-14 === */
-/* Группа «О соборе» — flex-item уровня <a> в .uheader__nav.
-   Триггер внутри ведёт себя ровно как <a>-сосед: тот же padding, тот же baseline. */
+/* === Группа «О соборе» — обёртка над триггером и подменю ============== */
 body .uheader__nav .uheader__nav-group {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: stretch;          /* высота как у <a>-соседей */
   margin: 0;
   padding: 0;
   line-height: inherit;
 }
+/* Триггер — ведёт себя ровно как <a>-соседи (одинаковый padding, одинаковая высота) */
 body .uheader__nav .uheader__nav-trigger {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 8px 0;
   line-height: inherit;
-  vertical-align: baseline;
+  border-bottom: 1px solid transparent !important;  /* перекрываем gold underline на is-active */
+}
+/* На «О соборе» НЕ подсвечиваем триггер как is-active — иначе двойная золотая линия с верхом submenu.
+   Активность видна только по подсветке подпункта внутри submenu. */
+body .uheader__nav .uheader__nav-trigger.is-active {
+  color: rgba(245, 240, 232, 0.82) !important;
+  border-bottom-color: transparent !important;
+}
+body .uheader__nav .uheader__nav-group:hover .uheader__nav-trigger,
+body .uheader__nav .uheader__nav-group:focus-within .uheader__nav-trigger {
+  color: #c9a961 !important;
 }
 
-/* Подменю — слева под триггером, без translateX (чтобы не съезжало) */
+/* === Подменю ========================================================= */
 .uheader__submenu {
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%;
   left: 0;
-  min-width: 200px;
+  min-width: 220px;
   margin: 0;
-  padding: 4px 0;
+  padding: 0;
   list-style: none;
   background: #1a1f2e;
-  border: 1px solid rgba(201, 169, 97, 0.4);
-  border-top: 2px solid #c9a961;
+  border: 1px solid rgba(201, 169, 97, 0.45);
   box-shadow: 0 18px 44px -18px rgba(26, 31, 46, 0.7);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
   z-index: 50;
 }
 .uheader__nav-group:hover .uheader__submenu,
@@ -811,31 +821,56 @@ body .uheader__nav .uheader__nav-trigger {
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.uheader__submenu li { margin: 0; list-style: none; padding: 0; }
+.uheader__submenu li {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.14);
+}
+.uheader__submenu li:last-child { border-bottom: 0; }
+
 body .uheader__submenu a {
+  position: relative;
   display: block;
-  padding: 12px 24px;
-  color: rgba(245, 240, 232, 0.85) !important;
+  padding: 14px 26px;
+  color: rgba(245, 240, 232, 0.88) !important;
   text-decoration: none;
   font-family: "PT Sans", system-ui, sans-serif;
-  font-size: 11.5px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   border: 0 !important;
   border-bottom: 0 !important;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+body .uheader__submenu a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #c9a961;
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 body .uheader__submenu a:hover,
 body .uheader__submenu a:focus-visible {
-  background: rgba(201, 169, 97, 0.12);
+  background: rgba(201, 169, 97, 0.10);
   color: #c9a961 !important;
+  padding-left: 30px;
   outline: none;
+}
+body .uheader__submenu a:hover::before,
+body .uheader__submenu a:focus-visible::before,
+body .uheader__submenu a.is-active::before {
+  opacity: 1;
 }
 body .uheader__submenu a.is-active {
   color: #c9a961 !important;
-  background: rgba(201, 169, 97, 0.08);
 }
 
 /* На мобильных <= 980px шапка скрывается, dropdown тоже не нужен */
