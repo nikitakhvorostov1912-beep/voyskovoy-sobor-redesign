@@ -781,9 +781,21 @@ body .uheader__nav .uheader__nav-group {
 body .uheader__nav .uheader__nav-trigger {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   padding: 8px 0;
   line-height: inherit;
   border-bottom: 1px solid transparent !important;  /* перекрываем gold underline на is-active */
+}
+.uheader__caret {
+  flex-shrink: 0;
+  display: inline-block;
+  transition: transform 0.22s ease;
+  opacity: 0.85;
+}
+.uheader__nav-group:hover .uheader__caret,
+.uheader__nav-group:focus-within .uheader__caret {
+  transform: rotate(180deg);
+  opacity: 1;
 }
 /* На «О соборе» НЕ подсвечиваем триггер как is-active — иначе двойная золотая линия с верхом submenu.
    Активность видна только по подсветке подпункта внутри submenu. */

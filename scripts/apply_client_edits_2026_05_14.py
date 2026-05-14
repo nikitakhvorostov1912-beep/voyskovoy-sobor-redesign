@@ -171,10 +171,17 @@ def _dropdown_html(items: list[tuple[str, str]], current_file: str, active: bool
         item_active = ' class="is-active" aria-current="page"' if href == current_file else ""
         li_items.append(f'<li><a href="{href}"{item_active}>{label}</a></li>')
     submenu = "\n          ".join(li_items)
+    caret_svg = (
+        '<svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" '
+        'fill="none" aria-hidden="true">'
+        '<path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" '
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
     return (
         f'<div class="uheader__nav-group has-submenu{active_cls}">\n'
         f'        <a href="about.html"{trigger_active_attrs} '
-        f'aria-haspopup="true" aria-expanded="false">О соборе</a>\n'
+        f'aria-haspopup="true" aria-expanded="false">'
+        f'<span class="uheader__nav-trigger-label">О соборе</span>{caret_svg}</a>\n'
         f'        <ul class="uheader__submenu" role="menu">\n'
         f'          {submenu}\n'
         f'        </ul>\n'
@@ -218,9 +225,21 @@ body .uheader__nav .uheader__nav-group {{
 body .uheader__nav .uheader__nav-trigger {{
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   padding: 8px 0;
   line-height: inherit;
   border-bottom: 1px solid transparent !important;  /* перекрываем gold underline на is-active */
+}}
+.uheader__caret {{
+  flex-shrink: 0;
+  display: inline-block;
+  transition: transform 0.22s ease;
+  opacity: 0.85;
+}}
+.uheader__nav-group:hover .uheader__caret,
+.uheader__nav-group:focus-within .uheader__caret {{
+  transform: rotate(180deg);
+  opacity: 1;
 }}
 /* На «О соборе» НЕ подсвечиваем триггер как is-active — иначе двойная золотая линия с верхом submenu.
    Активность видна только по подсветке подпункта внутри submenu. */
