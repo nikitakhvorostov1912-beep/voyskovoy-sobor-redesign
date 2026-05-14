@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Фото клириков — памятка для редактора</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;500;600;700&family=Monomakh&family=PT+Sans:wght@400;700&family=Spectral:wght@400;500&display=swap">
+<style>
+  :root {
+    --ink: #1a1f2e;
+    --gold: #c9a961;
+    --gold-line: rgba(201, 169, 97, 0.42);
+    --paper: #f5f0e8;
+    --paper-warm: #ece5d6;
+    --ink-mute: #6a6760;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 24px 80px;
+    font-family: "Spectral", "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .kicker {
+    font-family: "PT Sans", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: "Cormorant Infant", serif;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  h1 .accent {
+    font-family: "Monomakh", "Cormorant Infant", serif;
+    color: var(--gold);
+  }
+  .lead {
+    font-size: 18px;
+    color: #2a2620;
+    max-width: 640px;
+    margin: 0 0 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .preview {
+    background: var(--ink);
+    padding: 14px;
+    position: relative;
+    box-shadow: 0 18px 40px -18px rgba(26, 31, 46, 0.45);
+  }
+  .preview::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--gold-line);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .preview-caption {
+    margin-top: 14px;
+    font-family: "PT Sans", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--ink-mute);
+  }
+  .specs {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 28px;
+  }
+  .specs li {
+    padding-left: 14px;
+    border-left: 2px solid var(--gold);
+  }
+  .specs b {
+    display: block;
+    font-family: "PT Sans", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .specs span {
+    font-family: "Cormorant Infant", serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .specs span.num {
+    font-variant-numeric: tabular-nums;
+  }
+  ol.steps {
+    margin: 0 0 32px;
+    padding: 0;
+    counter-reset: s;
+    list-style: none;
+  }
+  ol.steps li {
+    counter-increment: s;
+    position: relative;
+    padding: 0 0 16px 44px;
+  }
+  ol.steps li::before {
+    content: counter(s);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: "Cormorant Infant", serif;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 16px;
+  }
+  .files {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--gold);
+    padding: 18px 22px;
+    margin: 0 0 32px;
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    color: #3a3630;
+  }
+  .files b {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .files code {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    background: #fff8eb;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: "PT Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .btn:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  hr.rule {
+    border: 0;
+    border-top: 1px solid var(--gold-line);
+    margin: 56px 0 24px;
+  }
+  .foot {
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+  .foot a { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Памятка для редактора · не публикуется в меню сайта</div>
+  <h1>Фото клириков ·<br><span class="accent">пустая рамка и размеры</span></h1>
+  <p class="lead">Рамка повторяет стиль архивных фото со страницы «История»: тёмно-синий кант собора + тонкая золотая обводка. Открой шаблон в Canva, Photoshop или любом редакторе, вставь портрет священнослужителя поверх белой зоны.</p>
+
+  <div class="grid">
+    <div>
+      <div class="preview">
+        <img src="assets/images/clergy/_template-empty-frame@2x.png" alt="Пустая рамка для фото клирика">
+      </div>
+      <div class="preview-caption">Пустая рамка · 1200 × 1500 px</div>
+    </div>
+
+    <div>
+      <ul class="specs">
+        <li><b>Размер</b><span class="num">1200 × 1500 px</span></li>
+        <li><b>Пропорция</b><span class="num">4 : 5 (книжная)</span></li>
+        <li><b>Формат</b><span>JPG, качество 85 %</span></li>
+        <li><b>Цвет канта</b><span class="num">#1a1f2e</span></li>
+        <li><b>Обводка</b><span class="num">#c9a961</span></li>
+        <li><b>Версия @1x</b><span class="num">600 × 750 px</span></li>
+      </ul>
+
+      <ol class="steps">
+        <li>Скачай рамку (кнопка ниже) — это PNG 1200 × 1500.</li>
+        <li>Открой в Canva / Photoshop / Photopea. Вставь портретное фото внутрь белой зоны (под золотую обводку).</li>
+        <li>Кадрируй так, чтобы лицо было в&nbsp;верхней трети, плечи — у&nbsp;нижней границы белой зоны.</li>
+        <li>Сохрани JPG 1200 × 1500, качество ≥ 85&nbsp;%.</li>
+        <li>Назови файл точно как указано ниже и&nbsp;пришли мне в&nbsp;Telegram / ВК.</li>
+      </ol>
+
+      <div class="files">
+        <b>Имена файлов</b>
+        <code>kadurov.jpg</code> · <code>feer.jpg</code> · <code>popov.jpg</code> · <code>klochkov.jpg</code>
+      </div>
+
+      <a class="btn" href="assets/images/clergy/_template-empty-frame@2x.png" download>
+        Скачать пустую рамку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <p class="foot">Эта страница не индексируется и не появляется в навигации сайта.
+    Если нужно — продублирую инструкцию в текстовом виде в ВК.
+    Версия @1x (мельче):
+    <a href="assets/images/clergy/_template-empty-frame.png">_template-empty-frame.png</a></p>
+</div>
+</body>
+</html>
