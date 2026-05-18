@@ -890,3 +890,22 @@ body .uheader__submenu a.is-active {
   .uheader__nav-group { display: none; }
 }
 /* === /DROPDOWN === */
+
+/* === logo-sobor brand override 2026-05-18 ============================ */
+/* Прямоугольный логотип «Войсковой собор Александра Невского» в шапке.   */
+/* SVG-щит (42x42) заменён на <img>, поэтому пропорции — 9:8.             */
+img.uheader__sigil {
+  width: auto !important;
+  height: 48px !important;
+  max-width: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: transparent;
+}
+@media (max-width: 640px) {
+  img.uheader__sigil {
+    height: 40px !important;
+    max-width: 54px;
+  }
+}
+/* === /logo-sobor brand override ====================================== */
