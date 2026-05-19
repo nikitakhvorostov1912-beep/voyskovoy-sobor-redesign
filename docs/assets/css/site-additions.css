@@ -909,3 +909,83 @@ img.uheader__sigil {
   }
 }
 /* === /logo-sobor brand override ====================================== */
+
+/* === welcome section 2026-05-18 ====================================== */
+/* Блок «Добро пожаловать» с двумя CTA — по эскизу заказчика photo_2.    */
+.welcome {
+  background: #f5f0e8;
+  padding: 64px 24px 80px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.25);
+}
+.welcome__inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+.welcome__kicker {
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #735923;
+  margin-bottom: 18px;
+}
+.welcome__title {
+  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.18;
+  color: #1a1f2e;
+  letter-spacing: 0.005em;
+  margin: 0 0 18px;
+}
+.welcome__addr {
+  font-family: "Spectral", Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #3a4054;
+  margin: 0 0 36px;
+}
+.welcome__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.welcome__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  font-family: "PT Sans", "Arial", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid #c9a961;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.welcome__btn--primary {
+  background: #1a1f2e;
+  color: #f5f0e8;
+}
+.welcome__btn--primary:hover {
+  background: #252b3d;
+  transform: translateY(-1px);
+}
+.welcome__btn--ghost {
+  background: transparent;
+  color: #1a1f2e;
+}
+.welcome__btn--ghost:hover {
+  background: #1a1f2e;
+  color: #f5f0e8;
+}
+@media (max-width: 720px) {
+  .welcome { padding: 48px 18px 60px; }
+  .welcome__title { font-size: 28px; line-height: 1.22; }
+  .welcome__addr { font-size: 15px; margin-bottom: 28px; }
+  .welcome__btn { padding: 12px 20px; font-size: 12px; }
+}
+/* === /welcome section ================================================ */
