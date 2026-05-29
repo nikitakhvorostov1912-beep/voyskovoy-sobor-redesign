@@ -179,7 +179,6 @@
       <img class="uheader__sigil" src="assets/images/brand/logo-sobor-medium.png" srcset="assets/images/brand/logo-sobor-small.png 1x, assets/images/brand/logo-sobor-medium.png 2x" alt="Войсковой собор Александра Невского — Краснодар" width="72" height="64" loading="eager" decoding="async">
       <span class="uheader__name">
         Войсковой Собор<br>Александра Невского
-        <small>Краснодар · 1872</small>
       </span>
     </a>
     <nav class="uheader__nav" aria-label="Главная навигация">
@@ -192,9 +191,36 @@
           <li><a href="clergy.html">Духовенство</a></li>
         </ul>
       </div>
-      <a href="schedule.html">Расписание</a>
-      <a href="services.html">Богослужения</a>
-      <a href="parish-life.html">Жизнь собора</a>
+      <div class="uheader__nav-group has-submenu">
+        <a href="services.html" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false"><span class="uheader__nav-trigger-label">Богослужения</span><svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <ul class="uheader__submenu" role="menu">
+          <li><a href="schedule.html">Расписание</a></li>
+          <li><a href="prayer-requests.html">Требы</a></li>
+        </ul>
+      </div>
+      <div class="uheader__nav-group has-submenu">
+        <a href="services.html#sacraments" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false"><span class="uheader__nav-trigger-label">Таинства</span><svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <ul class="uheader__submenu" role="menu">
+          <li><a href="services.html#sacraments">Крещение</a></li>
+          <li><a href="services.html#sacraments">Миропомазание</a></li>
+          <li><a href="services.html#confession">Причащение</a></li>
+          <li><a href="services.html#confession">Покаяние</a></li>
+          <li><a href="services.html#sacraments">Елеосвящение</a></li>
+          <li><a href="services.html#sacraments">Венчание</a></li>
+        </ul>
+      </div>
+      <div class="uheader__nav-group has-submenu">
+        <a href="parish-life.html" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false"><span class="uheader__nav-trigger-label">Жизнь прихода</span><svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <ul class="uheader__submenu" role="menu">
+          <li><a href="parish-life.html#school">Воскресная школа для взрослых</a></li>
+          <li><a href="parish-life.html#school">Воскресная школа для детей</a></li>
+          <li><a href="parish-life.html">Патриаршая программа</a></li>
+          <li><a href="parish-life.html#youth">Молодёжка «Тем паче»</a></li>
+          <li><a href="parish-life.html#sisterhood">Сестричество</a></li>
+          <li><a href="parish-life.html#choir">Голоса храма</a></li>
+        </ul>
+      </div>
+      <a href="parish-life.html#cossack">Казачество</a>
       <a href="contacts.html">Контакты</a>
     </nav>
     <button class="menu-trigger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-drawer">
@@ -240,24 +266,17 @@
   <div class="usite-footer__inner">
     <div class="usite-footer__brand">
       <div class="usite-footer__brand-row">
-        <svg class="usite-footer__sigil" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M24 2 L42 9 V25 C42 36 34 43 24 46 C14 43 6 36 6 25 V9 Z" stroke="#c9a961" stroke-width="1.2" fill="rgba(201,169,97,.06)"/>
-          <g stroke="#c9a961" stroke-width="1.4" stroke-linecap="square">
-            <line x1="24" y1="11" x2="24" y2="38"/>
-            <line x1="18" y1="17" x2="30" y2="17"/>
-            <line x1="16" y1="22" x2="32" y2="22"/>
-            <line x1="18" y1="32" x2="30" y2="29"/>
-          </g>
-        </svg>
+        <img class="usite-footer__sigil" src="assets/images/brand/logo-sobor-medium.png" srcset="assets/images/brand/logo-sobor-small.png 1x, assets/images/brand/logo-sobor-medium.png 2x" alt="Войсковой собор Александра Невского — Краснодар" width="56" height="50" loading="lazy" decoding="async">
         <div>
           <div class="usite-footer__name">Войсковой Собор</div>
           <div class="usite-footer__sub">Александра Невского · Краснодар</div>
         </div>
       </div>
       <p class="usite-footer__addr">
-        ул. Постовая, 26 · Краснодар, 350063<br>
+        <a href="https://yandex.ru/maps/?text=%D0%92%D0%BE%D0%B9%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D0%BE%D1%80%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9D%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2C%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B4%D0%B0%D1%80" target="_blank" rel="noopener">ул. Постовая, 26 · Краснодар, 350063</a><br>
         <a href="tel:+78612620020">+7&nbsp;(861)&nbsp;262-00-20</a><br>
         <a href="mailto:nevskiy-sobor@mail.ru">nevskiy-sobor@mail.ru</a>
+        <span class="usite-footer__hours">Собор открыт ежедневно с 07:00 до 19:00</span>
       </p>
       <p class="usite-footer__quote">«Дом мой домом молитвы наречётся»<span>Евангелие от Матфея 21:13</span></p>
     </div>
@@ -308,7 +327,6 @@
   <div class="mobile-drawer__head">
     <a href="index.html" class="mobile-drawer__brand">
       Войсковой Собор<br>Александра Невского
-      <small>Краснодар · 1872</small>
     </a>
     <button class="close" aria-label="Закрыть меню">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -318,15 +336,30 @@
     </button>
   </div>
   <nav class="mobile-drawer__nav" aria-label="Главная навигация (мобильная)">
-      <a href="index.html">Главная</a>
-      <a href="about.html">О соборе</a>
-      <a href="history.html" class="mobile-drawer__sub">История</a>
-      <a href="icons.html" class="mobile-drawer__sub">Святыни</a>
-      <a href="clergy.html" class="mobile-drawer__sub">Духовенство</a>
-      <a href="schedule.html">Расписание</a>
-      <a href="services.html">Богослужения</a>
-      <a href="parish-life.html">Жизнь собора</a>
-      <a href="contacts.html">Контакты</a>
+    <a href="index.html">Главная</a>
+    <a href="about.html">О соборе</a>
+    <a href="history.html" class="mobile-drawer__sub">История</a>
+    <a href="icons.html" class="mobile-drawer__sub">Святыни</a>
+    <a href="clergy.html" class="mobile-drawer__sub">Духовенство</a>
+    <a href="services.html">Богослужения</a>
+    <a href="schedule.html" class="mobile-drawer__sub">Расписание</a>
+    <a href="prayer-requests.html" class="mobile-drawer__sub">Требы</a>
+    <a href="services.html#sacraments">Таинства</a>
+    <a href="services.html#sacraments" class="mobile-drawer__sub">Крещение</a>
+    <a href="services.html#sacraments" class="mobile-drawer__sub">Миропомазание</a>
+    <a href="services.html#confession" class="mobile-drawer__sub">Причащение</a>
+    <a href="services.html#confession" class="mobile-drawer__sub">Покаяние</a>
+    <a href="services.html#sacraments" class="mobile-drawer__sub">Елеосвящение</a>
+    <a href="services.html#sacraments" class="mobile-drawer__sub">Венчание</a>
+    <a href="parish-life.html">Жизнь прихода</a>
+    <a href="parish-life.html#school" class="mobile-drawer__sub">Воскресная школа для взрослых</a>
+    <a href="parish-life.html#school" class="mobile-drawer__sub">Воскресная школа для детей</a>
+    <a href="parish-life.html" class="mobile-drawer__sub">Патриаршая программа</a>
+    <a href="parish-life.html#youth" class="mobile-drawer__sub">Молодёжка «Тем паче»</a>
+    <a href="parish-life.html#sisterhood" class="mobile-drawer__sub">Сестричество</a>
+    <a href="parish-life.html#choir" class="mobile-drawer__sub">Голоса храма</a>
+    <a href="parish-life.html#cossack">Казачество</a>
+    <a href="contacts.html">Контакты</a>
   </nav>
   <a href="donate.html" class="mobile-drawer__cta">Пожертвовать</a>
   <div class="mobile-drawer__contact">

@@ -989,3 +989,138 @@ img.uheader__sigil {
   .welcome__btn { padding: 12px 20px; font-size: 12px; }
 }
 /* === /welcome section ================================================ */
+
+/* ====================================================================
+   ПРАВКИ SAI_774_T (2026-05-29)
+   Шапка (логотип/надпись), hero «Добро пожаловать», меню, подвал.
+   ==================================================================== */
+
+/* 1. Логотип крупнее; надпись собора — Monomakh, цвет #F3EDE5,
+      строка «Краснодар · 1872» убрана из HTML. */
+.uheader__inner { min-height: 100px !important; }
+img.uheader__sigil { height: 84px !important; max-width: 108px; }
+@media (max-width: 640px) {
+  img.uheader__sigil { height: 60px !important; max-width: 78px; }
+}
+body .uheader__name {
+  font-family: "Monomakh", "Cormorant Infant", "Times New Roman", serif !important;
+  color: #F3EDE5 !important;
+  font-size: 21px !important;
+  line-height: 1.14 !important;
+  letter-spacing: 0.01em !important;
+}
+@media (max-width: 1500px) and (min-width: 1181px) {
+  body .uheader__name { font-size: 17px !important; }
+}
+
+/* 2. HERO «Добро пожаловать» — контент по центру поверх фото собора,
+      подложка светлее (правка «сейчас слишком тёмная»). */
+.hero--welcome { display: grid; place-items: center; text-align: center; }
+.hero--welcome .hero-bg::before {
+  filter: brightness(0.82) contrast(1.02) saturate(0.9) !important;
+}
+.hero--welcome .hero-bg::after {
+  background:
+    linear-gradient(180deg, rgba(15,18,28,.18) 0%, rgba(15,18,28,.28) 55%, rgba(15,18,28,.55) 100%),
+    radial-gradient(ellipse at 50% 42%, rgba(0,0,0,.30) 0%, rgba(0,0,0,0) 62%) !important;
+}
+.hero-welcome {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  text-align: center;
+}
+.hero-welcome__kicker {
+  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 30px);
+  letter-spacing: 0.06em;
+  color: #e0cd97;
+  margin: 0 0 16px;
+  text-shadow: 0 1px 16px rgba(0,0,0,.5);
+}
+.hero-welcome__title {
+  font-family: "Monomakh", "Cormorant Infant", serif;
+  font-weight: 400;
+  color: #F3EDE5;
+  font-size: clamp(32px, 5vw, 68px);
+  line-height: 1.14;
+  letter-spacing: 0.005em;
+  margin: 0 0 24px;
+  text-shadow: 0 2px 30px rgba(0,0,0,.45);
+}
+.hero-welcome__addr {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 13.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #AC935D;
+  margin: 0 0 40px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0 18px;
+  justify-content: center;
+  align-items: center;
+  text-shadow:
+    1px 1px 1px rgba(0,0,0,.9), -1px 1px 1px rgba(0,0,0,.9),
+    1px -1px 1px rgba(0,0,0,.9), -1px -1px 1px rgba(0,0,0,.9),
+    0 2px 18px rgba(0,0,0,.7);
+}
+.hero-welcome__hours { position: relative; padding-left: 18px; }
+.hero-welcome__hours::before { content: "·"; position: absolute; left: 0; }
+.hero-welcome__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.hero-welcome .welcome__btn--primary {
+  background: #1a1f2e;
+  color: #f5f0e8;
+  border-color: #c9a961;
+}
+.hero-welcome .welcome__btn--primary:hover { background: #252b3d; }
+.hero-welcome .welcome__btn--ghost {
+  background: rgba(245,240,232,0.06);
+  color: #f5f0e8;
+  border-color: #c9a961;
+}
+.hero-welcome .welcome__btn--ghost:hover { background: #c9a961; color: #1a1f2e; }
+@media (max-width: 720px) {
+  .hero-welcome { padding: 84px 18px 64px; }
+  .hero-welcome__addr { font-size: 12px; gap: 0 12px; }
+}
+
+/* 3. Подменю — комфортная ширина под длинные пункты «Жизнь прихода». */
+.uheader__submenu { min-width: 248px; }
+
+/* 4. Мобильное меню — подпункты с отступом. */
+.mobile-drawer__sub {
+  padding-left: 24px !important;
+  font-size: 14px !important;
+  opacity: 0.9;
+}
+
+/* 5. Подвал — адрес-ссылка (Яндекс.Карты) + строка часов работы. */
+.usite-footer__hours {
+  display: block;
+  margin-top: 10px;
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: #c9a961;
+}
+
+/* 6. Логотип в подвале — тот же золотой купол, что в шапке (вместо щита). */
+img.usite-footer__sigil {
+  width: auto;
+  height: 54px;
+  max-width: 78px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: transparent;
+}
+/* === /ПРАВКИ SAI_774_T =============================================== */
