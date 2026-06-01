@@ -1017,12 +1017,12 @@ body .uheader__name {
       подложка светлее (правка «сейчас слишком тёмная»). */
 .hero--welcome { display: grid; place-items: center; text-align: center; }
 .hero--welcome .hero-bg::before {
-  filter: brightness(0.82) contrast(1.02) saturate(0.9) !important;
+  filter: brightness(0.74) contrast(1.05) saturate(1.05) sepia(0.16) !important;
 }
 .hero--welcome .hero-bg::after {
   background:
-    linear-gradient(180deg, rgba(15,18,28,.18) 0%, rgba(15,18,28,.28) 55%, rgba(15,18,28,.55) 100%),
-    radial-gradient(ellipse at 50% 42%, rgba(0,0,0,.30) 0%, rgba(0,0,0,0) 62%) !important;
+    linear-gradient(180deg, rgba(26,18,8,.30) 0%, rgba(26,18,8,.34) 55%, rgba(18,13,7,.62) 100%),
+    radial-gradient(ellipse at 50% 40%, rgba(120,80,28,.16) 0%, rgba(120,80,28,0) 60%) !important;
 }
 .hero-welcome {
   position: relative;
