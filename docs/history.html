@@ -322,9 +322,9 @@
   }
   .ts-wrap{max-width:1080px;margin:0 auto;position:relative;}
   .ts-axis{
-    position:absolute;left:50%;top:0;bottom:0;width:1px;
-    background:linear-gradient(180deg, transparent, var(--gold) 6%, var(--gold) 94%, transparent);
-    transform:translateX(-.5px);
+    position:absolute;left:50%;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg, transparent, var(--gold) 1.5%, var(--gold) 98.5%, transparent);
+    transform:translateX(-1px);
   }
   .ts-event{
     display:grid;grid-template-columns:1fr 64px 1fr;align-items:start;
@@ -482,7 +482,7 @@
   .ts-event.visible{opacity:1;transform:translateX(0);}
 
   /* mobile */
-  @media (max-width:980px){
+  @media (max-width:1080px){
     nav.primary{display:none;}
     .breadcrumb-trail{display:none;}
     .hwrap{padding:0 18px;gap:16px;justify-content:space-between;}
