@@ -1123,4 +1123,20 @@ img.usite-footer__sigil {
   flex-shrink: 0;
   background: transparent;
 }
+
+/* 7. Подвал — верхняя фраза «Просим ваших молитв…» (по макету). */
+.usite-footer__prayer {
+  text-align: center;
+  font-family: "Cormorant Infant", "Times New Roman", serif;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: #d8c08a;
+  margin: 0;
+  padding: 22px 32px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.16);
+}
+@media (max-width: 720px) {
+  .usite-footer__prayer { font-size: 15px; padding: 18px 20px; }
+}
 /* === /ПРАВКИ SAI_774_T =============================================== */
