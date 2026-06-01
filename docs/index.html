@@ -749,8 +749,8 @@ body::before{
   overflow: hidden;
   position: relative;
 }
-.news-img svg{ width:100%; height:100%; display:block; transition: transform .8s ease; }
-.news-card:hover .news-img svg{ transform: scale(1.04); }
+.news-img svg, .news-img img{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .8s ease; }
+.news-card:hover .news-img svg, .news-card:hover .news-img img{ transform: scale(1.04); }
 .news-meta{
   display:flex; align-items:center; gap: 12px;
   font-family: var(--f-ui);
@@ -1239,104 +1239,37 @@ body .uheader__cta:hover {
   <div class="news-grid">
     <article class="news-card">
       <div class="news-img">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="n1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a3a52"></stop><stop offset="100%" stop-color="#1a1f2e"></stop></linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#n1)"></rect>
-          <!-- candles in church -->
-          <g fill="#c9a961">
-            <rect x="60" y="120" width="6" height="100"></rect>
-            <rect x="90" y="105" width="6" height="115"></rect>
-            <rect x="120" y="115" width="6" height="105"></rect>
-            <rect x="150" y="100" width="6" height="120"></rect>
-            <rect x="180" y="118" width="6" height="102"></rect>
-            <rect x="210" y="108" width="6" height="112"></rect>
-            <rect x="240" y="120" width="6" height="100"></rect>
-            <rect x="270" y="105" width="6" height="115"></rect>
-            <rect x="300" y="118" width="6" height="102"></rect>
-            <rect x="330" y="110" width="6" height="110"></rect>
-          </g>
-          <g fill="#fde7a4">
-            <ellipse cx="63" cy="118" rx="3" ry="6"></ellipse><ellipse cx="93" cy="103" rx="3" ry="6"></ellipse>
-            <ellipse cx="123" cy="113" rx="3" ry="6"></ellipse><ellipse cx="153" cy="98" rx="3" ry="6"></ellipse>
-            <ellipse cx="183" cy="116" rx="3" ry="6"></ellipse><ellipse cx="213" cy="106" rx="3" ry="6"></ellipse>
-            <ellipse cx="243" cy="118" rx="3" ry="6"></ellipse><ellipse cx="273" cy="103" rx="3" ry="6"></ellipse>
-            <ellipse cx="303" cy="116" rx="3" ry="6"></ellipse><ellipse cx="333" cy="108" rx="3" ry="6"></ellipse>
-          </g>
-          <radialGradient id="glow1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#fde7a4" stop-opacity=".35"></stop><stop offset="100%" stop-color="#fde7a4" stop-opacity="0"></stop></radialGradient>
-          <rect width="400" height="300" fill="url(#glow1)"></rect>
-        </svg>
+        <img src="assets/images/photos/news-2026-04-easter-concert.jpg" alt="Пасхальный концерт прихода — апрель 2026" width="1200" height="1197" loading="lazy" decoding="async">
       </div>
       <div class="news-meta">
-        <span>2 мая 2026</span><span class="dot"></span><span class="tag">Богослужение</span>
+        <span>Апрель 2026</span><span class="dot"></span><span class="tag">Жизнь прихода</span>
       </div>
-      <h3 class="news-title">Пасхальная вечерня и крестный ход вокруг собора</h3>
-      <p class="news-excerpt">В Светлый понедельник настоятель совершил пасхальную вечерню при пении соборного хора. По окончании службы прихожане прошли крестным ходом…</p>
+      <h3 class="news-title">Пасхальный концерт соборного хора</h3>
+      <p class="news-excerpt">В светлые пасхальные дни соборный хор и воспитанники воскресной школы дали праздничный концерт духовных песнопений для прихожан…</p>
       <a class="news-more" href="news.html">Читать далее →</a>
     </article>
 
     <article class="news-card">
       <div class="news-img">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="n2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4b88b"></stop><stop offset="100%" stop-color="#7a5a32"></stop></radialGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#n2)"></rect>
-          <!-- baptism scene silhouette -->
-          <g fill="#1a1410">
-            <ellipse cx="200" cy="240" rx="170" ry="20" opacity=".4"></ellipse>
-            <!-- font -->
-            <ellipse cx="200" cy="200" rx="60" ry="16" fill="#3a2818"></ellipse>
-            <path d="M150 200 L160 240 L240 240 L250 200 Z" fill="#3a2818"></path>
-            <!-- priest figure -->
-            <path d="M120 100 Q120 80 138 80 Q156 80 156 100 L154 200 L122 200 Z"></path>
-            <circle cx="138" cy="74" r="14"></circle>
-            <!-- second figure -->
-            <path d="M260 110 Q260 92 276 92 Q292 92 292 110 L290 200 L262 200 Z"></path>
-            <circle cx="276" cy="86" r="12"></circle>
-          </g>
-          <g fill="#c9a961" opacity=".7">
-            <path d="M200 70 q-8 12 0 24 q8 -12 0 -24z"></path>
-            <line x1="200" y1="60" x2="200" y2="100" stroke="#c9a961" stroke-width="2"></line>
-          </g>
-        </svg>
+        <img src="assets/images/photos/news-2026-04-biblionight.jpg" alt="Библионочь в соборной библиотеке — апрель 2026" width="1200" height="615" loading="lazy" decoding="async">
       </div>
       <div class="news-meta">
-        <span>28 апреля 2026</span><span class="dot"></span><span class="tag">Таинства</span>
+        <span>Апрель 2026</span><span class="dot"></span><span class="tag">Жизнь прихода</span>
       </div>
-      <h3 class="news-title">В соборе крещены десять воспитанников воскресной школы</h3>
-      <p class="news-excerpt">В Великую Субботу настоятель совершил Таинство Крещения над детьми — воспитанниками приходской воскресной школы. Восприемниками…</p>
+      <h3 class="news-title">Библионочь в соборной библиотеке</h3>
+      <p class="news-excerpt">Соборная библиотека приняла участие во всероссийской акции «Библионочь»: чтения, беседы о духовной литературе и встреча с прихожанами…</p>
       <a class="news-more" href="news.html">Читать далее →</a>
     </article>
 
     <article class="news-card">
       <div class="news-img">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="n3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b2635"></stop><stop offset="100%" stop-color="#3a0a14"></stop></linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#n3)"></rect>
-          <!-- cossack banner -->
-          <g fill="#c9a961">
-            <rect x="180" y="60" width="6" height="200"></rect>
-            <path d="M186 70 L320 70 L300 110 L320 150 L186 150 Z"></path>
-          </g>
-          <g fill="#1a1410">
-            <text x="252" y="118" text-anchor="middle" font-family="serif" font-weight="700" font-size="28">КАЗ</text>
-          </g>
-          <g fill="#1a1410" opacity=".55">
-            <ellipse cx="200" cy="280" rx="180" ry="20"></ellipse>
-            <path d="M60 260 Q90 200 120 260 Z"></path>
-            <path d="M280 260 Q320 200 360 260 Z"></path>
-          </g>
-        </svg>
+        <img src="assets/images/photos/news-2026-04-hospital.jpg" alt="Совершение Таинств в больнице — апрель 2026" width="1014" height="1014" loading="lazy" decoding="async">
       </div>
       <div class="news-meta">
-        <span>21 апреля 2026</span><span class="dot"></span><span class="tag">Казачество</span>
+        <span>Апрель 2026</span><span class="dot"></span><span class="tag">Таинства</span>
       </div>
-      <h3 class="news-title">Освящение знамени Кубанского казачьего войска в&nbsp;соборе</h3>
-      <p class="news-excerpt">По окончании Божественной литургии настоятель в сослужении соборного духовенства совершил молебен и освятил новое знамя…</p>
+      <h3 class="news-title">Соборование и Причащение больных в стационаре</h3>
+      <p class="news-excerpt">Священники собора посетили городскую больницу и совершили Таинства Соборования, Исповеди и Причащения для болящих по их просьбе…</p>
       <a class="news-more" href="news.html">Читать далее →</a>
     </article>
   </div>
