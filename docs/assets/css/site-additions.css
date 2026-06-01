@@ -1139,4 +1139,9 @@ img.usite-footer__sigil {
 @media (max-width: 720px) {
   .usite-footer__prayer { font-size: 15px; padding: 18px 20px; }
 }
+/* 8. Подвал на мобильном: ссылки колонок — в столбик (а не inline-flex,
+      из-за которого короткие пункты слипались в одну строку). */
+@media (max-width: 720px) {
+  .usite-footer__col a { display: flex; }
+}
 /* === /ПРАВКИ SAI_774_T =============================================== */
