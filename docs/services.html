@@ -431,7 +431,7 @@ a{color:inherit;text-decoration:none}
   border:1px solid rgba(201,169,97,0.4);
   padding:32px;
   display:grid;
-  grid-template-columns:140px 1fr;
+  grid-template-columns:1fr;
   gap:28px;
   align-items:flex-start;
   transition:border-color .2s,transform .2s;
@@ -579,7 +579,7 @@ a{color:inherit;text-decoration:none}
   .featured__body{text-align:left}
   .contact-block{justify-content:flex-start}
   .clergy-grid{grid-template-columns:1fr;gap:20px}
-  .clergy-card{grid-template-columns:120px 1fr;padding:24px;gap:20px}
+  .clergy-card{grid-template-columns:1fr;padding:24px;gap:20px}
   .clergy-card__photo{width:120px;height:120px}
   .section-head h2{font-size:38px}
   .cta{padding:64px 24px 120px}
@@ -817,22 +817,22 @@ body .uheader__cta:hover {
         </ul>
       </div>
       <div class="uheader__nav-group has-submenu">
-        <a href="services.html#sacraments" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false"><span class="uheader__nav-trigger-label">Таинства</span><svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="services.html#tainstva" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false"><span class="uheader__nav-trigger-label">Таинства</span><svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <ul class="uheader__submenu" role="menu">
-          <li><a href="services.html#sacraments">Крещение</a></li>
-          <li><a href="services.html#sacraments">Миропомазание</a></li>
-          <li><a href="services.html#confession">Причащение</a></li>
-          <li><a href="services.html#confession">Покаяние</a></li>
-          <li><a href="services.html#sacraments">Елеосвящение</a></li>
-          <li><a href="services.html#sacraments">Венчание</a></li>
+          <li><a href="services.html#kreshchenie">Крещение</a></li>
+          <li><a href="services.html#miropomazanie">Миропомазание</a></li>
+          <li><a href="services.html#prichashchenie">Причащение</a></li>
+          <li><a href="services.html#pokayanie">Покаяние</a></li>
+          <li><a href="services.html#eleosvyashchenie">Елеосвящение</a></li>
+          <li><a href="services.html#venchanie">Венчание</a></li>
         </ul>
       </div>
       <div class="uheader__nav-group has-submenu">
         <a href="parish-life.html" class="uheader__nav-trigger" aria-haspopup="true" aria-expanded="false"><span class="uheader__nav-trigger-label">Жизнь прихода</span><svg class="uheader__caret" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <ul class="uheader__submenu" role="menu">
-          <li><a href="parish-life.html#school">Воскресная школа для взрослых</a></li>
+          <li><a href="parish-life.html#school-adults">Воскресная школа для взрослых</a></li>
           <li><a href="parish-life.html#school">Воскресная школа для детей</a></li>
-          <li><a href="parish-life.html">Патриаршая программа</a></li>
+          <li><a href="parish-life.html#patriarch-program">Патриаршая программа</a></li>
           <li><a href="parish-life.html#youth">Молодёжка «Тем паче»</a></li>
           <li><a href="parish-life.html#sisterhood">Сестричество</a></li>
           <li><a href="parish-life.html#choir">Голоса храма</a></li>
@@ -926,24 +926,6 @@ body .uheader__cta:hover {
         </div>
       </article>
 
-      <!-- Card: Таинства -->
-      <article class="clergy-card">
-        <div>
-          <div class="clergy-card__role">Таинства Церкви</div>
-          <h3 class="clergy-card__name">Крещение, Венчание,<br>Соборование</h3>
-          <p class="clergy-card__bio">Совершаются по предварительной договорённости. Перед Крещением проводятся огласительные беседы. Венчание совершается после Таинства Исповеди и Причащения. Соборование (Елеосвящение) совершается соборно в дни Великого поста и индивидуально по необходимости.</p>
-        </div>
-      </article>
-
-      <!-- Card: Исповедь и Причащение -->
-      <article class="clergy-card" id="confession" style="scroll-margin-top:110px">
-        <div>
-          <div class="clergy-card__role">Таинства покаяния</div>
-          <h3 class="clergy-card__name">Исповедь<br>и Причащение</h3>
-          <p class="clergy-card__bio">Исповедь принимается перед каждым богослужением и по договорённости со священником. К Таинству Причащения готовятся постом, молитвой и Исповедью. Подробно о подготовке можно расспросить дежурного клирика или в свечной лавке.</p>
-        </div>
-      </article>
-
       <!-- Card: Молебны и панихиды -->
       <article class="clergy-card">
         <div>
@@ -959,6 +941,74 @@ body .uheader__cta:hover {
           <div class="clergy-card__role">Праздники собора</div>
           <h3 class="clergy-card__name">Престольные<br>праздники</h3>
           <p class="clergy-card__bio">Особые соборные богослужения совершаются в дни памяти св. блг. кн. Александра Невского — 6 декабря (преставление) и 12 сентября (перенесение мощей), а также в великие двунадесятые праздники и дни памяти соборных святынь.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ТАИНСТВА ЦЕРКВИ ============ -->
+<section class="section" id="tainstva" style="scroll-margin-top:110px">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker kicker--soft">Таинства Церкви</div>
+      <h2>Таинства, совершаемые в соборе</h2>
+      <div class="section-head__rule"></div>
+    </div>
+    <div class="clergy-grid">
+
+      <!-- Крещение -->
+      <article class="clergy-card" id="kreshchenie" style="scroll-margin-top:110px">
+        <div>
+          <div class="clergy-card__role">Таинство</div>
+          <h3 class="clergy-card__name">Крещение</h3>
+          <p class="clergy-card__bio">Таинство, в котором верующий при троекратном погружении в воду с призыванием Пресвятой Троицы омывается от грехов и рождается в жизнь духовную. В соборе совершается по предварительной договорённости; перед Таинством проводятся огласительные беседы для взрослых, крёстных и родителей.</p>
+        </div>
+      </article>
+
+      <!-- Миропомазание -->
+      <article class="clergy-card" id="miropomazanie" style="scroll-margin-top:110px">
+        <div>
+          <div class="clergy-card__role">Таинство</div>
+          <h3 class="clergy-card__name">Миропомазание</h3>
+          <p class="clergy-card__bio">Таинство, в котором новокрещёному через помазание святым миром со словами «Печать дара Духа Святаго» подаются дары Святого Духа, укрепляющие его в жизни духовной. Совершается сразу после Крещения.</p>
+        </div>
+      </article>
+
+      <!-- Причащение -->
+      <article class="clergy-card" id="prichashchenie" style="scroll-margin-top:110px">
+        <div>
+          <div class="clergy-card__role">Таинство</div>
+          <h3 class="clergy-card__name">Причащение</h3>
+          <p class="clergy-card__bio">Таинство, в котором верующий под видом хлеба и вина принимает истинные Тело и Кровь Христовы, теснейшим образом соединяясь со Спасителем. Совершается за каждой Божественной литургией; готовятся к нему постом, молитвой и Исповедью.</p>
+        </div>
+      </article>
+
+      <!-- Покаяние -->
+      <article class="clergy-card" id="pokayanie" style="scroll-margin-top:110px">
+        <div>
+          <div class="clergy-card__role">Таинство</div>
+          <h3 class="clergy-card__name">Покаяние (Исповедь)</h3>
+          <p class="clergy-card__bio">Таинство, в котором кающийся при искреннем исповедании грехов перед священником невидимо получает прощение от Самого Господа. Исповедь принимается перед каждым богослужением и по договорённости со священником.</p>
+        </div>
+      </article>
+
+      <!-- Елеосвящение -->
+      <article class="clergy-card" id="eleosvyashchenie" style="scroll-margin-top:110px">
+        <div>
+          <div class="clergy-card__role">Таинство</div>
+          <h3 class="clergy-card__name">Елеосвящение (Соборование)</h3>
+          <p class="clergy-card__bio">Таинство, в котором при помазании освящённым елеем на болящего призывается благодать Божия, врачующая немощи душевные и телесные и прощающая забытые грехи. В соборе совершается соборно в дни Великого поста и индивидуально по необходимости.</p>
+        </div>
+      </article>
+
+      <!-- Венчание -->
+      <article class="clergy-card" id="venchanie" style="scroll-margin-top:110px">
+        <div>
+          <div class="clergy-card__role">Таинство</div>
+          <h3 class="clergy-card__name">Венчание (Брак)</h3>
+          <p class="clergy-card__bio">Таинство, в котором жениху и невесте при их обете взаимной верности испрашивается благодать Божия на совместную жизнь, рождение и христианское воспитание детей. Совершается после Таинств Исповеди и Причащения; дату необходимо согласовать заранее (венчание не совершается в посты и в ряд дней седмицы).</p>
         </div>
       </article>
 
@@ -1003,7 +1053,7 @@ body .uheader__cta:hover {
       <h3>Духовная жизнь</h3>
       <a href="schedule.html">Расписание богослужений</a>
       <a href="prayer-requests.html">Подать записку</a>
-      <a href="services.html#sacraments">Таинства</a>
+      <a href="services.html#tainstva">Таинства</a>
       <a href="contacts.html">Задать вопрос батюшке</a>
     </nav>
 
@@ -1017,7 +1067,7 @@ body .uheader__cta:hover {
 
     <nav class="usite-footer__col" aria-label="Жизнь прихода">
       <h3>Жизнь прихода</h3>
-      <a href="parish-life.html#school">Воскресная школа для взрослых</a>
+      <a href="parish-life.html#school-adults">Воскресная школа для взрослых</a>
       <a href="parish-life.html#school">Воскресная школа для детей</a>
       <a href="parish-life.html#youth">Молодёжка «Тем паче»</a>
       <a href="parish-life.html#sisterhood">Сестричество</a>
@@ -1076,17 +1126,17 @@ body .uheader__cta:hover {
     <a href="services.html" class="is-active" aria-current="page">Богослужения</a>
     <a href="schedule.html" class="mobile-drawer__sub">Расписание</a>
     <a href="prayer-requests.html" class="mobile-drawer__sub">Требы</a>
-    <a href="services.html#sacraments">Таинства</a>
-    <a href="services.html#sacraments" class="mobile-drawer__sub">Крещение</a>
-    <a href="services.html#sacraments" class="mobile-drawer__sub">Миропомазание</a>
-    <a href="services.html#confession" class="mobile-drawer__sub">Причащение</a>
-    <a href="services.html#confession" class="mobile-drawer__sub">Покаяние</a>
-    <a href="services.html#sacraments" class="mobile-drawer__sub">Елеосвящение</a>
-    <a href="services.html#sacraments" class="mobile-drawer__sub">Венчание</a>
+    <a href="services.html#tainstva">Таинства</a>
+    <a href="services.html#kreshchenie" class="mobile-drawer__sub">Крещение</a>
+    <a href="services.html#miropomazanie" class="mobile-drawer__sub">Миропомазание</a>
+    <a href="services.html#prichashchenie" class="mobile-drawer__sub">Причащение</a>
+    <a href="services.html#pokayanie" class="mobile-drawer__sub">Покаяние</a>
+    <a href="services.html#eleosvyashchenie" class="mobile-drawer__sub">Елеосвящение</a>
+    <a href="services.html#venchanie" class="mobile-drawer__sub">Венчание</a>
     <a href="parish-life.html">Жизнь прихода</a>
-    <a href="parish-life.html#school" class="mobile-drawer__sub">Воскресная школа для взрослых</a>
+    <a href="parish-life.html#school-adults" class="mobile-drawer__sub">Воскресная школа для взрослых</a>
     <a href="parish-life.html#school" class="mobile-drawer__sub">Воскресная школа для детей</a>
-    <a href="parish-life.html" class="mobile-drawer__sub">Патриаршая программа</a>
+    <a href="parish-life.html#patriarch-program" class="mobile-drawer__sub">Патриаршая программа</a>
     <a href="parish-life.html#youth" class="mobile-drawer__sub">Молодёжка «Тем паче»</a>
     <a href="parish-life.html#sisterhood" class="mobile-drawer__sub">Сестричество</a>
     <a href="parish-life.html#choir" class="mobile-drawer__sub">Голоса храма</a>
